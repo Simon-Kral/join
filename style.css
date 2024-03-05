@@ -1,7 +1,13 @@
-.dnone {
+
+.dnone{
     display: none;
 }
+<<<<<<< HEAD
 
 body {
     position: absolute;
+=======
+.class{
+
+>>>>>>> 90d7e1f2f7b05492f522f00c77e0db9856c539d5
 }
