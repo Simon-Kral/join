@@ -1,3 +1,7 @@
 .dnone {
     display: none;
 }
+
+body {
+    position: absolute;
+}
