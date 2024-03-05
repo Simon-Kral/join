@@ -4,6 +4,7 @@ html {
 
 body {
     margin: 0px;
+<<<<<<< HEAD
     font-family: "Figtree", sans-serif;
 }
 
@@ -13,4 +14,21 @@ section.legal-notice {
     left: 328px;
     gap: 24px;
     width: 1014px;
+=======
+    font-family: "Inter", sans-serif;
+}
+
+main {
+    position: absolute;
+    top: 96px;
+    left: 232px;
+    padding: 110px 96px;
+    h1 {
+        font-size: 61px;
+    }
+}
+
+a {
+    text-decoration: none;
+>>>>>>> 8ede688b3677084a3852af03ea10c49f5f64c3ac
 }
