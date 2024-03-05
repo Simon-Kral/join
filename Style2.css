@@ -1,4 +1,4 @@
-.menu{
+.menu {
     position: fixed;
     width: 1440px;
     left: 0px;
@@ -8,25 +8,38 @@
     background-color: gray;
 }
 
-.menu span{
+.menu span {
     font-size: 20px;
     margin-left: 348px;
 }
 
-.secMenu{
+.secMenu {
     position: fixed;
-    background-color: rgb(42,54,71);
+    background-color: rgb(42, 54, 71);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: space-around;
     top: 0px;
     bottom: 0px;
     left: 0px;
     align-items: center;
-    padding: 64px;
+    /* padding: 64px; */
+    width: 232px;
+    /* neue Klassen für die beiden Link-Divs
+     */
+    .sec-menu-top-links {
+        display: flex;
+        flex-direction: column;
+    }
+    .sec-menu-bottom-links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-.secMenu img{
-    width: 100px;
-
+.secMenu img {
+    /* width: 100px; */
 }

@@ -4,5 +4,16 @@ html {
 
 body {
     margin: 0px;
-    font-family: "Figtree", sans-serif;
+    font-family: "Inter", sans-serif;
+}
+
+
+/* main {
+    position: absolute;
+    top: 96px;
+    left: calc(104.969px + 128px);
+} */
+
+a {
+    text-decoration: none;
 }
