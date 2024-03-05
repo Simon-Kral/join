@@ -7,12 +7,15 @@ body {
     font-family: "Inter", sans-serif;
 }
 
-
-/* main {
+main {
     position: absolute;
     top: 96px;
-    left: calc(104.969px + 128px);
-} */
+    left: 232px;
+    padding: 110px 96px;
+    h1 {
+        font-size: 61px;
+    }
+}
 
 a {
     text-decoration: none;

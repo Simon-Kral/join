@@ -20,6 +20,25 @@
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
     <main>
         <h1>Add Task</h1>
+        <section class="add-task-form-section">
+            <form action="submit()">
+                <div class="add-task-form-left">
+                    <h2>Title</h2>
+                    <input type="text" id="add_task_title" placeholder="Enter a title">
+                    <h2>Description</h2>
+                    <input type="text" id="add_task_description" placeholder="Enter a title">
+                    <h2>Title</h2>
+                    <select name="contacts" id="add_task_contacts">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+                <div class="separator-vertical"></div>
+                <div class="add-task-form-right"></div>
+            </form>
+        </section>
     </main>
 </body>
 

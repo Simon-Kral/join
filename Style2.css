@@ -1,11 +1,12 @@
 .menu {
     position: fixed;
-    width: 1440px;
     left: 0px;
+    right: 0px;
     top: 0px;
     padding: 36px;
     padding-left: 0px;
-    background-color: gray;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 6px rgb(167, 167, 167);
 }
 
 .menu span {
@@ -18,28 +19,49 @@
     background-color: rgb(42, 54, 71);
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    justify-content: space-around;
+    justify-content: space-between;
     top: 0px;
     bottom: 0px;
     left: 0px;
     align-items: center;
-    /* padding: 64px; */
-    width: 232px;
-    /* neue Klassen für die beiden Link-Divs
-     */
-    .sec-menu-top-links {
-        display: flex;
-        flex-direction: column;
-    }
-    .sec-menu-bottom-links {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+    padding: 64px;
 }
 
 .secMenu img {
-    /* width: 100px; */
+    width: 100px;
+}
+
+.secMenu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.secMenuFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 100%;
+}
+
+.secMenuBoard {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-top: 20px;
+}
+
+.secMenuFlex img {
+    width: 30px;
+    margin-right: 8px;
+}
+
+.secMenuFlexPolice {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.secMenuFlexPolice p {
+    margin-top: 20px;
 }
