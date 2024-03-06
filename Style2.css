@@ -26,6 +26,11 @@
     font-weight: 700;
 }
 
+.menu-user:hover {
+    background-color: rgb(228, 228, 228);
+    
+}
+
 .menu-imges{
     display: flex;
     align-items: center;
@@ -39,7 +44,7 @@
 }
 
 .menu-help-img  img:hover{
-    height: 24px;
+    height: 22px;
 }
 
 .menu span {
