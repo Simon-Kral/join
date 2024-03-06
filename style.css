@@ -6,7 +6,6 @@ body {
     margin: 0px;
     font-family: "Figtree", sans-serif;
     font-family: "Inter", sans-serif;
-    image-rendering: pixelated;
 }
 
 main.add_task {
