@@ -90,7 +90,7 @@
 
 .sec-menu-board:hover {
     transition: 0.2s;
-    background-color: rgb(9, 25, 49);
+    background-color: rgb(47, 71, 102);
 }
 
 .sec-menu-flex img {
@@ -107,7 +107,6 @@
 
 .sec-menu-flex-police p {
     color: #CDCDCD;
-    padding: 12px;
     padding-left: 60px;
     padding-right: 58px;
 }
