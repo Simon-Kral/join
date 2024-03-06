@@ -107,10 +107,11 @@
 
 .sec-menu-flex-police p {
     color: #CDCDCD;
-    margin-top: 20px;
+    padding: 12px;
+    padding-left: 60px;
+    padding-right: 58px;
 }
 
 .sec-menu-flex-police p:hover {
     color: rgb(58, 140, 235);
-    font-weight: bold;
 }
