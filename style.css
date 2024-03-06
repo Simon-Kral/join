@@ -5,6 +5,39 @@ html {
 body {
     margin: 0px;
     font-family: "Figtree", sans-serif;
+    font-family: "Inter", sans-serif;
+}
+
+main.add_task {
+    position: absolute;
+    top: 96px;
+    left: 232px;
+    padding: 110px 96px;
+    h1 {
+        font-size: 61px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    .add-task-form-section {
+        display: flex;
+        flex-direction: row;
+    }
+    .add-task-prio-buttons {
+        display: flex;
+    }
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.separator-vertical {
+    height: 424px;
+    width: 2px;
+    background-color: #D1D1D1;
+    margin: 0 48px;
 }
 
 section.law {
