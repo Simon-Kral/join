@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +10,59 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script src="./js/loadHTML.js"></script>
     <style>
-        .sec-menu-board-board{
+        .sec-menu-board-board {
             background-color: rgb(9, 25, 49);
             pointer-events: none;
         }
+
         .sec-menu-flex-police p {
             padding: 0px;
         }
     </style>
 </head>
+
 <body onload="init()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
+    <section class="board-head">
+        <h1>Board</h1>
+        <div class="place-search-task">
+            <div class="search-style">
+                <input placeholder="Find Task">
+                <button>Search</button>
+            </div>
+            <button class="add-task">Add task+</button>
+        </div>
+    </section>
+    <section class="board-head-task">
+        <div class="single-task-head">
+            <p>To do</p>
+            <button>+</button>
+        </div>
+        <div class="single-task-head">
+            <p>In progress</p>
+            <button>+</button>
+        </div>
+        <div class="single-task-head">
+            <p>Await feedback</p>
+            <button>+</button>
+        </div>
+        <h1>DES IS EEN TEST</h1>
+        <div class="single-task-head">
+            <p>Done</p>
+            <button>+</button>
+        </div>
+    </section>
+    <section class="board-body-task">
+        <div class="single-task" id="to_do_place"></div>
+        <div class="single-task" id="in_progress_place"></div>
+        <div class="single-task" id="await_feedback_place"></div>
+        <div class="single-task" id="done_place"></div>
+    </section>
 </body>
+
 </html>

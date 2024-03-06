@@ -59,6 +59,23 @@ a {
     text-decoration: none;
 }
 
+/* section-board-start */
+
+.board-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 96px;
+    left: 232px;
+    width: 1208px;
+    height: 232px;
+}
+
+/* section-board-end */
+
+/* section-law-start */
+
 .place-law-head {
     display: flex;
     justify-content: space-between;
@@ -99,3 +116,5 @@ h1.legal-head {
 .place-law-head img:hover {
     width: 23.93px;
 }
+
+/* section-law-end */
