@@ -28,22 +28,22 @@
 
 .menu-user:hover {
     background-color: rgb(228, 228, 228);
-    
+
 }
 
-.menu-imges{
+.menu-imges {
     display: flex;
     align-items: center;
     margin-right: 40px;
     gap: 12px;
 }
 
-.menu-help-img  img{
+.menu-help-img img {
     height: 20px;
     border: 0px;
 }
 
-.menu-help-img  img:hover{
+.menu-help-img img:hover {
     height: 22px;
 }
 
@@ -113,4 +113,33 @@
 
 .sec-menu-flex-police p:hover {
     color: rgb(58, 140, 235);
+}
+
+.body-register{
+    background-color: rgb(246,247,248);
+}
+
+.start-register {
+    position: absolute;
+    background-color: rgb(246,247,248);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-register-small {
+    transition: 1s;
+    width: 100px;
+    height: 120px;
+    margin-left: 80px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-register-small img {
+    width: 100px;
 }
