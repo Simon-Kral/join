@@ -36,3 +36,17 @@ function backToLogin() {
     registersignin.classList.replace('register-sign-up-box', 'd-none')
     registersignupbox.classList.replace('d-none', 'register-sign-up-flex')
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.login-input input').forEach(function(input) {
+        let logininput = input.closest('.login-input');
+
+        input.addEventListener('focus', function() {
+            logininput.style.borderColor = 'rgb(41, 171, 226)';
+        });
+
+        input.addEventListener('blur', function() {
+            logininput.style.borderColor = '#D1D1D1';
+        });
+    });
+});

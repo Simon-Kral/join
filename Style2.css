@@ -220,20 +220,30 @@
     }
     input{
         height: 48px;
-        width: 340px;
+        width: 360px;
         padding-left: 20px;
-        padding-right: 60px;
         border-radius: 12px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #D1D1D1;
+        border-style: none;
         font-size: 20px;
         outline: none;
         }
-    input:focus{
-        transition: 0.1s;
-        border-color: #29ABE2;
+}
+
+.login-input{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #D1D1D1;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    img{
+        width: 20px;
+        margin-right: 20px;
     }
+}
+.login-input input:focus{
+    transition: 0.1s;
+    border-color: rgb(41, 171, 226);
 }
 
 .register-login-checkbox{
@@ -314,20 +324,13 @@
     }
     input{
         height: 48px;
-        width: 340px;
+        width: 360px;
         padding-left: 20px;
-        padding-right: 60px;
         border-radius: 12px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #D1D1D1;
+        border-style: none;
         font-size: 20px;
         outline: none;
         }
-    input:focus{
-        transition: 0.1s;
-        border-color: #29ABE2;
-    }
 }
 
 .register-sign-up-img{
