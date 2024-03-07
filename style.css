@@ -96,6 +96,7 @@ a {
 .single-task-head {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 246px;
 }
 
@@ -106,6 +107,22 @@ a {
     width: 1208px;
     left: 232px;
     top: 80.5px;
+}
+
+.style-task-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px;
+    border-radius: 8px;
+    border-color: #2A3647;
+    gap: 10px;
+    padding: 3px;
+    width: 24px;
+    height: 24px;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
 }
 
 .empty-task-place {
@@ -128,6 +145,15 @@ a {
 
 /* section-board-end */
 
+/* single-task-style-start */ 
+
+.basti-test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* single-task-style-start */
 
 /* section-law-start */
 
