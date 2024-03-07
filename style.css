@@ -14,55 +14,9 @@ body {
     color: #d1d1d1;
 }
 
-main.add_task {
-    position: absolute;
-    top: 96px;
-    left: 232px;
-    padding: 110px 96px;
-    h1 {
-        font-size: 61px;
-        color: #000000;
-    }
-    h3 {
-        font-size: 20px;
-        margin-top: 50px;
-    }
-    .add-task-form-section {
-        display: flex;
-        flex-direction: row;
-        .add-task-form-left {
-            width: 440px;
-        }
-    }
-    .add-task-prio-buttons {
-        display: flex;
-    }
-}
-
 a {
     text-decoration: none;
     cursor: pointer;
-}
-
-.separator-vertical {
-    height: 424px;
-    width: 2px;
-    background-color: #D1D1D1;
-    margin: 0 48px;
-}
-
-main {
-    position: absolute;
-    top: 96px;
-    left: 232px;
-    padding: 110px 96px;
-    h1 {
-        font-size: 61px;
-    }
-}
-
-a {
-    text-decoration: none;
 }
 
 
@@ -175,84 +129,216 @@ h1.legal-head {
 
 /* section-law-end */
 
-.select-wrapper {
-    background: url(./assets/img/arrow_drop_down.png) no-repeat 412px white;
-    width: 440px;
-    height: 48px;
-    border-radius: 10px;
-    select {
-        background: transparent;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-        width: 440px;
-        height: 48px;
-        padding-left: 20px;
-        border: 1px solid #d1d1d1;
-        border-radius: 10px;
-        font-size: 24px;
+main.add_task {
+    position: absolute;
+    top: 96px;
+    left: 232px;
+    padding: 110px 96px;
+    font-size: 20px;
+    h1 {
+        font-size: 61px;
         color: #000000;
     }
-}
-
-.input-wrapper {
-    width: 420px;
-    height: 48px;
-    padding-left: 20px;
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    font-size: 24px;
-}
-
-.styled-textarea {
-    background: url(./assets/img/arrow_drop_down.png) no-repeat 400px white;
-    width: 440px;
-    height: 120px;
-    border-radius: 10px;
-    textarea {
-        background: transparent;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-        /* padding: 24px 0 0 20px; */
-        border: 1px solid #d1d1d1;
-        border-radius: 10px;
-        font-size: 24px;
+    .add-task-form-section {
+        display: flex;
+        flex-direction: row;
+        h3 {
+            font-size: 20px;
+            margin-top: 50px;
+            font-weight: 400;
+        }
+        .required-header {
+            display: flex;
+        }
+        .input-with-button-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            a {
+                height: 24px;
+                width: 24px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: -40px;
+                border-radius: 12px;
+            }
+            a:hover {
+                background-color: #f6f7f8;
+            }
+        }
+        .styled-input {
+            width: 398px;
+            height: 48px;
+            padding: 1px 20px;
+            border: 1px solid #d1d1d1;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+        .focus-blue:focus {
+            outline: none;
+            border: 1px solid #5dbee7 !important;
+        }
+        .form-left {
+            width: 440px;
+            .bottom-section {
+                position: absolute;
+                bottom: 0px;
+            }
+        }
+        #separator-vertical {
+            width: 2px;
+            background-color: #d1d1d1;
+            margin: 0 48px;
+        }
+        .form-right {
+            width: 440px;
+            .bottom-section {
+                position: absolute;
+                display: flex;
+                bottom: 0px;
+                right: 96px;
+                a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+                    width: 108px;
+                    height: 54px;
+                    background-color: #F6F7F8;
+                    border: 1px solid #2A3647;
+                    border-radius: 10px;
+                    span {
+                        color: #2A3647;
+                    }
+                    img {
+                        margin-left: 10px;
+                    }
+                }
+                button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 183px;
+                    height: 56px;
+                    margin-left: 16px;
+                    background-color: #2A3647;
+                    border: none;
+                    border-radius: 10px;
+                    span {
+                        font-size: 21px;
+                        color: white;
+                    }
+                    img {
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
     }
 }
 
-textarea {
-    width: 400px;
-    resize: vertical;
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    min-height: 120px;
-    font-size: 24px;
-    padding: 20px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+#add_task_title {}
+
+#add_task_description {
+    .textarea-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    textarea {
+        width: 398px;
+        resize: vertical;
+        border: 1px solid #d1d1d1;
+        border-radius: 10px;
+        min-height: 120px;
+        font-size: 20px;
+        padding: 20px;
+    }
+     ::-webkit-resizer {
+        display: none;
+    }
+    .textarea-wrapper::after {
+        position: absolute;
+        pointer-events: none;
+        content: "";
+        height: 19px;
+        width: 19px;
+        bottom: 6px;
+        right: 6px;
+        background: url(./assets/img/resize-handler.png) no-repeat;
+    }
 }
 
-.textarea-wrapper {
-    position: relative;
+#add_task_assigned_to {
+     ::placeholder {
+        color: black;
+    }
 }
 
-.textarea-wrapper::after {
-    pointer-events: none;
-    content: "↓";
-    font-size: 14px;
+#add_task_due_date {
+    .calendar-input {
+        position: absolute;
+        right: 18px;
+        color: transparent;
+        border: 0;
+        outline: none !important;
+        background-color: transparent;
+        width: 22px;
+        height: 24px;
+        padding: 0;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        color: rgba(0, 0, 0, 0);
+        opacity: 1;
+        display: block;
+        background: url(./assets/img/calendar.png) center no-repeat;
+        width: 18px;
+        height: 20px;
+        cursor: pointer;
+    }
+}
+
+#add_task_prio {
+    .prio-buttons {
+        display: flex;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            width: 136px;
+            height: 56px;
+            border: 1px solid #d1d1d1;
+            box-shadow: 0px 0px 4px #d1d1d1;
+            border-radius: 10px;
+            margin-right: 16px;
+            img {
+                width: 20px;
+                margin-left: 8px;
+            }
+        }
+        a:not(.highlighted-button):hover {
+            box-shadow: 0px 4px 4px #d1d1d1;
+        }
+        .highlighted-button {
+            background-color: #ffa800;
+            color: white;
+            font-size: 21px;
+            font-weight: 700;
+        }
+    }
+}
+
+#add_task_category {
+     ::placeholder {
+        color: black;
+    }
+}
+
+#add_task_subtask {}
+
+.add-task-form-left-bottom-section {
     position: absolute;
-    height: 19px;
-    width: 19px;
-    text-align: center;
-    bottom: 6px;
-    right: 1px;
-    z-index: 2;
-    background-color: white !important;
-    background: url(./assets/img/capa_1.png) no-repeat;
-    /* border-radius: 11px; */
+    bottom: 0px;
 }
