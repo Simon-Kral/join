@@ -46,7 +46,7 @@ function showTaskVariant() {
 }
 
 function updateProgressBar() {
-    let percent = (currenttask + 1) / taskforce.length;
+    let percent = (currenttask) / taskforce.length;
     percent = Math.round(percent * 100);
 
     document.getElementById('progressbar').style = `width: ${percent}%`;

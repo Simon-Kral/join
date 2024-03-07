@@ -22,11 +22,22 @@ function todoTaskHtml() {
             <div id="task-variant"></div>
             <h3>Test Join Project</h3>
             <span>.. hier steht was zu tun ist ...</span>
-            <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                <div class="progressbar" id="progressbar"></div>
+            <div class="place-task-progress">
+                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+                    <div class="progressbar" id="progressbar"></div>
+                </div>
+                <div>${currenttask}/${taskforce.length}</div>
+                <p>Subtasks</p>
             </div>
-            <div></div>
-            <p>Subtasks</p>
+            <div class="place-user-status">
+                <div class="place-user">
+                </div>
+                <div>
+                    <img src="./assets/img/low.png">
+                    <img src="./assets/img/urgent.png">
+                    <img src="./assets/img/medium.png">
+                </div>
+            </div>
         </div>
     `;
 }

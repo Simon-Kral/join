@@ -85,6 +85,34 @@ a {
     height: 232px;
 }
 
+h1.board {
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 73.2px;
+}
+
+input.find-task {
+    width: 312px;
+    height: 48px;
+    border-radius: 10px;
+    border-color: #A8A8A8;
+    border: solid 1px;
+    gap: 10px;
+}
+
+button.add-task {
+    background-color: #2A3647;
+    color: #FFFFFF;
+    font-size: 21px;
+    line-height: 25.2px;
+    border-radius: 10px;
+}
+
+button.add-task:hover {
+    background-color: #091931;
+    cursor: pointer;
+}
+
 .place-search-task {
     display: flex;
     justify-content: center;
@@ -192,6 +220,12 @@ p.technical-task {
     gap: 10px;
     border-radius: 8px;
     text-align: center;
+}
+
+.place-task-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .todo-task-container {
