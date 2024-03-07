@@ -115,10 +115,37 @@
     color: rgb(58, 140, 235);
 }
 
+
+
+
+
 .body-register {
     background-color: rgb(246, 247, 248);
     height: 100vh;
     width: 100%;
+}
+
+.register-sign-up-flex{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 120px;
+    top: 60px;
+    p{
+        margin-right: 40px;
+    }
+    span{
+        padding: 12px;
+        color: white;
+        background-color: rgb(42,54,71);
+        border-radius: 8px;
+    }
+    span:hover{
+        transition: 0.1s;
+        background-color: rgb(41,171,226);
+        box-shadow: 1px 4px 3px rgb(199, 199, 199);
+        cursor: pointer;
+    }
 }
 
 .start-register-background {
@@ -137,7 +164,7 @@
 
 .start-register-box{
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
