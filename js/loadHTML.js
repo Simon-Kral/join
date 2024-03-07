@@ -18,7 +18,11 @@ async function includeHTML() {
 
 function todoTaskHtml() {
     return `
-        <h1>TestTesTodo</h1>
+        <div class="todo-task-container">
+            <div id="task-variant"></div>
+            <h3>Test Join Project</h3>
+            <span>.. hier steht was zu tun ist ...</span>
+        </div>
     `;
 }
 
@@ -37,5 +41,17 @@ function awaitfeedbackTaskHtml() {
 function doneTaskHtml() {
     return `
         <h1>TestTesTodo</h1>
+    `;
+}
+
+function userTaskHtml() {
+    return `
+        <p class="user-story">User Story</p>
+    `;
+}
+
+function technicalTaskHtml() {
+    return `
+        <p class="technical-task">Technical Task</p>
     `;
 }

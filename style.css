@@ -153,6 +153,30 @@ a {
     align-items: center;
 }
 
+p.user-story {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    padding: 4px 16px 4px 16px;
+    background-color: #0038FF;
+    gap: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+p.technical-task {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    padding: 4px 16px 4px 16px;
+    background-color: #1FD7C1;
+    gap: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
 /* single-task-style-start */
 
 /* section-law-start */
