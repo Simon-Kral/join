@@ -15,3 +15,27 @@ async function includeHTML() {
         }
     }
 }
+
+function todoTaskHtml() {
+    return `
+        <h1>TestTesTodo</h1>
+    `;
+}
+
+function inprogressTaskHtml() {
+    return `
+        <h1>TestTesTodo</h1>
+    `;
+}
+
+function awaitfeedbackTaskHtml() {
+    return `
+        <h1>TestTesTodo</h1>
+    `;
+}
+
+function doneTaskHtml() {
+    return `
+        <h1>TestTesTodo</h1>
+    `;
+}
