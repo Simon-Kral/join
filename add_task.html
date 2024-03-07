@@ -14,10 +14,11 @@
     <script src="./js/loadHTML.js"></script>
     <script src="./js/add_task.js"></script>
     <style>
-        .sec-menu-board-task{
+        .sec-menu-board-task {
             background-color: rgb(9, 25, 49);
             pointer-events: none;
         }
+
         .sec-menu-flex-police p {
             padding: 0px;
         }
@@ -32,17 +33,23 @@
         <section class="add-task-form-section">
             <div class="add-task-form-left">
                 <h3>Title</h3>
-                <input placeholder="Enter a title" required type="text" id="add_task_title">
+                <input class="input-wrapper" placeholder="Enter a title" required type="text" id="add_task_title">
                 <h3>Description</h3>
-                <textarea placeholder="Enter a Description" name="add_task_description" id="add_task_description"
-                    cols="30" rows="10"></textarea>
-                <h3>Title</h3>
-                <select name="add_task_contacts" id="add_task_contacts">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
+                <div class="textarea-wrapper">
+                    <textarea placeholder="Enter a Description" name="add_task_description" id="add_task_description"
+                        cols="30" rows="10"></textarea>
+                </div>
+                <h3>Assigned to</h3>
+                <div class="select-wrapper">
+                    <select name="add_task_contacts" id="add_task_contacts">
+                        <option value="" disabled selected>Select contacts to assign</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+
             </div>
             <div class="separator-vertical"></div>
             <div class="add-task-form-right">
@@ -64,13 +71,14 @@
                     </a>
                 </div>
                 <h3>Category</h3>
-
-                <select name="add_task_category" id="add_task_category">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
+                <div class="select-wrapper">
+                    <select name="add_task_category" id="add_task_category">
+                        <option value="" disabled selected>Select task category</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
                 <h3>Subtask</h3>
                 <input placeholder="Add new subtask" required type="text" id="add_task_subtask">
 
