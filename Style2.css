@@ -216,12 +216,76 @@
     }
     input{
         height: 48px;
-        width: 420px;
+        width: 380px;
+        padding-left: 20px;
+        padding-right: 20px;
         border-radius: 12px;
-        color: #FFFFFF;
         border-width: 1px;
         border-style: solid;
         border-color: #D1D1D1;
         font-size: 20px;
+        outline: none;
         }
+    input:focus{
+        transition: 0.1s;
+        border-color: #29ABE2;
+    }
+}
+
+.register-login-checkbox{
+    margin-right: 250px;
+
+
+    input{
+        height: 16px;
+        width: 16px;
+        cursor: pointer;
+    }
+}
+
+.register-login-button-flex{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+
+    span{
+    color: rgb(42,54,71);
+    font-weight: bold;
+    font-size: 20px;
+    padding: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 8px;
+    border: solid 1px;
+    }
+
+    span:hover{
+        transition: 0.1s;
+        color: #29ABE2;
+        box-shadow: 1px 4px 3px rgb(199, 199, 199);
+        border: solid 2px;
+        cursor: pointer;
+    }
+}
+
+.register-login-sign-up-button{
+    color: white;
+    background-color: rgb(42,54,71);
+    font-weight: bold;
+    font-size: 20px;
+    padding: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 8px;
+    border: solid 2px;
+    border-color: rgb(42,54,71);
+}
+
+.register-login-sign-up-button:hover{
+    transition: 0.1s;
+    background-color: rgb(41,171,226);
+    box-shadow: 1px 4px 3px rgb(199, 199, 199);
+    border-color: rgb(41,171,226);
+    cursor: pointer;
 }
