@@ -119,10 +119,6 @@
     color: rgb(58, 140, 235);
 }
 
-
-
-
-
 .body-register {
     background-color: rgb(246, 247, 248);
     height: 100vh;
@@ -236,19 +232,15 @@
     border-radius: 12px;
     display: flex;
     align-items: center;
+
     img{
         width: 20px;
         margin-right: 20px;
     }
 }
-.login-input input:focus{
-    transition: 0.1s;
-    border-color: rgb(41, 171, 226);
-}
 
 .register-login-checkbox{
     margin-right: 250px;
-
 
     input{
         height: 16px !important;
@@ -263,7 +255,7 @@
     justify-content: space-between;
     margin-bottom: 48px;
 
-    span{
+    a{
     color: rgb(42,54,71);
     font-weight: bold;
     font-size: 20px;
@@ -275,7 +267,7 @@
     height: 24px;
     }
 
-    span:hover{
+    a:hover{
         transition: 0.1s;
         color: #29ABE2;
         box-shadow: 1px 4px 3px rgb(199, 199, 199);
@@ -322,6 +314,7 @@
         margin-top: 48px;
         margin-bottom: 0px;
     }
+
     input{
         height: 48px;
         width: 360px;
@@ -382,3 +375,22 @@
     width: 150px;
     margin-bottom: 32px;
     }
+
+.register-rights{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 3%;
+
+    a{
+        color: rgb(168,168,168);
+        margin-right: 16px;
+        padding: 8px;
+    }
+
+    a:hover{
+        color: #29ABE2;
+        font-weight: bold;
+        padding: 6px;
+    }
+}
