@@ -16,6 +16,30 @@ async function includeHTML() {
     }
 }
 
+function emptyTaskFieldTodo() {
+    return `
+        <div class="empty-task-place">No tasks To Do</div>
+    `;
+}
+
+function emptyTaskFieldInprogress() {
+    return `
+        <div class="empty-task-place">No tasks In progress</div>
+    `;
+}
+
+function emptyTaskFieldAwaitfeedback() {
+    return `
+        <div class="empty-task-place">No tasks Await feedback</div>
+    `;
+}
+
+function emptyTaskFieldDone() {
+    return `
+        <div class="empty-task-place">No tasks Done</div>
+    `;
+}
+
 function todoTaskHtml() {
     return `
         <div class="todo-task-container">
@@ -33,9 +57,9 @@ function todoTaskHtml() {
                 <div class="place-user">
                 </div>
                 <div>
-                    <img src="./assets/img/low.png">
-                    <img src="./assets/img/urgent.png">
-                    <img src="./assets/img/medium.png">
+                    <img class="low-image" src="./assets/img/low.png">
+                    <img class="urgent-image" src="./assets/img/urgent.png">
+                    <img class="medium-image" src="./assets/img/medium_two.png">
                 </div>
             </div>
         </div>
