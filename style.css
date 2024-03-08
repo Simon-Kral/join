@@ -296,9 +296,10 @@ h1.legal-head {
     width: 23.93px;
 }
 
+
 /* section-law-end */
 
-main.add_task {
+main {
     position: absolute;
     top: 96px;
     left: 232px;
@@ -307,7 +308,12 @@ main.add_task {
     h1 {
         font-size: 61px;
         color: #000000;
+        margin-top: 0;
+        margin-bottom: 32px;
     }
+}
+
+.add_task {
     .add-task-form-section {
         display: flex;
         flex-direction: column;
@@ -555,5 +561,49 @@ main.add_task {
     }
     button.create-task-button:active {
         background-color: #091931;
+    }
+}
+
+.help {
+    font-size: 16px;
+    .head-wrapper {
+        display: flex;
+        .go-back-button {
+            position: fixed;
+            right: 96px;
+            top: 206px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 32px;
+            width: 32px;
+            border-radius: 16px;
+            margin-top: 19px;
+            img {
+                filter: invert(56%) sepia(81%) saturate(1182%) hue-rotate(165deg) brightness(94%) contrast(87%) !important;
+            }
+        }
+        .go-back-button:hover {
+            background-color: #eeeeee;
+        }
+    }
+    .text-box-wrapper {
+        display: flex;
+        align-items: start;
+        margin-top: 24px;
+        h2 {
+            font-size: 27px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            margin-right: 35px;
+        }
+        h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+    }
+    .enjoy {
+        margin-top: 48px;
     }
 }
