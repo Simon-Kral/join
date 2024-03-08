@@ -15,7 +15,7 @@ let currenttask = 0;
 function showTodoHtml() {
     const todotask = todoTaskHtml();
     let getplacetodo = document.getElementById('test_todo_task');
-    getplacetodo.innerHTML = todotask;
+    getplacetodo.innerHTML += todotask;
     showTaskVariant();
     updateProgressBar();
 }
