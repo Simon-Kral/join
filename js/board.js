@@ -12,30 +12,61 @@ let taskforce = [{
 
 let currenttask = 0;
 
+function showEmptyHtmlTodo() {
+    const empty = emptyTaskFieldTodo();
+    let getplacetodo = document.getElementById('to_do_place');
+    getplacetodo.innerHTML = empty;
+}
+
 function showTodoHtml() {
     const todotask = todoTaskHtml();
-    let getplacetodo = document.getElementById('test_todo_task');
+    let getplacetodo = document.getElementById('to_do_place');
     getplacetodo.innerHTML += todotask;
-    showTaskVariant();
-    updateProgressBar();
+    // showTaskVariant();
+    // updateProgressBar();
 }
 
 function showInProgressHtml() {
     const todotask = inprogressTaskHtml();
-    let getplacetask = document.getElementById('test_inprogress_task');
-    getplacetask.innerHTML = todotask;
+    let getplaceinprogress = document.getElementById('in_progress_place');
+    getplaceinprogress.innerHTML = ``;
+    getplaceinprogress.innerHTML += todotask;
+    // showTaskVariant();
+    // updateProgressBar();
+}
+
+function showEmptyHtmlInprogress() {
+    const empty = emptyTaskFieldInprogress();
+    let getplacetodo = document.getElementById('in_progress_place');
+    getplacetodo.innerHTML = empty;
 }
 
 function showAwaitFeedbackHtml() {
     const todotask = awaitfeedbackTaskHtml();
-    let getplacetask = document.getElementById('test_awaitfeedback_task');
-    getplacetask.innerHTML = todotask;
+    let getplaceawaitfeedback = document.getElementById('await_feedback_place');
+    getplaceawaitfeedback.innerHTML += todotask;
+    // showTaskVariant();
+    // updateProgressBar();
+}
+
+function showEmptyHtmlAwaitfeedback() {
+    const empty = emptyTaskFieldAwaitfeedback();
+    let getplacetodo = document.getElementById('await_feedback_place');
+    getplacetodo.innerHTML = empty;
 }
 
 function showDoneHtml() {
     const todotask = doneTaskHtml();
-    let getplacetask = document.getElementById('test_done_task');
-    getplacetask.innerHTML = todotask;
+    let getplacedone = document.getElementById('done_place');
+    getplacedone.innerHTML += todotask;
+    // showTaskVariant();
+    // updateProgressBar();
+}
+
+function showEmptyHtmlDone() {
+    const empty = emptyTaskFieldDone();
+    let getemptyplacedone = document.getElementById('done_place');
+    getemptyplacedone.innerHTML = empty;
 }
 
 function showTaskVariant() {
