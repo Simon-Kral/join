@@ -274,9 +274,9 @@ h1.legal-head {
 
 .law {
     position: relative;
-    top: 206px;
-    left: 328px;
-    width: 1024px;
+    top: 128px;
+    margin-left: 240px;
+    margin-right: 64px;
 }
 
 .place-law-head img {
@@ -561,4 +561,4 @@ main.add_task {
     button.create-task-button:active {
         background-color: #091931;
     }
-}
+ }

@@ -1,9 +1,5 @@
 async function init() {
     await includeHTML();
-    showEmptyHtmlTodo();
-    showEmptyHtmlInprogress();
-    showEmptyHtmlAwaitfeedback();
-    showEmptyHtmlDone();
 }
 
 async function includeHTML() {

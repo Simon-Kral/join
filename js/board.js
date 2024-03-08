@@ -12,6 +12,14 @@ let taskforce = [{
 
 let currenttask = 0;
 
+
+function boardinit() {
+    showEmptyHtmlTodo();
+    showEmptyHtmlInprogress();
+    showEmptyHtmlAwaitfeedback();
+    showEmptyHtmlDone();
+}
+
 function showEmptyHtmlTodo() {
     const empty = emptyTaskFieldTodo();
     let getplacetodo = document.getElementById('to_do_place');
