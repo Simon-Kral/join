@@ -60,11 +60,10 @@ form.search-task-tag:hover {
 input.search-task-in[type="search"] {
     border: none;
     background: transparent;
-    margin: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     padding: 8px 8px;
     font-size: 14px;
-    /* color: inherit;
-    border: 1px solid transparent; */
     border-radius: inherit;
     border-right: solid 1px transparent;
     border-top-right-radius: unset;
@@ -85,7 +84,8 @@ button.search-task-button[type="submit"] {
     width: 32px;
     height: 32px;
     padding: 0;
-    margin: 0;
+    margin-right: 8px;
+    margin-left: 8px;
     border: 1px solid transparent;
     border-radius: 100%;
     background: no-repeat transparent url('./assets/img/search-bord.png');
@@ -102,9 +102,18 @@ button.search-task-button[type="submit"]:hover {
     border: none;
 }
 
-form.search-task-tag:focus,
-button.search-task-button[type="submit"]:focus,
 input.search-task-in[type="search"]:focus {
+    outline: none;
+    border: none;
+    border-radius: inherit;
+    border-right: solid 1px transparent;
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+    border-color: rgba(128, 128, 128, 0.418);
+}
+
+form.search-task-tag:focus,
+button.search-task-button[type="submit"]:focus {
     background-color: #E7E7E7;
     outline: none;
     border: none;
