@@ -30,8 +30,8 @@ function showTodoHtml() {
     const todotask = todoTaskHtml();
     let getplacetodo = document.getElementById('to_do_place');
     getplacetodo.innerHTML += todotask;
-    // showTaskVariant();
-    // updateProgressBar();
+    showTaskVariant();
+    updateProgressBar();
 }
 
 function showInProgressHtml() {
