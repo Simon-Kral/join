@@ -15,3 +15,59 @@ async function includeHTML() {
         }
     }
 }
+
+function todoTaskHtml() {
+    return `
+        <div class="todo-task-container">
+            <div id="task-variant"></div>
+            <h3>Test Join Project</h3>
+            <span>.. hier steht was zu tun ist ...</span>
+            <div class="place-task-progress">
+                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+                    <div class="progressbar" id="progressbar"></div>
+                </div>
+                <div>${currenttask}/${taskforce.length}</div>
+                <p>Subtasks</p>
+            </div>
+            <div class="place-user-status">
+                <div class="place-user">
+                </div>
+                <div>
+                    <img src="./assets/img/low.png">
+                    <img src="./assets/img/urgent.png">
+                    <img src="./assets/img/medium.png">
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function inprogressTaskHtml() {
+    return `
+        <h1>TestTesTodo</h1>
+    `;
+}
+
+function awaitfeedbackTaskHtml() {
+    return `
+        <h1>TestTesTodo</h1>
+    `;
+}
+
+function doneTaskHtml() {
+    return `
+        <h1>TestTesTodo</h1>
+    `;
+}
+
+function userTaskHtml() {
+    return `
+        <p class="user-story">User Story</p>
+    `;
+}
+
+function technicalTaskHtml() {
+    return `
+        <p class="technical-task">Technical Task</p>
+    `;
+}

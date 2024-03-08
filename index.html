@@ -18,9 +18,9 @@
 </head>
 
 <body onload="loadRegister()" class="body-register">
-    <div class="register-sign-up-flex">
+    <div class="register-sign-up-flex" id="register_sign_up_box">
         <p>Not a Join user?</p>
-        <span>Sign up</span>
+        <span onclick="signUpBox()">Sign up</span>
     </div>
     <div id="start_register_background" class="start-register-background">
         <div id="start_register_box" class="start-register-box">
@@ -28,19 +28,61 @@
         </div>
     </div>
     <div class="register-login-flex">
-        <div class="register-login">
-            <h1>Log in</h1>
-            <input type="text" placeholder="Email">
-            <input type="text" placeholder="Password">
-            <div class="register-login-checkbox">
-                <input type="checkbox">
-                <span>Remeber me</span>
-            </div>
-            <div class="register-login-button-flex">
-                <div class="register-login-sign-up-button">Log in</div>
-                <span>Guest Log in</span>
-            </div>
+        <form onsubmit="validateForm(); return false">
+            <div class="register-login" id="register_login">
+                <h1>Log in</h1>
+                <div class="login-spacer"></div>
+                <div class="login-input">
+                    <input required type="email" placeholder="Email" type="submit"> 
+                    <img src=" assets\img\register_mail.png">
+                </div>
+                <div class="login-input">
+                    <input required type="text" placeholder="Password" type="submit">
+                    <img src="assets\img\register_lock.png">
+                </div>
+                <div class="register-login-checkbox">
+                    <input type="checkbox">
+                    <span>Remeber me</span>
+                </div>
+                <div class="register-login-button-flex">
+                    <div class="register-login-sign-up-button" type="submit" onclick="validateForm()">Log in</div>
+                    <a href="summary.html"><span>Guest Log in</span></a>
+                </div>
+        </form>
+    </div>
+    <div class="d-none" id="register_sign_in">
+        <div class="register-sign-up-img">
+            <img src="assets\img\Vector.png" onclick="backToLogin()">
+            <h1>Sign up</h1>
+            <div></div>
         </div>
+        <div class="register-spacer"></div>
+        <div class="login-input">
+            <input type="text" placeholder="Name">
+            <img src="assets\img\register_people.png">
+        </div>
+        <div class="login-input">
+            <input type="email" placeholder="Email">
+            <img src=" assets\img\register_mail.png">
+        </div>
+        <div class="login-input">
+            <input type="text" placeholder="Password">
+            <img src="assets\img\register_lock.png">
+        </div>
+        <div class="login-input">
+            <input type="text" placeholder="Confirm Password">
+            <img src="assets\img\register_lock.png">
+        </div>
+        <div class="register-sign-up-checkbox">
+            <input type="checkbox">
+            I accept the <a href="">Privacy Policy</a>
+        </div>
+        <div class="register-login-sign-up-button">Log in</div>
+    </div>
+    </div>
+    <div class="register-rights">
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="legal_notice.html">Legal Notice</a>
     </div>
 </body>
 
