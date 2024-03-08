@@ -30,59 +30,102 @@
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
     <main class="add_task">
         <h1>Add Task</h1>
-        <section class="add-task-form-section">
-            <div class="add-task-form-left">
-                <h3>Title</h3>
-                <input class="input-wrapper" placeholder="Enter a title" required type="text" id="add_task_title">
-                <h3>Description</h3>
-                <div class="textarea-wrapper">
-                    <textarea placeholder="Enter a Description" name="add_task_description" id="add_task_description"
-                        cols="30" rows="10"></textarea>
+        <form class="add-task-form-section" onsubmit=" validateForm();return false">
+            <section class="form-left">
+                <div id="add_task_title">
+                    <div class="required-header">
+                        <h3>Title</h3>
+                        <h3 style="color: #FF8190;">*</h3>
+                    </div>
+                    <input class="styled-input focus-blue" placeholder="Enter a title" required type="text"
+                        id="add_task_title">
                 </div>
-                <h3>Assigned to</h3>
-                <div class="select-wrapper">
-                    <select name="add_task_contacts" id="add_task_contacts">
-                        <option value="" disabled selected>Select contacts to assign</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
+                <div id="add_task_description">
+                    <h3>Description</h3>
+                    <div class="textarea-wrapper">
+                        <textarea class="focus-blue" placeholder="Enter a Description" name="add_task_description"
+                            id="add_task_description_textarea"></textarea>
+                    </div>
                 </div>
-
-            </div>
-            <div class="separator-vertical"></div>
-            <div class="add-task-form-right">
-                <h3>Due Date</h3>
-                <input placeholder="dd/mm/yyyy" type="date">
-                <h3>Prio</h3>
-                <div class="add-task-prio-buttons">
+                <div id="add_task_assigned_to">
+                    <h3>Assigned to</h3>
+                    <div class="input-with-button-wrapper">
+                        <input class="styled-input focus-blue" placeholder="Select contacts to assign" type="text"
+                            id="input_with_button_assigned_to">
+                        <a>
+                            <img src="./assets/img/arrow_drop_down.png" alt="add">
+                        </a>
+                    </div>
+                </div>
+                <div class="bottom-section">
+                    <span style="color: #FF8190;">*</span>
+                    <span>This field is required</span>
+                </div>
+            </section>
+            <section id="separator-vertical"></section>
+            <section class="form-right">
+                <div id="add_task_due_date">
+                    <div class="required-header">
+                        <h3>Due date</h3>
+                        <h3 style="color: #FF8190;">*</h3>
+                    </div>
+                    <div class="input-with-button-wrapper">
+                        <input class="styled-input focus-blue" placeholder="dd/mm/yyyy" type="text">
+                        <input class="calendar-input" type="date" value="">
+                    </div>
+                </div>
+                <div id="add_task_prio">
+                    <h3>Prio</h3>
+                    <div class="prio-buttons">
+                        <a>
+                            <span>Urgent</span>
+                            <img src="./assets/img/urgent.png" alt="urgent">
+                        </a>
+                        <a class="highlighted-button">
+                            <span>Medium</span>
+                            <img src="./assets/img/medium.png" alt="medium">
+                        </a>
+                        <a>
+                            <span>Low</span>
+                            <img src="./assets/img/low.png" alt="low">
+                        </a>
+                    </div>
+                </div>
+                <div id="add_task_category">
+                    <div class="required-header">
+                        <h3>Category</h3>
+                        <h3 style="color: #FF8190;">*</h3>
+                    </div>
+                    <div class="input-with-button-wrapper">
+                        <input class="styled-input focus-blue" placeholder="Select task category" required type="text"
+                            id="input_with_button_category">
+                        <a>
+                            <img src="./assets/img/arrow_drop_down.png" alt="add">
+                        </a>
+                    </div>
+                </div>
+                <div id="add_task_subtask">
+                    <h3>Subtask</h3>
+                    <div class="input-with-button-wrapper">
+                        <input class="styled-input focus-blue" placeholder="Add new subtask" type="text"
+                            id="input_with_button_subtask">
+                        <a>
+                            <img src="./assets/img/add.png" alt="add">
+                        </a>
+                    </div>
+                </div>
+                <div class="bottom-section">
                     <a>
-                        <span>Urgent</span>
-                        <img src="" alt="img">
+                        <span>Clear</span>
+                        <div class="bottom-section-cross"></div>
                     </a>
-                    <a>
-                        <span>Medium</span>
-                        <img src="" alt="img">
-                    </a>
-                    <a>
-                        <span>Low</span>
-                        <img src="" alt="img">
-                    </a>
+                    <button>
+                        <span>Create Task</span>
+                        <img src="./assets/img/check.png" alt="check">
+                    </button>
                 </div>
-                <h3>Category</h3>
-                <div class="select-wrapper">
-                    <select name="add_task_category" id="add_task_category">
-                        <option value="" disabled selected>Select task category</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                </div>
-                <h3>Subtask</h3>
-                <input placeholder="Add new subtask" required type="text" id="add_task_subtask">
-            </div>
-        </section>
+            </section>
+        </form>
     </main>
 </body>
 
