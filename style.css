@@ -91,13 +91,69 @@ h1.board {
     line-height: 73.2px;
 }
 
-input.find-task {
-    width: 312px;
-    height: 48px;
-    border-radius: 10px;
-    border-color: #A8A8A8;
-    border: solid 1px;
-    gap: 10px;
+form.basti-tag {
+    color: #555;
+    display: flex;
+    padding: 2px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    margin: 0 0 30px;
+}
+
+input.search-task-input[type="search"] {
+    border: none;
+    background: transparent;
+    margin: 0;
+    padding: 7px 8px;
+    font-size: 14px;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: inherit;
+}
+
+input.search-task-input[type="search"]::placeholder {
+    color: #bbb;
+}
+
+button.search-task-button[type="submit"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-indent: -999px;
+    overflow: hidden;
+    width: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: no-repeat transparent url('./assets/img/search-bord.png');
+    background-position: center;
+    opacity: 0.7;
+}
+
+button.search-task-button[type="submit"]:hover {
+    background: no-repeat transparent url('./assets/img/search-bord-blue.png');
+    background-position: center;
+    opacity: 1;
+}
+
+button.search-task-button[type="submit"]:focus,
+input.search-task-input[type="search"]:focus {
+    box-shadow: 0 0 3px 0 #1183d6;
+    border-color: #1183d6;
+    outline: none;
+}
+
+form.nosubmit {
+    border: none;
+    padding: 0;
+}
+
+input.nosubmit {
+    border: 1px solid #555;
+    width: 100%;
+    padding: 9px 4px 9px 40px;
+    background: transparent url('./assets/img/search-bord.png');
 }
 
 button.add-task {
@@ -196,6 +252,7 @@ button.add-task:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 p.user-story {
@@ -282,7 +339,6 @@ h1.legal-head {
 .place-law-head img:hover {
     width: 23.93px;
 }
-
 
 /* section-law-end */
 
