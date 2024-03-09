@@ -20,6 +20,12 @@ function boardinit() {
     showEmptyHtmlDone();
 }
 
+function bordAddNewTask() {
+    const card = bordAddTaskFieldHtml();
+    let getplacecard = document.getElementById('await_feedback_place');
+    getplacecard.innerHTML += card;
+}
+
 function showEmptyHtmlTodo() {
     const empty = emptyTaskFieldTodo();
     let getplacetodo = document.getElementById('to_do_place');

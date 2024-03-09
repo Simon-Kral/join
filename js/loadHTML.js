@@ -16,6 +16,32 @@ async function includeHTML() {
     }
 }
 
+function bordAddTaskFieldHtml() {
+    return `
+    <div class="bord-add-tasks-field">
+        <div id="add_task_prio">
+            <div class="prio-buttons">
+                    <input id="prio_urgent" name="prio" type="radio" value="urgent">
+                    <label for="prio_urgent">
+                        <span>Urgent</span>
+                        <img src="./assets/img/urgent.svg" alt="urgent">
+                    </label>
+                    <input id="prio_medium" name="prio" type="radio" value="medium">
+                    <label class="highlighted-button" for="prio_medium">
+                        <span>Medium</span>
+                        <img src="./assets/img/medium.svg" alt="medium">
+                    </label>
+                    <input id="prio_low" name="prio" type="radio" value="low">
+                    <label for="prio_low">
+                        <span>low</span>
+                        <img src="./assets/img/low.svg" alt="low">
+                    </label>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
 function emptyTaskFieldTodo() {
     return `
         <div class="empty-task-place">No tasks To Do</div>

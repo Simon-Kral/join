@@ -13,7 +13,7 @@ body {
     display: none;
 }
 
- ::placeholder {
+::placeholder {
     font-family: "Inter", sans-serif;
     color: #d1d1d1;
 }
@@ -119,30 +119,21 @@ button.search-task-button[type="submit"]:focus {
     border: none;
 }
 
-
-/* form.nosubmit {
-    border: none;
-    padding: 0;
-}
-
-input.nosubmit {
-    border: 1px solid #555;
-    width: 100%;
-    padding: 9px 4px 9px 40px;
-    background: transparent url('./assets/img/search-bord.png');
-} */
-
 button.add-task {
     background-color: #2A3647;
+    width: 160px;
+    height: 56px;
     color: #FFFFFF;
     font-size: 21px;
     line-height: 25.2px;
-    border-radius: 10px;
+    border-radius: 8px;
+    border: none;
     margin-left: 32px;
 }
 
 button.add-task:hover {
-    background-color: #091931;
+    background-color: #29ABE2;
+    box-shadow: 0px 4px #00000025;
     cursor: pointer;
 }
 
@@ -279,6 +270,17 @@ p.technical-task {
 
 /* single-task-style-start */
 
+/* information-card-start */
+
+.bord-add-tasks-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* information-card-end */
+
 
 /* section-law-start */
 
@@ -332,6 +334,7 @@ main {
     left: 232px;
     padding: 110px 96px;
     font-size: 20px;
+
     h1 {
         font-size: 61px;
         color: #000000;
@@ -345,29 +348,36 @@ main {
         display: flex;
         flex-direction: column;
         gap: 200px;
+
         .input-wrapper {
             display: flex;
             flex-direction: row;
+
             .input-box {
                 width: 440px;
             }
+
             #separator-vertical {
                 width: 2px;
                 background-color: #d1d1d1;
                 margin: 0 48px;
             }
+
             h3 {
                 font-size: 20px;
                 margin-top: 50px;
                 font-weight: 400;
             }
+
             .required-header {
                 display: flex;
             }
+
             .focus-blue:focus {
                 outline: none;
                 border: 1px solid #5dbee7 !important;
             }
+
             .styled-input {
                 width: 398px;
                 height: 48px;
@@ -376,10 +386,12 @@ main {
                 border-radius: 10px;
                 font-size: 20px;
             }
+
             .input-with-button-wrapper {
                 position: relative;
                 display: flex;
                 align-items: center;
+
                 a {
                     height: 24px;
                     width: 24px;
@@ -389,6 +401,7 @@ main {
                     margin-left: -40px;
                     border-radius: 12px;
                 }
+
                 a:hover {
                     background-color: #f6f7f8;
                 }
@@ -405,6 +418,7 @@ main {
         display: flex;
         align-items: center;
     }
+
     textarea {
         width: 398px;
         resize: vertical;
@@ -414,9 +428,11 @@ main {
         font-size: 20px;
         padding: 20px;
     }
-     ::-webkit-resizer {
+
+    ::-webkit-resizer {
         display: none;
     }
+
     .textarea-wrapper::after {
         position: absolute;
         pointer-events: none;
@@ -430,7 +446,7 @@ main {
 }
 
 #add_task_assigned_to {
-     ::placeholder {
+    ::placeholder {
         color: black;
     }
 }
@@ -447,6 +463,7 @@ main {
         height: 24px;
         padding: 0;
     }
+
     input[type="date"]::-webkit-calendar-picker-indicator {
         color: rgba(0, 0, 0, 0);
         opacity: 1;
@@ -462,9 +479,11 @@ main {
     .prio-buttons {
         display: flex;
         justify-content: space-between;
+
         input {
             display: none;
         }
+
         label {
             box-sizing: border-box;
             display: flex;
@@ -480,23 +499,29 @@ main {
             box-shadow: 0px 0px 4px #d1d1d1;
             border-radius: 10px;
             transition: ease-in-out 100ms;
+
             img {
                 width: 20px;
                 margin-left: 8px;
             }
+
             [alt="urgent"] {
                 filter: invert(41%) sepia(89%) saturate(5403%) hue-rotate(2deg) brightness(101%) contrast(107%);
             }
+
             [alt="medium"] {
                 filter: invert(54%) sepia(99%) saturate(1276%) hue-rotate(5deg) brightness(111%) contrast(102%);
             }
+
             [alt="low"] {
                 filter: invert(91%) sepia(88%) saturate(1842%) hue-rotate(32deg) brightness(94%) contrast(88%);
             }
         }
+
         label:not(.highlighted-button):hover {
             box-shadow: 0px 4px 4px #d1d1d1;
         }
+
         .highlighted-button {
             cursor: auto;
             background-color: #ffa800;
@@ -504,6 +529,7 @@ main {
             font-size: 21px;
             font-weight: 700;
             border: none;
+
             img {
                 filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(110deg) brightness(104%) contrast(101%) !important;
             }
@@ -512,7 +538,7 @@ main {
 }
 
 #add_task_category {
-     ::placeholder {
+    ::placeholder {
         color: black;
     }
 }
@@ -530,6 +556,7 @@ main {
     align-items: end;
     bottom: -8px;
     right: 96px;
+
     button {
         cursor: pointer;
         transition: ease-in-out 100ms;
@@ -537,55 +564,69 @@ main {
         height: 56px;
         margin-left: 16px;
         margin-bottom: 8px;
+
         img {
             margin-left: 10px;
         }
     }
+
     button.clear-button {
         width: 110px;
         background-color: #f6f7f8;
         border: 1px solid #2A3647;
+
         span {
             font-size: 20px;
             color: #2A3647;
         }
+
         img {
             margin-left: 10px;
             filter: invert(17%) sepia(10%) saturate(1965%) hue-rotate(176deg) brightness(92%) contrast(86%);
         }
     }
+
     button.clear-button:hover {
         border: 2px solid #5dbee7;
         box-shadow: 0px 4px 4px #d1d1d1;
+
         span {
             color: #5dbee7;
         }
+
         img {
             filter: invert(67%) sepia(42%) saturate(534%) hue-rotate(155deg) brightness(95%) contrast(90%);
         }
     }
+
     button.clear-button:active {
         border: 1px solid #091931;
+
         span {
             color: #091931;
         }
+
         img {
             filter: invert(7%) sepia(28%) saturate(3492%) hue-rotate(193deg) brightness(97%) contrast(97%);
         }
     }
+
     button.create-task-button {
         width: 183px;
         background-color: #2A3647;
         border: none;
+
         span {
             font-size: 21px;
             color: white;
         }
     }
+
     button.create-task-button:hover {
         background-color: #5dbee7;
         box-shadow: 0px 4px 4px #d1d1d1;
     }
+
     button.create-task-button:active {
         background-color: #091931;
     }
@@ -593,8 +634,10 @@ main {
 
 .help {
     font-size: 16px;
+
     .head-wrapper {
         display: flex;
+
         .go-back-button {
             position: fixed;
             right: 96px;
@@ -606,30 +649,36 @@ main {
             width: 32px;
             border-radius: 16px;
             margin-top: 19px;
+
             img {
                 filter: invert(56%) sepia(81%) saturate(1182%) hue-rotate(165deg) brightness(94%) contrast(87%) !important;
             }
         }
+
         .go-back-button:hover {
             background-color: #eeeeee;
         }
     }
+
     .text-box-wrapper {
         display: flex;
         align-items: start;
         margin-top: 24px;
+
         h2 {
             font-size: 27px;
             font-weight: 700;
             margin-bottom: 16px;
             margin-right: 35px;
         }
+
         h3 {
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 0;
         }
     }
+
     .enjoy {
         margin-top: 48px;
     }
