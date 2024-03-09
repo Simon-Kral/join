@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="./js/storage.js"></script>
+    <script src="./js/register.js"></script>
     <script src="./js/homepage.js"></script>
 </head>
 
@@ -28,16 +30,16 @@
         </div>
     </div>
     <div class="register-login-flex">
-        <form onsubmit="validateForm(); return false">
+        <form onsubmit="login(); return false" >
             <div class="register-login" id="register_login">
                 <h1>Log in</h1>
                 <div class="login-spacer"></div>
                 <div class="login-input">
-                    <input required type="email" placeholder="Email" type="submit"> 
+                    <input type="email" placeholder="Email" required>
                     <img src=" assets\img\register_mail.png">
                 </div>
                 <div class="login-input">
-                    <input required type="text" placeholder="Password" type="submit">
+                    <input type="text" placeholder="Password" required>
                     <img src="assets\img\register_lock.png">
                 </div>
                 <div class="register-login-checkbox">
@@ -45,12 +47,12 @@
                     <span>Remeber me</span>
                 </div>
                 <div class="register-login-button-flex">
-                    <div class="register-login-sign-up-button" type="submit" onclick="validateForm()">Log in</div>
+                    <button class="register-login-sign-up-button">Log in</button>
                     <a href="summary.html"><span>Guest Log in</span></a>
                 </div>
         </form>
     </div>
-    <div class="d-none" id="register_sign_in">
+    <form onsubmit="register(); return false" class="d-none" id="register_sign_in">
         <div class="register-sign-up-img">
             <img src="assets\img\Vector.png" onclick="backToLogin()">
             <h1>Sign up</h1>
@@ -58,28 +60,27 @@
         </div>
         <div class="register-spacer"></div>
         <div class="login-input">
-            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Name" id="register_name" required>
             <img src="assets\img\register_people.png">
         </div>
         <div class="login-input">
-            <input type="email" placeholder="Email">
+            <input type="email" placeholder="Email" id="register_email" required>
             <img src=" assets\img\register_mail.png">
         </div>
         <div class="login-input">
-            <input type="text" placeholder="Password">
+            <input type="text" placeholder="Password" id="register_password" required>
             <img src="assets\img\register_lock.png">
         </div>
         <div class="login-input">
-            <input type="text" placeholder="Confirm Password">
+            <input type="text" placeholder="Confirm Password" id="register_confirm_password" required>
             <img src="assets\img\register_lock.png">
         </div>
         <div class="register-sign-up-checkbox">
-            <input type="checkbox">
+            <input type="checkbox" required id="register_checkbox">
             I accept the <a href="">Privacy Policy</a>
         </div>
-        <div class="register-login-sign-up-button">Log in</div>
-    </div>
-    </div>
+        <button class="register-login-sign-up-button" id="register_button">Log in</button>
+    </form>
     <div class="register-rights">
         <a href="privacy_policy.html">Privacy Policy</a>
         <a href="legal_notice.html">Legal Notice</a>
