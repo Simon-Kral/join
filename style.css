@@ -272,11 +272,31 @@ p.technical-task {
 
 /* information-card-start */
 
+.information-bordcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(24, 26, 27, 0.856);
+    color: aquamarine;
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 32px;
+}
+
 .bord-add-tasks-field {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 931px;
+    width: 525px;
+    background-color:#FFFFFF;
+    border-radius: 30px;
 }
 
 /* information-card-end */

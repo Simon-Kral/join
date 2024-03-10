@@ -18,7 +18,7 @@ async function includeHTML() {
 
 function bordAddTaskFieldHtml() {
     return `
-    <div class="bord-add-tasks-field">
+    <div class="bord-add-tasks-field" onclick="noCloseContent(event)">
         <div id="add_task_prio">
             <div class="prio-buttons">
                     <input id="prio_urgent" name="prio" type="radio" value="urgent">

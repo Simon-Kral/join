@@ -20,10 +20,19 @@ function boardinit() {
     showEmptyHtmlDone();
 }
 
+function noCloseContent(event) {
+    event.stopPropagation();
+}
+
+function closeCard() {
+    document.getElementById('fullscreen_information').classList.add('d-none');
+}
+
 function bordAddNewTask() {
     const card = bordAddTaskFieldHtml();
-    let getplacecard = document.getElementById('await_feedback_place');
-    getplacecard.innerHTML += card;
+    let getplacecard = document.getElementById('add_bordtask_data');
+    document.getElementById('fullscreen_information').classList.remove('d-none');
+    getplacecard.innerHTML = card;
 }
 
 function showEmptyHtmlTodo() {
