@@ -18,26 +18,111 @@ async function includeHTML() {
 
 function bordAddTaskFieldHtml() {
     return `
-    <div class="bord-add-tasks-field" onclick="noCloseContent(event)">
-        <div id="add_task_prio">
-            <div class="prio-buttons">
-                    <input id="prio_urgent" name="prio" type="radio" value="urgent">
-                    <label for="prio_urgent">
-                        <span>Urgent</span>
-                        <img src="./assets/img/urgent.svg" alt="urgent">
-                    </label>
-                    <input id="prio_medium" name="prio" type="radio" value="medium">
-                    <label class="highlighted-button" for="prio_medium">
-                        <span>Medium</span>
-                        <img src="./assets/img/medium.svg" alt="medium">
-                    </label>
-                    <input id="prio_low" name="prio" type="radio" value="low">
-                    <label for="prio_low">
-                        <span>low</span>
-                        <img src="./assets/img/low.svg" alt="low">
-                    </label>
-            </div>
+            <div class="bord-add-tasks-field" onclick="noCloseContent(event)">
+            <main class="add_task">
+                <h1>Add Task</h1>
+                <form class="add-task-form-section" onsubmit="validateForm();return false">
+                    <div class="input-wrapper">
+                    <section class="input-box">
+                        <div id="add_task_title">
+                            <div class="required-header">
+                                <h3>Title</h3>
+                                <h3 style="color: #FF8190;">*</h3>
+                            </div>
+                            <input class="styled-input focus-blue" placeholder="Enter a title" required type="text" id="add_task_title">
+                        </div>
+                    <div id="add_task_description">
+                        <h3>Description</h3>
+                        <div class="textarea-wrapper">
+                            <textarea class="focus-blue" placeholder="Enter a Description" name="add_task_description" id="add_task_description_textarea"></textarea>
+                        </div>
+                    </div>
+                <div id="add_task_assigned_to">
+                    <h3>Assigned to</h3>
+                    <div class="input-with-button-wrapper">
+                        <input class="styled-input focus-blue" placeholder="Select contacts to assign" type="text"
+                            id="input_with_button_assigned_to">
+                        <a>
+                            <img src="./assets/img/arrow_drop_down.png" alt="add">
+                        </a>
+                    </div>
+                </div>
+
+            </section>
+            <section class="input-box">
+                <div id="add_task_due_date">
+                    <div class="required-header">
+                        <h3>Due date</h3>
+                        <h3 style="color: #FF8190;">*</h3>
+                    </div>
+                    <div class="input-with-button-wrapper">
+                        <input class="styled-input focus-blue" placeholder="dd/mm/yyyy" type="text">
+                        <input class="calendar-input" type="date" value="">
+                    </div>
+                </div>
+                <div class="add_task_prio">
+                    <h3>Prio</h3>
+                    <div class="prio-buttons">
+                        <input id="prio_urgent" name="prio" type="radio" value="urgent">
+                        <label for="prio_urgent">
+                            <span>Urgent</span>
+                            <img src="./assets/img/urgent.svg" alt="urgent">
+                        </label>
+                        <input id="prio_medium" name="prio" type="radio" value="medium">
+                        <label class="highlighted-button" for="prio_medium">
+                            <span>Medium</span>
+                            <img src="./assets/img/medium.svg" alt="medium">
+                        </label>
+                        <input id="prio_low" name="prio" type="radio" value="low">
+                        <label for="prio_low">
+                            <span>low</span>
+                            <img src="./assets/img/low.svg" alt="low">
+                        </label>
+                    </div>
+                </div>
+                <div id="add_task_category">
+                    <div class="required-header">
+                        <h3>Category</h3>
+                        <h3 style="color: #FF8190;">*</h3>
+                    </div>
+                    <div class="input-with-button-wrapper">
+                        <input class="styled-input focus-blue" placeholder="Select task category" required
+                            type="text" id="input_with_button_category">
+                        <a>
+                            <img src="./assets/img/arrow_drop_down.png" alt="add">
+                        </a>
+                    </div>
+                </div>
+                <div id="add_task_subtask">
+                    <h3>Subtask</h3>
+                    <div class="input-with-button-wrapper">
+                        <input class="styled-input focus-blue" placeholder="Add new subtask" type="text"
+                            id="input_with_button_subtask">
+                        <a>
+                            <img src="./assets/img/add.png" alt="add">
+                        </a>
+                    </div>
+                </div>
+            </section>
         </div>
+        <section class="bottom-section">
+            <div class="bottom-text">
+                <span style="color: #FF8190;">*</span>
+                <span>This field is required</span>
+            </div>
+            <div class="bottom-buttons">
+                <button class="clear-button">
+                    <span>Clear</span>
+                    <img src="./assets/img/cross.svg" alt="create task">
+                </button>
+                    <button disabled class="create-task-button">
+                        <span>Create Task</span>
+                        <img src="./assets/img/check.png" alt="create task">
+                    </button>
+                    </div>
+                </section>
+            </form>
+        </main>
     </div>
     `;
 }
