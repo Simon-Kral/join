@@ -1,4 +1,4 @@
-.d-none{
+.d-none {
     display: none;
 }
 
@@ -125,24 +125,27 @@
     width: 100%;
 }
 
-.register-sign-up-flex{
+.register-sign-up-flex {
     position: absolute;
     display: flex;
     align-items: center;
     right: 120px;
     top: 60px;
-    p{
+
+    p {
         margin-right: 40px;
     }
-    span{
+
+    span {
         padding: 12px;
         color: white;
-        background-color: rgb(42,54,71);
+        background-color: rgb(42, 54, 71);
         border-radius: 8px;
     }
-    span:hover{
+
+    span:hover {
         transition: 0.1s;
-        background-color: rgb(41,171,226);
+        background-color: rgb(41, 171, 226);
         box-shadow: 1px 4px 3px rgb(199, 199, 199);
         cursor: pointer;
     }
@@ -162,7 +165,7 @@
     height: 100vh;
 }
 
-.start-register-box{
+.start-register-box {
     position: absolute;
     top: 60%;
     left: 50%;
@@ -172,11 +175,11 @@
     width: 240px;
 }
 
-.start-register-box img{
+.start-register-box img {
     height: 50%;
 }
 
-.start-register-box-small{
+.start-register-box-small {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -187,7 +190,7 @@
     margin-left: 80px;
 }
 
-.start-register-box-small img{
+.start-register-box-small img {
     height: 50%;
 }
 
@@ -209,23 +212,24 @@
     align-items: center;
     justify-content: space-between;
 
-    h1{
+    h1 {
         font-size: 62px;
         margin-top: 48px;
         margin-bottom: 0px;
     }
-    input{
+
+    input {
         height: 48px;
-        width: 360px;
+        width: 340px;
         padding-left: 20px;
-        border-radius: 12px;
+        border-radius: 12px 0px 0px 12px;
         border-style: none;
         font-size: 20px;
         outline: none;
-        }
+    }
 }
 
-.login-input{
+.login-input {
     border-width: 1px;
     border-style: solid;
     border-color: #D1D1D1;
@@ -233,41 +237,43 @@
     display: flex;
     align-items: center;
 
-    img{
+    img {
         width: 20px;
         margin-right: 20px;
+        margin-left: 20px;
     }
 }
 
-.register-login-checkbox{
+.register-login-checkbox {
     margin-right: 250px;
+    margin-top: 24px;
+    margin-bottom: 24px;
 
-    input{
+    input {
         height: 16px !important;
         width: 16px !important;
         cursor: pointer;
     }
 }
 
-.register-login-button-flex{
+.register-login-button-flex {
     width: 50%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 48px;
 
-    a{
-    color: rgb(42,54,71);
-    font-weight: bold;
-    font-size: 20px;
-    padding: 12px;
-    padding-left: 24px;
-    padding-right: 24px;
-    border-radius: 8px;
-    border: solid 1px;
-    height: 24px;
+    a {
+        color: rgb(42, 54, 71);
+        font-weight: bold;
+        font-size: 20px;
+        padding: 12px;
+        padding-left: 24px;
+        padding-right: 24px;
+        border-radius: 8px;
+        border: solid 1px;
+        height: 24px;
     }
 
-    a:hover{
+    a:hover {
         transition: 0.1s;
         color: #29ABE2;
         box-shadow: 1px 4px 3px rgb(199, 199, 199);
@@ -276,9 +282,9 @@
     }
 }
 
-.register-login-sign-up-button{
+.register-login-sign-up-button {
     color: white;
-    background-color: rgb(42,54,71);
+    background-color: rgb(42, 54, 71);
     font-weight: bold;
     font-size: 20px;
     padding: 12px;
@@ -286,19 +292,19 @@
     padding-right: 24px;
     border-radius: 8px;
     border: solid 2px;
-    border-color: rgb(42,54,71);
+    border-color: rgb(42, 54, 71);
     margin-bottom: 40px;
 }
 
-.register-login-sign-up-button:hover{
+.register-login-sign-up-button:hover {
     transition: 0.1s;
-    background-color: rgb(41,171,226);
+    background-color: rgb(41, 171, 226);
     box-shadow: 1px 4px 3px rgb(199, 199, 199);
-    border-color: rgb(41,171,226);
+    border-color: rgb(41, 171, 226);
     cursor: pointer;
 }
 
-.register-sign-up-box{
+.register-sign-up-box {
     background-color: white;
     height: 700px;
     width: 650px;
@@ -309,34 +315,34 @@
     align-items: center;
     justify-content: space-between;
 
-    h1{
+    h1 {
         font-size: 62px;
         margin-top: 48px;
         margin-bottom: 0px;
     }
 
-    input{
+    input {
         height: 48px;
-        width: 360px;
+        width: 340px;
         padding-left: 20px;
-        border-radius: 12px;
+        border-radius: 12px 0px 0px 12px;
         border-style: none;
         font-size: 20px;
         outline: none;
-        }
+    }
 }
 
-.register-sign-up-img{
+.register-sign-up-img {
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    img{
+    img {
         padding: 4px;
     }
 
-    img:hover{
+    img:hover {
         background-color: #CDCDCD;
         border-radius: 50px;
         padding: 4px;
@@ -345,52 +351,96 @@
     }
 }
 
-.register-sign-up-checkbox{
+.register-sign-up-checkbox {
     margin-top: 24px;
     margin-bottom: 24px;
-    a{
+
+    a {
         color: #29ABE2;
     }
 
-    input{
+    input {
         height: 16px !important;
         width: 16px !important;
         cursor: pointer;
     }
 }
 
-.register-spacer{
+.register-spacer {
     color: #29ABE2;
     border-radius: 5px;
     border: solid 2px;
     width: 150px;
     margin-bottom: 32px;
     margin-left: 30px;
-    }
+}
 
-.login-spacer{
+.login-spacer {
     color: #29ABE2;
     border-radius: 5px;
     border: solid 2px;
     width: 150px;
     margin-bottom: 32px;
-    }
+}
 
-.register-rights{
+.register-rights {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     bottom: 3%;
 
-    a{
-        color: rgb(168,168,168);
+    a {
+        color: rgb(168, 168, 168);
         margin-right: 16px;
         padding: 8px;
     }
 
-    a:hover{
+    a:hover {
         color: #29ABE2;
         font-weight: bold;
         padding: 6px;
+    }
+}
+
+.singed-Up-Succes {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+    animation: singed-Up-Succes-2 1s;
+
+    span {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translate(-50%);
+        animation: singed-Up-Succes-animation 1s;
+        color: white;
+        background-color: rgb(42, 54, 71);
+        font-size: 20px;
+        padding: 14px;
+        padding-left: 24px;
+        padding-right: 24px;
+        border-radius: 8px;
+    }
+}
+
+@keyframes singed-Up-Succes-animation {
+    from {
+        bottom: 0%;
+    }
+
+    to {
+        bottom: 50%;
+    }
+}
+
+@keyframes singed-Up-Succes-2 {
+    from {
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.5);
     }
 }
