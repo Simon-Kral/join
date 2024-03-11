@@ -16,7 +16,7 @@ async function register() {
     setTimeout(resetValidity, 1000)
 }
 
-function resetValidity(){
+function resetValidity() {
     register_pw_sign_in_confirm.setCustomValidity('')
 }
 
@@ -49,6 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.login-input input').forEach(function (input) {
         let logininput = input.closest('.login-input');
 
+        input.addEventListener('invalid', function () {
+            logininput.style.borderColor = 'red';
+        });
+
         input.addEventListener('focus', function () {
             logininput.style.borderColor = 'rgb(41, 171, 226)';
         });
@@ -56,6 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
         input.addEventListener('blur', function () {
             logininput.style.borderColor = '#D1D1D1';
         });
+
+
     });
 });
 
