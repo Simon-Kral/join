@@ -1,17 +1,23 @@
 let users = [];
 
 async function register() {
-    if (register_password.value != register_confirm_password.value) {
-        register_confirm_password.setCustomValidity("Passwords Don't Match");
+    if (register_pw_sign_in.value != register_pw_sign_in_confirm.value) {
+        register_pw_sign_in_confirm.setCustomValidity("Passwords Don't Match");
+        register_pw_sign_in_confirm.reportValidity();
     }
     else {
         users.push({
             name: register_name.value,
             email: register_email.value,
-            password: register_password.value,
+            password: register_pw_sign_in.value,
         })
         resetForm()
     }
+    setTimeout(resetValidity, 1000)
+}
+
+function resetValidity(){
+    register_pw_sign_in_confirm.setCustomValidity('')
 }
 
 function resetForm() {
