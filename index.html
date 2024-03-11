@@ -35,15 +35,15 @@
                 <h1>Log in</h1>
                 <div class="login-spacer"></div>
                 <div class="login-input">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" placeholder="Email" required id="register_login_value">
                     <img src=" assets\img\register_mail.png">
                 </div>
-                <div class="login-input">
-                    <input type="password" placeholder="Password" required>
-                    <img src="assets\img\register_lock.png">
+                <div class="login-input" id="register_pw_login">
+                    <input type="password" placeholder="Password" required id="register_pw_login_value" onfocus="changeLoginImg()">
+                    <img src="assets\img\register_lock.png" onclick="encryptPassword1()" id="register_pw_login_img" class="password-RL">
                 </div>
                 <div class="register-login-checkbox">
-                    <input type="checkbox">
+                    <input type="checkbox" id="login_checkbox">
                     <span>Remeber me</span>
                 </div>
                 <div class="register-login-button-flex">
@@ -60,23 +60,23 @@
         </div>
         <div class="register-spacer"></div>
         <div class="login-input">
-            <input type="text" placeholder="Name" id="register_name" required>
+            <input type="text" placeholder="Name" required id="register_name">
             <img src="assets\img\register_people.png">
         </div>
         <div class="login-input">
-            <input type="email" placeholder="Email" id="register_email" required>
+            <input type="email" placeholder="Email" required id="register_email">
             <img src=" assets\img\register_mail.png">
         </div>
         <div class="login-input">
-            <input type="password" placeholder="Password" id="register_password" required>
-            <img src="assets\img\register_lock.png">
+            <input type="password" placeholder="Password" required id="register_pw_sign_in" onfocus="changeSigninImg()">
+            <img src="assets\img\register_lock.png" onclick="encryptPassword2()" class="password-RL" id="register_pw_sign_in_img"> 
         </div>
         <div class="login-input">
-            <input type="password" placeholder="Confirm Password" id="register_confirm_password" required>
-            <img src="assets\img\register_lock.png">
+            <input type="password" placeholder="Confirm Password" required onfocus="changeSigninImg()" id="register_pw_sign_in_confirm">
+            <img src="assets\img\register_lock.png" class="password-RL" id="register_pw_sign_in_confirm_img" onclick="encryptPassword2()">
         </div>
-        <div class="register-sign-up-checkbox">
-            <input type="checkbox" required id="register_checkbox">
+        <div class="register-sign-up-checkbox" id="register_checkbox">
+            <input type="checkbox" required>
             I accept the <a href="">Privacy Policy</a>
         </div>
         <button class="register-login-sign-up-button" id="register_button">Log in</button>

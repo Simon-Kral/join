@@ -444,3 +444,12 @@
         background-color: rgba(0, 0, 0, 0.5);
     }
 }
+
+.password-RL{
+    cursor: pointer;
+}
+
+.password-RL:hover{
+    height: 21px;
+    width: 21px;
+}
