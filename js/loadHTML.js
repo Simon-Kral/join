@@ -153,7 +153,7 @@ function emptyTaskFieldDone() {
 
 function todoTaskHtml() {
     return `
-        <div class="todo-task-container">
+        <div id="drag1" class="todo-task-container" draggable="true" ondragstart="drag(event)">
             <div id="task-variant"></div>
             <h3>Test Join Project</h3>
             <span>.. hier steht was zu tun ist ...</span>
