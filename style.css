@@ -23,7 +23,6 @@ a {
     cursor: pointer;
 }
 
-
 /* section-board-start */
 
 .board-head {
@@ -213,9 +212,7 @@ button.add-task:hover {
     border-radius: 8px;
 }
 
-
 /* section-board-end */
-
 
 /* single-task-style-start */
 
@@ -267,6 +264,10 @@ p.technical-task {
     box-shadow: 0px 0px 8px 8px #00000009;
 }
 
+.todo-task-container:hover {
+    transform: rotate(20deg);
+    cursor: pointer;
+}
 
 /* single-task-style-start */
 
