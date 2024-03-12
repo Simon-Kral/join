@@ -1,14 +1,8 @@
-let taskforce = [{
-    "task": "Wie definiert man in Javascript eine Variable"
-}, {
-    "task": "Wie  eine Variable"
-}, {
-    "task": "Wie definiert man in eine Variable"
-}, {
-    "task": "Wie definiein Javascript eine Variable"
-}, {
-    "task": "Wirt man in Javascript eine Variable"
-},];
+let subtasksforce = ['teste','test','tes','tasum'];
+let todoforce = [];
+let inprogressforce = [];
+let awaitfeedbackforce = [];
+let doneforce = [];
 
 let currenttask = 0;
 
@@ -100,7 +94,7 @@ function showTaskVariant() {
 }
 
 function updateProgressBar() {
-    let percent = (currenttask) / taskforce.length;
+    let percent = (currenttask) / todoforce.length;
     percent = Math.round(percent * 100);
 
     document.getElementById('progressbar').style = `width: ${percent}%`;
