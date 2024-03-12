@@ -60,8 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
         input.addEventListener('blur', function () {
             logininput.style.borderColor = '#D1D1D1';
         });
-
-
     });
 });
 
