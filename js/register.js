@@ -47,18 +47,30 @@ function singedUpSuccesRemove() {
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.login-input input').forEach(function (input) {
-        let logininput = input.closest('.login-input');
-
-        input.addEventListener('invalid', function () {
-            logininput.style.borderColor = 'red';
-        });
+        let loginInput = input.closest('.login-input');
 
         input.addEventListener('focus', function () {
-            logininput.style.borderColor = 'rgb(41, 171, 226)';
+            loginInput.style.borderColor = 'rgb(41, 171, 226)';
         });
-
         input.addEventListener('blur', function () {
-            logininput.style.borderColor = '#D1D1D1';
+            if(input.checkValidity()) {
+                loginInput.style.borderColor = '#D1D1D1';
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.login-input input').forEach(function (input) {
+        let loginInput = input.closest('.login-input');
+
+        input.addEventListener('invalid', function () {
+            loginInput.style.borderColor = 'red';
+            setTimeout(function () {
+                if (!input.matches(':focus')) { 
+                    loginInput.style.borderColor = '#D1D1D1';
+                }
+            }, 3000);
         });
     });
 });
