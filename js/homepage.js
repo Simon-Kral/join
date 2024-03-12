@@ -50,3 +50,33 @@ function backToLogin() {
     signinimg.src = 'assets/img/register_lock.png'
     registerValueEmpty()
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.login-input input').forEach(function (input) {
+        let loginInput = input.closest('.login-input');
+
+        input.addEventListener('focus', function () {
+            loginInput.style.borderColor = 'rgb(41, 171, 226)';
+        });
+        input.addEventListener('blur', function () {
+            if (input.checkValidity()) {
+                loginInput.style.borderColor = '#D1D1D1';
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.login-input input').forEach(function (input) {
+        let loginInput = input.closest('.login-input');
+
+        input.addEventListener('invalid', function () {
+            loginInput.style.borderColor = 'red';
+            setTimeout(function () {
+                if (!input.matches(':focus')) {
+                    loginInput.style.borderColor = '#D1D1D1';
+                }
+            }, 3000);
+        });
+    });
+});

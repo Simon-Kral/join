@@ -1,14 +1,27 @@
 let users = [];
+let loaduser = []
 
-async function init(){
+async function loadstorageitems() {
     loadUsers();
 }
 
-async function loadUsers(){
+async function loadUsers() {
     users = await getItem('users')
 }
 
 async function register() {
+    let sameemail = users.find(u => u.email == register_email.value)
+    if (sameemail) {
+        register_email.setCustomValidity("Email already exists");
+        register_email.reportValidity();
+    }
+    else {
+        ifelseRegister()
+    }
+    setTimeout(function () { register_email.setCustomValidity('') }, 1400)
+}
+
+async function ifelseRegister() {
     if (register_pw_sign_in.value != register_pw_sign_in_confirm.value) {
         register_pw_sign_in_confirm.setCustomValidity("Passwords Don't Match");
         register_pw_sign_in_confirm.reportValidity();
@@ -19,25 +32,28 @@ async function register() {
             email: register_email.value,
             password: register_pw_sign_in.value,
         })
-        
+
         await setItem('users', JSON.stringify(users))
         resetForm()
     }
-    setTimeout(function(){register_pw_sign_in_confirm.setCustomValidity('')}, 1400)
+    setTimeout(function () { register_pw_sign_in_confirm.setCustomValidity('') }, 1400)
 }
 
-function login(){
-let findusers = users.find(u => u.email == register_login_value.value && u.password == register_pw_login_value.value)
+function login() {
+    let findusers = users.find(u => u.email == register_login_value.value && u.password == register_pw_login_value.value)
 
-if(findusers) {
-    window.location.assign("http://127.0.0.1:5500/summary.html");
-    loginValueEmpty()
-}
-else{
-    register_pw_login_value.setCustomValidity("Wrong Password or Email");
-    register_pw_login_value.reportValidity();
-}
-setTimeout(function(){register_pw_login_value.setCustomValidity('')}, 1400)
+    if (findusers) {
+        let userI = users.findIndex(u => u.email == register_login_value.value && u.password == register_pw_login_value.value);
+        
+        loaduser.push(userI);
+        localStorage.setItem('userI', loaduser)
+        window.location.assign("http://127.0.0.1:5500/summary.html");
+        loginValueEmpty();
+    }
+    else {
+        register_pw_login_value.setCustomValidity("Wrong Password or Email");
+        register_pw_login_value.reportValidity();
+    }
 }
 
 function resetForm() {
@@ -64,36 +80,6 @@ function singedUpSuccesRemove() {
     let singedupsucces = document.getElementById('singed_Up_Succes')
     singedupsucces.classList.replace('singed-Up-Succes', 'd-none')
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.login-input input').forEach(function (input) {
-        let loginInput = input.closest('.login-input');
-
-        input.addEventListener('focus', function () {
-            loginInput.style.borderColor = 'rgb(41, 171, 226)';
-        });
-        input.addEventListener('blur', function () {
-            if(input.checkValidity()) {
-                loginInput.style.borderColor = '#D1D1D1';
-            }
-        });
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.login-input input').forEach(function (input) {
-        let loginInput = input.closest('.login-input');
-
-        input.addEventListener('invalid', function () {
-            loginInput.style.borderColor = 'red';
-            setTimeout(function () {
-                if (!input.matches(':focus')) { 
-                    loginInput.style.borderColor = '#D1D1D1';
-                }
-            }, 3000);
-        });
-    });
-});
 
 function changeLoginImg() {
     let loginpwimg = document.getElementById('register_pw_login_img')
