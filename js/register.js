@@ -1,5 +1,13 @@
 let users = [];
 
+async function init(){
+    loadUsers();
+}
+
+async function loadUsers(){
+    users = await getItem('users')
+}
+
 async function register() {
     if (register_pw_sign_in.value != register_pw_sign_in_confirm.value) {
         register_pw_sign_in_confirm.setCustomValidity("Passwords Don't Match");
@@ -11,13 +19,25 @@ async function register() {
             email: register_email.value,
             password: register_pw_sign_in.value,
         })
+        
+        await setItem('users', JSON.stringify(users))
         resetForm()
     }
-    setTimeout(resetValidity, 1000)
+    setTimeout(function(){register_pw_sign_in_confirm.setCustomValidity('')}, 1400)
 }
 
-function resetValidity() {
-    register_pw_sign_in_confirm.setCustomValidity('')
+function login(){
+let findusers = users.find(u => u.email == register_login_value.value && u.password == register_pw_login_value.value)
+
+if(findusers) {
+    window.location.assign("http://127.0.0.1:5500/summary.html");
+    loginValueEmpty()
+}
+else{
+    register_pw_login_value.setCustomValidity("Wrong Password or Email");
+    register_pw_login_value.reportValidity();
+}
+setTimeout(function(){register_pw_login_value.setCustomValidity('')}, 1400)
 }
 
 function resetForm() {
