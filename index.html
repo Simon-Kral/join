@@ -19,7 +19,7 @@
     <script src="./js/homepage.js"></script>
 </head>
 
-<body onload="loadRegister(), init()" class="body-register">
+<body onload="loadRegister(), loadstorageitems()" class="body-register">
     <div class="register-sign-up-flex" id="register_sign_up_box">
         <p>Not a Join user?</p>
         <span onclick="signUpBox()">Sign up</span>
@@ -75,15 +75,15 @@
             <input type="password" placeholder="Confirm Password" required onfocus="changeSigninImg()" id="register_pw_sign_in_confirm">
             <img src="assets\img\register_lock.png" class="password-RL" id="register_pw_sign_in_confirm_img" onclick="encryptPassword2()">
         </div>
-        <div class="register-sign-up-checkbox" id="register_checkbox">
-            <input type="checkbox" required>
+        <div class="register-sign-up-checkbox">
+            <input type="checkbox" required id="register_checkbox">
             I accept the <a href="">Privacy Policy</a>
         </div>
         <button class="register-login-sign-up-button" id="register_button">Sign in</button>
     </form>
     <div class="register-rights">
-        <a href="privacy_policy.html">Privacy Policy</a>
-        <a href="legal_notice.html">Legal Notice</a>
+        <a href="privacy_policy_register.html">Privacy Policy</a>
+        <a href="legal_notice_register.html">Legal Notice</a>
     </div>
     <div class="d-none" id="singed_Up_Succes">
         <span>
