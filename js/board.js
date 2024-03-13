@@ -34,6 +34,7 @@ function openBordTask() {
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
     getplacecard.innerHTML = showfulltask;
+    showTaskVariantBig();
 }
 
 function showEmptyHtmlTodo() {
@@ -46,7 +47,7 @@ function showTodoHtml() {
     const todotask = todoTaskHtml();
     let getplacetodo = document.getElementById('to_do_place');
     getplacetodo.innerHTML += todotask;
-    showTaskVariant();
+    showTaskVariantSmall();
     updateProgressBar();
 }
 
@@ -93,11 +94,18 @@ function showEmptyHtmlDone() {
     getemptyplacedone.innerHTML = empty;
 }
 
-function showTaskVariant() {
+function showTaskVariantSmall() {
     const taskvariant = technicalTaskHtml();
     const taskvarianttwo = userTaskHtml();
     let getplacetaskvariant = document.getElementById('task-variant');
     getplacetaskvariant.innerHTML = taskvariant + taskvarianttwo;
+}
+
+function showTaskVariantBig() {
+    const taskvariant = technicalTaskHtml();
+    const taskvarianttwo = userTaskHtml();
+    let getplacetaskvariantbord = document.getElementById('task_variant_bord');
+    getplacetaskvariantbord.innerHTML = taskvariant + taskvarianttwo;
 }
 
 function updateProgressBar() {

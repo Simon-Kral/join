@@ -179,7 +179,30 @@ function todoTaskHtml() {
 
 function fullTaskHtml() {
     return `
-            <div class="bord-add-tasks-field" onclick="noCloseContent(event)">
+            <div class="single-task-field">
+                <div class="place-categorie-cross">
+                    <div id="task_variant_bord"></div>
+                    <div></div>
+                </div>
+                <div class="place-single-information">
+                    <h1 class="task-head-bord">Hier seht dann die Überschrift</h1>
+                    <span class="descript">Hier steht die Beschreibung der Aufgabe</span>
+                    <div class="place-due-date-bord">
+                        <span>Due date:</span>
+                        <span class="due-date-bord">Zeit, viel zu wenig Zeit</span>
+                    </div>
+                    <div class="place-priority-bord">
+                        <span>Priority:</span>
+                        <span class="priority-bord"></span>
+                    </div>
+                    <div class="assigned-to-bord">Assigned To Container</div>
+                    <span class="subtasks-bord">Subtasks</span>
+                    <div class="subtasks-input-bord">
+                        <input type="checkbox" checked="checked">
+                    </div>
+                </div>
+                <div class="place-categorie">
+                </div>
             </div>    
     `;
 }
