@@ -52,13 +52,15 @@
                         <h3>Assigned to</h3>
                         <div class="input-with-button-wrapper">
                             <input class="styled-input focus-blue" placeholder="Select contacts to assign" type="text"
-                                id="input_with_button_assigned_to">
-                            <a>
-                                <img src="./assets/img/arrow_drop_down.png" alt="add">
+                                id="input_with_button_assigned_to" onfocusin="openDropDownMenu('drop_down_assigned_to')"
+                                onfocusout="openDropDownMenu('drop_down_assigned_to')">
+                            <a onclick="setFocusOnElement('input_with_button_assigned_to')">
+                                <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                             </a>
                         </div>
+                        <div class="drop-down dnone" id="drop_down_assigned_to"></div>
+                        <div id="selectedContacts"></div>
                     </div>
-
                 </section>
                 <section id="separator-vertical"></section>
                 <section class="input-box">
@@ -76,18 +78,19 @@
                         <h3>Prio</h3>
                         <div class="prio-buttons">
                             <input id="prio_urgent" name="prio" type="radio" value="urgent">
-                            <label for="prio_urgent">
+                            <label id="prio_urgent_label" for="prio_urgent" onclick="handleClickPrio('urgent')">
                                 <span>Urgent</span>
                                 <img src="./assets/img/urgent.svg" alt="urgent">
                             </label>
                             <input id="prio_medium" name="prio" type="radio" value="medium">
-                            <label class="highlighted-button" for="prio_medium">
+                            <label id="prio_medium_label" class="highlighted-button" for="prio_medium"
+                                onclick="handleClickPrio('medium')">
                                 <span>Medium</span>
                                 <img src="./assets/img/medium.svg" alt="medium">
                             </label>
                             <input id="prio_low" name="prio" type="radio" value="low">
-                            <label for="prio_low">
-                                <span>low</span>
+                            <label id="prio_low_label" for="prio_low" onclick="handleClickPrio('low')">
+                                <span>Low</span>
                                 <img src="./assets/img/low.svg" alt="low">
                             </label>
                         </div>
@@ -99,11 +102,14 @@
                         </div>
                         <div class="input-with-button-wrapper">
                             <input class="styled-input focus-blue" placeholder="Select task category" required
-                                type="text" id="input_with_button_category">
-                            <a>
-                                <img src="./assets/img/arrow_drop_down.png" alt="add">
+                                type="text" id="input_with_button_category"
+                                onfocusin="openDropDownMenu('drop_down_category')"
+                                onfocusout="openDropDownMenu('drop_down_category')">
+                            <a onclick="setFocusOnElement('input_with_button_category')">
+                                <img id="drop_down_category_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                             </a>
                         </div>
+                        <div class="drop-down dnone" id="drop_down_category"></div>
                     </div>
                     <div id="add_task_subtask">
                         <h3>Subtask</h3>
