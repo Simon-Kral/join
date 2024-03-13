@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script src="./js/loadHTML.js"></script>
+    <script src="./js/storage.js"></script>
+    <script src="./js/register.js"></script>
     <style>
         .sec-menu-board-summary{
             background-color: rgb(9, 25, 49);
@@ -22,7 +24,7 @@
         }
     </style>
 </head>
-<body onload="init()">
+<body onload="init(), loadstorageitems()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
 </body>
 </html>

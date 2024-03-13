@@ -27,7 +27,6 @@ a {
     cursor: pointer;
 }
 
-
 /* section-board-start */
 
 .board-head {
@@ -188,6 +187,12 @@ button.add-task:hover {
     text-align: center;
 }
 
+.style-task-button:hover {
+    cursor: pointer;
+    border-color: #29ABE2;
+    color: #29ABE2;
+}
+
 .empty-task-place {
     display: flex;
     justify-content: center;
@@ -217,9 +222,7 @@ button.add-task:hover {
     border-radius: 8px;
 }
 
-
 /* section-board-end */
-
 
 /* single-task-style-start */
 
@@ -271,6 +274,10 @@ p.technical-task {
     box-shadow: 0px 0px 8px 8px #00000009;
 }
 
+.todo-task-container:hover {
+    transform: rotate(20deg);
+    cursor: pointer;
+}
 
 /* single-task-style-start */
 
@@ -325,8 +332,12 @@ h1.legal-head {
 .law {
     position: relative;
     top: 128px;
-    margin-left: 240px;
+    margin-left: 290px;
     margin-right: 64px;
+}
+
+.place-law-body {
+    margin-right: 128px;
 }
 
 .place-law-head img {
@@ -338,6 +349,8 @@ h1.legal-head {
     display: flex;
     justify-content: center;
     align-items: center;
+    right: 68px;
+    position: fixed;
     width: 32px;
     height: 32px;
     border-radius: 42px;

@@ -153,7 +153,7 @@ function emptyTaskFieldDone() {
 
 function todoTaskHtml() {
     return `
-        <div class="todo-task-container">
+        <div id="drag1" class="todo-task-container" draggable="true" ondragstart="drag(event)">
             <div id="task-variant"></div>
             <h3>Test Join Project</h3>
             <span>.. hier steht was zu tun ist ...</span>
@@ -161,7 +161,7 @@ function todoTaskHtml() {
                 <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
                     <div class="progressbar" id="progressbar"></div>
                 </div>
-                <div>${currenttask}/${taskforce.length}</div>
+                <div>${currenttask}/${subtasksforce.length}</div>
                 <p>Subtasks</p>
             </div>
             <div class="place-user-status">
