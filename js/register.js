@@ -2,12 +2,13 @@ let users = [];
 let loaduser = []
 
 async function loadstorageitems() {
+    if (localStorage.getItem("userI") === null) { }
+    else{
     if (localStorage.getItem('userI').length > 0) {
         window.location.assign("http://127.0.0.1:5500/summary.html");
     }
-    else {
-    loadUsers();
 }
+    loadUsers();
 }
 
 async function loadUsers() {
