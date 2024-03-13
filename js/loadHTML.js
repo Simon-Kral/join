@@ -153,7 +153,7 @@ function emptyTaskFieldDone() {
 
 function todoTaskHtml() {
     return `
-        <div id="drag1" class="todo-task-container" draggable="true" ondragstart="drag(event)">
+        <div id="drag1" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(event)">
             <div id="task-variant"></div>
             <h3>Test Join Project</h3>
             <span>.. hier steht was zu tun ist ...</span>
@@ -174,6 +174,13 @@ function todoTaskHtml() {
                 </div>
             </div>
         </div>
+    `;
+}
+
+function fullTaskHtml() {
+    return `
+            <div class="bord-add-tasks-field" onclick="noCloseContent(event)">
+            </div>    
     `;
 }
 
