@@ -27,6 +27,7 @@ a {
     cursor: pointer;
 }
 
+
 /* section-board-start */
 
 .board-head {
@@ -222,7 +223,9 @@ button.add-task:hover {
     border-radius: 8px;
 }
 
+
 /* section-board-end */
+
 
 /* single-task-style-start */
 
@@ -278,6 +281,7 @@ p.technical-task {
     transform: rotate(20deg);
     cursor: pointer;
 }
+
 
 /* single-task-style-start */
 
@@ -391,11 +395,11 @@ main {
             flex-direction: row;
             .input-box {
                 width: 440px;
+                margin: 0 48px;
             }
-            #separator-vertical {
+            .separator-vertical {
                 width: 2px;
                 background-color: #d1d1d1;
-                margin: 0 48px;
             }
             h3 {
                 font-size: 20px;
@@ -572,7 +576,12 @@ main {
     }
 }
 
-#add_task_subtask {}
+#add_task_subtask {
+    #confirm_subtask_container {
+        z-index: 35;
+        display: flex;
+    }
+}
 
 .bottom-section {
     display: flex;

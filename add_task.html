@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./Style2.css">
 
+    <script src="./js/storage.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/register.js"></script>
     <script src="./script.js"></script>
     <script src="./js/loadHTML.js"></script>
     <script src="./js/add_task.js"></script>
@@ -26,7 +29,7 @@
 
 </head>
 
-<body onload="init()">
+<body onload="init(), loadmenu(), initAddTask()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
     <main class="add_task">
         <h1>Add Task</h1>
@@ -62,7 +65,7 @@
                         <div id="selectedContacts"></div>
                     </div>
                 </section>
-                <section id="separator-vertical"></section>
+                <section class="separator-vertical"></section>
                 <section class="input-box">
                     <div id="add_task_due_date">
                         <div class="required-header">
@@ -115,11 +118,23 @@
                         <h3>Subtask</h3>
                         <div class="input-with-button-wrapper">
                             <input class="styled-input focus-blue" placeholder="Add new subtask" type="text"
-                                id="input_with_button_subtask">
-                            <a>
+                                id="input_with_button_subtask" onfocusin="changeSubtaskIcons('focusin')"
+                                onfocusout="changeSubtaskIcons('focusout')">
+                            <a id="add_subtask_button" onclick="setFocusOnElement('input_with_button_subtask')">
                                 <img src="./assets/img/add.png" alt="add">
                             </a>
+                            <div id="confirm_subtask_container">
+                                <a id="subtask_add_icon" onclick="setFocusOnElement('input_with_button_subtask')">
+                                    <img src="./assets/img/cross.svg" alt="add">
+                                </a>
+                                <div class="separator-vertical"></div>
+                                <a id="subtask_add_icon" onclick="setFocusOnElement('input_with_button_subtask')">
+                                    <img src="./assets/img/check.svg" alt="add">
+                                </a>
+                            </div>
                         </div>
+                        <div id="selectedSubtasks"></div>
+
                     </div>
                 </section>
             </div>

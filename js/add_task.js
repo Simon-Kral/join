@@ -20,7 +20,7 @@ let allcategories = [
 let selectedcontacts = [];
 
 
-function init() {
+function initAddTask() {
     renderAssignedTo();
     renderCategory();
 }
@@ -98,6 +98,7 @@ function selectContacts(entry, id, selected) {
     renderSelectedContacts();
 }
 
+
 function handleClickPrio(prio) {
     let input = document.getElementById('prio_' + prio);
     let label = document.getElementById('prio_' + prio + '_label');
@@ -106,11 +107,13 @@ function handleClickPrio(prio) {
     label.classList.add('highlighted-button');
 }
 
+
 function selectCategory(id) {
     const input = document.getElementById('input_with_button_category');
     const selectedcategory = allcategories.find(element => element.id === id);
     input.value = selectedcategory.name;
 }
+
 
 function renderSelectedContacts() {
     let container = document.getElementById('selectedContacts');
@@ -133,4 +136,9 @@ function openDropDownMenu(id) {
 
 function setFocusOnElement(id) {
     document.getElementById(id).focus();
+}
+
+
+function changeSubtaskIcons(focus) {
+    console.log()
 }
