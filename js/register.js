@@ -44,7 +44,7 @@ function login() {
 
     if (findusers) {
         let userI = users.findIndex(u => u.email == register_login_value.value && u.password == register_pw_login_value.value);
-        
+
         loaduser.push(userI);
         localStorage.setItem('userI', loaduser)
         window.location.assign("http://127.0.0.1:5500/summary.html");
@@ -54,6 +54,11 @@ function login() {
         register_pw_login_value.setCustomValidity("Wrong Password or Email");
         register_pw_login_value.reportValidity();
     }
+}
+
+function registerGuestLogin() {
+    loaduser.splice(loadUsers)
+    localStorage.setItem('userI', loaduser)
 }
 
 function resetForm() {
