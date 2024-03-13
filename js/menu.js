@@ -1,7 +1,32 @@
 async function loadmenu() {
+    if (localStorage.getItem("userI") === null) { }
+    else {
+        if (localStorage.getItem('userI').length > 0) {
+            loadmenuLocalStorage()
+        }
+    }
+    if (sessionStorage.getItem("userI") === null) { }
+    else {
+        if (sessionStorage.getItem('userI').length > 0) {
+            loadmenuSessionStorage()
+        }
+    }
+}
+
+async function loadmenuLocalStorage() {
     if (localStorage.getItem('userI').length > 0) {
         users = await getItem('users')
         loaduser = localStorage.getItem('userI')
+        let menuuser = document.getElementById('menu_user');
+        let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
+        menuuser.innerHTML = username
+    }
+}
+
+async function loadmenuSessionStorage() {
+    if (sessionStorage.getItem('userI').length > 0) {
+        users = await getItem('users')
+        loaduser = sessionStorage.getItem('userI')
         let menuuser = document.getElementById('menu_user');
         let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
         menuuser.innerHTML = username
@@ -38,6 +63,7 @@ function menuInnerHTML() {
 }
 
 function logOut() {
-    loaduser.splice(loadUsers)
+    loaduser = []
     localStorage.setItem('userI', loaduser)
+    sessionStorage.setItem('userI', loaduser)
 }
