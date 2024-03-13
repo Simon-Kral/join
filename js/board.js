@@ -29,6 +29,13 @@ function bordAddNewTask() {
     getplacecard.innerHTML = card;
 }
 
+function openBordTask() {
+    const showfulltask = fullTaskHtml();
+    let getplacecard = document.getElementById('add_bordtask_data');
+    document.getElementById('fullscreen_information').classList.remove('d-none');
+    getplacecard.innerHTML = showfulltask;
+}
+
 function showEmptyHtmlTodo() {
     const empty = emptyTaskFieldTodo();
     let getplacetodo = document.getElementById('to_do_place');

@@ -9,6 +9,8 @@
     <link rel="icon" href="assets\img\Join.png">
     <link rel="stylesheet" href="./Style2.css">
     <link rel="stylesheet" href="./style.css">
+    <script src="./js/storage.js"></script>
+    <script src="./js/menu.js"></script>
     <style>
         .sec-menu-board-legal-notice {
             background-color: rgb(9, 25, 49);
@@ -17,7 +19,7 @@
     </style>
 </head>
 
-<body onload="init()">
+<body onload="init(), loadmenu()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
     <section class="law">
         <div class="place-law-head">
