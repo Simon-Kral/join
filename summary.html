@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,22 +10,54 @@
     <link rel="stylesheet" href="./Style2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script src="./js/storage.js"></script>
     <script src="./js/loadHTML.js"></script>
-    <script src="./js/menu.js" ></script>
+    <script src="./js/menu.js"></script>
     <style>
-        .sec-menu-board-summary{
+        .sec-menu-board-summary {
             background-color: rgb(9, 25, 49);
             pointer-events: none;
         }
+
         .sec-menu-flex-police p {
             padding: 0px;
         }
     </style>
 </head>
+
 <body onload="init(), loadmenu()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
+    <div class="summary-margin">
+        <div class="summary-join-360">
+            <h1>Join 360</h1>
+            <div class="summary-spacer"></div>
+            <p>Key Metrics at a Glance</p>
+        </div>
+        <div class="summary-tasks-flex">
+            <div>
+                <div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div>
+                <h2>Good morning</h2>
+                <h1>Guest</h1>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
