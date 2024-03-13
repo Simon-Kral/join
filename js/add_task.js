@@ -20,7 +20,7 @@ let allcategories = [
 let selectedcontacts = [];
 
 
-function init() {
+function inittwo() {
     renderAssignedTo();
     renderCategory();
 }
