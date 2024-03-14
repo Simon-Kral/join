@@ -10,7 +10,7 @@ body {
 }
 
 .dnone {
-    display: none;
+    display: none !important;
 }
 
 .pointer {
@@ -577,9 +577,64 @@ main {
 }
 
 #add_task_subtask {
-    #confirm_subtask_container {
+    .input-with-double-button {
         z-index: 35;
         display: flex;
+        margin-left: -72px;
+        a {
+            margin: 0 4px 0 4px;
+        }
+        .separator-vertical {
+            width: 1px !important;
+        }
+    }
+    .selected-subtask-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 32px;
+        margin-top: 8px;
+        padding: 0px 16px;
+        ul {
+            margin: 0;
+            margin-block-start: 0;
+            li {
+                font-size: 16px;
+            }
+        }
+        input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+         ::placeholder {
+            color: black;
+        }
+        .double-button-container {
+            display: flex;
+            a {
+                margin: 0 4px 0 4px;
+                height: 24px;
+                width: 24px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .separator-vertical {
+                width: 1px !important;
+            }
+        }
+    }
+    .selected-subtask-container:hover {
+        background-color: #EEEEEE;
+    }
+    .border-bottom-blue {
+        border-bottom: 1px solid #29ABE2;
+        background-color: white;
+    }
+    .border-bottom-blue:hover {
+        background-color: white;
     }
 }
 
@@ -708,7 +763,7 @@ main {
     }
 }
 
-#selectedContacts {
+#selected_contacts {
     display: flex;
     margin-top: 8px;
     gap: 8px;

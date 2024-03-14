@@ -42,7 +42,7 @@
                             <h3 style="color: #FF8190;">*</h3>
                         </div>
                         <input class="styled-input focus-blue" placeholder="Enter a title" required type="text"
-                            id="add_task_title">
+                            id="add_task_title_input">
                     </div>
                     <div id="add_task_description">
                         <h3>Description</h3>
@@ -62,7 +62,7 @@
                             </a>
                         </div>
                         <div class="drop-down dnone" id="drop_down_assigned_to"></div>
-                        <div id="selectedContacts"></div>
+                        <div id="selected_contacts"></div>
                     </div>
                 </section>
                 <section class="separator-vertical"></section>
@@ -73,8 +73,10 @@
                             <h3 style="color: #FF8190;">*</h3>
                         </div>
                         <div class="input-with-button-wrapper">
-                            <input class="styled-input focus-blue" placeholder="dd/mm/yyyy" type="text">
-                            <input class="calendar-input" type="date" value="">
+                            <input id="input_with_button_date" class="styled-input focus-blue" placeholder="dd/mm/yyyy"
+                                type="text" required>
+                            <input id="input_calendar" class="calendar-input" type="date" value=""
+                                onchange="transferDate()">
                         </div>
                     </div>
                     <div class="add_task_prio">
@@ -118,23 +120,24 @@
                         <h3>Subtask</h3>
                         <div class="input-with-button-wrapper">
                             <input class="styled-input focus-blue" placeholder="Add new subtask" type="text"
-                                id="input_with_button_subtask" onfocusin="changeSubtaskIcons('focusin')"
-                                onfocusout="changeSubtaskIcons('focusout')">
+                                id="input_with_button_subtask" onfocusin="changeSubtaskIcons('in')"
+                                onfocusout="changeSubtaskIcons('out')">
                             <a id="add_subtask_button" onclick="setFocusOnElement('input_with_button_subtask')">
                                 <img src="./assets/img/add.png" alt="add">
                             </a>
-                            <div id="confirm_subtask_container">
-                                <a id="subtask_add_icon" onclick="setFocusOnElement('input_with_button_subtask')">
-                                    <img src="./assets/img/cross.svg" alt="add">
+                            <div id="confirm_subtask_container" class="input-with-double-button dnone">
+                                <a id="clear_subtask_button"
+                                    onmousedown="dontChangeFocus(event); clearInput('input_with_button_subtask')">
+                                    <img src="./assets/img/cross.svg" alt="cross">
                                 </a>
                                 <div class="separator-vertical"></div>
-                                <a id="subtask_add_icon" onclick="setFocusOnElement('input_with_button_subtask')">
-                                    <img src="./assets/img/check.svg" alt="add">
+                                <a id="confirm_subtask_button"
+                                    onmousedown="dontChangeFocus(event); addSubtask('input_with_button_subtask')">
+                                    <img src="./assets/img/check.svg" alt="check">
                                 </a>
                             </div>
                         </div>
-                        <div id="selectedSubtasks"></div>
-
+                        <div id="selected_Subtasks"></div>
                     </div>
                 </section>
             </div>
@@ -144,11 +147,11 @@
                     <span>This field is required</span>
                 </div>
                 <div class="bottom-buttons">
-                    <button class="clear-button">
+                    <button class="clear-button" onclick="clearAddTaskForm()" type="button">
                         <span>Clear</span>
                         <img src="./assets/img/cross.svg" alt="create task">
                     </button>
-                    <button disabled class="create-task-button">
+                    <button class="create-task-button">
                         <span>Create Task</span>
                         <img src="./assets/img/check.png" alt="create task">
                     </button>

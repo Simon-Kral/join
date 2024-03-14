@@ -17,6 +17,10 @@ let allcategories = [
     { id: 1, name: 'User Story' }
 ]
 
+let allsubtasks = [
+    { idcounter: 0 }
+]
+
 let selectedcontacts = [];
 
 
@@ -86,7 +90,6 @@ function dontChangeFocus(event) {
 function selectContacts(entry, id, selected) {
     entry.classList.toggle('selected');
     entry.children[1].attributes[0].value === './assets/img/check_button_unchecked.svg' ? entry.children[1].src = "./assets/img/check_button_checked.svg" : entry.children[1].attributes[0].value === './assets/img/check_button_checked.svg' ? entry.children[1].src = "./assets/img/check_button_unchecked.svg" : "";
-    console.log(entry)
     if (selected === true) {
         const index = selectedcontacts.findIndex(element => element.id === id);
         selectedcontacts.splice(index, 1);
@@ -116,7 +119,7 @@ function selectCategory(id) {
 
 
 function renderSelectedContacts() {
-    let container = document.getElementById('selectedContacts');
+    let container = document.getElementById('selected_contacts');
     container.innerHTML = '';
     for (let i = 0; i < selectedcontacts.length; i++) {
         const contact = selectedcontacts[i];
@@ -140,5 +143,136 @@ function setFocusOnElement(id) {
 
 
 function changeSubtaskIcons(focus) {
-    console.log()
+    let addbutton = document.getElementById('add_subtask_button');
+    let confirmcontainer = document.getElementById('confirm_subtask_container');
+    addbutton.classList.toggle('dnone');
+    confirmcontainer.classList.toggle('dnone');
+}
+
+
+function clearInput(id) {
+    let input = document.getElementById(id);
+    input.value = '';
+}
+
+
+function addSubtask(inputid) {
+    let input = document.getElementById(inputid);
+    let content = document.getElementById('selected_Subtasks');
+    let subtaskid = allsubtasks[0].idcounter;
+    let arrayelement = { id: subtaskid, name: input.value };
+    allsubtasks.push(arrayelement);
+    allsubtasks[0].idcounter++;
+    let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${subtaskid})">`
+    html += generateSubtaskHtml(input.value, subtaskid);
+    html += `</div>`
+    content.innerHTML += html;
+    input.value = '';
+}
+
+
+function generateSubtaskHtml(name, id) {
+    let html = '';
+    html += `
+            <ul>
+                <li>${name}</li>
+            </ul>
+            <div id="edit-subtask-buttons" class="double-button-container">
+                <a id="delete_subtask_button" onclick="editSubtask(this.parentElement.parentElement, ${id})">
+                    <img src="./assets/img/edit.svg" alt="add">
+                </a>
+                <div class="separator-vertical"></div>
+                <a id="change_subtask_button"
+                    onclick="deleteSubtask(this.parentElement.parentElement, ${id})">
+                    <img src="./assets/img/delete.svg" alt="add">
+                </a>
+            </div>
+    `
+    return html
+}
+
+
+function generateEditSubtaskHtml(id) {
+    let html = '';
+    html += `
+        <input type="text" id="subtask_edition_input_${id}">
+        <div id="subtask_edition_buttons" class="double-button-container">
+            <a id="delete_subtask_button"
+                onclick="deleteSubtask(this.parentElement.parentElement, ${id})">
+                <img src="./assets/img/delete.svg" alt="edit">
+            </a>
+            <div class="separator-vertical"></div>
+            <a id="change_subtask_button"
+                onclick="confirmChangeSubtask(this.parentElement.parentElement, ${id})">
+                <img src="./assets/img/check.svg" alt="delete">
+            </a>
+        </div>
+    `
+    return html
+}
+
+
+function editSubtask(entry, id) {
+    const index = allsubtasks.findIndex(element => element.id === id);
+    entry.innerHTML = generateEditSubtaskHtml(id);
+    entry.classList.add('border-bottom-blue');
+    let name = allsubtasks[index].name;
+    let input = document.getElementById(`subtask_edition_input_${id}`);
+    input.value = name;
+}
+
+
+function deleteSubtask(entry, id) {
+    const index = allsubtasks.findIndex(element => element.id === id);
+    allsubtasks.splice(index, 1);
+    entry.remove();
+}
+
+
+function confirmChangeSubtask(entry, id) {
+    const arrayelement = allsubtasks.find(element => element.id === id);
+    let input = document.getElementById(`subtask_edition_input_${id}`);
+    arrayelement.name = input.value;
+    entry.innerHTML = generateSubtaskHtml(input.value, id);
+    entry.classList.remove('border-bottom-blue');
+}
+
+function clearAddTaskForm() {
+    let title = document.getElementById('add_task_title_input');
+    let description = document.getElementById('add_task_description_textarea');
+    let assignedto = document.getElementById('input_with_button_assigned_to');
+    let assignedtocontainer = document.getElementById('selected_contacts');
+    let date = document.getElementById('input_with_button_date');
+    let category = document.getElementById('input_with_button_category');
+    let subtask = document.getElementById('input_with_button_subtask');
+    let subtaskcontainer = document.getElementById('selected_Subtasks');
+    title.value = '';
+    description.value = '';
+    assignedto.value = '';
+    assignedtocontainer.innerHTML = '';
+    date.value = '';
+    handleClickPrio('medium');
+    category.value = '';
+    subtask.value = '';
+    subtaskcontainer.innerHTML = '';
+    allsubtasks = [{ idcounter: 0 }]
+    selectedcontacts = [];
+    renderAssignedTo();
+}
+
+
+function transferDate() {
+    let calendar = document.getElementById('input_calendar');
+    let dateinput = document.getElementById('input_with_button_date');
+    let date = calendar.value;
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+    let result = [day, month, year].join('/');
+    dateinput.value = result;
 }
