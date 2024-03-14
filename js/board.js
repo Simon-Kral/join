@@ -6,7 +6,6 @@ let doneforce = [];
 
 let currenttask = 0;
 
-
 function boardinit() {
     showEmptyHtmlTodo();
     showEmptyHtmlInprogress();
@@ -108,6 +107,14 @@ function showTaskVariantBig() {
     let getplacetaskvariantbord = document.getElementById('task_variant_bord');
     getplacetaskvariantbord.innerHTML = taskvariant + taskvarianttwo;
 }
+
+function editSingleTask() {
+    const edithtml =  editTaskHtml();
+    let getplacetaskvariantbord = document.getElementById('add_bordtask_data');
+    getplacetaskvariantbord.innerHTML = ``;
+    getplacetaskvariantbord.innerHTML = edithtml;
+}
+
 
 function updateProgressBar() {
     let percent = (currenttask) / todoforce.length;
