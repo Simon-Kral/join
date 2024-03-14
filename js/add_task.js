@@ -158,7 +158,7 @@ function clearInput(id) {
 
 function addSubtask(inputid) {
     let input = document.getElementById(inputid);
-    let content = document.getElementById('selected_Subtasks');
+    let content = document.getElementById('selected_subtasks');
     let subtaskid = allsubtasks[0].idcounter;
     let arrayelement = { id: subtaskid, name: input.value };
     allsubtasks.push(arrayelement);
@@ -245,7 +245,7 @@ function clearAddTaskForm() {
     let date = document.getElementById('input_with_button_date');
     let category = document.getElementById('input_with_button_category');
     let subtask = document.getElementById('input_with_button_subtask');
-    let subtaskcontainer = document.getElementById('selected_Subtasks');
+    let subtaskcontainer = document.getElementById('selected_subtasks');
     title.value = '';
     description.value = '';
     assignedto.value = '';

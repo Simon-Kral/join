@@ -1,4 +1,4 @@
-let subtasksforce = ['teste','test','tes','tasum'];
+let subtasksforce = ['teste', 'test', 'tes', 'tasum'];
 let todoforce = [];
 let inprogressforce = [];
 let awaitfeedbackforce = [];
@@ -27,6 +27,7 @@ function bordAddNewTask() {
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
     getplacecard.innerHTML = card;
+    initAddTask();
 }
 
 function openBordTask() {
@@ -117,16 +118,14 @@ function updateProgressBar() {
 
 function allowDrop(ev) {
     ev.preventDefault();
-  }
-  
-  function drag(ev) {
+}
+
+function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-  }
-  
-  function drop(ev) {
+}
+
+function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
-  }
-
-  
+}
