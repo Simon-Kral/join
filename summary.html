@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="./Style2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
-        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script src="./js/storage.js"></script>
     <script src="./js/loadHTML.js"></script>
     <script src="./js/menu.js"></script>
+    <script src="./js/summary.js"></script>
     <style>
         .sec-menu-board-summary {
             background-color: rgb(9, 25, 49);
@@ -28,7 +27,7 @@
     </style>
 </head>
 
-<body onload="init(), loadmenu()">
+<body onload="init(), loadmenu(), loadSummary()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
     <div class="summary-margin">
         <div class="summary-join-360">
@@ -42,15 +41,15 @@
                     <div class="summary-todo-done">
                         <img src="assets/img/to_do_img.png">
                         <div class="summary-todo-done-numbers">
-                            <h3>1</h3>
+                            <h3 id="summary_to_do">0</h3>
                             <span>To-do</span>
                         </div>
                     </div>
                     <div class="summary-todo-done">
                         <img src="assets/img/done_img.png">
                         <div class="summary-todo-done-numbers">
-                            <h3>1</h3>
-                            <span>Done</span>
+                            <h3 id="summary_done">0</h3>
+                            <span></span>Done</span>
                         </div>
                     </div>
                 </div>
@@ -58,25 +57,34 @@
                     <div class="summary-urgent">
                         <img src="assets/img/urgent_img.png">
                         <div class="summary-urgent-numbers">
-                            <h3>1</h3>
-                            <span>Urgent</span>
+                            <h3 id="summary_urgent">0</h3>
+                            <span></span>Urgent</span>
                         </div>
                     </div>
                     <div class="summary-urgent-spacer"></div>
                     <div class="summary-upcoming-deadline">
-                        <h3>October 16,2022</h3>
+                        <h3 id="summary_deadline">October 16,2022</h3>
                         <span>Upcoming Deadline</span>
                     </div>
                 </div>
                 <div class="summary-board-progress-flex">
-                    <div class="summary-board-progress"></div>
-                    <div class="summary-board-progress"></div>
-                    <div class="summary-board-progress"></div>
+                    <div class="summary-board-progress">
+                        <h3 id="summary_in_board">0</h3>
+                        <span>Tasks in <br> Board</span>
+                    </div>
+                    <div class="summary-board-progress">
+                        <h3 id="summary_progress">0</h3>
+                        <span>Tasks in <br> Progress</span>
+                    </div>
+                    <div class="summary-board-progress">
+                        <h3 id="summary_feedback">0</h3>
+                        <span>Awaiting <br> Feedback</span>
+                    </div>
                 </div>
             </div>
             <div class="summary-welcome">
                 <h2>Good morning,</h2>
-                <h1>Guest</h1>
+                <h1 id="sommary_name">Guest</h1>
             </div>
         </div>
     </div>

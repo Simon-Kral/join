@@ -37,6 +37,13 @@ async function ifelseRegister() {
             name: register_name.value,
             email: register_email.value,
             password: register_pw_sign_in.value,
+            todo: [],
+            done: [],
+            Urgent: [],
+            tasksinboard: [],
+            tasksinprogress: [],
+            awaitingfeedback: [],
+            deadline: []
         })
 
         await setItem('users', JSON.stringify(users))
