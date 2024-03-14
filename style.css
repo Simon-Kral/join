@@ -244,9 +244,10 @@ p.user-story {
     line-height: 19.2px;
     padding: 4px 16px 4px 16px;
     background-color: #0038FF;
-    gap: 10px;
     border-radius: 8px;
     text-align: center;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 p.technical-task {
@@ -256,9 +257,10 @@ p.technical-task {
     line-height: 19.2px;
     padding: 4px 16px 4px 16px;
     background-color: #1FD7C1;
-    gap: 10px;
     border-radius: 8px;
     text-align: center;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 .place-task-progress {
@@ -318,7 +320,7 @@ p.technical-task {
 
 .single-task-field {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: start;
     flex-direction: column;
     height: 931px;
@@ -329,8 +331,73 @@ p.technical-task {
 }
 
 .place-categorie-cross {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
     margin-right: 40px;
     margin-left: 40px;
+    width: 445px;
+}
+
+.place-delete-edit {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    margin-right: 40px;
+    margin-left: 40px;
+    width: 445px;
+}
+
+img.single-task-close {
+    width: 20px;
+    height: 20px;
+}
+
+img.single-task-close:hover {
+    cursor: pointer;
+}
+
+.place-delete-edit {
+    display: flex;
+    justify-content: end;
+}
+
+.delete-place {
+    display: flex;
+    padding-right: 8px;
+}
+
+.delete-place:hover {
+    color: #0038FF;
+    cursor: pointer;
+}
+
+.edit-place {
+    display: flex;
+    padding-left: 8px;
+}
+
+.edit-place:hover {
+    color: #0038FF;
+    cursor: pointer;
+}
+
+.one-px-line {
+    width: 2px;
+    height: 24px;
+    background-color: #D1D1D1;
+}
+
+img.delete {
+    width: 16px;
+    height: 18px;
+    padding-right: 8px;
+}
+
+img.edit {
+    width: 16px;
+    height: 18px;
+    padding-right: 8px;
 }
 
 .place-single-information {
@@ -433,6 +500,7 @@ main {
     left: 232px;
     padding: 110px 96px;
     font-size: 20px;
+
     h1 {
         font-size: 61px;
         color: #000000;
@@ -446,10 +514,12 @@ main {
         display: flex;
         flex-direction: column;
         gap: 200px;
+
         .input-wrapper {
             display: flex;
             flex-direction: row;
             height: 424px;
+
             .input-box {
                 display: flex;
                 flex-direction: column;
@@ -457,22 +527,27 @@ main {
                 width: 440px;
                 margin: 0 48px;
             }
+
             .separator-vertical {
                 width: 2px;
                 background-color: #d1d1d1;
             }
+
             h3 {
                 font-size: 20px;
                 margin: 0 0 8px 0;
                 font-weight: 400;
             }
+
             .required-header {
                 display: flex;
             }
+
             .focus-blue:focus {
                 outline: none;
                 border: 1px solid #5dbee7 !important;
             }
+
             .styled-input {
                 width: 398px;
                 height: 48px;
@@ -482,10 +557,12 @@ main {
                 font-size: 20px;
                 z-index: 10;
             }
+
             .input-with-button-wrapper {
                 position: relative;
                 display: flex;
                 align-items: center;
+
                 a {
                     height: 24px;
                     width: 24px;
@@ -496,6 +573,7 @@ main {
                     border-radius: 12px;
                     z-index: 20;
                 }
+
                 a:hover {
                     background-color: #f6f7f8;
                 }
@@ -512,6 +590,7 @@ main {
         display: flex;
         align-items: center;
     }
+
     textarea {
         width: 398px;
         resize: vertical;
@@ -521,9 +600,11 @@ main {
         font-size: 20px;
         padding: 20px;
     }
-     ::-webkit-resizer {
+
+    ::-webkit-resizer {
         display: none;
     }
+
     .textarea-wrapper::after {
         position: absolute;
         pointer-events: none;
@@ -537,7 +618,7 @@ main {
 }
 
 #add_task_assigned_to {
-     ::placeholder {
+    ::placeholder {
         color: black;
     }
 }
@@ -555,6 +636,7 @@ main {
         padding: 0;
         z-index: 20;
     }
+
     input[type="date"]::-webkit-calendar-picker-indicator {
         color: rgba(0, 0, 0, 0);
         opacity: 1;
@@ -570,9 +652,11 @@ main {
     .prio-buttons {
         display: flex;
         justify-content: space-between;
+
         input {
             display: none;
         }
+
         label {
             box-sizing: border-box;
             display: flex;
@@ -588,39 +672,49 @@ main {
             box-shadow: 0px 0px 4px #d1d1d1;
             border-radius: 10px;
             transition: ease-in-out 100ms;
+
             img {
                 width: 20px;
                 margin-left: 8px;
             }
+
             [alt="urgent"] {
                 filter: invert(41%) sepia(89%) saturate(5403%) hue-rotate(2deg) brightness(101%) contrast(107%);
             }
+
             [alt="medium"] {
                 filter: invert(54%) sepia(99%) saturate(1276%) hue-rotate(5deg) brightness(111%) contrast(102%);
             }
+
             [alt="low"] {
                 filter: invert(91%) sepia(88%) saturate(1842%) hue-rotate(32deg) brightness(94%) contrast(88%);
             }
         }
+
         label:not(.highlighted-button):hover {
             box-shadow: 0px 4px 4px #d1d1d1;
         }
+
         .highlighted-button {
             cursor: auto;
             color: white;
             font-size: 21px;
             font-weight: 700;
             border: none;
+
             img {
                 filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(110deg) brightness(104%) contrast(101%) !important;
             }
         }
+
         .highlighted-button#prio_urgent_label {
             background-color: #ff3d00;
         }
+
         .highlighted-button#prio_medium_label {
             background-color: #ffa800;
         }
+
         .highlighted-button#prio_low_label {
             background-color: #7ae229;
         }
@@ -628,9 +722,10 @@ main {
 }
 
 #add_task_category {
-     ::placeholder {
+    ::placeholder {
         color: black;
     }
+
     #input_with_button_category {
         z-index: 30;
     }
@@ -641,18 +736,22 @@ main {
         z-index: 35;
         display: flex;
         margin-left: -72px;
+
         a {
             margin: 0 4px 0 4px;
         }
+
         .separator-vertical {
             width: 1px !important;
         }
     }
+
     #selected_subtasks {
         position: absolute;
         width: 440px;
         max-height: 160px;
         overflow-y: auto;
+
         .selected-subtask-container {
             display: flex;
             justify-content: space-between;
@@ -660,24 +759,30 @@ main {
             height: 32px;
             margin-top: 8px;
             padding: 0px 16px;
+
             ul {
                 margin: 0;
                 margin-block-start: 0;
+
                 li {
                     font-size: 16px;
                 }
             }
+
             input {
                 width: 100%;
                 border: none;
                 outline: none;
                 font-size: 16px;
             }
-             ::placeholder {
+
+            ::placeholder {
                 color: black;
             }
+
             .double-button-container {
                 display: flex;
+
                 a {
                     margin: 0 4px 0 4px;
                     height: 24px;
@@ -686,19 +791,23 @@ main {
                     justify-content: center;
                     align-items: center;
                 }
+
                 .separator-vertical {
                     width: 1px !important;
                 }
             }
         }
     }
+
     .selected-subtask-container:hover {
         background-color: #EEEEEE;
     }
+
     .border-bottom-blue {
         border-bottom: 1px solid #29ABE2;
         background-color: white;
     }
+
     .border-bottom-blue:hover {
         background-color: white;
     }
@@ -710,6 +819,7 @@ main {
     align-items: end;
     bottom: -8px;
     right: 96px;
+
     button {
         cursor: pointer;
         transition: ease-in-out 100ms;
@@ -717,55 +827,69 @@ main {
         height: 56px;
         margin-left: 16px;
         margin-bottom: 8px;
+
         img {
             margin-left: 10px;
         }
     }
+
     button.clear-button {
         width: 110px;
         background-color: #f6f7f8;
         border: 1px solid #2A3647;
+
         span {
             font-size: 20px;
             color: #2A3647;
         }
+
         img {
             margin-left: 10px;
             filter: invert(17%) sepia(10%) saturate(1965%) hue-rotate(176deg) brightness(92%) contrast(86%);
         }
     }
+
     button.clear-button:hover {
         border: 2px solid #5dbee7;
         box-shadow: 0px 4px 4px #d1d1d1;
+
         span {
             color: #5dbee7;
         }
+
         img {
             filter: invert(67%) sepia(42%) saturate(534%) hue-rotate(155deg) brightness(95%) contrast(90%);
         }
     }
+
     button.clear-button:active {
         border: 1px solid #091931;
+
         span {
             color: #091931;
         }
+
         img {
             filter: invert(7%) sepia(28%) saturate(3492%) hue-rotate(193deg) brightness(97%) contrast(97%);
         }
     }
+
     button.create-task-button {
         width: 183px;
         background-color: #2A3647;
         border: none;
+
         span {
             font-size: 21px;
             color: white;
         }
     }
+
     button.create-task-button:hover {
         background-color: #5dbee7;
         box-shadow: 0px 4px 4px #d1d1d1;
     }
+
     button.create-task-button:active {
         background-color: #091931;
     }
@@ -784,6 +908,7 @@ main {
 
 #drop_down_assigned_to {
     z-index: 5;
+
     .drop-down-assigned-to-entry {
         display: flex;
         justify-content: space-between;
@@ -791,22 +916,27 @@ main {
         padding: 16px;
         border-radius: 10px;
         margin-bottom: 2px;
+
         .profile-info {
             display: flex;
             align-items: center;
             font-size: 20px;
+
             .profile-fullname {
                 margin-left: 16px;
             }
         }
     }
+
     .drop-down-assigned-to-entry:hover {
         background-color: #EEEEEE;
     }
+
     .selected {
         background-color: #2A3647;
         color: white;
     }
+
     .selected:hover {
         background-color: #091931;
     }
@@ -815,6 +945,7 @@ main {
 #drop_down_category {
     z-index: 25;
     overflow-y: auto;
+
     .drop-down-category-entry {
         display: flex;
         justify-content: space-between;
@@ -822,10 +953,12 @@ main {
         padding: 16px;
         border-radius: 10px;
         margin-bottom: 2px;
+
         span {
             font-size: 20px;
         }
     }
+
     .drop-down-category-entry:hover {
         background-color: #EEEEEE;
     }
@@ -857,8 +990,10 @@ main {
 
 .help {
     font-size: 16px;
+
     .head-wrapper {
         display: flex;
+
         .go-back-button {
             position: fixed;
             right: 96px;
@@ -870,30 +1005,36 @@ main {
             width: 32px;
             border-radius: 16px;
             margin-top: 19px;
+
             img {
                 filter: invert(56%) sepia(81%) saturate(1182%) hue-rotate(165deg) brightness(94%) contrast(87%) !important;
             }
         }
+
         .go-back-button:hover {
             background-color: #eeeeee;
         }
     }
+
     .text-box-wrapper {
         display: flex;
         align-items: start;
         margin-top: 24px;
+
         h2 {
             font-size: 27px;
             font-weight: 700;
             margin-bottom: 16px;
             margin-right: 35px;
         }
+
         h3 {
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 0;
         }
     }
+
     .enjoy {
         margin-top: 48px;
     }
@@ -906,12 +1047,15 @@ main {
         left: 0;
         padding: 0;
     }
+
     h1 {
         margin: 32px 48px;
     }
+
     .add-task-form-section {
         gap: 160px;
     }
+
     .bottom-section {
         margin: 0 48px;
     }
