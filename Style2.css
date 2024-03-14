@@ -589,6 +589,7 @@
     align-items: center;
 
     h3{
+        font-weight: 600;
         font-size: 64px;
         margin: 0px;
     }
@@ -630,6 +631,7 @@
     align-items: center;
 
     h3{
+        font-weight: 600;
         font-size: 64px;
         margin: 0px;
     }
@@ -675,6 +677,21 @@
     border-radius: 30px;
     width: 168px;
     height: 168px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    h3{
+        font-weight: 600;
+        font-size: 64px;
+        margin: 0px;
+    }
+    span{
+        color: #2A3647;
+        font-size: 21px;
+        font-weight: 400;
+    }
 }
 
 .summary-welcome{

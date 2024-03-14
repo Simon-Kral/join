@@ -203,10 +203,10 @@ function todoTaskHtml() {
 
 function fullTaskHtml() {
     return `
-            <div class="single-task-field">
+            <div class="single-task-field" onclick="noCloseContent(event)">
                 <div class="place-categorie-cross">
                     <div id="task_variant_bord"></div>
-                    <div></div>
+                    <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
                 </div>
                 <div class="place-single-information">
                     <h1 class="task-head-bord">Hier seht dann die Überschrift</h1>
@@ -222,12 +222,18 @@ function fullTaskHtml() {
                     <div class="assigned-to-bord">Assigned To Container</div>
                     <span class="subtasks-bord">Subtasks</span>
                     <div class="subtasks-input-bord">
-                        <input type="checkbox" checked="checked">
+                        <input onclick="closeCard()" type="checkbox" checked="checked">
                     </div>
                 </div>
-                <div class="place-categorie">
-                </div>
-            </div>    
+                <div class="place-delete-edit">
+                    <div class="delete-place">
+                        <img class="delete" src="./assets/img/delete.png"><span>Delete</span>
+                    </div>
+                    <div class="one-px-line"></div>
+                    <div class="edit-place">
+                        <img class="edit" src="./assets/img/edit.png"><span>Edit</span>
+                    </div>
+                </div>    
     `;
 }
 
