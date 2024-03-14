@@ -33,7 +33,7 @@
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
     <main class="add_task">
         <h1>Add Task</h1>
-        <form class="add-task-form-section" onsubmit="validateForm();return false">
+        <form class="add-task-form-section" onsubmit="addToTasks();return false">
             <div class="input-wrapper">
                 <section class="input-box">
                     <div id="add_task_title">
@@ -74,22 +74,21 @@
                         </div>
                         <div class="input-with-button-wrapper">
                             <input id="input_with_button_date" class="styled-input focus-blue" placeholder="dd/mm/yyyy"
-                                type="text" required>
+                                type="text" required pattern="([0-9]{2}\/[0-9]{2}\/[0-9]{4})">
                             <input id="input_calendar" class="calendar-input" type="date" value=""
                                 onchange="transferDate()">
                         </div>
                     </div>
                     <div class="add_task_prio">
                         <h3>Prio</h3>
-                        <div class="prio-buttons">
+                        <div id="prio-buttons">
                             <input id="prio_urgent" name="prio" type="radio" value="urgent">
                             <label id="prio_urgent_label" for="prio_urgent" onclick="handleClickPrio('urgent')">
                                 <span>Urgent</span>
                                 <img src="./assets/img/urgent.svg" alt="urgent">
                             </label>
                             <input id="prio_medium" name="prio" type="radio" value="medium">
-                            <label id="prio_medium_label" class="highlighted-button" for="prio_medium"
-                                onclick="handleClickPrio('medium')">
+                            <label id="prio_medium_label" for="prio_medium" onclick="handleClickPrio('medium')">
                                 <span>Medium</span>
                                 <img src="./assets/img/medium.svg" alt="medium">
                             </label>

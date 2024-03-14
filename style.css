@@ -567,7 +567,7 @@ main {
 }
 
 .add_task_prio {
-    .prio-buttons {
+    #prio-buttons {
         display: flex;
         justify-content: space-between;
         input {

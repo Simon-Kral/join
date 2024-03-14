@@ -1,3 +1,4 @@
+let tasks = [];
 let allcontacts = [
     { idcounter: 9 },
     { id: 0, firstname: 'Sofia', lastname: 'Müller (You)', color: '#00BEE8' },
@@ -10,21 +11,20 @@ let allcontacts = [
     { id: 7, firstname: 'Marcel', lastname: 'Bauer', color: '#462F8A' },
     { id: 8, firstname: 'Tatjana', lastname: 'Wolf', color: '#FF4646' },
     { id: 9, firstname: 'Tatjana', lastname: 'Wolf', color: '#FF4646' }
-]
+];
 let allcategories = [
     { idcounter: 1 },
     { id: 0, name: 'Technical Task' },
     { id: 1, name: 'User Story' }
-]
-
+];
 let allsubtasks = [
     { idcounter: 0 }
-]
-
+];
 let selectedcontacts = [];
 
 
 function initAddTask() {
+    loadFromLocalStorage();
     renderAssignedTo();
     renderCategory();
 }
@@ -103,11 +103,25 @@ function selectContacts(entry, id, selected) {
 
 
 function handleClickPrio(prio) {
-    let input = document.getElementById('prio_' + prio);
-    let label = document.getElementById('prio_' + prio + '_label');
-    let highlightedlabel = label.parentElement.querySelector('label.highlighted-button');
-    highlightedlabel.classList.remove('highlighted-button');
-    label.classList.add('highlighted-button');
+    if (prio) {
+        let input = document.getElementById('prio_' + prio);
+        let label = document.getElementById('prio_' + prio + '_label');
+        if (label.parentElement.querySelector('label.highlighted-button')) {
+            let highlightedlabel = label.parentElement.querySelector('label.highlighted-button');
+            highlightedlabel.classList.remove('highlighted-button');
+        }
+        label.classList.add('highlighted-button');
+        input.value = prio;
+    } else {
+        let input = document.getElementById('prio_' + prio);
+        let container = document.getElementById('prio-buttons').;
+        console.log(elements)
+        for (let i = 0; i < container.length; i++) {
+            const element = container[i];
+            element.classList.remove('highlighted-button');
+            element.value = '';
+        }
+    }
 }
 
 
@@ -238,26 +252,51 @@ function confirmChangeSubtask(entry, id) {
 }
 
 function clearAddTaskForm() {
-    let title = document.getElementById('add_task_title_input');
-    let description = document.getElementById('add_task_description_textarea');
-    let assignedto = document.getElementById('input_with_button_assigned_to');
-    let assignedtocontainer = document.getElementById('selected_contacts');
-    let date = document.getElementById('input_with_button_date');
-    let category = document.getElementById('input_with_button_category');
-    let subtask = document.getElementById('input_with_button_subtask');
-    let subtaskcontainer = document.getElementById('selected_subtasks');
-    title.value = '';
-    description.value = '';
-    assignedto.value = '';
-    assignedtocontainer.innerHTML = '';
-    date.value = '';
-    handleClickPrio('medium');
-    category.value = '';
-    subtask.value = '';
-    subtaskcontainer.innerHTML = '';
-    allsubtasks = [{ idcounter: 0 }]
+    let inputs = getAllAddTaskFormInputs();
+    let containers = getAllAddTaskContainers();
+    clearInputs(inputs);
+    clearContainers(containers);
+    handleClickPrio();
+    allsubtasks = [{ idcounter: 0 }];
     selectedcontacts = [];
     renderAssignedTo();
+}
+
+
+function clearInputs(inputs) {
+    for (let i = 0; i < inputs.length; i++) {
+        const input = inputs[i];
+        document.getElementById(`${input}`).value = '';
+    }
+    document.getElementById('input_with_button_assigned_to').value = '';
+    document.getElementById('input_with_button_subtask').value = '';
+}
+
+
+function clearContainers(containers) {
+    for (let i = 0; i < containers.length; i++) {
+        const container = containers[i];
+        document.getElementById(`${container}`).innerHTML = '';
+    }
+}
+
+
+function getAllAddTaskFormInputs(withKey) {
+    let title = 'add_task_title_input';
+    let description = 'add_task_description_textarea';
+    let date = 'input_with_button_date';
+    let category = 'input_with_button_category';
+    if (withKey) {
+        return { title, description, date, category };
+    } else {
+        return [title, description, date, category];
+    };
+}
+
+function getAllAddTaskContainers() {
+    let assignedtocontainer = 'selected_contacts';
+    let subtaskcontainer = 'selected_subtasks';
+    return [assignedtocontainer, subtaskcontainer]
 }
 
 
@@ -275,4 +314,39 @@ function transferDate() {
         day = '0' + day;
     let result = [day, month, year].join('/');
     dateinput.value = result;
+}
+
+
+function loadFromLocalStorage() {
+    let tasksastext = localStorage.getItem('tasks');
+    if (tasksastext) {
+        tasks = JSON.parse(tasksastext);
+    }
+}
+
+
+function saveToLocalStorage() {
+    let tasksastext = JSON.stringify(tasks);
+    localStorage.setItem('tasks', tasksastext);
+}
+
+
+function addToTasks() {
+    let inputs = getAllAddTaskFormInputs(true);
+    let prios = document.getElementsByName('prio');
+    let task = {};
+    Object.entries(inputs).forEach((entry) => {
+        let [key, value] = entry;
+        let inputvalue = document.getElementById(`${value}`).value;
+        task[`${key}`] = inputvalue;
+    });
+    for (i = 0; i < prios.length; i++) {
+        const prio = prios[i];
+        prio.checked ? task['prio'] = prio.value : '';
+    }
+    task.subtasks = allsubtasks;
+    task.contacts = selectedcontacts;
+    tasks.push(task);
+    saveToLocalStorage();
+    clearAddTaskForm();
 }
