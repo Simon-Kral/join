@@ -346,7 +346,19 @@ function addToTasks() {
     }
     task.subtasks = allsubtasks;
     task.contacts = selectedcontacts;
+    users[loaduser].todo.push(task);
+    task.prio === 'urgent' ? users[loaduser].Urgent.push(task) : '';
     tasks.push(task);
     saveToLocalStorage();
     clearAddTaskForm();
+}
+
+function addTasksToUsers() {
+    users[loaduser].todo = [];
+    users[loaduser].Urgent = [];
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        users[loaduser].todo.push(task);
+        task.prio === 'urgent' ? users[loaduser].Urgent.push(task) : '';
+    }
 }
