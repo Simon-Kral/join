@@ -114,7 +114,7 @@ function handleClickPrio(prio) {
         input.value = prio;
     } else {
         let input = document.getElementById('prio_' + prio);
-        let container = document.getElementById('prio-buttons').;
+        let container = document.getElementById('prio-buttons');
         console.log(elements)
         for (let i = 0; i < container.length; i++) {
             const element = container[i];
