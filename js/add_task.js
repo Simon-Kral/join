@@ -29,6 +29,7 @@ function initAddTask() {
     loadFromLocalStorage();
     renderAssignedTo();
     renderCategory();
+    addAddTaskEventListeners();
 }
 
 
@@ -410,7 +411,8 @@ async function addAllTasksToUsers() {
     await setItem('users', JSON.stringify(users));
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+
+function addAddTaskEventListeners() {
     document.querySelectorAll('input').forEach(function(input) {
         input.addEventListener('invalid', function() {
             input.style.borderColor = '#FF8190';
@@ -423,4 +425,4 @@ document.addEventListener('DOMContentLoaded', function() {
             input.parentElement.nextElementSibling.classList.add('dnone');
         });
     });
-});
+};
