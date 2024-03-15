@@ -251,7 +251,7 @@ function editTaskHtml() {
     return `
         <div class="single-task-field" onclick="noCloseContent(event)">
             <main class="edit-task">
-                <form class="add-task-form-section" onsubmit="addToTasks();return false">
+                <form class="add-task-form-section" onsubmit="addToTasks();return false"  autocomplete="off">
                     <div class="input-wrapper">
                         <section class="input-box">
                             <div id="add_task_title">
@@ -276,7 +276,7 @@ function editTaskHtml() {
                                     <input class="styled-input focus-blue" placeholder="Select contacts to assign" type="text"
                                         id="input_with_button_assigned_to"
                                         onfocusin="openDropDownMenu('drop_down_assigned_to', 'in')"
-                                        onfocusout="openDropDownMenu('drop_down_assigned_to', 'out')">
+                                        onfocusout="openDropDownMenu('drop_down_assigned_to', 'out')" oninput="setFilter(this)">
                                     <a onclick="setFocusOnElement('input_with_button_assigned_to')">
                                         <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                                     </a>
@@ -329,7 +329,7 @@ function editTaskHtml() {
                                     <input class="styled-input focus-blue" placeholder="Select task category" required
                                         type="text" id="input_with_button_category"
                                         onfocusin="openDropDownMenu('drop_down_category', 'in')"
-                                        onfocusout="openDropDownMenu('drop_down_category', 'out')">
+                                        onfocusout="openDropDownMenu('drop_down_category', 'out')"  oninput="setFilter(this)">
                                     <a onclick="setFocusOnElement('input_with_button_category')">
                                         <img id="drop_down_category_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                                     </a>

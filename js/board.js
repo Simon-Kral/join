@@ -109,10 +109,11 @@ function showTaskVariantBig() {
 }
 
 function editSingleTask() {
-    const edithtml =  editTaskHtml();
+    const edithtml = editTaskHtml();
     let getplacetaskvariantbord = document.getElementById('add_bordtask_data');
     getplacetaskvariantbord.innerHTML = ``;
     getplacetaskvariantbord.innerHTML = edithtml;
+    initAddTask();
 }
 
 
