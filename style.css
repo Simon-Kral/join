@@ -1063,3 +1063,31 @@ main.edit-task {
         bottom: 58%;
     }
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 24px;
+    padding-top: 10px;
+    scrollbar-color: #A8A8A8 white;
+}
+
+.custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement {
+    height: 44px;
+    width: 10px;
+    background-position: center 36px;
+    background-repeat: no-repeat;
+    background-image: url("./assets/img/arrow_scrollbar_up.svg");
+}
+
+.custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:increment {
+    height: 64px;
+    width: 10px;
+    background-position: center 4px;
+    background-repeat: no-repeat;
+    background-image: url("./assets/img/arrow_scrollbar_down.svg");
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #A8A8A8;
+    border-radius: 16px;
+    border: 8px solid #ffffff;
+}

@@ -32,7 +32,6 @@
 
 .menu-user:hover {
     background-color: rgb(228, 228, 228);
-
 }
 
 .menu-imges {
@@ -131,18 +130,15 @@
     align-items: center;
     right: 120px;
     top: 60px;
-
     p {
         margin-right: 40px;
     }
-
     span {
         padding: 12px;
         color: white;
         background-color: rgb(42, 54, 71);
         border-radius: 8px;
     }
-
     span:hover {
         transition: 0.1s;
         background-color: rgb(41, 171, 226);
@@ -211,13 +207,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
     h1 {
         font-size: 62px;
         margin-top: 48px;
         margin-bottom: 0px;
     }
-
     input {
         height: 48px;
         width: 340px;
@@ -236,7 +230,6 @@
     border-radius: 12px;
     display: flex;
     align-items: center;
-
     img {
         width: 20px;
         margin-right: 20px;
@@ -248,7 +241,6 @@
     margin-right: 250px;
     margin-top: 24px;
     margin-bottom: 24px;
-
     input {
         height: 16px !important;
         width: 16px !important;
@@ -260,7 +252,6 @@
     width: 50%;
     display: flex;
     justify-content: space-between;
-
     a {
         color: rgb(42, 54, 71);
         font-weight: bold;
@@ -272,7 +263,6 @@
         border: solid 1px;
         height: 24px;
     }
-
     a:hover {
         transition: 0.1s;
         color: #29ABE2;
@@ -314,13 +304,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
     h1 {
         font-size: 62px;
         margin-top: 48px;
         margin-bottom: 0px;
     }
-
     input {
         height: 48px;
         width: 340px;
@@ -337,11 +325,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     img {
         padding: 4px;
     }
-
     img:hover {
         background-color: #CDCDCD;
         border-radius: 50px;
@@ -354,11 +340,9 @@
 .register-sign-up-checkbox {
     margin-top: 24px;
     margin-bottom: 24px;
-
     a {
         color: #29ABE2;
     }
-
     input {
         height: 16px !important;
         width: 16px !important;
@@ -388,13 +372,11 @@
     left: 50%;
     transform: translate(-50%);
     bottom: 3%;
-
     a {
         color: rgb(168, 168, 168);
         margin-right: 16px;
         padding: 8px;
     }
-
     a:hover {
         color: #29ABE2;
         font-weight: bold;
@@ -408,7 +390,6 @@
     width: 100%;
     height: 100vh;
     animation: singed-Up-Succes-2 1s;
-
     span {
         position: absolute;
         bottom: 50%;
@@ -429,7 +410,6 @@
     from {
         bottom: 0%;
     }
-
     to {
         bottom: 50%;
     }
@@ -439,22 +419,21 @@
     from {
         background-color: rgba(0, 0, 0, 0.0);
     }
-
     to {
         background-color: rgba(0, 0, 0, 0.5);
     }
 }
 
-.password-RL{
+.password-RL {
     cursor: pointer;
 }
 
-.password-RL:hover{
+.password-RL:hover {
     height: 21px;
     width: 21px;
 }
 
-.open-menu{
+.open-menu {
     position: absolute;
     background-color: rgb(42, 54, 71);
     font-weight: 200;
@@ -464,10 +443,9 @@
     flex-direction: column;
     border-radius: 20px 0px 20px 20px;
     animation: open-menu-animation 0.5s;
-    
     right: 30px;
     top: 102px;
-    a{
+    a {
         animation: open-menu-animation-a 0.1s;
         width: 130px;
         padding-left: 30px;
@@ -475,34 +453,32 @@
     }
 }
 
-.open-menu-up{
-
+.open-menu-up {
     border-radius: 20px 0px 20px 20px;
 }
 
-.open-menu-down{
-
+.open-menu-down {
     border-radius: 20px 0px 20px 20px;
 }
 
-.open-menu-up:hover{
+.open-menu-up:hover {
     transition: 0.2s;
     background-color: rgb(47, 71, 102);
     border-radius: 20px 0px 0px 0px;
 }
 
-.open-menu-mid:hover{
+.open-menu-mid:hover {
     transition: 0.2s;
     background-color: rgb(47, 71, 102);
 }
 
-.open-menu-down:hover{
+.open-menu-down:hover {
     transition: 0.1s;
     background-color: rgb(47, 71, 102);
     border-radius: 0px 0px 20px 20px;
 }
 
-@keyframes open-menu-animation{
+@keyframes open-menu-animation {
     from {
         height: 0px;
     }
@@ -511,37 +487,36 @@
     }
 }
 
-@keyframes open-menu-animation-a{
+@keyframes open-menu-animation-a {
     from {
         display: none;
     }
     to {
-        display:none;
+        display: none;
     }
 }
 
-.summary-margin{
+.summary-margin {
     margin-left: 328px;
     margin-top: 206px;
     color: black;
 }
 
-.summary-join-360{
+.summary-join-360 {
     height: 73px;
     display: flex;
     align-items: center;
-
-    h1{
+    h1 {
         font-size: 61px;
     }
-    p{
+    p {
         font-size: 27px;
         color: #2A3647;
         font-weight: 400;
     }
 }
 
-.summary-spacer{
+.summary-spacer {
     height: 59px;
     border: 3px solid;
     border-color: #29ABE2;
@@ -550,23 +525,23 @@
     margin-right: 30px;
 }
 
-.summary-tasks-flex{
+.summary-tasks-flex {
     margin-top: 56px;
     display: flex;
 }
 
-.summary-tasks{
+.summary-tasks {
     margin-right: 80px;
     height: 560px;
     width: 560px;
 }
 
-.summary-todo-done-flex{
+.summary-todo-done-flex {
     display: flex;
     justify-content: space-between;
 }
 
-.summary-todo-done{
+.summary-todo-done {
     width: 265px;
     height: 168px;
     background-color: white;
@@ -575,31 +550,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    img{
+    img {
         height: 69px;
         width: 69px;
         margin-right: 18px;
     }
 }
 
-.summary-todo-done-numbers{
+.summary-todo-done-numbers {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    h3{
+    h3 {
         font-weight: 600;
         font-size: 64px;
         margin: 0px;
     }
-
-    span{
+    span {
         font-size: 20px;
     }
 }
 
-.summary-urgent-flex{
+.summary-urgent-flex {
     background-color: white;
     box-shadow: 0px 0px 4px 0px #0000001A;
     width: 560px;
@@ -612,66 +584,62 @@
     justify-content: space-between;
 }
 
-.summary-urgent{
+.summary-urgent {
     height: 100%;
     display: flex;
     align-items: center;
     margin-left: 65px;
-
-    img{
+    img {
         height: 60px;
         width: 60px;
         margin-right: 18px;
     }
 }
 
-.summary-urgent-numbers{
+.summary-urgent-numbers {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    h3{
+    h3 {
         font-weight: 600;
         font-size: 64px;
         margin: 0px;
     }
-
-    span{
+    span {
         font-size: 20px;
     }
 }
 
-.summary-urgent-spacer{
+.summary-urgent-spacer {
     height: 102.02px;
     border: 1px solid;
-    border-color: #D1D1D1;    
+    border-color: #D1D1D1;
 }
 
-.summary-upcoming-deadline{
+.summary-upcoming-deadline {
     display: flex;
     flex-direction: column;
     margin-right: 65px;
-    h3{
+    h3 {
         font-size: 21px;
         font-weight: 700px;
         color: #2A3647;
         margin: 0px;
         margin-bottom: 13px;
     }
-
-    span{
+    span {
         font-weight: 400;
         color: #2A3647;
         font-size: 16px;
     }
 }
 
-.summary-board-progress-flex{
+.summary-board-progress-flex {
     display: flex;
     justify-content: space-between;
 }
 
-.summary-board-progress{
+.summary-board-progress {
     background-color: white;
     box-shadow: 0px 0px 4px 0px #0000001A;
     border-radius: 30px;
@@ -682,31 +650,29 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    h3{
+    h3 {
         font-weight: 600;
         font-size: 64px;
         margin: 0px;
     }
-    span{
+    span {
         color: #2A3647;
         font-size: 21px;
         font-weight: 400;
     }
 }
 
-.summary-welcome{
+.summary-welcome {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
-    h2{
+    h2 {
         font-weight: 500;
         margin: 0px;
         color: #2A3647;
         font-size: 47px;
     }
-
-    h1{
+    h1 {
         margin: 0px;
         color: #29ABE2;
         font-size: 64px;

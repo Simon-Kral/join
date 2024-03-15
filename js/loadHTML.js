@@ -51,7 +51,7 @@ function bordAddTaskFieldHtml() {
                                     <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                                 </a>
                             </div>
-                            <div class="drop-down dnone" id="drop_down_assigned_to"></div>
+                            <div class="drop-down dnone custom-scrollbar" id="drop_down_assigned_to"></div>
                             <div id="selected_contacts"></div>
                         </div>
                     </section>
@@ -281,7 +281,7 @@ function editTaskHtml() {
                                         <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                                     </a>
                                 </div>
-                                <div class="drop-down dnone" id="drop_down_assigned_to"></div>
+                                <div class="drop-down dnone custom-scrollbar" id="drop_down_assigned_to"></div>
                                 <div id="selected_contacts"></div>
                             </div>
                         </section>
