@@ -22,6 +22,8 @@ let allsubtasks = [
 ];
 let selectedcontacts = [];
 
+let currentTask = {};
+
 
 function initAddTask() {
     loadFromLocalStorage();
@@ -104,24 +106,35 @@ function selectContacts(entry, id, selected) {
 
 function handleClickPrio(prio) {
     if (prio) {
-        let input = document.getElementById('prio_' + prio);
-        let label = document.getElementById('prio_' + prio + '_label');
-        if (label.parentElement.querySelector('label.highlighted-button')) {
-            let highlightedlabel = label.parentElement.querySelector('label.highlighted-button');
-            highlightedlabel.classList.remove('highlighted-button');
-        }
-        label.classList.add('highlighted-button');
-        input.value = prio;
+        selectPrio(prio);
     } else {
-        let input = document.getElementById('prio_' + prio);
-        let container = document.getElementById('prio-buttons');
-        console.log(elements)
-        for (let i = 0; i < container.length; i++) {
-            const element = container[i];
-            element.classList.remove('highlighted-button');
-            element.value = '';
-        }
+        clearAllPrioButtons()
     }
+}
+
+
+function selectPrio(prio) {
+    let input = document.getElementById('prio_' + prio);
+    let label = document.getElementById('prio_' + prio + '_label');
+    let container = label.parentElement;
+    if (container.querySelector('label.highlighted-button')) {
+        let highlightedlabel = container.querySelector('label.highlighted-button');
+        highlightedlabel.classList.remove('highlighted-button');
+    }
+    label.classList.add('highlighted-button');
+    input.value = prio;
+}
+
+
+function clearAllPrioButtons() {
+    let inputs = document.getElementsByName('prio');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].checked = false;
+    }
+    let labels = document.querySelectorAll(".highlighted-button");
+    [].forEach.call(labels, function(label) {
+        label.classList.remove("highlighted-button");
+    });
 }
 
 
@@ -143,11 +156,16 @@ function renderSelectedContacts() {
 }
 
 
-function openDropDownMenu(id) {
+function openDropDownMenu(id, focus) {
     let dropdown = document.getElementById(id);
     let arrow = document.getElementById(id + '_arrow');
-    dropdown.classList.toggle('dnone');
-    arrow.style.transform === 'rotate(180deg)' ? arrow.style.transform = 'rotate(0deg)' : arrow.style.transform = 'rotate(180deg)';
+    if (focus === 'in') {
+        dropdown.classList.remove('dnone');
+        arrow.style.transform = 'rotate(180deg)';
+    } else if (focus === 'out') {
+        dropdown.classList.add('dnone');
+        arrow.style.transform = 'rotate(0deg)';
+    }
 }
 
 
@@ -252,18 +270,29 @@ function confirmChangeSubtask(entry, id) {
 }
 
 function clearAddTaskForm() {
-    let inputs = getAllAddTaskFormInputs();
-    let containers = getAllAddTaskContainers();
-    clearInputs(inputs);
-    clearContainers(containers);
+    clearInputs();
+    clearContainers();
     handleClickPrio();
     allsubtasks = [{ idcounter: 0 }];
     selectedcontacts = [];
     renderAssignedTo();
+    currentTask = [];
+    clearErrorStyle()
 }
 
 
-function clearInputs(inputs) {
+function clearErrorStyle() {
+    document.querySelectorAll('input').forEach(function(input) {
+        input.style.borderColor = '#D1D1D1';
+    });
+    document.querySelectorAll('.required-field').forEach(function(requiredfield) {
+        requiredfield.classList.add('dnone');
+    })
+}
+
+
+function clearInputs() {
+    let inputs = getAllAddTaskFormInputs();
     for (let i = 0; i < inputs.length; i++) {
         const input = inputs[i];
         document.getElementById(`${input}`).value = '';
@@ -273,7 +302,8 @@ function clearInputs(inputs) {
 }
 
 
-function clearContainers(containers) {
+function clearContainers() {
+    let containers = getAllAddTaskContainers();
     for (let i = 0; i < containers.length; i++) {
         const container = containers[i];
         document.getElementById(`${container}`).innerHTML = '';
@@ -331,34 +361,66 @@ function saveToLocalStorage() {
 }
 
 
-function addToTasks() {
-    let inputs = getAllAddTaskFormInputs(true);
-    let prios = document.getElementsByName('prio');
-    let task = {};
-    Object.entries(inputs).forEach((entry) => {
-        let [key, value] = entry;
-        let inputvalue = document.getElementById(`${value}`).value;
-        task[`${key}`] = inputvalue;
-    });
-    for (i = 0; i < prios.length; i++) {
-        const prio = prios[i];
-        prio.checked ? task['prio'] = prio.value : '';
-    }
-    task.subtasks = allsubtasks;
-    task.contacts = selectedcontacts;
-    users[loaduser].todo.push(task);
-    task.prio === 'urgent' ? users[loaduser].Urgent.push(task) : '';
-    tasks.push(task);
-    saveToLocalStorage();
+async function addToTasks() {
+    addDataFromInputs();
+    addPrio();
+    currentTask.subtasks = allsubtasks;
+    currentTask.contacts = selectedcontacts;
+    await saveTask();
     clearAddTaskForm();
 }
 
-function addTasksToUsers() {
+
+function addDataFromInputs() {
+    let inputs = getAllAddTaskFormInputs(true);
+    Object.entries(inputs).forEach((entry) => {
+        let [key, value] = entry;
+        let inputvalue = document.getElementById(`${value}`).value;
+        currentTask[`${key}`] = inputvalue;
+    });
+}
+
+
+function addPrio() {
+    let prios = document.getElementsByName('prio');
+    for (i = 0; i < prios.length; i++) {
+        const prio = prios[i];
+        prio.checked ? currentTask['prio'] = prio.value : '';
+    }
+}
+
+
+async function saveTask() {
+    users[loaduser].todo.push(currentTask);
+    currentTask.prio === 'urgent' ? users[loaduser].Urgent.push(currentTask) : '';
+    await setItem('users', JSON.stringify(users));
+    tasks.push(currentTask);
+    saveToLocalStorage();
+}
+
+
+async function addAllTasksToUsers() {
     users[loaduser].todo = [];
     users[loaduser].Urgent = [];
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
-        users[loaduser].todo.push(task);
-        task.prio === 'urgent' ? users[loaduser].Urgent.push(task) : '';
+        users[loaduser].todo.push(currentTask);
+        currentTask.prio === 'urgent' ? users[loaduser].Urgent.push(currentTask) : '';
     }
+    await setItem('users', JSON.stringify(users));
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input').forEach(function(input) {
+        input.addEventListener('invalid', function() {
+            input.style.borderColor = '#FF8190';
+            document.querySelectorAll('.required-field').forEach(function(requiredfield) {
+                requiredfield.classList.remove('dnone');
+            })
+        });
+        input.addEventListener('change', function() {
+            input.style.borderColor = '#D1D1D1';
+            input.parentElement.nextElementSibling.classList.add('dnone');
+        });
+    });
+});

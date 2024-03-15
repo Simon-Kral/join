@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./Style2.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <script src="./js/storage.js"></script>
     <script src="./js/menu.js"></script>
     <script src="./js/register.js"></script>
@@ -44,6 +47,7 @@
                         <input class="styled-input focus-blue" placeholder="Enter a title" required type="text"
                             id="add_task_title_input">
                     </div>
+                    <span class="required-field dnone">This field is required</span>
                     <div id="add_task_description">
                         <h3>Description</h3>
                         <div class="textarea-wrapper">
@@ -55,8 +59,9 @@
                         <h3>Assigned to</h3>
                         <div class="input-with-button-wrapper">
                             <input class="styled-input focus-blue" placeholder="Select contacts to assign" type="text"
-                                id="input_with_button_assigned_to" onfocusin="openDropDownMenu('drop_down_assigned_to')"
-                                onfocusout="openDropDownMenu('drop_down_assigned_to')">
+                                id="input_with_button_assigned_to"
+                                onfocusin="openDropDownMenu('drop_down_assigned_to', 'in')"
+                                onfocusout="openDropDownMenu('drop_down_assigned_to', 'out')">
                             <a onclick="setFocusOnElement('input_with_button_assigned_to')">
                                 <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                             </a>
@@ -78,6 +83,8 @@
                             <input id="input_calendar" class="calendar-input" type="date" value=""
                                 onchange="transferDate()">
                         </div>
+                        <span class="required-field dnone">This field is required</span>
+
                     </div>
                     <div class="add_task_prio">
                         <h3>Prio</h3>
@@ -107,12 +114,13 @@
                         <div class="input-with-button-wrapper">
                             <input class="styled-input focus-blue" placeholder="Select task category" required
                                 type="text" id="input_with_button_category"
-                                onfocusin="openDropDownMenu('drop_down_category')"
-                                onfocusout="openDropDownMenu('drop_down_category')">
+                                onfocusin="openDropDownMenu('drop_down_category', 'in')"
+                                onfocusout="openDropDownMenu('drop_down_category', 'out')">
                             <a onclick="setFocusOnElement('input_with_button_category')">
                                 <img id="drop_down_category_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                             </a>
                         </div>
+                        <span class="required-field dnone">This field is required</span>
                         <div class="drop-down dnone" id="drop_down_category"></div>
                     </div>
                     <div id="add_task_subtask">
@@ -148,7 +156,7 @@
                 <div class="bottom-buttons">
                     <button class="clear-button" onclick="clearAddTaskForm()" type="button">
                         <span>Clear</span>
-                        <img src="./assets/img/cross.svg" alt="create task">
+                        <img src="./assets/img/cross.svg" alt="clear Form">
                     </button>
                     <button class="create-task-button">
                         <span>Create Task</span>
