@@ -1011,3 +1011,39 @@ main.edit-task {
         margin: 0 48px;
     }
 }
+
+#task-added-notification {
+    position: absolute;
+    bottom: 58%;
+    left: 30%;
+    width: 326px;
+    height: 74px;
+    color: white;
+    background-color: #2a3647;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 420;
+    display: none;
+    span {
+        margin-left: 30px;
+    }
+    img {
+        margin-right: 30px;
+    }
+}
+
+.notification-display {
+    display: flex !important;
+    animation: notification-display 0.9s;
+}
+
+@keyframes notification-display {
+    from {
+        bottom: 0%;
+    }
+    to {
+        bottom: 58%;
+    }
+}

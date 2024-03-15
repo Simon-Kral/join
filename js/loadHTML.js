@@ -150,6 +150,10 @@ function bordAddTaskFieldHtml() {
                     </div>
                 </section>
             </form>
+            <div id="task-added-notification">
+                <span>Task added to board</span>
+                <img src="./assets/img/task_added.svg" alt="task added">
+            </div>
         </main>
     </div>
     `;
