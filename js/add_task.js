@@ -363,12 +363,12 @@ function saveToLocalStorage() {
 
 
 async function addToTasks() {
-    // addDataFromInputs();
-    // addPrio();
-    // currentTask.subtasks = allsubtasks;
-    // currentTask.contacts = selectedcontacts;
-    // await saveTask();
-    // clearAddTaskForm();
+    addDataFromInputs();
+    addPrio();
+    currentTask.subtasks = allsubtasks;
+    currentTask.contacts = selectedcontacts;
+    await saveTask();
+    clearAddTaskForm();
     document.getElementById('task-added-notification').classList.add('notification-display')
     await delay(1000);
     window.location.assign("./board.html");
