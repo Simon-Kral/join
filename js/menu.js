@@ -1,36 +1,70 @@
 async function loadmenu() {
-    if (localStorage.getItem("userI") === null) { }
-    else {
-        if (localStorage.getItem('userI').length > 0) {
+    if (sessionStorage.getItem("Guest") === null) {
+        if (localStorage.getItem("userI") === null) {
+            if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() }
+        }
+        else {
             loadmenuLocalStorage()
         }
-    }
-    if (sessionStorage.getItem("userI") === null) { }
-    else {
-        if (sessionStorage.getItem('userI').length > 0) {
+
+        if (sessionStorage.getItem("userI") === null) {
+            if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() }
+        }
+        else {
             loadmenuSessionStorage()
         }
+    }
+    else {
+        guestLoginMenu()
+    }
+}
+
+async function guestLoginMenu() {
+    loaduser = sessionStorage.getItem('userI')
+    users = [{
+        name: 'Guest',
+        email: '',
+        password: '',
+        todo: [],
+        done: [],
+        Urgent: [],
+        tasksinboard: [],
+        tasksinprogress: [],
+        awaitingfeedback: [],
+        deadline: []
+    }]
+    console.log(users[loaduser].name)
+    menuLoginName()
+}
+
+function menuLoginName(){
+    let menuuser = document.getElementById('menu_user');
+    let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
+    menuuser.innerHTML = username;
+}
+
+function moveToStartIfLocalEmpty() {
+    if (localStorage.getItem("userI") === null) {
+        window.location.assign("http://127.0.0.1:5500/index.html");
+    }
+}
+
+function moveToStartIfSessionEmpty() {
+    if (sessionStorage.getItem("userI") === null) {
+        window.location.assign("http://127.0.0.1:5500/index.html");
     }
 }
 
 async function loadmenuLocalStorage() {
-    if (localStorage.getItem('userI').length > 0) {
         users = await getItem('users')
         loaduser = localStorage.getItem('userI')
-        let menuuser = document.getElementById('menu_user');
-        let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
-        menuuser.innerHTML = username
-    }
+        menuLoginName()
 }
 
 async function loadmenuSessionStorage() {
-    if (sessionStorage.getItem('userI').length > 0) {
         users = await getItem('users')
         loaduser = sessionStorage.getItem('userI')
-        let menuuser = document.getElementById('menu_user');
-        let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
-        menuuser.innerHTML = username
-    }
+        menuLoginName()
 }
 
 function openMenu() {
@@ -64,6 +98,7 @@ function menuInnerHTML() {
 
 function logOut() {
     loaduser = []
-    localStorage.setItem('userI', loaduser)
-    sessionStorage.setItem('userI', loaduser)
+    localStorage.removeItem('userI')
+    sessionStorage.removeItem('userI')
+    sessionStorage.removeItem('Guest')
 }

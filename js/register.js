@@ -9,6 +9,8 @@ async function loadstorageitems() {
     }
 }
     loadUsers();
+    sessionStorage.removeItem('userI')
+    sessionStorage.removeItem('Guest')
 }
 
 async function loadUsers() {
@@ -76,6 +78,7 @@ function LoginLocalstorage(findusers){
         register_pw_login_value.setCustomValidity("Wrong Password or Email");
         register_pw_login_value.reportValidity();
     }
+    setTimeout(function () { register_pw_login_value.setCustomValidity('') }, 1400)
 }
 
 function Loginsessionstorage(findusers){
@@ -91,12 +94,14 @@ if (findusers) {
             register_pw_login_value.setCustomValidity("Wrong Password or Email");
             register_pw_login_value.reportValidity();
         }
+        setTimeout(function () { register_pw_login_value.setCustomValidity('') }, 1400)
 }
 
 
 function registerGuestLogin() {
-    loaduser.splice(loadUsers)
-    localStorage.setItem('userI', loaduser)
+    loaduser = 0
+    sessionStorage.setItem('userI', loaduser)
+    sessionStorage.setItem('Guest', 'GuestOn')
 }
 
 function resetForm() {

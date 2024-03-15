@@ -1,16 +1,40 @@
 async function loadSummary() {
-    if (localStorage.getItem("userI") === null) { }
-    else {
-        if (localStorage.getItem('userI').length > 0) {
-            loadSummaryStorage()
+    if (sessionStorage.getItem("Guest") === null) {
+        if (localStorage.getItem("userI") === null) { }
+        else {
+            if (localStorage.getItem('userI').length > 0) {
+                loadSummaryStorage()
+            }
+        }
+        if (sessionStorage.getItem("userI") === null) { }
+        else {
+            if (sessionStorage.getItem('userI').length > 0) {
+                loadSummarySessionStorage()
+            }
         }
     }
-    if (sessionStorage.getItem("userI") === null) { }
     else {
-        if (sessionStorage.getItem('userI').length > 0) {
-            loadSummarySessionStorage()
-        }
+        guestLogin()
     }
+}
+
+function guestLogin() {
+    loaduser = sessionStorage.getItem('userI')
+        summary_good_morning.innerHTML = 'Good morning';
+        users = [{
+            name: '',
+            email: '',
+            password: '',
+            todo: [],
+            done: [],
+            Urgent: [],
+            tasksinboard: [],
+            tasksinprogress: [],
+            awaitingfeedback: [],
+            deadline: []
+        }]
+        loadSummaryProject()
+        sommary_name.innerHTML = '';
 }
 
 async function loadSummaryStorage() {
@@ -41,11 +65,11 @@ async function loadSummaryProject() {
     loadSummaryInnerhtml(todo, done, urgent, deadline, board, inprogress, awaitfeedback, name)
 }
 
-async function loadSummaryInnerhtml(todo, done, urgent, deadline, board, inprogress, awaitfeedback, name){
+async function loadSummaryInnerhtml(todo, done, urgent, deadline, board, inprogress, awaitfeedback, name) {
     todo.innerHTML = users[loaduser].todo.length
     done.innerHTML = users[loaduser].done.length
     urgent.innerHTML = users[loaduser].Urgent.length
-    
+
     board.innerHTML = users[loaduser].tasksinboard.length
     inprogress.innerHTML = users[loaduser].tasksinprogress.length
     awaitfeedback.innerHTML = users[loaduser].awaitingfeedback.length
