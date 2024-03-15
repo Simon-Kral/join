@@ -13,8 +13,36 @@ function boardinit() {
     showEmptyHtmlDone();
 }
 
-function noCloseContent(event) {
-    event.stopPropagation();
+function showEmptyHtmlTodo() {
+    if (todoforce == 0) {
+        const empty = emptyTaskFieldTodo();
+        let getplacetodo = document.getElementById('to_do_place');
+        getplacetodo.innerHTML = empty;
+    }
+}
+
+function showEmptyHtmlInprogress() {
+    if (todoforce == 0) {
+        const empty = emptyTaskFieldInprogress();
+        let getplacetodo = document.getElementById('in_progress_place');
+        getplacetodo.innerHTML = empty;
+    }
+}
+
+function showEmptyHtmlAwaitfeedback() {
+    if (todoforce == 0) {
+        const empty = emptyTaskFieldAwaitfeedback();
+        let getplacetodo = document.getElementById('await_feedback_place');
+        getplacetodo.innerHTML = empty;
+    }
+}
+
+function showEmptyHtmlDone() {
+    if (todoforce == 0) {
+        const empty = emptyTaskFieldDone();
+        let getemptyplacedone = document.getElementById('done_place');
+        getemptyplacedone.innerHTML = empty;
+    }
 }
 
 function closeCard() {
@@ -29,18 +57,36 @@ function bordAddNewTask() {
     initAddTask();
 }
 
+function todoNewTask() {
+    const todocard = bordAddTaskFieldHtml();
+    let getplacecard = document.getElementById('add_bordtask_data');
+    document.getElementById('fullscreen_information').classList.remove('d-none');
+    getplacecard.innerHTML = todocard;
+    initAddTask();
+}
+
+function inprogressNewTask() {
+    const inprogresscard = bordAddTaskFieldHtml();
+    let getplacecard = document.getElementById('add_bordtask_data');
+    document.getElementById('fullscreen_information').classList.remove('d-none');
+    getplacecard.innerHTML = inprogresscard;
+    initAddTask();
+}
+
+function awaitfeedbackNewTask() {
+    const awaitfeedbackcard = bordAddTaskFieldHtml();
+    let getplacecard = document.getElementById('add_bordtask_data');
+    document.getElementById('fullscreen_information').classList.remove('d-none');
+    getplacecard.innerHTML = awaitfeedbackcard;
+    initAddTask();
+}
+
 function openBordTask() {
     const showfulltask = fullTaskHtml();
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
     getplacecard.innerHTML = showfulltask;
     showTaskVariantBig();
-}
-
-function showEmptyHtmlTodo() {
-    const empty = emptyTaskFieldTodo();
-    let getplacetodo = document.getElementById('to_do_place');
-    getplacetodo.innerHTML = empty;
 }
 
 function showTodoHtml() {
@@ -60,12 +106,6 @@ function showInProgressHtml() {
     // updateProgressBar();
 }
 
-function showEmptyHtmlInprogress() {
-    const empty = emptyTaskFieldInprogress();
-    let getplacetodo = document.getElementById('in_progress_place');
-    getplacetodo.innerHTML = empty;
-}
-
 function showAwaitFeedbackHtml() {
     const todotask = awaitfeedbackTaskHtml();
     let getplaceawaitfeedback = document.getElementById('await_feedback_place');
@@ -74,24 +114,12 @@ function showAwaitFeedbackHtml() {
     // updateProgressBar();
 }
 
-function showEmptyHtmlAwaitfeedback() {
-    const empty = emptyTaskFieldAwaitfeedback();
-    let getplacetodo = document.getElementById('await_feedback_place');
-    getplacetodo.innerHTML = empty;
-}
-
 function showDoneHtml() {
     const todotask = doneTaskHtml();
     let getplacedone = document.getElementById('done_place');
     getplacedone.innerHTML += todotask;
     // showTaskVariant();
     // updateProgressBar();
-}
-
-function showEmptyHtmlDone() {
-    const empty = emptyTaskFieldDone();
-    let getemptyplacedone = document.getElementById('done_place');
-    getemptyplacedone.innerHTML = empty;
 }
 
 function showTaskVariantSmall() {
@@ -116,7 +144,6 @@ function editSingleTask() {
     initAddTask();
 }
 
-
 function updateProgressBar() {
     let percent = (currenttask) / todoforce.length;
     percent = Math.round(percent * 100);
@@ -136,4 +163,8 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+}
+
+function noCloseContent(event) {
+    event.stopPropagation();
 }

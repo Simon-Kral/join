@@ -243,7 +243,8 @@ function fullTaskHtml() {
                         <img class="edit" src="./assets/img/edit.png">
                         <span>Edit</span>
                     </div>
-                </div>    
+                </div>
+            </div>
     `;
 }
 

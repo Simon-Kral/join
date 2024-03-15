@@ -46,37 +46,28 @@
     <section class="board-head-task">
         <div class="single-task-head">
             <p>To do</p>
-            <button onclick="showTodoHtml()" class="style-task-button">+</button>
+            <button onclick="showTodoHtml(), todoNewTask()" class="style-task-button">+</button>
         </div>
         <div class="single-task-head">
             <p>In progress</p>
-            <button onclick="showInProgressHtml()" class="style-task-button">+</button>
+            <button onclick="showInProgressHtml(), inprogressNewTask()" class="style-task-button">+</button>
         </div>
         <div class="single-task-head">
             <p>Await feedback</p>
-            <button onclick="showAwaitFeedbackHtml()" class="style-task-button">+</button>
+            <button onclick="showAwaitFeedbackHtml(), awaitfeedbackNewTask()" class="style-task-button">+</button>
         </div>
         <div class="single-task-head">
             <p>Done</p>
-            <button onclick="showDoneHtml()" class="style-task-button">+</button>
         </div>
     </section>
     <section class="board-body-task">
         <div class="single-task" id="to_do_place" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <!-- <div class="empty-task-place">No tasks To Do</div> -->
-            <!-- <div class="basti-test" id="test_todo_task"></div> -->
         </div>
         <div class="single-task" id="in_progress_place" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <!-- <div class="empty-task-place">No tasks In progress</div> -->
-            <!-- <div class="basti-test" id="test_inprogress_task"></div> -->
         </div>
         <div class="single-task" id="await_feedback_place" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <!-- <div class="empty-task-place">No tasks Await feedback</div> -->
-            <!-- <div class="basti-test" id="test_awaitfeedback_task"></div> -->
         </div>
         <div class="single-task" id="done_place" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <!-- <div class="empty-task-place">No tasks Done</div> -->
-            <!-- <div class="basti-test" id="test_done_task"></div> -->
         </div>
     </section>
     <section onclick="closeCard()" id="fullscreen_information" class="d-none">
