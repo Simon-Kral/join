@@ -33,7 +33,7 @@ function initAddTask() {
 }
 
 
-function renderAssignedTo() {
+function renderAssignedTo(searchterm) {
     let dropdown = document.getElementById('drop_down_assigned_to');
     dropdown.innerHTML = '';
     for (let i = 1; i < allcontacts.length; i++) {
@@ -42,19 +42,33 @@ function renderAssignedTo() {
         const fullname = contact.firstname + ' ' + contact.lastname;
         const color = contact.color;
         const id = contact.id;
-        dropdown.innerHTML += generateContactHtml(abbreviation, fullname, color, id);
+        if (!searchterm || fullname.toLowerCase().includes(searchterm)) {
+            dropdown.innerHTML += generateContactHtml(abbreviation, fullname, color, id);
+        }
     }
 }
 
 
-function renderCategory() {
+function setFilter(input) {
+    let searchterm = input.value.toLowerCase();
+    if (input.id.includes('assigned_to')) {
+        renderAssignedTo(searchterm);
+    } else if (input.id.includes('category')) {
+        renderCategory(searchterm);
+    }
+}
+
+
+function renderCategory(searchterm) {
     let dropdown = document.getElementById('drop_down_category');
     dropdown.innerHTML = '';
     for (let i = 1; i < allcategories.length; i++) {
         const category = allcategories[i];
         const name = category.name;
         const id = category.id;
-        dropdown.innerHTML += generateCategoryHtml(name, id);
+        if (!searchterm || name.toLowerCase().includes(searchterm)) {
+            dropdown.innerHTML += generateCategoryHtml(name, id);
+        }
     }
 }
 
