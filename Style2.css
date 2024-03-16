@@ -532,16 +532,22 @@
 
 .summary-tasks {
     margin-right: 80px;
-    height: 560px;
+    max-height: 560px;
     width: 560px;
+    a{
+        color: black;
+    }
 }
 
 .summary-todo-done-flex {
     display: flex;
     justify-content: space-between;
+    height: 196px;
+    max-height: 196px;
 }
 
 .summary-todo-done {
+    transition: 0.05s;
     width: 265px;
     height: 168px;
     background-color: white;
@@ -555,6 +561,25 @@
         width: 69px;
         margin-right: 18px;
     }
+}
+
+.summary-todo-done:hover{
+    margin-bottom: -2px;
+    width: 282px;
+    height: 184px;
+    transition: 0.05s;
+    background-color: #2A3647;
+    color: white;
+    .summary-img-hover{
+        display: block;
+    }
+    .summary-img{
+        display: none;
+    }
+}
+
+.summary-img-hover{
+    display: none;
 }
 
 .summary-todo-done-numbers {
@@ -572,16 +597,29 @@
 }
 
 .summary-urgent-flex {
+    transition: 0.1s;
     background-color: white;
     box-shadow: 0px 0px 4px 0px #0000001A;
     width: 560px;
     height: 168px;
     border-radius: 30px;
-    margin-top: 28px;
-    margin-bottom: 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.summary-urgent-flex:hover{
+    margin-bottom: -16px;
+    height: 184px;
+    transition: 0.1s;
+    background-color: #2A3647;
+    color: white;
+    h3{
+        color: white;
+    }
+    span{
+        color: white;
+    }
 }
 
 .summary-urgent {
@@ -637,9 +675,11 @@
 .summary-board-progress-flex {
     display: flex;
     justify-content: space-between;
+    margin-top: 28px;
 }
 
 .summary-board-progress {
+    transition: 0.1s;
     background-color: white;
     box-shadow: 0px 0px 4px 0px #0000001A;
     border-radius: 30px;
@@ -659,6 +699,44 @@
         color: #2A3647;
         font-size: 21px;
         font-weight: 400;
+    }
+}
+
+.summary-board-progressl:hover{
+    height: 184px;
+    width: 184px;
+    transition: 0.1s;
+    background-color: #2A3647;
+    color: white;
+    margin-right: -16px;
+    margin-top: -16px;
+    span{
+        color: white;
+    }
+}
+
+.summary-board-progress:hover{
+    height: 184px;
+    width: 184px;
+    transition: 0.1s;
+    margin-top: -16px;
+    background-color: #2A3647;
+    color: white;
+    span{
+        color: white;
+    }
+}
+
+.summary-board-progressr:hover{
+    height: 184px;
+    width: 184px;
+    transition: 0.1s;
+    background-color: #2A3647;
+    color: white;
+    margin-left: -16px;
+    margin-top: -16px;
+    span{
+        color: white;
     }
 }
 
