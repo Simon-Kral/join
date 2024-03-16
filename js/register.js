@@ -11,6 +11,7 @@ async function loadstorageitems() {
     loadUsers();
     sessionStorage.removeItem('userI')
     sessionStorage.removeItem('Guest')
+    sessionStorage.removeItem('handyWelcomePlayed')
 }
 
 async function loadUsers() {

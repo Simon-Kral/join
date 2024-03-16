@@ -88,4 +88,5 @@ function logOut() {
     localStorage.removeItem('userI')
     sessionStorage.removeItem('userI')
     sessionStorage.removeItem('Guest')
+    sessionStorage.removeItem('handyWelcomePlayed')
 }

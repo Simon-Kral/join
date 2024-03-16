@@ -20,7 +20,7 @@ async function loadSummary() {
 
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
-    summary_good_morning.innerHTML = 'Good morning';
+    summary_good_morning.innerHTML = 'Good morning!';
     users = JSON.parse(sessionStorage.getItem('Guest'))
     loadSummaryProject()
     sommary_name.innerHTML = '';
@@ -86,3 +86,17 @@ function formatOutputDate(date) {
     let options = { month: 'long', day: 'numeric', year: 'numeric' };
     return date.toLocaleDateString('en-US', options);
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    let alreadyPlayed = sessionStorage.getItem("handyWelcomePlayed");
+    let summaryWelcome = document.querySelector('.summary-welcome');
+
+    if (!alreadyPlayed) {
+        summaryWelcome.classList.add('animateOnce');
+        summaryWelcome.addEventListener('animationend', function() {
+            sessionStorage.setItem("handyWelcomePlayed", true);
+        }, { once: true });
+    } else {
+        summaryWelcome.style.display = 'none';
+    }
+});

@@ -16,6 +16,10 @@
     align-items: center;
 }
 
+.menu-joinlogo-handy {
+    display: none;
+}
+
 .menu-user {
     display: flex;
     align-items: center;
@@ -130,15 +134,18 @@
     align-items: center;
     right: 120px;
     top: 60px;
+
     p {
         margin-right: 40px;
     }
+
     span {
         padding: 12px;
         color: white;
         background-color: rgb(42, 54, 71);
         border-radius: 8px;
     }
+
     span:hover {
         transition: 0.1s;
         background-color: rgb(41, 171, 226);
@@ -207,11 +214,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
     h1 {
         font-size: 62px;
         margin-top: 48px;
         margin-bottom: 0px;
     }
+
     input {
         height: 48px;
         width: 340px;
@@ -230,6 +239,7 @@
     border-radius: 12px;
     display: flex;
     align-items: center;
+
     img {
         width: 20px;
         margin-right: 20px;
@@ -241,6 +251,7 @@
     margin-right: 250px;
     margin-top: 24px;
     margin-bottom: 24px;
+
     input {
         height: 16px !important;
         width: 16px !important;
@@ -252,6 +263,7 @@
     width: 50%;
     display: flex;
     justify-content: space-between;
+
     a {
         color: rgb(42, 54, 71);
         font-weight: bold;
@@ -263,6 +275,7 @@
         border: solid 1px;
         height: 24px;
     }
+
     a:hover {
         transition: 0.1s;
         color: #29ABE2;
@@ -304,11 +317,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
     h1 {
         font-size: 62px;
         margin-top: 48px;
         margin-bottom: 0px;
     }
+
     input {
         height: 48px;
         width: 340px;
@@ -325,9 +340,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     img {
         padding: 4px;
     }
+
     img:hover {
         background-color: #CDCDCD;
         border-radius: 50px;
@@ -340,9 +357,11 @@
 .register-sign-up-checkbox {
     margin-top: 24px;
     margin-bottom: 24px;
+
     a {
         color: #29ABE2;
     }
+
     input {
         height: 16px !important;
         width: 16px !important;
@@ -372,11 +391,13 @@
     left: 50%;
     transform: translate(-50%);
     bottom: 3%;
+
     a {
         color: rgb(168, 168, 168);
         margin-right: 16px;
         padding: 8px;
     }
+
     a:hover {
         color: #29ABE2;
         font-weight: bold;
@@ -390,6 +411,7 @@
     width: 100%;
     height: 100vh;
     animation: singed-Up-Succes-2 1s;
+
     span {
         position: absolute;
         bottom: 50%;
@@ -410,6 +432,7 @@
     from {
         bottom: 0%;
     }
+
     to {
         bottom: 50%;
     }
@@ -419,6 +442,7 @@
     from {
         background-color: rgba(0, 0, 0, 0.0);
     }
+
     to {
         background-color: rgba(0, 0, 0, 0.5);
     }
@@ -445,6 +469,7 @@
     animation: open-menu-animation 0.5s;
     right: 30px;
     top: 102px;
+
     a {
         animation: open-menu-animation-a 0.1s;
         width: 130px;
@@ -482,6 +507,7 @@
     from {
         height: 0px;
     }
+
     to {
         height: 155px;
     }
@@ -491,6 +517,7 @@
     from {
         display: none;
     }
+
     to {
         display: none;
     }
@@ -506,9 +533,11 @@
     height: 73px;
     display: flex;
     align-items: center;
+
     h1 {
         font-size: 61px;
     }
+
     p {
         font-size: 27px;
         color: #2A3647;
@@ -525,6 +554,10 @@
     margin-right: 30px;
 }
 
+.summary-spacer-handy {
+    display: none;
+}
+
 .summary-tasks-flex {
     margin-top: 56px;
     display: flex;
@@ -534,7 +567,8 @@
     margin-right: 80px;
     max-height: 560px;
     width: 560px;
-    a{
+
+    a {
         color: black;
     }
 }
@@ -556,6 +590,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     img {
         height: 69px;
         width: 69px;
@@ -563,22 +598,24 @@
     }
 }
 
-.summary-todo-done:hover{
+.summary-todo-done:hover {
     margin-bottom: -2px;
     width: 282px;
     height: 184px;
     transition: 0.05s;
     background-color: #2A3647;
     color: white;
-    .summary-img-hover{
+
+    .summary-img-hover {
         display: block;
     }
-    .summary-img{
+
+    .summary-img {
         display: none;
     }
 }
 
-.summary-img-hover{
+.summary-img-hover {
     display: none;
 }
 
@@ -586,11 +623,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     h3 {
         font-weight: 600;
         font-size: 64px;
         margin: 0px;
     }
+
     span {
         font-size: 20px;
     }
@@ -608,16 +647,18 @@
     justify-content: space-between;
 }
 
-.summary-urgent-flex:hover{
+.summary-urgent-flex:hover {
     margin-bottom: -16px;
     height: 184px;
     transition: 0.1s;
     background-color: #2A3647;
     color: white;
-    h3{
+
+    h3 {
         color: white;
     }
-    span{
+
+    span {
         color: white;
     }
 }
@@ -627,6 +668,7 @@
     display: flex;
     align-items: center;
     margin-left: 65px;
+
     img {
         height: 60px;
         width: 60px;
@@ -638,11 +680,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     h3 {
         font-weight: 600;
         font-size: 64px;
         margin: 0px;
     }
+
     span {
         font-size: 20px;
     }
@@ -658,6 +702,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 65px;
+
     h3 {
         font-size: 21px;
         font-weight: 700px;
@@ -665,6 +710,7 @@
         margin: 0px;
         margin-bottom: 13px;
     }
+
     span {
         font-weight: 400;
         color: #2A3647;
@@ -690,11 +736,13 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
+
     h3 {
         font-weight: 600;
         font-size: 64px;
         margin: 0px;
     }
+
     span {
         color: #2A3647;
         font-size: 21px;
@@ -702,7 +750,7 @@
     }
 }
 
-.summary-board-progressl:hover{
+.summary-board-progressl:hover {
     height: 184px;
     width: 184px;
     transition: 0.1s;
@@ -710,24 +758,26 @@
     color: white;
     margin-right: -16px;
     margin-top: -16px;
-    span{
+
+    span {
         color: white;
     }
 }
 
-.summary-board-progress:hover{
+.summary-board-progress:hover {
     height: 184px;
     width: 184px;
     transition: 0.1s;
     margin-top: -16px;
     background-color: #2A3647;
     color: white;
-    span{
+
+    span {
         color: white;
     }
 }
 
-.summary-board-progressr:hover{
+.summary-board-progressr:hover {
     height: 184px;
     width: 184px;
     transition: 0.1s;
@@ -735,7 +785,8 @@
     color: white;
     margin-left: -16px;
     margin-top: -16px;
-    span{
+
+    span {
         color: white;
     }
 }
@@ -744,15 +795,443 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+
     h2 {
         font-weight: 500;
         margin: 0px;
         color: #2A3647;
         font-size: 47px;
     }
+
     h1 {
         margin: 0px;
         color: #29ABE2;
         font-size: 64px;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .sec-menu {
+        padding-left: 0px;
+        padding-right: 0px;
+
+        span {
+            display: none;
+        }
+
+        img {
+            height: 80px;
+        }
+    }
+
+    .sec-menu-flex {
+        margin-top: 80%;
+        margin-bottom: 2000%;
+
+        img {
+            height: 24px;
+            width: 24px;
+            margin: 0px;
+        }
+    }
+
+    .sec-menu-board {
+        padding: 12px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .sec-menu-flex-police {
+        display: none;
+    }
+
+    .summary-margin {
+        margin-top: 128px;
+        margin-left: 168px;
+    }
+
+    .summary-welcome {
+        h2 {
+            font-size: 32px;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+    }
+
+    .summary-tasks {
+        margin-right: 30px;
+    }
+}
+
+@media only screen and (max-width: 1030px) {
+    .menu-joinlogo {
+        display: none;
+    }
+
+    .menu-joinlogo-handy {
+        display: block;
+    }
+
+    .sec-menu {
+        position: fixed;
+        background-color: rgb(42, 54, 71);
+        display: flex;
+        padding: 0px;
+        top: inherit;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        height: 80px;
+        z-index: 999;
+    }
+
+    .sec-menu-flex {
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sec-menu-board {
+        margin: 0px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+        font-size: 14px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .summary-margin {
+        margin-left: 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu {
+        img {
+            width: 64px;
+            margin-left: 40px;
+        }
+
+        span {
+            margin-left: 0px;
+        }
+
+        .menu-help-img img {
+            width: 20px;
+        }
+    }
+
+    .menu-help-img img{
+        margin-left: 2px;
+    }
+
+    .menu-help-img img:hover{
+        margin-left: 0px;
+        width: 22px;
+        height: 22px;
+    }
+
+    .summary-welcome {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background-color: white;
+        animation: handy-welcome 0s forwards;
+        animation-delay: 0s;
+        animation-iteration-count: 1
+    }
+
+    @keyframes handy-welcome {
+        to {
+            opacity: 0;
+            display: none;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+    .summary-margin {
+        margin-left: 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: normal;
+    }
+
+    .summary-join-360 {
+        margin-left: 10%;
+        flex-direction: column;
+        align-items: normal;
+        height: 104px;
+        width: 250px;
+
+        h1 {
+            margin: 0px;
+            font-size: 47px;
+        }
+
+        p {
+            margin: 0px;
+            font-size: 20px;
+        }
+    }
+
+    .summary-spacer {
+        display: none;
+    }
+
+    .summary-spacer-handy {
+        display: block;
+        width: 90px;
+        border: 2px solid;
+        border-color: #29ABE2;
+        border-radius: 4px;
+        margin-top: 16px;
+    }
+
+    .summary-tasks-flex {
+        margin-left: 10%;
+        margin-top: 40px;
+        width: 396px;
+        height: 384px;
+
+    }
+
+    .summary-tasks {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+    }
+
+    .summary-todo-done {
+        width: 186px;
+        height: 110px;
+        border-radius: 20px;
+
+        img {
+            width: 40px;
+            height: 40px;
+
+        }
+
+        h3 {
+            font-size: 47px;
+        }
+
+        span {
+            font-size: 14px;
+        }
+    }
+
+    .summary-todo-done:hover {
+        width: 192px;
+        height: 112px;
+    }
+
+    .summary-todo-done-flex {
+        height: 120px;
+        max-height: 120px;
+    }
+
+    .summary-urgent-flex {
+        width: 396px;
+        height: 110px;
+        border-radius: 20px;
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .summary-urgent {
+        margin-left: 56px;
+
+        h3 {
+            font-size: 47px;
+        }
+
+        span {
+            font-size: 14px;
+        }
+
+    }
+
+    .summary-urgent-flex:hover {
+        margin-bottom: -5px;
+        height: 115px;
+        transition: 0.1s;
+        background-color: #2A3647;
+        color: white;
+
+    }
+
+    .summary-urgent-spacer {
+        height: 68px;
+    }
+
+    .summary-upcoming-deadline {
+        h3 {
+            font-size: 16px;
+        }
+
+        span {
+            font-size: 14px;
+        }
+    }
+
+    .summary-board-progress {
+        height: 116px;
+        width: 116px;
+
+        h3 {
+            font-size: 47px;
+        }
+
+        span {
+            font-size: 14px;
+        }
+    }
+
+    .summary-board-progressl:hover {
+        height: 120px;
+        width: 120px;
+        margin-right: -4px;
+        margin-top: -2px;
+    }
+    
+    .summary-board-progress:hover {
+        height: 120px;
+        width: 120px;
+        margin-top: -2px;
+    }
+    
+    .summary-board-progressr:hover {
+        height: 120px;
+        width: 120px;
+        margin-left: -4px;
+        margin-top: -2px;
+    }
+    .menu{
+        span{
+            display: none;
+        }  
+    }
+    .menu-joinlogo-handy{
+        width: 40px !important;
+    }
+    .menu-user{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .summary-join-360 {
+        margin-left: 2%;
+    }
+
+    .summary-tasks-flex {
+        margin-left: 2%;
+        margin-top: 40px;
+        width: 310px;
+        height: 384px;
+
+    }
+
+    .summary-margin{
+        margin-top: 100px;
+    }
+
+    .summary-todo-done {
+        width: 145px;
+
+        h3 {
+            font-size: 42px;
+        }
+    }
+
+    .summary-todo-done:hover {
+        width: 150px;
+    }
+
+    .summary-urgent-flex {
+        width: 310px;
+        height: 110px;
+        border-radius: 20px;
+
+        img{
+            margin-right: 10px;
+        }
+    }
+
+    .summary-urgent {
+        margin-left: 24px;
+
+        h3 {
+            font-size: 42px;
+        }
+
+        span {
+            font-size: 14px;
+        }
+
+    }
+
+    .summary-upcoming-deadline {
+        margin-right: 24px;
+        h3 {
+            margin: 0px
+        }
+    }
+
+    .summary-board-progress {
+        height: 95px;
+        width: 95px;
+
+        h3 {
+            font-size: 42px;
+        }
+
+        span {
+            font-size: 14px;
+        }
+    }
+
+    .summary-board-progressl:hover {
+        height: 97px;
+        width: 97px;
+        margin-right: -2px;
+        margin-top: -2px;
+    }
+    
+    .summary-board-progress:hover {
+        height: 97px;
+        width: 97px;
+        margin-top: -2px;
+    }
+    
+    .summary-board-progressr:hover {
+        height: 97px;
+        width: 97px;
+        margin-left: -2px;
+        margin-top: -2px;
     }
 }
