@@ -21,16 +21,7 @@ async function loadmenu() {
 
 async function guestLoginMenu() {
     loaduser = sessionStorage.getItem('userI')
-    users = [{
-        name: 'Guest',
-        email: '',
-        password: '',
-        todo: [],
-        done: [],
-        Urgent: [],
-        tasksinprogress: [],
-        awaitingfeedback: [],
-    }]
+    users = JSON.parse(sessionStorage.getItem('Guest'))
 }
 
 function menuLoginName() {

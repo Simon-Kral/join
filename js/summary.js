@@ -21,16 +21,7 @@ async function loadSummary() {
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
     summary_good_morning.innerHTML = 'Good morning';
-    users = [{
-        name: '',
-        email: '',
-        password: '',
-        todo: [],
-        done: [],
-        Urgent: [],
-        tasksinprogress: [],
-        awaitingfeedback: [],
-    }]
+    users = JSON.parse(sessionStorage.getItem('Guest'))
     loadSummaryProject()
     sommary_name.innerHTML = '';
 }

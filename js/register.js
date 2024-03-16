@@ -3,11 +3,11 @@ let loaduser = []
 
 async function loadstorageitems() {
     if (localStorage.getItem("userI") === null) { }
-    else{
-    if (localStorage.getItem('userI').length > 0) {
-        window.location.assign("http://127.0.0.1:5500/summary.html");
+    else {
+        if (localStorage.getItem('userI').length > 0) {
+            window.location.assign("http://127.0.0.1:5500/summary.html");
+        }
     }
-}
     loadUsers();
     sessionStorage.removeItem('userI')
     sessionStorage.removeItem('Guest')
@@ -57,13 +57,13 @@ function login() {
 
     if (login_checkbox.checked == true) {
         LoginLocalstorage(findusers)
-    } 
+    }
     else {
         Loginsessionstorage(findusers)
     }
 }
 
-function LoginLocalstorage(findusers){
+function LoginLocalstorage(findusers) {
     if (findusers) {
         let userI = users.findIndex(u => u.email == register_login_value.value && u.password == register_pw_login_value.value);
 
@@ -79,27 +79,49 @@ function LoginLocalstorage(findusers){
     setTimeout(function () { register_pw_login_value.setCustomValidity('') }, 1400)
 }
 
-function Loginsessionstorage(findusers){
-if (findusers) {
-            let userI = users.findIndex(u => u.email == register_login_value.value && u.password == register_pw_login_value.value);
-    
-            loaduser.push(userI);
-            sessionStorage.setItem('userI', loaduser)
-            window.location.assign("http://127.0.0.1:5500/summary.html");
-            loginValueEmpty();
-        }
-        else {
-            register_pw_login_value.setCustomValidity("Wrong Password or Email");
-            register_pw_login_value.reportValidity();
-        }
-        setTimeout(function () { register_pw_login_value.setCustomValidity('') }, 1400)
+function Loginsessionstorage(findusers) {
+    if (findusers) {
+        let userI = users.findIndex(u => u.email == register_login_value.value && u.password == register_pw_login_value.value);
+
+        loaduser.push(userI);
+        sessionStorage.setItem('userI', loaduser)
+        window.location.assign("http://127.0.0.1:5500/summary.html");
+        loginValueEmpty();
+    }
+    else {
+        register_pw_login_value.setCustomValidity("Wrong Password or Email");
+        register_pw_login_value.reportValidity();
+    }
+    setTimeout(function () { register_pw_login_value.setCustomValidity('') }, 1400)
 }
 
 
 function registerGuestLogin() {
     loaduser = 0
+    users = [{
+        name: '',
+        email: '',
+        password: '',
+        todo: [{
+            "title": "w",
+            "description": "",
+            "date": "14/03/2024",
+            "category": "Technical Task",
+            "prio": "urgent",
+            "subtasks": [
+                {
+                    "idcounter": 0
+                }
+            ],
+            "contacts": []
+        }],
+        done: [],
+        Urgent: [],
+        tasksinprogress: [],
+        awaitingfeedback: [],
+    }]
     sessionStorage.setItem('userI', loaduser)
-    sessionStorage.setItem('Guest', 'GuestOn')
+    sessionStorage.setItem('Guest', JSON.stringify(users))
 }
 
 function resetForm() {
