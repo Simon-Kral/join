@@ -28,16 +28,12 @@ async function guestLoginMenu() {
         todo: [],
         done: [],
         Urgent: [],
-        tasksinboard: [],
         tasksinprogress: [],
         awaitingfeedback: [],
-        deadline: []
     }]
-    console.log(users[loaduser].name)
-    menuLoginName()
 }
 
-function menuLoginName(){
+function menuLoginName() {
     let menuuser = document.getElementById('menu_user');
     let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
     menuuser.innerHTML = username;
@@ -56,15 +52,15 @@ function moveToStartIfSessionEmpty() {
 }
 
 async function loadmenuLocalStorage() {
-        users = await getItem('users')
-        loaduser = localStorage.getItem('userI')
-        menuLoginName()
+    users = await getItem('users')
+    loaduser = localStorage.getItem('userI')
+    menuLoginName()
 }
 
 async function loadmenuSessionStorage() {
-        users = await getItem('users')
-        loaduser = sessionStorage.getItem('userI')
-        menuLoginName()
+    users = await getItem('users')
+    loaduser = sessionStorage.getItem('userI')
+    menuLoginName()
 }
 
 function openMenu() {

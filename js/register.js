@@ -42,10 +42,8 @@ async function ifelseRegister() {
             todo: [],
             done: [],
             Urgent: [],
-            tasksinboard: [],
             tasksinprogress: [],
             awaitingfeedback: [],
-            deadline: []
         })
 
         await setItem('users', JSON.stringify(users))
