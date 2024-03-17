@@ -205,6 +205,7 @@
         z-index: -1;
     }
 }
+
 .register-handy-img {
     display: none;
 }
@@ -280,16 +281,19 @@
         color: rgb(42, 54, 71);
         font-weight: bold;
         font-size: 20px;
-        padding: 12px;
-        padding-left: 24px;
-        padding-right: 24px;
+        width: 177px;
+        height: 48px !important;
         border-radius: 8px;
         border: solid 1px;
         height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1px;
     }
 
     a:hover {
-        transition: 0.1s;
+        margin: 0px;
         color: #29ABE2;
         box-shadow: 1px 4px 3px rgb(199, 199, 199);
         border: solid 2px;
@@ -302,9 +306,8 @@
     background-color: rgb(42, 54, 71);
     font-weight: bold;
     font-size: 20px;
-    padding: 12px;
-    padding-left: 24px;
-    padding-right: 24px;
+    width: 110px;
+    height: 48px;
     border-radius: 8px;
     border: solid 2px;
     border-color: rgb(42, 54, 71);
@@ -400,10 +403,8 @@
 
 .register-rights {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%);
     bottom: 3%;
-    z-index: 0;
+
 
     a {
         color: rgb(168, 168, 168);
@@ -989,6 +990,41 @@
 
 @media only screen and (max-width: 700px) {
 
+    .register-login {
+        height: 515px;
+        width: 396px;
+
+        h1 {
+            font-size: 47px;
+            margin-top: 32px;
+        }
+
+        input {
+            width: 250px;
+        }
+    }
+
+    .register-login-checkbox {
+        margin-right: 180px;
+
+    }
+
+    .register-login-button-flex {
+        flex-direction: column;
+        margin-bottom: 32px;
+
+        a {
+            width: 180px;
+            height: 51px !important;
+        }
+    }
+
+    .register-login-sign-up-button {
+        margin-bottom: 21px;
+        width: 180px;
+        height: 51px;
+    }
+
     .start-register-background {
         background-color: #2A3647;
     }
@@ -1035,6 +1071,29 @@
         to {
             opacity: 1;
             height: 78px;
+        }
+    }
+
+    .register-sign-up-flex {
+        top: inherit;
+        right: inherit;
+        bottom: 120px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        span {
+            padding: 0px;
+            font-size: 16px;
+            width: 104px;
+            height: 49px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p {
+            font-size: 20px;
         }
     }
 
