@@ -60,7 +60,6 @@ function renderCategory(searchterm) {
     }
 }
 
-
 function generateContactHtml(abbreviation, fullname, color, id) {
     html = '';
     html += `
@@ -75,7 +74,6 @@ function generateContactHtml(abbreviation, fullname, color, id) {
     return html
 }
 
-
 function generateCategoryHtml(name, id) {
     html = '';
     html += `
@@ -86,11 +84,9 @@ function generateCategoryHtml(name, id) {
     return html
 }
 
-
 function dontChangeFocus(event) {
     event.preventDefault();
 }
-
 
 function selectContacts(entry, id, selected) {
     entry.classList.toggle('selected');

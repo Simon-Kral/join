@@ -183,12 +183,12 @@ function emptyTaskFieldDone() {
     `;
 }
 
-function todoTaskHtml() {
+function todoTaskHtml(title, description, priority, assignedto, subtasks) {
     return `
         <div id="drag1" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(event)">
             <div id="task-variant"></div>
-            <h3>Test Join Project</h3>
-            <span>.. hier steht was zu tun ist ...</span>
+            <h3>${title}</h3>
+            <span>${description}</span>
             <div class="place-task-progress">
                 <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
                     <div class="progressbar" id="progressbar"></div>
@@ -198,18 +198,17 @@ function todoTaskHtml() {
             </div>
             <div class="place-user-status">
                 <div class="place-user">
+                    ${assignedto}
                 </div>
                 <div>
-                    <img class="low-image" src="./assets/img/low.png">
-                    <img class="urgent-image" src="./assets/img/urgent.png">
-                    <img class="medium-image" src="./assets/img/medium_two.png">
+                    <img class="low-image" src="${priority}">
                 </div>
             </div>
         </div>
     `;
 }
 
-function fullTaskHtml() {
+function fullTaskHtml(title, description, date, priority, assignedto, subtasks) {
     return `
             <div class="single-task-field" onclick="noCloseContent(event)">
                 <div class="place-categorie-cross">
@@ -217,20 +216,21 @@ function fullTaskHtml() {
                     <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
                 </div>
                 <div class="place-single-information">
-                    <h1 class="task-head-bord">Hier seht dann die Überschrift</h1>
-                    <span class="descript">Hier steht die Beschreibung der Aufgabe</span>
+                    <h1 class="task-head-bord">${title}</h1>
+                    <span class="descript">${description}</span>
                     <div class="place-due-date-bord">
-                        <span>Due date:</span>
-                        <span class="due-date-bord">Zeit, viel zu wenig Zeit</span>
+                        <span>Due date: </span>
+                        <span class="due-date-bord">${date}</span>
                     </div>
                     <div class="place-priority-bord">
                         <span>Priority:</span>
-                        <span class="priority-bord"></span>
+                        <span class="priority-bord">${priority}</span>
                     </div>
-                    <div class="assigned-to-bord">Assigned To Container</div>
+                    <div class="assigned-to-bord">Assigned To</div>
+                    <div>${assignedto}</div>
                     <span class="subtasks-bord">Subtasks</span>
                     <div class="subtasks-input-bord">
-                        <input onclick="closeCard()" type="checkbox" checked="checked">
+                        <div>${subtasks}</div>
                     </div>
                 </div>
                 <div class="place-delete-edit">
@@ -253,7 +253,7 @@ function editTaskHtml() {
         <div class="single-task-field" onclick="noCloseContent(event)">
             <main class="edit-task">
                 <form class="add-task-form-section" onsubmit="addToTasks();return false"  autocomplete="off">
-                    <div class="input-wrapper">
+                    <div class="input-wrapper scroll-wrapper">
                         <section class="input-box">
                             <div id="add_task_title">
                                 <div class="required-header">
@@ -364,17 +364,9 @@ function editTaskHtml() {
                         </section>
                     </div>
                     <section class="bottom-section">
-                        <div class="bottom-text">
-                            <span style="color: #FF8190;">*</span>
-                            <span>This field is required</span>
-                        </div>
                         <div class="bottom-buttons">
-                            <button class="clear-button" onclick="clearAddTaskForm()" type="button">
-                                <span>Clear</span>
-                                <img src="./assets/img/cross.svg" alt="clear Form">
-                            </button>
                             <button class="create-task-button">
-                                <span>Create Task</span>
+                                <span>Ok</span>
                                 <img src="./assets/img/check.png" alt="create task">
                             </button>
                         </div>
@@ -414,3 +406,5 @@ function technicalTaskHtml() {
         <p class="technical-task">Technical Task</p>
     `;
 }
+
+// title, description, date, category

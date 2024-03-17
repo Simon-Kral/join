@@ -86,14 +86,16 @@ function openBordTask() {
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
     getplacecard.innerHTML = showfulltask;
-    showTaskVariantBig();
+    showTaskCategoryBig();
 }
+
+//* Start
 
 function showTodoHtml() {
     const todotask = todoTaskHtml();
     let getplacetodo = document.getElementById('to_do_place');
     getplacetodo.innerHTML += todotask;
-    showTaskVariantSmall();
+    showTaskCategorySmall();
     updateProgressBar();
 }
 
@@ -122,18 +124,26 @@ function showDoneHtml() {
     // updateProgressBar();
 }
 
-function showTaskVariantSmall() {
-    const taskvariant = technicalTaskHtml();
-    const taskvarianttwo = userTaskHtml();
-    let getplacetaskvariant = document.getElementById('task-variant');
-    getplacetaskvariant.innerHTML = taskvariant + taskvarianttwo;
+function showTaskCategorySmall(category) {
+    const technicalTask = technicalTaskHtml();
+    const userTask = userTaskHtml();
+    let getplacetaskcategory = document.getElementById('task-variant');
+    if (category == "Technical Task") {
+        getplacetaskcategory.innerHTML = technicalTask;
+    } else {
+        getplacetaskcategory.innerHTML = userTask;
+    }
 }
 
-function showTaskVariantBig() {
-    const taskvariant = technicalTaskHtml();
-    const taskvarianttwo = userTaskHtml();
-    let getplacetaskvariantbord = document.getElementById('task_variant_bord');
-    getplacetaskvariantbord.innerHTML = taskvariant + taskvarianttwo;
+function showTaskCategoryBig(category) {
+    const technicalTask = technicalTaskHtml();
+    const userTask = userTaskHtml();
+    let getplacebordcategory = document.getElementById('task_variant_bord');
+    if (category == "Technical Task") {
+        getplacebordcategory.innerHTML = technicalTask;
+    } else {
+        getplacebordcategory.innerHTML = userTask;
+    }
 }
 
 function editSingleTask() {
