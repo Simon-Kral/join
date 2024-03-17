@@ -57,20 +57,11 @@ async function loadmenuSessionStorage() {
 function openMenu() {
     let openmenu = document.getElementById('menu_open');
     openmenu.innerHTML = menuInnerHTML()
-    closeMenuE(openmenu)
 }
 
-function closeMenuE(openmenu) {
-    function closeMenu(event) {
-        let removemenu = openmenu.contains(event.target);
-        if (!removemenu) {
-            openmenu.innerHTML = '';
-            document.removeEventListener('click', closeMenu);
-        }
-    }
-    setTimeout(function () {
-        document.addEventListener('click', closeMenu);
-    }, 0);
+function closeMenu(){
+    let openmenu = document.getElementById('menu_open');
+    openmenu.innerHTML = '';
 }
 
 function menuInnerHTML() {
@@ -79,9 +70,14 @@ function menuInnerHTML() {
         <a href="privacy_policy.html" class="open-menu-up"> <p>Privacy Policy</p> </a>
         <a href="legal_notice.html" class="open-menu-mid"> <p>Legal notice</p> </a>
         <a href="index.html" class="open-menu-down" onclick="logOut()"> <p>Log out</p> </a>
-    </div>`;
+    </div>
+    <div class="menu-close" onclick="closeMenu()"></div>
+    `;
+    
     return menu
 }
+
+
 
 function logOut() {
     loaduser = []
