@@ -45,6 +45,7 @@ async function ifelseRegister() {
             Urgent: [],
             tasksinprogress: [],
             awaitingfeedback: [],
+            contacts: [],
         })
 
         await setItem('users', JSON.stringify(users))
@@ -117,9 +118,22 @@ function registerGuestLogin() {
             "contacts": []
         }],
         done: [],
-        Urgent: [],
+        Urgent: [{
+            "title": "w",
+            "description": "",
+            "date": "14/03/2024",
+            "category": "Technical Task",
+            "prio": "urgent",
+            "subtasks": [
+                {
+                    "idcounter": 0
+                }
+            ],
+            "contacts": []
+        }],
         tasksinprogress: [],
         awaitingfeedback: [],
+        contacts: [],
     }]
     sessionStorage.setItem('userI', loaduser)
     sessionStorage.setItem('Guest', JSON.stringify(users))
