@@ -414,7 +414,7 @@ async function addAllTasksToUsers() {
 
 
 function addAddTaskEventListeners() {
-    document.querySelectorAll('input').forEach(function(input) {
+    document.querySelectorAll('[required]').forEach(function(input) {
         input.addEventListener('invalid', function() {
             input.style.borderColor = '#FF8190';
             document.querySelectorAll('.required-field').forEach(function(requiredfield) {
