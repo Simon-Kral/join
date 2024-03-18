@@ -1,4 +1,3 @@
-
 function signUpBox() {
     let loginpwimg = document.getElementById('register_pw_login_img')
     let registerlogin = document.getElementById('register_login');
