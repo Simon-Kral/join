@@ -11,3 +11,7 @@ let allcontacts = [
     { id: 8, firstname: 'Tatjana', lastname: 'Wolf', color: '#FF4646' },
     { id: 9, firstname: 'Tatjana', lastname: 'Wolf', color: '#FF4646' }
 ];
+
+function initContacts() {
+
+}

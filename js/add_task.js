@@ -64,7 +64,7 @@ function renderCategory(searchterm) {
 function generateContactHtml(abbreviation, fullname, color, id) {
     html = '';
     html += `
-        <div class="drop-down-assigned-to-entry pointer" onmousedown="dontChangeFocus(event); selectContacts (this, ${id})">
+        <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectContacts (this, ${id})">
             <div class="profile-info">
                 <span class="profile-badge" style="background-color: ${color};">${abbreviation}</span>
                 <span class="profile-fullname">${fullname}</span>

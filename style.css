@@ -543,6 +543,53 @@ main.edit-task {
     }
 }
 
+main.contacts {
+    position: absolute;
+    top: 96px;
+    left: 232px;
+    font-size: 20px;
+    display: flex;
+    height: 100%;
+    .contact-list-box {
+        height: 100%;
+        width: 456px;
+        background-color: white;
+        .add-contact-button-box {
+            margin: 22.5px 52px;
+            button {
+                padding: 0;
+                cursor: pointer;
+                transition: ease-in-out 100ms;
+                background-color: #2A3647;
+                border-radius: 10px;
+                border: none;
+                height: 56px;
+                width: 352px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                span {
+                    font-family: "Inter", sans-serif;
+                    color: white;
+                    font-size: 21px;
+                    font-weight: 700;
+                    margin-left: 64.5px;
+                }
+                img {
+                    margin-right: 64.5px;
+                }
+            }
+            button:hover {
+                background-color: #5dbee7;
+                box-shadow: 0px 4px 4px #d1d1d1;
+            }
+            button:active {
+                background-color: #091931;
+            }
+        }
+    }
+}
+
 .input-wrapper {
     .input-box {
         display: flex;
@@ -601,8 +648,6 @@ main.edit-task {
         color: #FF8190;
     }
 }
-
-#add_task_title {}
 
 #add_task_description {
     .textarea-wrapper {
@@ -895,33 +940,52 @@ main.edit-task {
     border-radius: 0px 0px 10px 10px;
 }
 
-#drop_down_assigned_to {
-    .drop-down-assigned-to-entry {
+#drop_down_assigned_to {}
+
+.contact-list-entry {
+    display: flex;
+    justify-content: space-between;
+    height: 24px;
+    padding: 16px;
+    border-radius: 10px;
+    margin: 0 52px 2px 52px;
+    .profile-info {
+        .profile-badge {
+            margin-left: 8px;
+        }
         display: flex;
-        justify-content: space-between;
-        height: 24px;
-        padding: 16px;
-        border-radius: 10px;
-        margin-bottom: 2px;
-        .profile-info {
-            display: flex;
-            align-items: center;
-            font-size: 20px;
-            .profile-fullname {
-                margin-left: 16px;
-            }
+        align-items: center;
+        font-size: 20px;
+        .profile-fullname {
+            margin-left: 16px;
         }
     }
-    .drop-down-assigned-to-entry:hover {
-        background-color: #EEEEEE;
+}
+
+.contact-list-separator-box {
+    margin: 0 52px 2px 52px;
+    .separator-horizontal {
+        margin: 16px 0;
+        width: 100%;
+        height: 2px;
+        background-color: #d1d1d1;
     }
-    .selected {
-        background-color: #2A3647;
-        color: white;
+    #separator-letter-span {
+        margin-left: 40px;
     }
-    .selected:hover {
-        background-color: #091931;
-    }
+}
+
+.contact-list-entry:hover {
+    background-color: #EEEEEE;
+}
+
+.selected {
+    background-color: #2A3647;
+    color: white;
+}
+
+.selected:hover {
+    background-color: #091931;
 }
 
 #drop_down_category {
