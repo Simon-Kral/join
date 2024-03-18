@@ -6,6 +6,46 @@ let doneforce = [];
 
 let currenttask = 0;
 
+async function loadboardstorage() {
+    if (sessionStorage.getItem("Guest") === null) {
+        if (localStorage.getItem("userI") === null) { }
+        else {
+            if (localStorage.getItem('userI').length > 0) {
+                loadBoardStorage()
+            }
+        }
+        if (sessionStorage.getItem("userI") === null) { }
+        else {
+            if (sessionStorage.getItem('userI').length > 0) {
+                loadBoardSessionStorage()
+            }
+        }
+    }
+    else {
+        guestLoginBoard()
+        console.log(users[loaduser])
+    }
+}
+
+function guestLoginBoard() {
+    loaduser = sessionStorage.getItem('userI')
+    users = JSON.parse(sessionStorage.getItem('Guest'))
+}
+
+async function loadBoardStorage() {
+    if (localStorage.getItem('userI').length > 0) {
+        users = await getItem('users')
+        loaduser = localStorage.getItem('userI')
+    }
+}
+
+async function loadBoardSessionStorage() {
+    if (sessionStorage.getItem('userI').length > 0) {
+        users = await getItem('users')
+        loaduser = sessionStorage.getItem('userI')
+    }
+}
+
 function boardinit() {
     showEmptyHtmlTodo();
     showEmptyHtmlInprogress();
