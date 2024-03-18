@@ -48,11 +48,13 @@
                     <span id="separator-letter-span">A</span>
                     <div class="separator-horizontal"></div>
                 </div>
-                <div class="contact-list-entry pointer"
-                    onmousedown="dontChangeFocus(event); selectContacts(this, 0, true)">
+                <div class="contact-list-entry pointer" onmousedown="selectContact(this, 0, true)">
                     <div class="profile-info">
                         <span class="profile-badge" style="background-color: #00BEE8;">SM</span>
-                        <span class="profile-fullname">Sofia Müller (You)</span>
+                        <div class="profile-info-box">
+                            <span class="profile-fullname">Sofia Müller (You)</span>
+                            <a href="mailto:sofiam@gmail.com">sofiam@gmail.com</a>
+                        </div>
                     </div>
                 </div>
             </div>
