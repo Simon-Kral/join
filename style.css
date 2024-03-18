@@ -946,8 +946,6 @@ main.contacts {
     border-radius: 0px 0px 10px 10px;
 }
 
-#drop_down_assigned_to {}
-
 .contact-list-entry {
     display: flex;
     justify-content: space-between;
