@@ -1159,3 +1159,52 @@ main.contacts {
     border-radius: 16px;
     border: 8px solid #ffffff;
 }
+
+@media(max-width: 1400px) {
+    .empty-task-place {
+        width: 200px;
+        font-size: 14px;
+    }
+
+    .single-task-head {
+        width: 200px;
+    }
+}
+
+@media(max-width: 1300px) {
+    .board-body-task {
+        margin-left: 130px;
+    }
+
+    .board-head {
+        margin-left: 130px;
+    }
+
+    .board-head-task {
+        margin-left: 130px;
+    }
+}
+
+@media(max-width: 1030px) {
+    .board-body-task {
+        margin-left: 48px;
+    }
+
+    .board-head {
+        margin-left: 48px;
+    }
+
+    .board-head-task {
+        margin-left: 48px;
+    }
+
+    .empty-task-place {
+        width: 180px;
+    }
+}
+
+@media(max-width: 970px) {
+    .single-task-head {
+        width: 160px;
+    }
+}
