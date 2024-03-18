@@ -320,7 +320,7 @@ p.technical-task {
 
 .single-task-field {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: start;
     flex-direction: column;
     height: 931px;
@@ -343,6 +343,7 @@ p.technical-task {
     display: flex;
     justify-content: space-between;
     margin-top: 24px;
+    margin-bottom: 48px;
     margin-right: 40px;
     margin-left: 40px;
     width: 445px;
@@ -417,6 +418,11 @@ img.edit {
 
 .place-single-information::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8ad;
+}
+
+.scroll-wrapper {
+    max-height: 100%;
+    overflow: auto;
 }
 
 h1.task-head-bord {

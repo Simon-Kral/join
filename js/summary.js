@@ -20,21 +20,10 @@ async function loadSummary() {
 
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
-        summary_good_morning.innerHTML = 'Good morning';
-        users = [{
-            name: '',
-            email: '',
-            password: '',
-            todo: [],
-            done: [],
-            Urgent: [],
-            tasksinboard: [],
-            tasksinprogress: [],
-            awaitingfeedback: [],
-            deadline: []
-        }]
-        loadSummaryProject()
-        sommary_name.innerHTML = '';
+    summary_good_morning.innerHTML = 'Good morning!';
+    users = JSON.parse(sessionStorage.getItem('Guest'))
+    loadSummaryProject()
+    sommary_name.innerHTML = '';
 }
 
 async function loadSummaryStorage() {
@@ -58,20 +47,56 @@ async function loadSummaryProject() {
     let done = document.getElementById('summary_done');
     let urgent = document.getElementById('summary_urgent');
     let deadline = document.getElementById('summary_deadline');
-    let board = document.getElementById('summary_in_board');
     let inprogress = document.getElementById('summary_progress');
     let awaitfeedback = document.getElementById('summary_feedback');
+    let inboard = document.getElementById('summary_in_board')
     let name = document.getElementById('sommary_name');
-    loadSummaryInnerhtml(todo, done, urgent, deadline, board, inprogress, awaitfeedback, name)
+    loadSummaryInnerhtml(inboard, todo, done, urgent, deadline, inprogress, awaitfeedback, name)
 }
 
-async function loadSummaryInnerhtml(todo, done, urgent, deadline, board, inprogress, awaitfeedback, name) {
+async function loadSummaryInnerhtml(inboard, todo, done, urgent, deadline, inprogress, awaitfeedback, name) {
     todo.innerHTML = users[loaduser].todo.length
     done.innerHTML = users[loaduser].done.length
     urgent.innerHTML = users[loaduser].Urgent.length
-
-    board.innerHTML = users[loaduser].tasksinboard.length
+    inboard.innerHTML = users[loaduser].todo.length+users[loaduser].done.length+users[loaduser].tasksinprogress.length+users[loaduser].awaitingfeedback.length
     inprogress.innerHTML = users[loaduser].tasksinprogress.length
     awaitfeedback.innerHTML = users[loaduser].awaitingfeedback.length
     name.innerHTML = users[loaduser].name
+    summaryDeadline(deadline)
 }
+
+function summaryDeadline(deadline) {
+    if (users[loaduser].todo.length === 0) {
+        deadline.innerHTML = ''
+        summary_deadline_string.innerHTML = 'No Upcoming Deadline'
+    } 
+    else {
+        let date = users[loaduser].todo.map(urgent => urgent.date)
+        let minDate = new Date(Math.min.apply(null, date.map(date => new Date(formatDate(date)))));
+        deadline.innerHTML = formatOutputDate(minDate)
+    }
+}
+
+function formatDate(date) {
+    let [day, month, year] = date.split('/');
+    return `${month}/${day}/${year}`;
+}
+
+function formatOutputDate(date) {
+    let options = { month: 'long', day: 'numeric', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    let alreadyPlayed = sessionStorage.getItem("handyWelcomePlayed");
+    let summaryWelcome = document.querySelector('.summary-welcome');
+
+    if (!alreadyPlayed) {
+        summaryWelcome.classList.add('animateOnce');
+        summaryWelcome.addEventListener('animationend', function() {
+            sessionStorage.setItem("handyWelcomePlayed", true);
+        }, { once: true });
+    } else {
+        summaryWelcome.style.display = 'none';
+    }
+});
