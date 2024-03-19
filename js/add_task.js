@@ -19,14 +19,14 @@ function guestLogin() {
 }
 
 async function loadLocalStorage() {
-        users = await getItem('users')
-        loaduser = localStorage.getItem('userI')
-        console.log(users[loaduser].todo)
+    users = await getItem('users')
+    loaduser = localStorage.getItem('userI')
+    console.log(users[loaduser].todo)
 }
 
 async function loadSessionStorage() {
-        users = await getItem('users')
-        loaduser = sessionStorage.getItem('userI')
+    users = await getItem('users')
+    loaduser = sessionStorage.getItem('userI')
 }
 //--
 
@@ -362,18 +362,18 @@ function transferDate() {
 }
 
 
-function loadFromLocalStorage() {
-    let tasksastext = localStorage.getItem('tasks');
-    if (tasksastext) {
-        tasks = JSON.parse(tasksastext);
-    }
-}
+// function loadFromLocalStorage() {
+//     let tasksastext = localStorage.getItem('tasks');
+//     if (tasksastext) {
+//         tasks = JSON.parse(tasksastext);
+//     }
+// }
 
 
-function saveToLocalStorage() {
-    let tasksastext = JSON.stringify(tasks);
-    localStorage.setItem('tasks', tasksastext);
-}
+// function saveToLocalStorage() {
+//     let tasksastext = JSON.stringify(tasks);
+//     localStorage.setItem('tasks', tasksastext);
+// }
 
 
 async function addToTasks() {
