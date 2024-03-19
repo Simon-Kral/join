@@ -45,7 +45,7 @@ async function ifelseRegister() {
             Urgent: [],
             tasksinprogress: [],
             awaitingfeedback: [],
-            contacts: [    
+            contacts: [
                 { idcounter: 9 },
                 { id: 0, firstname: 'Sofia', lastname: 'Müller (You)', email: 'sofiam@gmail.com', phone: '+49 1111 111 11 1', color: '#00BEE8' },
             ],
@@ -119,7 +119,32 @@ function registerGuestLogin() {
                 }
             ],
             "contacts": []
-        }],
+        }, {
+            "title": "w",
+            "description": "",
+            "date": "14/03/2024",
+            "category": "Technical Task",
+            "prio": "urgent",
+            "subtasks": [
+                {
+                    "idcounter": 0
+                }
+            ],
+            "contacts": []
+        }, {
+            "title": "w",
+            "description": "",
+            "date": "14/03/2024",
+            "category": "Technical Task",
+            "prio": "urgent",
+            "subtasks": [
+                {
+                    "idcounter": 0
+                }
+            ],
+            "contacts": []
+        }
+        ],
         done: [],
         Urgent: [{
             "title": "w",

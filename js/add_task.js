@@ -12,24 +12,6 @@ let selectedcontacts = [];
 
 let currentTask = {};
 
-//load stoarge--
-function guestLogin() {
-    loaduser = sessionStorage.getItem('userI')
-    users = JSON.parse(sessionStorage.getItem('Guest'))
-}
-
-async function loadLocalStorage() {
-    users = await getItem('users')
-    loaduser = localStorage.getItem('userI')
-    console.log(users[loaduser].todo)
-}
-
-async function loadSessionStorage() {
-    users = await getItem('users')
-    loaduser = sessionStorage.getItem('userI')
-}
-//--
-
 function initAddTask() {
     // loadFromLocalStorage();
     renderAssignedTo();
@@ -38,17 +20,23 @@ function initAddTask() {
 }
 
 function renderAssignedTo(searchterm) {
-    let dropdown = document.getElementById('drop_down_assigned_to');
-    dropdown.innerHTML = '';
-    for (let i = 1; i < allcontacts.length; i++) {
-        const contact = allcontacts[i];
-        const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
-        const fullname = contact.firstname + ' ' + contact.lastname;
-        const color = contact.color;
-        const id = contact.id;
-        if (!searchterm || fullname.toLowerCase().includes(searchterm)) {
-            dropdown.innerHTML += generateContactHtml(abbreviation, fullname, color, id);
+    console.log(users)
+    if (users[loaduser].contacts.length > 0) {
+        let dropdown = document.getElementById('drop_down_assigned_to');
+        dropdown.innerHTML = '';
+        for (let i = 1; i < users[loaduser].contacts.length; i++) {
+            const contact = users[loaduser].contacts[i];
+            const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
+            const fullname = contact.firstname + ' ' + contact.lastname;
+            const color = contact.color;
+            const id = contact.id;
+            if (!searchterm || fullname.toLowerCase().includes(searchterm)) {
+                dropdown.innerHTML += generateContactHtml(abbreviation, fullname, color, id);
+            }
         }
+    }
+    else {
+
     }
 }
 
@@ -147,7 +135,7 @@ function clearAllPrioButtons() {
         inputs[i].checked = false;
     }
     let labels = document.querySelectorAll(".highlighted-button");
-    [].forEach.call(labels, function(label) {
+    [].forEach.call(labels, function (label) {
         label.classList.remove("highlighted-button");
     });
 }
@@ -297,10 +285,10 @@ function clearAddTaskForm() {
 
 
 function clearErrorStyle() {
-    document.querySelectorAll('input').forEach(function(input) {
+    document.querySelectorAll('input').forEach(function (input) {
         input.style.borderColor = '#D1D1D1';
     });
-    document.querySelectorAll('.required-field').forEach(function(requiredfield) {
+    document.querySelectorAll('.required-field').forEach(function (requiredfield) {
         requiredfield.classList.add('dnone');
     })
 }
@@ -370,10 +358,11 @@ function loadFromLocalStorage() {
 }
 
 
-function saveToLocalStorage() {
-    let tasksastext = JSON.stringify(tasks);
-    localStorage.setItem('tasks', tasksastext);
-}
+// function saveToLocalStorage() {
+//     let tasksastext = JSON.stringify(tasks);
+//     localStorage.setItem('tasks', tasksastext);
+// }
+
 
 
 async function addToTasks() {
@@ -409,11 +398,20 @@ function addPrio() {
 
 
 async function saveTask() {
-    users[loaduser].todo.push(currentTask);
-    currentTask.prio === 'urgent' ? users[loaduser].Urgent.push(currentTask) : '';
-    await setItem('users', JSON.stringify(users));
-    tasks.push(currentTask);
-    saveToLocalStorage();
+    if (sessionStorage.getItem("Guest") === null) {
+        users[loaduser].todo.push(currentTask);
+        currentTask.prio === 'urgent' ? users[loaduser].Urgent.push(currentTask) : '';
+        await setItem('users', JSON.stringify(users));
+        tasks.push(currentTask);
+        // saveToLocalStorage();
+    }
+    else {
+        users[loaduser].todo.push(currentTask);
+        currentTask.prio === 'urgent' ? users[loaduser].Urgent.push(currentTask) : '';
+        sessionStorage.setItem('Guest', JSON.stringify(users));
+        tasks.push(currentTask);
+        // saveToLocalStorage();
+    }
 }
 
 
@@ -430,14 +428,14 @@ async function saveTask() {
 
 
 function addAddTaskEventListeners() {
-    document.querySelectorAll('[required]').forEach(function(input) {
-        input.addEventListener('invalid', function() {
+    document.querySelectorAll('[required]').forEach(function (input) {
+        input.addEventListener('invalid', function () {
             input.style.borderColor = '#FF8190';
-            document.querySelectorAll('.required-field').forEach(function(requiredfield) {
+            document.querySelectorAll('.required-field').forEach(function (requiredfield) {
                 requiredfield.classList.remove('dnone');
             })
         });
-        input.addEventListener('change', function() {
+        input.addEventListener('change', function () {
             input.style.borderColor = '#D1D1D1';
             input.parentElement.nextElementSibling.classList.add('dnone');
         });

@@ -193,7 +193,6 @@ function todoTaskHtml(title, description, priority, assignedto, subtasks) {
                 <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
                     <div class="progressbar" id="progressbar"></div>
                 </div>
-                <div>${currenttask}/${subtasksforce.length}</div>
                 <p>Subtasks</p>
             </div>
             <div class="place-user-status">
@@ -408,3 +407,4 @@ function technicalTaskHtml() {
 }
 
 // title, description, date, category
+// {/* <div>${currenttask}/${subtasks.length}</div> */}
