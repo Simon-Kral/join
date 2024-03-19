@@ -56,8 +56,6 @@ function menuInnerHTML() {
     return menu
 }
 
-
-
 function logOut() {
     loaduser = []
     localStorage.removeItem('userI')
