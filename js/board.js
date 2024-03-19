@@ -9,15 +9,15 @@ function guestLogin() {
 }
 
 async function loadLocalStorage() {
-        users = await getItem('users')
-        loaduser = localStorage.getItem('userI')
-        boardinit()
+    users = await getItem('users')
+    loaduser = localStorage.getItem('userI')
+    boardinit()
 }
 
 async function loadSessionStorage() {
-        users = await getItem('users')
-        loaduser = sessionStorage.getItem('userI')
-        boardinit()
+    users = await getItem('users')
+    loaduser = sessionStorage.getItem('userI')
+    boardinit()
 }
 
 async function createTaskBoard() {
@@ -74,7 +74,7 @@ function bordAddNewTask() {
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
     getplacecard.innerHTML = card;
-    initAddTask();
+    fillAddTaskSection();
 }
 
 function todoNewTask() {
@@ -82,7 +82,7 @@ function todoNewTask() {
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
     getplacecard.innerHTML = todocard;
-    initAddTask();
+    fillAddTaskSection();
 }
 
 function inprogressNewTask() {
@@ -90,7 +90,7 @@ function inprogressNewTask() {
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
     getplacecard.innerHTML = inprogresscard;
-    initAddTask();
+    fillAddTaskSection();
 }
 
 function awaitfeedbackNewTask() {
@@ -98,7 +98,7 @@ function awaitfeedbackNewTask() {
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
     getplacecard.innerHTML = awaitfeedbackcard;
-    initAddTask();
+    fillAddTaskSection();
 }
 
 function openBordTask() {

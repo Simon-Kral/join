@@ -15,20 +15,20 @@ let currentTask = {};
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
     users = JSON.parse(sessionStorage.getItem('Guest'))
-    initAddTask()
+    fillAddTaskSection()
 }
 
 async function loadLocalStorage() {
     users = await getItem('users')
     loaduser = localStorage.getItem('userI')
-    initAddTask()
-    
+    fillAddTaskSection()
+
 }
 
 async function loadSessionStorage() {
     users = await getItem('users')
     loaduser = sessionStorage.getItem('userI')
-    initAddTask()
+    fillAddTaskSection()
 }
 
 function initAddTask() {
