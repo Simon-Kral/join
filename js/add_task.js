@@ -20,23 +20,6 @@ function initAddTask() {
     addAddTaskEventListeners();
 }
 
-//load stoarge--
-function guestLogin() {
-    loaduser = sessionStorage.getItem('userI')
-    users = JSON.parse(sessionStorage.getItem('Guest'))
-}
-
-async function loadLocalStorage() {
-        users = await getItem('users')
-        loaduser = localStorage.getItem('userI')
-}
-
-async function loadSessionStorage() {
-        users = await getItem('users')
-        loaduser = sessionStorage.getItem('userI')
-}
-//--
-
 function renderAssignedTo(searchterm) {
     let dropdown = document.getElementById('drop_down_assigned_to');
     dropdown.innerHTML = '';
