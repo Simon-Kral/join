@@ -156,6 +156,15 @@ function informationTodo(getinformationtodo) {
     return { categorytodo, titletodo, descriptiontodo };
 }
 
+function renderInProgress() {
+    let inprogress = users[loaduser]['inprogress'];
+    for (let i = 0; i < inprogress.length; i++) {
+        inprogresscollect = inprogress[i];
+        console.log(inprogresscollect);
+        showInProgressHtml(inprogresscollect);
+    }
+}
+
 function showInProgressHtml() {
     const todotask = inprogressTaskHtml();
     let getplaceinprogress = document.getElementById('in_progress_place');
@@ -170,6 +179,15 @@ function informationInProgress(getinformationtodo) {
     return { categoryinprogress, titletodoinprogress, descriptiontodoinprogress };
 }
 
+function renderAwaitFeedback() {
+    let awaitfeedback = users[loaduser]['awaitfeedback'];
+    for (let i = 0; i < awaitfeedback.length; i++) {
+        awaitfeedbackcollect = awaitfeedback[i];
+        console.log(awaitfeedbackcollect);
+        showAwaitFeedbackHtml(awaitfeedbackcollect);
+    }
+}
+
 function showAwaitFeedbackHtml() {
     const todotask = awaitfeedbackTaskHtml();
     let getplaceawaitfeedback = document.getElementById('await_feedback_place');
@@ -181,6 +199,15 @@ function informationAwaitProgress(getinformationtodo) {
     let titletodoawaitprogress = getinformationtodo['title'];
     let descriptiontodoawaitprogress = getinformationtodo['description'];
     return { categoryawaitprogress, titletodoawaitprogress, descriptiontodoawaitprogress };
+}
+
+function renderDone() {
+    let done = users[loaduser]['done'];
+    for (let i = 0; i < done.length; i++) {
+        donecollect = done[i];
+        console.log(donecollect);
+        showAwaitFeedbackHtml(donecollect);
+    }
 }
 
 function showDoneHtml() {
