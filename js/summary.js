@@ -7,19 +7,15 @@ function guestLogin() {
 }
 
 async function loadLocalStorage() {
-    if (localStorage.getItem('userI').length > 0) {
         users = await getItem('users')
         loaduser = localStorage.getItem('userI')
         loadSummaryProject()
-    }
 }
 
 async function loadSessionStorage() {
-    if (sessionStorage.getItem('userI').length > 0) {
         users = await getItem('users')
         loaduser = sessionStorage.getItem('userI')
         loadSummaryProject()
-    }
 }
 
 async function loadSummaryProject() {

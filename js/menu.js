@@ -1,27 +1,3 @@
-
-async function loadStorage() {
-    if (sessionStorage.getItem("Guest") === null) {
-        if (localStorage.getItem("userI") === null) {
-            if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() }
-        }
-        else {
-            loadLocalStorage()
-            loadmenuLocalStorage()
-        }
-        if (sessionStorage.getItem("userI") === null) {
-            if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() }
-        }
-        else {
-            loadSessionStorage()
-            loadmenuSessionStorage()
-        }
-    }
-    else {
-        guestLogin()
-        guestLoginMenu()
-    }
-}
-
 async function guestLoginMenu() {
     loaduser = sessionStorage.getItem('userI')
     users = JSON.parse(sessionStorage.getItem('Guest'))
