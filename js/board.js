@@ -22,6 +22,7 @@ function guestLogin() {
 async function loadLocalStorage() {
         users = await getItem('users')
         loaduser = localStorage.getItem('userI')
+        console.log(users[loaduser].todo)
 }
 
 async function loadSessionStorage() {
@@ -29,6 +30,10 @@ async function loadSessionStorage() {
         loaduser = sessionStorage.getItem('userI')
 }
 //--
+
+async function pushboard() {
+
+}
 
 function showEmptyHtmlTodo() {
     if (todoforce == 0) {
