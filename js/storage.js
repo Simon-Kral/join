@@ -22,19 +22,34 @@ async function loadStorage() {
             if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() }
         }
         else {
-            loadLocalStorage()
-            loadmenuLocalStorage()
+            if (window.loadLocalStorage) {
+                loadLocalStorage()
+                loadmenuLocalStorage()
+            }
+            else {
+                loadmenuLocalStorage()
+            }
         }
         if (sessionStorage.getItem("userI") === null) {
             if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() }
         }
         else {
-            loadSessionStorage()
-            loadmenuSessionStorage()
+            if (window.loadSessionStorage) {
+                loadSessionStorage()
+                loadmenuSessionStorage()
+            }
+            else {
+                loadmenuSessionStorage()
+            }
         }
     }
     else {
-        guestLogin()
-        guestLoginMenu()
+        if (window.guestLogin) {
+            guestLogin()
+            guestLoginMenu()
+        }
+        else {
+            guestLoginMenu()
+        }
     }
 }

@@ -362,18 +362,18 @@ function transferDate() {
 }
 
 
-// function loadFromLocalStorage() {
-//     let tasksastext = localStorage.getItem('tasks');
-//     if (tasksastext) {
-//         tasks = JSON.parse(tasksastext);
-//     }
-// }
+function loadFromLocalStorage() {
+    let tasksastext = localStorage.getItem('tasks');
+    if (tasksastext) {
+        tasks = JSON.parse(tasksastext);
+    }
+}
 
 
-// function saveToLocalStorage() {
-//     let tasksastext = JSON.stringify(tasks);
-//     localStorage.setItem('tasks', tasksastext);
-// }
+function saveToLocalStorage() {
+    let tasksastext = JSON.stringify(tasks);
+    localStorage.setItem('tasks', tasksastext);
+}
 
 
 async function addToTasks() {
