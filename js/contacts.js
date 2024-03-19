@@ -13,5 +13,56 @@ let allcontacts = [
 ];
 
 function initContacts() {
+    renderContacts();
+}
+
+function renderContacts() {
+    let list = document.getElementById('contact-list');
+    list.innerHTML = '';
+    allcontacts.sort((a, b) => (a.firstname > b.firstname) ? 1 : -1);
+    let prevLetter = '';
+    for (let i = 1; i < allcontacts.length - 1; i++) {
+        const contact = allcontacts[i];
+        const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
+        const fullname = contact.firstname + ' ' + contact.lastname;
+        const firstLetter = contact.firstname.charAt(0).toUpperCase();
+        if (firstLetter !== prevLetter) {
+            list.innerHTML += generateSeparatorHtml(firstLetter);
+            prevLetter = firstLetter;
+        }
+        list.innerHTML += generateContactHtml(contact, abbreviation, fullname);
+    }
+}
+
+function generateSeparatorHtml(letter) {
+    return `
+        <div class="contact-list-separator-box">
+            <span id="separator-letter-span">${letter}</span>
+            <div class="separator-horizontal"></div>
+        </div>
+    `;
+}
+
+
+function generateContactHtml(contact, abbreviation, fullname) {
+    let html = '';
+    html += `
+        <div class="contact contact-list-entry pointer" onclick="openContact(this, ${contact.id})">
+            <div class="contact-info-box">
+                <div>
+                    <span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>
+                </div>
+                <div class="profile-info">
+                    <span class="profile1-fullname">${fullname}</span>
+                    <a id="profile-email" href="mailto:${contact.email}">${contact.email}</a>
+                </div>
+            </div>
+        </div>
+    `
+    return html
+}
+
+
+function openContact(card, id) {
 
 }
