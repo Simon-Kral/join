@@ -45,7 +45,10 @@ async function ifelseRegister() {
             Urgent: [],
             tasksinprogress: [],
             awaitingfeedback: [],
-            contacts: [],
+            contacts: [    
+                { idcounter: 9 },
+                { id: 0, firstname: 'Sofia', lastname: 'Müller (You)', email: 'sofiam@gmail.com', phone: '+49 1111 111 11 1', color: '#00BEE8' },
+            ],
         })
 
         await setItem('users', JSON.stringify(users))
@@ -133,7 +136,10 @@ function registerGuestLogin() {
         }],
         tasksinprogress: [],
         awaitingfeedback: [],
-        contacts: [],
+        contacts: [
+            { idcounter: 9 },
+            { id: 0, firstname: 'Sofia', lastname: 'Müller (You)', email: 'sofiam@gmail.com', phone: '+49 1111 111 11 1', color: '#00BEE8' },
+        ],
     }]
     sessionStorage.setItem('userI', loaduser)
     sessionStorage.setItem('Guest', JSON.stringify(users))

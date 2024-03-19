@@ -1,24 +1,3 @@
-async function loadmenu() {
-    if (sessionStorage.getItem("Guest") === null) {
-        if (localStorage.getItem("userI") === null) {
-            if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() }
-        }
-        else {
-            loadmenuLocalStorage()
-        }
-
-        if (sessionStorage.getItem("userI") === null) {
-            if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() }
-        }
-        else {
-            loadmenuSessionStorage()
-        }
-    }
-    else {
-        guestLoginMenu()
-    }
-}
-
 async function guestLoginMenu() {
     loaduser = sessionStorage.getItem('userI')
     users = JSON.parse(sessionStorage.getItem('Guest'))
@@ -59,7 +38,7 @@ function openMenu() {
     openmenu.innerHTML = menuInnerHTML()
 }
 
-function closeMenu(){
+function closeMenu() {
     let openmenu = document.getElementById('menu_open');
     openmenu.innerHTML = '';
 }
@@ -73,11 +52,9 @@ function menuInnerHTML() {
     </div>
     <div class="menu-close" onclick="closeMenu()"></div>
     `;
-    
+
     return menu
 }
-
-
 
 function logOut() {
     loaduser = []

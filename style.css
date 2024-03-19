@@ -5,7 +5,6 @@ html {
 body {
     margin: 0px;
     font-family: "Inter", sans-serif;
-    color: #2a3647;
     background-color: #f6f7f8;
 }
 
@@ -483,13 +482,13 @@ h1.legal-head {
     justify-content: center;
     align-items: center;
     right: 68px;
-    position: fixed;
     width: 32px;
     height: 32px;
     border-radius: 42px;
 }
 
 .arrow-style:hover {
+    cursor: pointer;
     background-color: #EEEEEE;
 }
 
@@ -555,11 +554,17 @@ main.contacts {
     left: 232px;
     font-size: 20px;
     display: flex;
-    height: 100%;
+    height: calc(100vh - 96px);
+    overflow: hidden;
+    h1 {
+        color: black;
+    }
     .contact-list-box {
-        height: 100%;
         width: 456px;
         background-color: white;
+        box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+        /* overflow-y: auto; */
+        height: 100%;
         .add-contact-button-box {
             margin: 22.5px 52px;
             button {
@@ -591,6 +596,23 @@ main.contacts {
             }
             button:active {
                 background-color: #091931;
+            }
+        }
+    }
+    .contact-detail {
+        height: 547px;
+        margin-top: 110px;
+        .contact-detail-head {
+            display: flex;
+            align-items: center;
+            margin-left: 55px;
+            font-size: 27px;
+            .seperator-vertical-blue {
+                width: 3px;
+                height: 59px;
+                margin: 0 30px;
+                background-color: #29ABE2;
+                border-radius: 6px;
             }
         }
     }
@@ -951,12 +973,9 @@ main.contacts {
     justify-content: space-between;
     height: 24px;
     padding: 16px;
+    margin-bottom: 2px;
     border-radius: 10px;
-    margin: 0 52px 2px 52px;
-    .profile-info {
-        .profile-badge {
-            margin-left: 8px;
-        }
+    .profile-info-box {
         display: flex;
         align-items: center;
         font-size: 20px;
@@ -966,16 +985,57 @@ main.contacts {
     }
 }
 
+.profile-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    width: 42px;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    border-radius: 42px;
+}
+
+#contact-list {
+    overflow-y: scroll;
+    height: 85%;
+}
+
+.contact {
+    margin: 0 52px 0px 52px;
+    padding: 15px 24px;
+    height: 48px;
+    .contact-info-box {
+        width: 100%;
+        display: flex;
+        .profile-info {
+            margin-left: 35px;
+            color: black;
+            #profile-email {
+                font-size: 16px;
+                color: #007CEE;
+            }
+        }
+    }
+    .profile-fullname {
+        margin-left: 0;
+    }
+}
+
 .contact-list-separator-box {
-    margin: 0 52px 2px 52px;
+    margin: 17px 52px 0 52px;
     .separator-horizontal {
-        margin: 16px 0;
+        margin: 16px 0 8px 0;
         width: 100%;
         height: 2px;
         background-color: #d1d1d1;
     }
     #separator-letter-span {
         margin-left: 36px;
+        color: black;
     }
 }
 
@@ -1021,26 +1081,82 @@ main.contacts {
     flex-wrap: wrap;
 }
 
-.profile-badge {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 42px;
-    width: 42px;
-    background-color: black;
-    color: white;
-    font-size: 12px;
-    border: 2px solid white;
-    box-sizing: border-box;
-    border-radius: 42px;
+.contact-detail-box {
+    height: 364px;
+    width: 452px;
+    margin-left: 52px;
+    color: black;
+    .contact-detail-box-head {
+        display: flex;
+        align-items: center;
+        margin-bottom: 21px;
+        .profile-badge-big-box {
+            .profile-badge-big {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 120px;
+                width: 120px;
+                background-color: black;
+                color: white;
+                font-size: 47px;
+                font-weight: 500;
+                border: 3px solid white;
+                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 120px;
+            }
+        }
+        .profile-name-with-buttons-box {
+            margin-left: 54px;
+            .profile-name {
+                font-size: 47px;
+                font-weight: 500;
+                margin-bottom: 8px;
+            }
+            .profile-buttons {
+                display: flex;
+                height: 24px;
+                font-size: 16px;
+                gap: 16px;
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    img {
+                        height: 24px;
+                        width: 24px;
+                        object-fit: none;
+                    }
+                }
+            }
+        }
+    }
+    .contact-information-box {
+        height: 74px;
+        display: flex;
+        align-items: center;
+    }
+    .contact-detail-box-body {
+        font-size: 16px;
+        h4 {
+            margin: 21px 0 15px 0;
+        }
+    }
 }
 
 .help {
+    color: black;
+    margin-top: 206px;
+    margin-left: 328px;
+    margin-bottom: 160px;
     font-size: 16px;
     .head-wrapper {
+        font-size: 61px;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 16.5px;
         .go-back-button {
-            position: fixed;
             right: 96px;
             top: 206px;
             display: flex;

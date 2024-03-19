@@ -12,6 +12,23 @@ let selectedcontacts = [];
 
 let currentTask = {};
 
+//load stoarge--
+function guestLogin() {
+    loaduser = sessionStorage.getItem('userI')
+    users = JSON.parse(sessionStorage.getItem('Guest'))
+}
+
+async function loadLocalStorage() {
+    users = await getItem('users')
+    loaduser = localStorage.getItem('userI')
+    console.log(users[loaduser].todo)
+}
+
+async function loadSessionStorage() {
+    users = await getItem('users')
+    loaduser = sessionStorage.getItem('userI')
+}
+//--
 
 function initAddTask() {
     loadFromLocalStorage();
@@ -19,7 +36,6 @@ function initAddTask() {
     renderCategory();
     addAddTaskEventListeners();
 }
-
 
 function renderAssignedTo(searchterm) {
     let dropdown = document.getElementById('drop_down_assigned_to');
@@ -64,7 +80,7 @@ function generateContactHtml(abbreviation, fullname, color, id) {
     html = '';
     html += `
         <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectContacts (this, ${id})">
-            <div class="profile-info">
+            <div class="profile-info-box">
                 <span class="profile-badge" style="background-color: ${color};">${abbreviation}</span>
                 <span class="profile-fullname">${fullname}</span>
             </div>
@@ -401,16 +417,16 @@ async function saveTask() {
 }
 
 
-async function addAllTasksToUsers() {
-    users[loaduser].todo = [];
-    users[loaduser].Urgent = [];
-    for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[i];
-        users[loaduser].todo.push(currentTask);
-        currentTask.prio === 'urgent' ? users[loaduser].Urgent.push(currentTask) : '';
-    }
-    await setItem('users', JSON.stringify(users));
-}
+// async function addAllTasksToUsers() {
+//     users[loaduser].todo = [];
+//     users[loaduser].Urgent = [];
+//     for (let i = 0; i < tasks.length; i++) {
+//         const task = tasks[i];
+//         users[loaduser].todo.push(currentTask);
+//         currentTask.prio === 'urgent' ? users[loaduser].Urgent.push(currentTask) : '';
+//     }
+//     await setItem('users', JSON.stringify(users));
+// }
 
 
 function addAddTaskEventListeners() {

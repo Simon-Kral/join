@@ -18,13 +18,13 @@
     <script src="./js/loadHTML.js"></script>
 </head>
 
-<body onload="init(), loadmenu()">
+<body onload="init(), loadStorage()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
     <main class="help">
         <div class="head-wrapper">
             <h1>Help</h1>
             <a class="go-back-button">
-                <img src="./assets/img/arrow_left.svg" alt="arrow_left">
+                <img onclick="history.back()" src="./assets/img/arrow_left.svg" alt="arrow_left">
             </a>
         </div>
         <span>

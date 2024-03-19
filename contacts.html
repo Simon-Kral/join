@@ -29,11 +29,9 @@
     </style>
 </head>
 
-<body onload="init(), loadmenu(), initContacts()">
+<body onload="init(), loadStorage()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
     <main class="contacts">
-
-
         <div class="contact-list-box">
 
             <div class="add-contact-button-box">
@@ -42,36 +40,46 @@
                     <img src="./assets/img/person_add.svg" alt="person add">
                 </button>
             </div>
-
-            <div class="contact-list">
-                <div class="contact-list-separator-box">
-                    <span id="separator-letter-span">A</span>
-                    <div class="separator-horizontal"></div>
-                </div>
-                <div class="contact-list-entry pointer" onmousedown="selectContact(this, 0, true)">
-                    <div class="profile-info">
-                        <span class="profile-badge" style="background-color: #00BEE8;">SM</span>
-                        <div class="profile-info-box">
-                            <span class="profile-fullname">Sofia Müller (You)</span>
-                            <a href="mailto:sofiam@gmail.com">sofiam@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+            <div id="contact-list"></div>
         </div>
-
-
         <div class="contact-detail">
             <div class="contact-detail-head">
                 <h1>Contacts</h1>
                 <div class="seperator-vertical-blue"></div>
-                <span>Better with a team</span>
+                <div>
+                    <span>Better with a team</span>
+                </div>
+            </div>
+            <div class="contact-detail-box">
+                <div class="contact-detail-box-head">
+                    <div class="profile-badge-big-box">
+                        <span class="profile-badge-big" style="background-color: #00BEE8;">SM</span>
+                    </div>
+                    <div class="profile-name-with-buttons-box">
+                        <div class="profile-name">Sofia Müller</div>
+                        <div class="profile-buttons">
+                            <a>
+                                <img src="./assets/img/edit.svg" alt="">
+                                <span>Edit</span>
+                            </a>
+                            <a>
+                                <img src="./assets/img/delete.svg" alt="">
+                                <span>Delete</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-information-box">
+                    <span>Contact Information</span>
+                </div>
+                <div class="contact-detail-box-body">
+                    <h4>Email</h4>
+                    <a href="mailto:sofiam@gmail.com">sofiam@gmail.com</a>
+                    <h4>Phone</h4>
+                    <a tel:+49 1111 111 11 1>+49 1111 111 11 1</a>
+                </div>
             </div>
         </div>
-
-
     </main>
 </body>
 
