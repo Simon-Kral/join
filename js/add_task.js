@@ -18,7 +18,7 @@ function guestLogin() {
     initAddTask()
 }
 
-async function loadLocalStoragetask() {
+async function loadLocalStorage() {
     users = await getItem('users')
     loaduser = localStorage.getItem('userI')
     initAddTask()
