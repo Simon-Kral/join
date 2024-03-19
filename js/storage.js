@@ -23,6 +23,7 @@ async function loadStorage() {
         }
         else {
             if (window.loadLocalStorage) {
+                loadLocalStorageBoard()
                 loadLocalStorage()
                 loadmenuLocalStorage()
             }
@@ -37,6 +38,7 @@ async function loadStorage() {
             if (window.loadSessionStorage) {
                 loadSessionStorage()
                 loadmenuSessionStorage()
+                loadSessionStorageBoard()
             }
             else {
                 loadmenuSessionStorage()
@@ -47,6 +49,7 @@ async function loadStorage() {
         if (window.guestLogin) {
             guestLogin()
             guestLoginMenu()
+            guestLoginBoard()
         }
         else {
             guestLoginMenu()

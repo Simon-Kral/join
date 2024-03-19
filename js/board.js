@@ -2,17 +2,17 @@ let todoforce = [];
 
 let currenttask = 0;
 
-function guestLogin() {
+function guestLoginBoard() {
     loaduser = sessionStorage.getItem('userI')
     users = JSON.parse(sessionStorage.getItem('Guest'))
 }
 
-async function loadLocalStorage() {
+async function loadLocalStorageBoard() {
         users = await getItem('users')
         loaduser = localStorage.getItem('userI')
 }
 
-async function loadSessionStorage() {
+async function loadSessionStorageBoard() {
         users = await getItem('users')
         loaduser = sessionStorage.getItem('userI')
 }
