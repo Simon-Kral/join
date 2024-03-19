@@ -1,8 +1,4 @@
-let subtasksforce = ['teste', 'test', 'tes', 'tasum'];
 let todoforce = [];
-let inprogressforce = [];
-let awaitfeedbackforce = [];
-let doneforce = [];
 
 let currenttask = 0;
 
@@ -24,6 +20,7 @@ async function loadboardstorage() {
     else {
         guestLoginBoard()
         console.log(users[loaduser])
+        createTaskBoard()
     }
 }
 
@@ -44,6 +41,10 @@ async function loadBoardSessionStorage() {
         users = await getItem('users')
         loaduser = sessionStorage.getItem('userI')
     }
+}
+
+async function createTaskBoard() {
+    showTodoHtml();
 }
 
 function boardinit() {
@@ -131,37 +132,53 @@ function openBordTask() {
 
 //* Start
 
+function renderTasks() {
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+    }
+}
+
 function showTodoHtml() {
-    const todotask = todoTaskHtml();
     let getplacetodo = document.getElementById('to_do_place');
-    getplacetodo.innerHTML += todotask;
+    let getinformationtodo = users[loaduser]['todo'][0];
+    const { categorytodo, titletodo, descriptiontodo, subtaskstodo } = informationTodo(getinformationtodo);
+    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, subtaskstodo);
     showTaskCategorySmall();
     updateProgressBar();
 }
+
+function informationTodo(getinformationtodo) {
+    let categorytodo = getinformationtodo['category'];
+    let titletodo = getinformationtodo['title'];
+    let descriptiontodo = getinformationtodo['description'];
+    // let subtaskstodo = getSubTasks(getinformationtodo);
+    return { categorytodo, titletodo, descriptiontodo };
+}
+
+// function getSubTasks(getinformationtodo) {
+//     let subtask = '';
+//     for (let sub = 0; sub < getinformationtodo['todo'].length; sub++) {
+//         subtask = getinformationtodo[0][sub];
+//     }
+// }
 
 function showInProgressHtml() {
     const todotask = inprogressTaskHtml();
     let getplaceinprogress = document.getElementById('in_progress_place');
     getplaceinprogress.innerHTML = ``;
     getplaceinprogress.innerHTML += todotask;
-    // showTaskVariant();
-    // updateProgressBar();
 }
 
 function showAwaitFeedbackHtml() {
     const todotask = awaitfeedbackTaskHtml();
     let getplaceawaitfeedback = document.getElementById('await_feedback_place');
     getplaceawaitfeedback.innerHTML += todotask;
-    // showTaskVariant();
-    // updateProgressBar();
 }
 
 function showDoneHtml() {
     const todotask = doneTaskHtml();
     let getplacedone = document.getElementById('done_place');
     getplacedone.innerHTML += todotask;
-    // showTaskVariant();
-    // updateProgressBar();
 }
 
 function showTaskCategorySmall(category) {
