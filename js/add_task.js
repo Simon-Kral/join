@@ -22,6 +22,7 @@ async function loadLocalStoragetask() {
     users = await getItem('users')
     loaduser = localStorage.getItem('userI')
     initAddTask()
+    
 }
 
 async function loadSessionStorage() {
