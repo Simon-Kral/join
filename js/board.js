@@ -27,6 +27,7 @@ function boardinit() {
     showEmptyHtmlAwaitfeedback();
     showEmptyHtmlDone();
     renderTodo();
+    console.log(users[loaduser]);
 }
 
 function showEmptyHtmlTodo() {
@@ -38,7 +39,7 @@ function showEmptyHtmlTodo() {
 }
 
 function showEmptyHtmlInprogress() {
-    if (users[loaduser]['inprogress'] == 0) {
+    if (users[loaduser]['tasksinprogress'] == 0) {
         const empty = emptyTaskFieldInprogress();
         let getplacetodo = document.getElementById('in_progress_place');
         getplacetodo.innerHTML = empty;
@@ -46,7 +47,7 @@ function showEmptyHtmlInprogress() {
 }
 
 function showEmptyHtmlAwaitfeedback() {
-    if (users[loaduser]['awaitfeedback'] == 0) {
+    if (users[loaduser]['awaitingfeedback'] == 0) {
         const empty = emptyTaskFieldAwaitfeedback();
         let getplacetodo = document.getElementById('await_feedback_place');
         getplacetodo.innerHTML = empty;
