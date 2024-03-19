@@ -31,7 +31,7 @@ async function loadSessionStorage() {
 //--
 
 function initAddTask() {
-    loadFromLocalStorage();
+    // loadFromLocalStorage();
     renderAssignedTo();
     renderCategory();
     addAddTaskEventListeners();
