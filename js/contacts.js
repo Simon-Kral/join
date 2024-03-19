@@ -1,4 +1,3 @@
-
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
     users = JSON.parse(sessionStorage.getItem('Guest'))
@@ -22,7 +21,7 @@ function renderContacts() {
     list.innerHTML = '';
     let userscontact = users[loaduser].contacts.sort((a, b) => (a.firstname > b.firstname) ? 1 : -1);
     let prevLetter = '';
-    for (let i = 0; i < userscontact.length -1; i++) {
+    for (let i = 0; i < userscontact.length - 1; i++) {
         const contact = userscontact[i];
         console.log(contact)
         const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);

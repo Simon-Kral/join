@@ -12,16 +12,33 @@ let selectedcontacts = [];
 
 let currentTask = {};
 
+function guestLogin() {
+    loaduser = sessionStorage.getItem('userI')
+    users = JSON.parse(sessionStorage.getItem('Guest'))
+    initAddTask()
+}
+
+async function loadLocalStorage() {
+    users = await getItem('users')
+    loaduser = localStorage.getItem('userI')
+    initAddTask()
+}
+
+async function loadSessionStorage() {
+    users = await getItem('users')
+    loaduser = sessionStorage.getItem('userI')
+    initAddTask()
+}
+
 function initAddTask() {
-    loadFromLocalStorage();
+    // loadFromLocalStorage();
     renderAssignedTo();
     renderCategory();
     addAddTaskEventListeners();
 }
 
 function renderAssignedTo(searchterm) {
-    console.log(users)
-    if (users[loaduser].contacts.length > 0) {
+    if (users[loaduser].contacts && users[loaduser].contacts.length > 0) {
         let dropdown = document.getElementById('drop_down_assigned_to');
         dropdown.innerHTML = '';
         for (let i = 1; i < users[loaduser].contacts.length; i++) {
@@ -34,8 +51,7 @@ function renderAssignedTo(searchterm) {
                 dropdown.innerHTML += generateContactHtml(abbreviation, fullname, color, id);
             }
         }
-    }
-    else {
+    } else {
 
     }
 }
@@ -135,7 +151,7 @@ function clearAllPrioButtons() {
         inputs[i].checked = false;
     }
     let labels = document.querySelectorAll(".highlighted-button");
-    [].forEach.call(labels, function (label) {
+    [].forEach.call(labels, function(label) {
         label.classList.remove("highlighted-button");
     });
 }
@@ -285,10 +301,10 @@ function clearAddTaskForm() {
 
 
 function clearErrorStyle() {
-    document.querySelectorAll('input').forEach(function (input) {
+    document.querySelectorAll('input').forEach(function(input) {
         input.style.borderColor = '#D1D1D1';
     });
-    document.querySelectorAll('.required-field').forEach(function (requiredfield) {
+    document.querySelectorAll('.required-field').forEach(function(requiredfield) {
         requiredfield.classList.add('dnone');
     })
 }
@@ -350,12 +366,12 @@ function transferDate() {
 }
 
 
-function loadFromLocalStorage() {
-    let tasksastext = localStorage.getItem('tasks');
-    if (tasksastext) {
-        tasks = JSON.parse(tasksastext);
-    }
-}
+// function loadFromLocalStorage() {
+//     let tasksastext = localStorage.getItem('tasks');
+//     if (tasksastext) {
+//         tasks = JSON.parse(tasksastext);
+//     }
+// }
 
 
 // function saveToLocalStorage() {
@@ -404,8 +420,7 @@ async function saveTask() {
         await setItem('users', JSON.stringify(users));
         tasks.push(currentTask);
         // saveToLocalStorage();
-    }
-    else {
+    } else {
         users[loaduser].todo.push(currentTask);
         currentTask.prio === 'urgent' ? users[loaduser].Urgent.push(currentTask) : '';
         sessionStorage.setItem('Guest', JSON.stringify(users));
@@ -428,14 +443,14 @@ async function saveTask() {
 
 
 function addAddTaskEventListeners() {
-    document.querySelectorAll('[required]').forEach(function (input) {
-        input.addEventListener('invalid', function () {
+    document.querySelectorAll('[required]').forEach(function(input) {
+        input.addEventListener('invalid', function() {
             input.style.borderColor = '#FF8190';
-            document.querySelectorAll('.required-field').forEach(function (requiredfield) {
+            document.querySelectorAll('.required-field').forEach(function(requiredfield) {
                 requiredfield.classList.remove('dnone');
             })
         });
-        input.addEventListener('change', function () {
+        input.addEventListener('change', function() {
             input.style.borderColor = '#D1D1D1';
             input.parentElement.nextElementSibling.classList.add('dnone');
         });
