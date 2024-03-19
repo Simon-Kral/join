@@ -52,10 +52,11 @@ function boardinit() {
     showEmptyHtmlInprogress();
     showEmptyHtmlAwaitfeedback();
     showEmptyHtmlDone();
+    renderTodo();
 }
 
 function showEmptyHtmlTodo() {
-    if (todoforce == 0) {
+    if (users[loaduser]['todo'] == 0) {
         const empty = emptyTaskFieldTodo();
         let getplacetodo = document.getElementById('to_do_place');
         getplacetodo.innerHTML = empty;
@@ -63,7 +64,7 @@ function showEmptyHtmlTodo() {
 }
 
 function showEmptyHtmlInprogress() {
-    if (todoforce == 0) {
+    if (users[loaduser]['inprogress'] == 0) {
         const empty = emptyTaskFieldInprogress();
         let getplacetodo = document.getElementById('in_progress_place');
         getplacetodo.innerHTML = empty;
@@ -71,7 +72,7 @@ function showEmptyHtmlInprogress() {
 }
 
 function showEmptyHtmlAwaitfeedback() {
-    if (todoforce == 0) {
+    if (users[loaduser]['awaitfeedback'] == 0) {
         const empty = emptyTaskFieldAwaitfeedback();
         let getplacetodo = document.getElementById('await_feedback_place');
         getplacetodo.innerHTML = empty;
@@ -79,7 +80,7 @@ function showEmptyHtmlAwaitfeedback() {
 }
 
 function showEmptyHtmlDone() {
-    if (todoforce == 0) {
+    if (users[loaduser]['done'] == 0) {
         const empty = emptyTaskFieldDone();
         let getemptyplacedone = document.getElementById('done_place');
         getemptyplacedone.innerHTML = empty;
