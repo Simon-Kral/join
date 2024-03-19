@@ -887,6 +887,12 @@
     .summary-tasks {
         margin-right: 30px;
     }
+
+    .law{
+        margin-left: 16.5px !important;
+        margin-right: 16.5px !important;
+        margin-bottom: 256px !important;
+    }
 }
 
 @media only screen and (max-width: 1030px) {
@@ -991,6 +997,10 @@
 }
 
 @media only screen and (max-width: 700px) {
+
+    .menu-joinlogo-handy{
+        margin-left: 20px !important;
+    }
 
     .register-sign-up-box{
         height: 595px;
@@ -1327,6 +1337,10 @@
             top: 86px;
         }
     }
+
+    .legal-head{
+        font-size: 47px !important;
+    }
 }
 
 @media only screen and (max-width: 450px) {
@@ -1433,6 +1447,12 @@
             height: 74px;
         }
     }
+    .place-law-body{
+        margin-right: 0px !important;
+    }
+    .legal-head{
+        font-size: 46px !important;
+    }
 }
 
 @media only screen and (max-width: 400px) {
@@ -1450,8 +1470,11 @@
             width: 180px;
         }
     }
-}
+    .legal-head{
+        font-size: 34px !important;
+    }
 
-.register-login-checkbox {
-    margin-right: 100px;
+    .register-login-checkbox {
+        margin-right: 100px;
+    }
 }
