@@ -5,7 +5,6 @@ html {
 body {
     margin: 0px;
     font-family: "Inter", sans-serif;
-    color: #2a3647;
     background-color: #f6f7f8;
 }
 
@@ -483,13 +482,13 @@ h1.legal-head {
     justify-content: center;
     align-items: center;
     right: 68px;
-    position: fixed;
     width: 32px;
     height: 32px;
     border-radius: 42px;
 }
 
 .arrow-style:hover {
+    cursor: pointer;
     background-color: #EEEEEE;
 }
 
@@ -1146,11 +1145,18 @@ main.contacts {
 }
 
 .help {
+    color: black;
+    margin-top: 206px;
+    margin-left: 328px;
+    margin-bottom: 160px;
     font-size: 16px;
     .head-wrapper {
+        font-size: 61px;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 16.5px;
         .go-back-button {
-            position: fixed;
             right: 96px;
             top: 206px;
             display: flex;
@@ -1269,4 +1275,53 @@ main.contacts {
     background-color: #A8A8A8;
     border-radius: 16px;
     border: 8px solid #ffffff;
+}
+
+@media(max-width: 1400px) {
+    .empty-task-place {
+        width: 200px;
+        font-size: 14px;
+    }
+
+    .single-task-head {
+        width: 200px;
+    }
+}
+
+@media(max-width: 1300px) {
+    .board-body-task {
+        margin-left: 130px;
+    }
+
+    .board-head {
+        margin-left: 130px;
+    }
+
+    .board-head-task {
+        margin-left: 130px;
+    }
+}
+
+@media(max-width: 1030px) {
+    .board-body-task {
+        margin-left: 48px;
+    }
+
+    .board-head {
+        margin-left: 48px;
+    }
+
+    .board-head-task {
+        margin-left: 48px;
+    }
+
+    .empty-task-place {
+        width: 180px;
+    }
+}
+
+@media(max-width: 970px) {
+    .single-task-head {
+        width: 160px;
+    }
 }

@@ -15,3 +15,26 @@ async function getItem(key) {
         .then(res => res.data.value)
         .then(value => JSON.parse(value))
 }
+
+async function loadStorage() {
+    if (sessionStorage.getItem("Guest") === null) {
+        if (localStorage.getItem("userI") === null) {
+            if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() }
+        }
+        else {
+            loadLocalStorage()
+            loadmenuLocalStorage()
+        }
+        if (sessionStorage.getItem("userI") === null) {
+            if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() }
+        }
+        else {
+            loadSessionStorage()
+            loadmenuSessionStorage()
+        }
+    }
+    else {
+        guestLogin()
+        guestLoginMenu()
+    }
+}

@@ -16,6 +16,16 @@
     align-items: center;
 }
 
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #A8A8A8;
+    border-radius: 10px;
+}
+
 .menu-joinlogo-handy {
     display: none;
 }
@@ -887,9 +897,29 @@
     .summary-tasks {
         margin-right: 30px;
     }
+
+    .law {
+        margin-left: 160px !important;
+        margin-right: 160px !important;
+        margin-bottom: 256px !important;
+    }
+    .help{
+        margin-left: 160px !important;
+        margin-right: 160px !important;
+}
 }
 
 @media only screen and (max-width: 1030px) {
+    .law {
+        margin-left: 16.5px !important;
+        margin-right: 16.5px !important;
+        margin-bottom: 256px !important;
+    }
+    .help{
+        margin-left: 16.5px !important;
+        margin-right: 16.5px !important;
+}
+
     .menu-joinlogo {
         display: none;
     }
@@ -936,6 +966,7 @@
 
     .summary-margin {
         margin-left: 0px;
+        margin-bottom: 120px;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -992,19 +1023,28 @@
 
 @media only screen and (max-width: 700px) {
 
-    .register-sign-up-box{
+    .head-wrapper {
+        font-size: 47px !important;
+    }
+    .menu-joinlogo-handy {
+        margin-left: 20px !important;
+    }
+
+    .register-sign-up-box {
         height: 595px;
         width: 396px;
+
         input {
             width: 250px;
         }
+
         h1 {
             font-size: 47px;
             margin-top: 32px;
         }
     }
 
-    .register-spacer{
+    .register-spacer {
         width: 88px;
     }
 
@@ -1037,7 +1077,7 @@
         }
     }
 
-    .login-spacer{
+    .login-spacer {
         width: 88px;
     }
 
@@ -1327,6 +1367,10 @@
             top: 86px;
         }
     }
+
+    .legal-head {
+        font-size: 47px !important;
+    }
 }
 
 @media only screen and (max-width: 450px) {
@@ -1427,17 +1471,26 @@
     }
 
     .singed-Up-Succes {
-    
+
         span {
             width: 300px;
             height: 74px;
         }
     }
+
+    .place-law-body {
+        margin-right: 0px !important;
+    }
+
+    .legal-head {
+        font-size: 46px !important;
+    }
 }
 
 @media only screen and (max-width: 400px) {
-    .register-sign-up-box{
+    .register-sign-up-box {
         width: 310px;
+
         input {
             width: 180px;
         }
@@ -1446,12 +1499,17 @@
     .register-login {
         height: 500px;
         width: 310px;
+
         input {
             width: 180px;
         }
     }
-}
 
-.register-login-checkbox {
-    margin-right: 100px;
+    .legal-head {
+        font-size: 34px !important;
+    }
+
+    .register-login-checkbox {
+        margin-right: 100px;
+    }
 }

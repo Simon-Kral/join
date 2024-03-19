@@ -1,23 +1,3 @@
-async function loadSummary() {
-    if (sessionStorage.getItem("Guest") === null) {
-        if (localStorage.getItem("userI") === null) { }
-        else {
-            if (localStorage.getItem('userI').length > 0) {
-                loadSummaryStorage()
-            }
-        }
-        if (sessionStorage.getItem("userI") === null) { }
-        else {
-            if (sessionStorage.getItem('userI').length > 0) {
-                loadSummarySessionStorage()
-            }
-        }
-    }
-    else {
-        guestLogin()
-    }
-}
-
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
     summary_good_morning.innerHTML = 'Good morning!';
@@ -26,20 +6,16 @@ function guestLogin() {
     sommary_name.innerHTML = '';
 }
 
-async function loadSummaryStorage() {
-    if (localStorage.getItem('userI').length > 0) {
+async function loadLocalStorage() {
         users = await getItem('users')
         loaduser = localStorage.getItem('userI')
         loadSummaryProject()
-    }
 }
 
-async function loadSummarySessionStorage() {
-    if (sessionStorage.getItem('userI').length > 0) {
+async function loadSessionStorage() {
         users = await getItem('users')
         loaduser = sessionStorage.getItem('userI')
         loadSummaryProject()
-    }
 }
 
 async function loadSummaryProject() {
@@ -52,6 +28,7 @@ async function loadSummaryProject() {
     let inboard = document.getElementById('summary_in_board')
     let name = document.getElementById('sommary_name');
     loadSummaryInnerhtml(inboard, todo, done, urgent, deadline, inprogress, awaitfeedback, name)
+    console.log(users)
 }
 
 async function loadSummaryInnerhtml(inboard, todo, done, urgent, deadline, inprogress, awaitfeedback, name) {
