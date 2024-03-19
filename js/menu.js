@@ -1,20 +1,23 @@
-async function loadmenu() {
+
+async function loadStorage() {
     if (sessionStorage.getItem("Guest") === null) {
         if (localStorage.getItem("userI") === null) {
             if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() }
         }
         else {
+            loadLocalStorage()
             loadmenuLocalStorage()
         }
-
         if (sessionStorage.getItem("userI") === null) {
             if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() }
         }
         else {
+            loadSessionStorage()
             loadmenuSessionStorage()
         }
     }
     else {
+        guestLogin()
         guestLoginMenu()
     }
 }
@@ -59,7 +62,7 @@ function openMenu() {
     openmenu.innerHTML = menuInnerHTML()
 }
 
-function closeMenu(){
+function closeMenu() {
     let openmenu = document.getElementById('menu_open');
     openmenu.innerHTML = '';
 }
@@ -73,7 +76,7 @@ function menuInnerHTML() {
     </div>
     <div class="menu-close" onclick="closeMenu()"></div>
     `;
-    
+
     return menu
 }
 
