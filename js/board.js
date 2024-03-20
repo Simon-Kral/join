@@ -27,15 +27,15 @@ async function createTaskBoard() {
 }
 
 function boardinit() {
-    showEmptyHtmlTodo();
-    showEmptyHtmlInprogress();
-    showEmptyHtmlAwaitfeedback();
-    showEmptyHtmlDone();
     renderTodo();
     renderInProgress();
     renderAwaitFeedback();
     renderDone();
-    console.log(users[loaduser]);
+    // console.log(users[loaduser]);
+    showEmptyHtmlTodo();
+    showEmptyHtmlInprogress();
+    showEmptyHtmlAwaitfeedback();
+    showEmptyHtmlDone();
 }
 
 function showEmptyHtmlTodo() {
@@ -126,11 +126,10 @@ function renderTodo() {
 
 function showTodoHtml(getinformationtodo, i) {
     let getplacetodo = document.getElementById('to_do_place');
-    const { categorytodo, titletodo, descriptiontodo, subtaskstodo } = informationTodo(getinformationtodo);
-    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, subtaskstodo, i);
+    const { categorytodo, titletodo, descriptiontodo } = informationTodo(getinformationtodo);
+    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
     showTaskCategorySmall();
     updateProgressBar();
-    console.log(i);
 }
 
 function informationTodo(getinformationtodo) {
@@ -144,15 +143,16 @@ function renderInProgress() {
     let inprogress = users[loaduser]['tasksinprogress'];
     for (let i = 0; i < inprogress.length; i++) {
         inprogresscollect = inprogress[i];
-        showInProgressHtml(inprogresscollect);
+        showInProgressHtml(inprogresscollect, i);
     }
 }
 
-function showInProgressHtml() {
-    const todotask = inprogressTaskHtml();
+function showInProgressHtml(inprogresscollect, i) {
     let getplaceinprogress = document.getElementById('in_progress_place');
-    getplaceinprogress.innerHTML = ``;
-    getplaceinprogress.innerHTML += todotask;
+    const { categorytodo, titletodo, descriptiontodo } = informationTodo(inprogresscollect);
+    getplaceinprogress.innerHTML += inprogressTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    showTaskCategorySmall();
+    updateProgressBar();
 }
 
 function informationInProgress(getinformationtodo) {
@@ -244,10 +244,17 @@ function drag(id) {
 
 function drop(ev) {
     ev.preventDefault();
+    let select = users[loaduser];
+    let drag = users[loaduser]['todo'];
+    drag[currentdragged];
     console.log(currentdragged);
+    console.log(select);
     boardinit();
+    console.log(drag[currentdragged]);
+    select['tasksinprogress'].push(drag[currentdragged]);
 }
 
 function noCloseContent(event) {
     event.stopPropagation();
 }
+
