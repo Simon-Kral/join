@@ -46,9 +46,9 @@ function emptyTaskFieldDone() {
     `;
 }
 
-function todoTaskHtml(title, description, priority, assignedto, subtasks) {
+function todoTaskHtml(title, description, priority, assignedto, subtasks, i) {
     return `
-        <div id="drag1" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(event)">
+        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag()">
             <div id="task-variant"></div>
             <h3>${title}</h3>
             <span>${description}</span>
