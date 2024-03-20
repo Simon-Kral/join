@@ -2,6 +2,8 @@ let todoforce = [];
 
 let currenttask = 0;
 
+let currentdragged;
+
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
     users = JSON.parse(sessionStorage.getItem('Guest'))
@@ -30,6 +32,9 @@ function boardinit() {
     showEmptyHtmlAwaitfeedback();
     showEmptyHtmlDone();
     renderTodo();
+    renderInProgress();
+    renderAwaitFeedback();
+    renderDone();
     console.log(users[loaduser]);
 }
 
@@ -115,17 +120,17 @@ function renderTodo() {
     let todo = users[loaduser]['todo'];
     for (let i = 0; i < todo.length; i++) {
         todocollect = todo[i];
-        console.log(todocollect);
-        showTodoHtml(todocollect);
+        showTodoHtml(todocollect, i);
     }
 }
 
-function showTodoHtml(getinformationtodo) {
+function showTodoHtml(getinformationtodo, i) {
     let getplacetodo = document.getElementById('to_do_place');
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo } = informationTodo(getinformationtodo);
-    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, subtaskstodo);
+    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, subtaskstodo, i);
     showTaskCategorySmall();
     updateProgressBar();
+    console.log(i);
 }
 
 function informationTodo(getinformationtodo) {
@@ -136,10 +141,9 @@ function informationTodo(getinformationtodo) {
 }
 
 function renderInProgress() {
-    let inprogress = users[loaduser]['inprogress'];
+    let inprogress = users[loaduser]['tasksinprogress'];
     for (let i = 0; i < inprogress.length; i++) {
         inprogresscollect = inprogress[i];
-        console.log(inprogresscollect);
         showInProgressHtml(inprogresscollect);
     }
 }
@@ -159,10 +163,9 @@ function informationInProgress(getinformationtodo) {
 }
 
 function renderAwaitFeedback() {
-    let awaitfeedback = users[loaduser]['awaitfeedback'];
+    let awaitfeedback = users[loaduser]['awaitingfeedback'];
     for (let i = 0; i < awaitfeedback.length; i++) {
         awaitfeedbackcollect = awaitfeedback[i];
-        console.log(awaitfeedbackcollect);
         showAwaitFeedbackHtml(awaitfeedbackcollect);
     }
 }
@@ -184,7 +187,6 @@ function renderDone() {
     let done = users[loaduser]['done'];
     for (let i = 0; i < done.length; i++) {
         donecollect = done[i];
-        console.log(donecollect);
         showAwaitFeedbackHtml(donecollect);
     }
 }
@@ -236,14 +238,14 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+function drag(id) {
+    currentdragged = id;
 }
 
 function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    console.log(currentdragged);
+    boardinit();
 }
 
 function noCloseContent(event) {
