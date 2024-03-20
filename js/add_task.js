@@ -5,18 +5,22 @@ let allcategories = [
     { id: 0, name: 'Technical Task' },
     { id: 1, name: 'User Story' }
 ];
+
 let allsubtasks = [
     { idcounter: 0 }
 ];
+
 let selectedcontacts = [];
 
 let currentTask = {};
+
 
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
     users = JSON.parse(sessionStorage.getItem('Guest'))
     fillAddTaskSection()
 }
+
 
 async function loadLocalStorage() {
     users = await getItem('users')
@@ -25,11 +29,13 @@ async function loadLocalStorage() {
 
 }
 
+
 async function loadSessionStorage() {
     users = await getItem('users')
     loaduser = sessionStorage.getItem('userI')
     fillAddTaskSection()
 }
+
 
 function initAddTask() {
     // loadFromLocalStorage();
@@ -37,6 +43,7 @@ function initAddTask() {
     renderCategory();
     addAddTaskEventListeners();
 }
+
 
 function renderAssignedTo(searchterm) {
     if (users[loaduser].contacts && users[loaduser].contacts.length > 0) {
@@ -95,6 +102,7 @@ function generateContactHtml(abbreviation, fullname, color, id) {
     return html
 }
 
+
 function generateCategoryHtml(name, id) {
     html = '';
     html += `
@@ -105,9 +113,11 @@ function generateCategoryHtml(name, id) {
     return html
 }
 
+
 function dontChangeFocus(event) {
     event.preventDefault();
 }
+
 
 function selectContacts(entry, id, selected) {
     entry.classList.toggle('selected');
@@ -289,6 +299,7 @@ function confirmChangeSubtask(entry, id) {
     entry.classList.remove('border-bottom-blue');
 }
 
+
 function clearAddTaskForm() {
     clearInputs();
     clearContainers();
@@ -367,21 +378,6 @@ function transferDate() {
 }
 
 
-// function loadFromLocalStorage() {
-//     let tasksastext = localStorage.getItem('tasks');
-//     if (tasksastext) {
-//         tasks = JSON.parse(tasksastext);
-//     }
-// }
-
-
-// function saveToLocalStorage() {
-//     let tasksastext = JSON.stringify(tasks);
-//     localStorage.setItem('tasks', tasksastext);
-// }
-
-
-
 async function addToTasks() {
     addDataFromInputs();
     addPrio();
@@ -431,18 +427,6 @@ async function saveTask() {
 }
 
 
-// async function addAllTasksToUsers() {
-//     users[loaduser].todo = [];
-//     users[loaduser].Urgent = [];
-//     for (let i = 0; i < tasks.length; i++) {
-//         const task = tasks[i];
-//         users[loaduser].todo.push(currentTask);
-//         currentTask.prio === 'urgent' ? users[loaduser].Urgent.push(currentTask) : '';
-//     }
-//     await setItem('users', JSON.stringify(users));
-// }
-
-
 function addAddTaskEventListeners() {
     document.querySelectorAll('[required]').forEach(function(input) {
         input.addEventListener('invalid', function() {
@@ -457,6 +441,7 @@ function addAddTaskEventListeners() {
         });
     });
 };
+
 
 function delay(milliseconds) {
     return new Promise(resolve => {
