@@ -22,16 +22,11 @@ async function loadSessionStorage() {
     boardinit()
 }
 
-async function createTaskBoard() {
-    showTodoHtml();
-}
-
 function boardinit() {
     renderTodo();
     renderInProgress();
     renderAwaitFeedback();
     renderDone();
-    // console.log(users[loaduser]);
     showEmptyHtmlTodo();
     showEmptyHtmlInprogress();
     showEmptyHtmlAwaitfeedback();
@@ -117,6 +112,8 @@ function openBordTask() {
 //* Start
 
 function renderTodo() {
+    let getplacetodo = document.getElementById('to_do_place');
+    getplacetodo.innerHTML = ``;
     let todo = users[loaduser]['todo'];
     for (let i = 0; i < todo.length; i++) {
         todocollect = todo[i];
@@ -130,6 +127,7 @@ function showTodoHtml(getinformationtodo, i) {
     getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
     showTaskCategorySmall();
     updateProgressBar();
+    console.log(i);
 }
 
 function informationTodo(getinformationtodo) {
@@ -140,6 +138,8 @@ function informationTodo(getinformationtodo) {
 }
 
 function renderInProgress() {
+    let getplacetodo = document.getElementById('in_progress_place');
+    getplacetodo.innerHTML = ``;
     let inprogress = users[loaduser]['tasksinprogress'];
     for (let i = 0; i < inprogress.length; i++) {
         inprogresscollect = inprogress[i];
@@ -163,6 +163,8 @@ function informationInProgress(getinformationtodo) {
 }
 
 function renderAwaitFeedback() {
+    let getplacetodo = document.getElementById('await_feedback_place');
+    getplacetodo.innerHTML = ``;
     let awaitfeedback = users[loaduser]['awaitingfeedback'];
     for (let i = 0; i < awaitfeedback.length; i++) {
         awaitfeedbackcollect = awaitfeedback[i];
@@ -184,6 +186,8 @@ function informationAwaitProgress(getinformationtodo) {
 }
 
 function renderDone() {
+    let getplacetodo = document.getElementById('done_place');
+    getplacetodo.innerHTML = ``;
     let done = users[loaduser]['done'];
     for (let i = 0; i < done.length; i++) {
         donecollect = done[i];
@@ -242,19 +246,19 @@ function drag(id) {
     currentdragged = id;
 }
 
-function drop(ev) {
+function dropInProgress(ev) {
     ev.preventDefault();
     let select = users[loaduser];
+    console.log(select['todo'][currentdragged]);
     let drag = users[loaduser]['todo'];
-    drag[currentdragged];
-    console.log(currentdragged);
-    console.log(select);
-    boardinit();
-    console.log(drag[currentdragged]);
     select['tasksinprogress'].push(drag[currentdragged]);
+    drag.splice(currentdragged, 1); 
+    console.log(users[loaduser]);
+    boardinit();
 }
 
 function noCloseContent(event) {
     event.stopPropagation();
 }
+
 
