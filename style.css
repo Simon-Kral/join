@@ -685,7 +685,7 @@ main.contacts {
     }
     textarea {
         width: 398px;
-        resize: vertical;
+        resize: none;
         border: 1px solid #d1d1d1;
         border-radius: 10px;
         min-height: 120px;

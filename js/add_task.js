@@ -35,6 +35,7 @@ function initAddTask() {
   renderAssignedTo();
   renderCategory();
   addAddTaskEventListeners();
+  setMinDate();
 }
 
 function renderAssignedTo(searchterm) {
@@ -366,15 +367,31 @@ function getAllAddTaskContainers() {
 function transferDate() {
   let calendar = document.getElementById("input_calendar");
   let dateinput = document.getElementById("input_with_button_date");
-  let date = calendar.value;
-  var d = new Date(date),
-    month = "" + (d.getMonth() + 1),
-    day = "" + d.getDate(),
-    year = d.getFullYear();
-  if (month.length < 2) month = "0" + month;
-  if (day.length < 2) day = "0" + day;
+  let date = formatDate(calendar.value);
   let result = [day, month, year].join("/");
   dateinput.value = result;
+}
+
+function setMinDate() {
+  let date = formatDate();
+  let result = [year, month, day].join("-");
+  document.getElementById("input_calendar").setAttribute("min", result);
+}
+
+function formatDate(date) {
+  let formatteddate;
+  if (date) {
+    formatteddate = new Date(date);
+  } else {
+    formatteddate = new Date();
+  }
+  formatteddate,
+    (month = "" + (formatteddate.getMonth() + 1)),
+    (day = "" + formatteddate.getDate()),
+    (year = formatteddate.getFullYear());
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+  return { day, month, year };
 }
 
 async function addToTasks() {
