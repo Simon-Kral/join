@@ -124,7 +124,7 @@ function renderTodo() {
 function showTodoHtml(getinformationtodo, i) {
     let getplacetodo = document.getElementById('to_do_place');
     const { categorytodo, titletodo, descriptiontodo } = informationTodo(getinformationtodo);
-    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i, getinformationtodo);
     showTaskCategorySmall();
     updateProgressBar();
     console.log(i);
@@ -150,7 +150,7 @@ function renderInProgress() {
 function showInProgressHtml(inprogresscollect, i) {
     let getplaceinprogress = document.getElementById('in_progress_place');
     const { categorytodo, titletodo, descriptiontodo } = informationTodo(inprogresscollect);
-    getplaceinprogress.innerHTML += inprogressTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    getplaceinprogress.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
     showTaskCategorySmall();
     updateProgressBar();
 }
@@ -168,14 +168,16 @@ function renderAwaitFeedback() {
     let awaitfeedback = users[loaduser]['awaitingfeedback'];
     for (let i = 0; i < awaitfeedback.length; i++) {
         awaitfeedbackcollect = awaitfeedback[i];
-        showAwaitFeedbackHtml(awaitfeedbackcollect);
+        showAwaitFeedbackHtml(awaitfeedbackcollect, i);
     }
 }
 
-function showAwaitFeedbackHtml() {
-    const todotask = awaitfeedbackTaskHtml();
+function showAwaitFeedbackHtml(inprogresscollect, i) {
     let getplaceawaitfeedback = document.getElementById('await_feedback_place');
-    getplaceawaitfeedback.innerHTML += todotask;
+    const { categorytodo, titletodo, descriptiontodo } = informationTodo(inprogresscollect);
+    getplaceawaitfeedback.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    showTaskCategorySmall();
+    updateProgressBar();
 }
 
 function informationAwaitProgress(getinformationtodo) {
@@ -199,6 +201,14 @@ function showDoneHtml() {
     const todotask = doneTaskHtml();
     let getplacedone = document.getElementById('done_place');
     getplacedone.innerHTML += todotask;
+}
+
+function showDoneHtml(inprogresscollect, i) {
+    let getplacedone = document.getElementById('done_place');
+    const { categorytodo, titletodo, descriptiontodo } = informationTodo(inprogresscollect);
+    getplacedone.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    showTaskCategorySmall();
+    updateProgressBar();
 }
 
 function showTaskCategorySmall(category) {
@@ -250,11 +260,16 @@ function dropInProgress(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     console.log(select['todo'][currentdragged]);
-    let drag = users[loaduser]['todo'];
-    select['tasksinprogress'].push(drag[currentdragged]);
-    drag.splice(currentdragged, 1); 
+    let selecttodo = setTodoFrom();
+    select['tasksinprogress'].push(selecttodo[currentdragged]);
+    selecttodo.splice(currentdragged, 1); 
     console.log(users[loaduser]);
     boardinit();
+}
+
+function setTodoFrom() {
+    let drag = users[loaduser]['todo'];
+    return drag;
 }
 
 function noCloseContent(event) {

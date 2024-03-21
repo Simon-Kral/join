@@ -268,9 +268,26 @@ function inprogressTaskHtml(title, description, priority, i) {
     `;
 }
 
-function awaitfeedbackTaskHtml() {
+function awaitfeedbackTaskHtml(title, description, priority, i) {
   return `
-        <h1>TestTesTodo</h1>
+                <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
+            <div id="task-variant"></div>
+            <h3>${title}</h3>
+            <span>${description}</span>
+            <div class="place-task-progress">
+                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+                    <div class="progressbar" id="progressbar"></div>
+                </div>
+                <p>Subtasks</p>
+            </div>
+            <div class="place-user-status">
+                <div class="place-user">
+                </div>
+                <div>
+                    <img class="low-image" src="${priority}">
+                </div>
+            </div>
+        </div>
     `;
 }
 
