@@ -200,7 +200,17 @@ function openDropDownMenu(id, focus) {
 }
 
 function setFocusOnElement(id) {
-  document.getElementById(id).focus();
+  let input = document.getElementById("input_with_button_" + id);
+  let dropdown = document.getElementById("drop_down_" + id);
+  if (dropdown.classList.contains("dnone")) {
+    input.focus();
+  } else if (!dropdown.classList.contains("dnone")) {
+    input.blur();
+  }
+}
+
+function fpreventDefault(event) {
+  event.preventDefault();
 }
 
 function changeSubtaskIcons(focus) {
@@ -231,11 +241,11 @@ function addSubtask(inputid) {
 
 function generateSubtaskHtml(name, id) {
   let html = "";
-  html += /*html*/ `
+  html += `
     <ul>
         <li>${name}</li>
     </ul>
-    <div id="edit-subtask-buttons" class="double-button-container" ondblclick="preventDblClick(event)">
+    <div id="edit-subtask-buttons" class="double-button-container" ondblclick="fstopPropagation(event)">
         <a id="delete_subtask_button" onclick="editSubtask(this.parentElement.parentElement, ${id})">
             <img src="./assets/img/edit.svg" alt="add">
         </a>
@@ -268,9 +278,8 @@ function generateEditSubtaskHtml(id) {
   return html;
 }
 
-function preventDblClick(event) {
+function fstopPropagation(event) {
   event.stopPropagation();
-  // event.preventDefault();
 }
 
 function editSubtask(entry, id) {

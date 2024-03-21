@@ -1,53 +1,53 @@
 async function init() {
-    await includeHTML();
+  await includeHTML();
 }
 
 async function includeHTML() {
-    let includeElements = document.querySelectorAll('[w3-include-html]');
-    for (let i = 0; i < includeElements.length; i++) {
-        const element = includeElements[i];
-        file = element.getAttribute("w3-include-html"); // "includes/header.html"
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = 'Page not found';
-        }
+  let includeElements = document.querySelectorAll("[w3-include-html]");
+  for (let i = 0; i < includeElements.length; i++) {
+    const element = includeElements[i];
+    file = element.getAttribute("w3-include-html"); // "includes/header.html"
+    let resp = await fetch(file);
+    if (resp.ok) {
+      element.innerHTML = await resp.text();
+    } else {
+      element.innerHTML = "Page not found";
     }
+  }
 }
 
 function bordAddTaskFieldHtml() {
-    return `
+  return `
         <div class="bord-add-tasks-field" onclick="noCloseContent(event)" id="add_task_page"></div>
     `;
 }
 
 function emptyTaskFieldTodo() {
-    return `
+  return `
         <div class="empty-task-place">No tasks To Do</div>
     `;
 }
 
 function emptyTaskFieldInprogress() {
-    return `
+  return `
         <div class="empty-task-place">No tasks In progress</div>
     `;
 }
 
 function emptyTaskFieldAwaitfeedback() {
-    return `
+  return `
         <div class="empty-task-place">No tasks Await feedback</div>
     `;
 }
 
 function emptyTaskFieldDone() {
-    return `
+  return `
         <div class="empty-task-place">No tasks Done</div>
     `;
 }
 
 function todoTaskHtml(title, description, priority, i) {
-    return `
+  return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
@@ -69,8 +69,15 @@ function todoTaskHtml(title, description, priority, i) {
     `;
 }
 
-function fullTaskHtml(title, description, date, priority, assignedto, subtasks) {
-    return `
+function fullTaskHtml(
+  title,
+  description,
+  date,
+  priority,
+  assignedto,
+  subtasks
+) {
+  return `
             <div class="single-task-field" onclick="noCloseContent(event)">
                 <div class="place-categorie-cross">
                     <div id="task_variant_bord"></div>
@@ -110,7 +117,7 @@ function fullTaskHtml(title, description, date, priority, assignedto, subtasks) 
 }
 
 function editTaskHtml() {
-    return `
+  return `
         <div class="single-task-field" onclick="noCloseContent(event)">
             <main class="edit-task">
                 <form class="add-task-form-section" onsubmit="addToTasks();return false"  autocomplete="off">
@@ -139,7 +146,7 @@ function editTaskHtml() {
                                         id="input_with_button_assigned_to"
                                         onfocusin="openDropDownMenu('drop_down_assigned_to', 'in')"
                                         onfocusout="openDropDownMenu('drop_down_assigned_to', 'out')" oninput="setFilter(this)">
-                                    <a onclick="setFocusOnElement('input_with_button_assigned_to')">
+                                    <a onclick="setFocusOnElement('input_with_button_assigned_to', event)">
                                         <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                                     </a>
                                 </div>
@@ -192,7 +199,7 @@ function editTaskHtml() {
                                         type="text" id="input_with_button_category"
                                         onfocusin="openDropDownMenu('drop_down_category', 'in')"
                                         onfocusout="openDropDownMenu('drop_down_category', 'out')"  oninput="setFilter(this)">
-                                    <a onclick="setFocusOnElement('input_with_button_category')">
+                                    <a onclick="setFocusOnElement('input_with_button_category', event)">
                                         <img id="drop_down_category_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                                     </a>
                                 </div>
@@ -210,12 +217,12 @@ function editTaskHtml() {
                                     </a>
                                     <div id="confirm_subtask_container" class="input-with-double-button dnone">
                                         <a id="clear_subtask_button"
-                                            onmousedown="dontChangeFocus(event); clearInput('input_with_button_subtask')">
+                                            onmousedown="fpreventDefault(event); clearInput('input_with_button_subtask')">
                                             <img src="./assets/img/cross.svg" alt="cross">
                                         </a>
                                         <div class="separator-vertical"></div>
                                         <a id="confirm_subtask_button"
-                                            onmousedown="dontChangeFocus(event); addSubtask('input_with_button_subtask')">
+                                            onmousedown="fpreventDefault(event); addSubtask('input_with_button_subtask')">
                                             <img src="./assets/img/check.svg" alt="check">
                                         </a>
                                     </div>
@@ -239,7 +246,7 @@ function editTaskHtml() {
 }
 
 function inprogressTaskHtml(title, description, priority, i) {
-    return `
+  return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
@@ -262,37 +269,33 @@ function inprogressTaskHtml(title, description, priority, i) {
 }
 
 function awaitfeedbackTaskHtml() {
-    return `
+  return `
         <h1>TestTesTodo</h1>
     `;
 }
 
 function doneTaskHtml() {
-    return `
+  return `
         <h1>TestTesTodo</h1>
     `;
 }
 
 function userTaskHtml() {
-    return `
+  return `
         <p class="user-story">User Story</p>
     `;
 }
 
 function technicalTaskHtml() {
-    return `
+  return `
         <p class="technical-task">Technical Task</p>
     `;
 }
 
-// title, description, date, category
-// {/* <div>${currenttask}/${subtasks.length}</div> */}
-
-
 function fillAddTaskSection() {
-    let page = document.getElementById('add_task_page');
-    html = '';
-    html += `
+  let page = document.getElementById("add_task_page");
+  html = "";
+  html += `
         <main class="add-task">
             <h1>Add Task</h1>
             <form class="add-task-form-section" onsubmit="addToTasks();return false" autocomplete="off">
@@ -322,7 +325,7 @@ function fillAddTaskSection() {
                                     onfocusin="openDropDownMenu('drop_down_assigned_to', 'in')"
                                     onfocusout="openDropDownMenu('drop_down_assigned_to', 'out')"
                                     oninput="setFilter(this)">
-                                <a onclick="setFocusOnElement('input_with_button_assigned_to')">
+                                <a onmousedown="fpreventDefault(event); setFocusOnElement('assigned_to')">
                                     <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png"
                                         alt="add">
                                 </a>
@@ -379,7 +382,7 @@ function fillAddTaskSection() {
                                     onfocusin="openDropDownMenu('drop_down_category', 'in')"
                                     onfocusout="openDropDownMenu('drop_down_category', 'out')"
                                     oninput="setFilter(this)">
-                                <a onclick="setFocusOnElement('input_with_button_category')">
+                                <a onmousedown="fpreventDefault(event); setFocusOnElement('category')">
                                     <img id="drop_down_category_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                                 </a>
                             </div>
@@ -397,12 +400,12 @@ function fillAddTaskSection() {
                                 </a>
                                 <div id="confirm_subtask_container" class="input-with-double-button dnone">
                                     <a id="clear_subtask_button"
-                                        onmousedown="dontChangeFocus(event); clearInput('input_with_button_subtask')">
+                                        onmousedown="fpreventDefault(event); clearInput('input_with_button_subtask')">
                                         <img src="./assets/img/cross.svg" alt="cross">
                                     </a>
                                     <div class="separator-vertical"></div>
                                     <a id="confirm_subtask_button"
-                                        onmousedown="dontChangeFocus(event); addSubtask('input_with_button_subtask')">
+                                        onmousedown="fpreventDefault(event); addSubtask('input_with_button_subtask')">
                                         <img src="./assets/img/check.svg" alt="check">
                                     </a>
                                 </div>
@@ -433,7 +436,7 @@ function fillAddTaskSection() {
                 <img src="./assets/img/task_added.svg" alt="task added">
             </div>
         </main>
-    `
-    page.innerHTML = html
-    initAddTask();
+    `;
+  page.innerHTML = html;
+  initAddTask();
 }
