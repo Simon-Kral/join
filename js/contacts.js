@@ -39,7 +39,6 @@ function renderContacts() {
         userscontact = examplecontacts.sort((a, b) => (a.firstname > b.firstname) ? 1 : -1);
     } else {
         userscontact = users[loaduser].contacts.sort((a, b) => (a.firstname > b.firstname) ? 1 : -1);
-
     }
     let prevLetter = '';
     for (let i = 0; i < userscontact.length - 1; i++) {
@@ -74,8 +73,8 @@ function generateContactHtml(contact, abbreviation, fullname) {
                     <span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>
                 </div>
                 <div class="profile-info">
-                    <span class="profile1-fullname">${fullname}</span>
-                    <a id="profile-email" href="mailto:${contact.email}">${contact.email}</a>
+                    <span class="profile-fullname">${fullname}</span>
+                    <a class="profile-email" href="mailto:${contact.email}">${contact.email}</a>
                 </div>
             </div>
         </div>
@@ -85,5 +84,55 @@ function generateContactHtml(contact, abbreviation, fullname) {
 
 
 function openContact(card, id) {
+    let contentbox = document.getElementById('contact-detail-box');
+    document.querySelectorAll('.selected').forEach(function(selectedfield) {
+        selectedfield.classList.remove('selected');
+    })
+    if (examplecontacts.length > 0) {
+        userscontact = examplecontacts;
+    } else {
+        userscontact = users[loaduser].contacts;
+    }
+    const index = userscontact.findIndex(element => element.id === id);
+    const contact = userscontact[index];
+    const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
+    const fullname = contact.firstname + ' ' + contact.lastname;
+    contentbox.innerHTML = '';
+    contentbox.innerHTML += generateContactDetailBoxHtml(contact, abbreviation, fullname);
+    card.classList.add('selected')
+    card.querySelector('.profile-fullname').classList.add('selected')
+}
 
+function generateContactDetailBoxHtml(contact, abbreviation, fullname) {
+    let html = '';
+    html += `
+        <div class="contact-detail-box-head">
+            <div class="profile-badge-big-box">
+                <span class="profile-badge-big" style="background-color: ${contact.color};">${abbreviation}</span>
+            </div>
+            <div class="profile-name-with-buttons-box">
+                <div class="profile-name">${fullname}</div>
+                <div class="profile-buttons">
+                    <a>
+                        <img src="./assets/img/edit.svg" alt="edit contact">
+                        <span>Edit</span>
+                    </a>
+                    <a>
+                        <img src="./assets/img/delete.svg" alt="delete contact">
+                        <span>Delete</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="contact-information-box">
+            <span>Contact Information</span>
+        </div>
+        <div class="contact-detail-box-body">
+            <h4>Email</h4>
+            <a class="profile-email" href="mailto:${contact.email}">${contact.email}</a>
+            <h4>Phone</h4>
+            <a class="profile-phone" href="mailto:tel:${contact.phone}">${contact.phone}</a>
+        </div>
+    `
+    return html
 }

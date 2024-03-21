@@ -1014,15 +1014,21 @@ main.contacts {
         .profile-info {
             margin-left: 35px;
             color: black;
-            #profile-email {
-                font-size: 16px;
-                color: #007CEE;
-            }
         }
     }
     .profile-fullname {
         margin-left: 0;
     }
+}
+
+.profile-email {
+    font-size: 16px;
+    color: #007CEE;
+}
+
+.profile-phone {
+    font-size: 16px;
+    color: black;
 }
 
 .contact-list-separator-box {
@@ -1043,12 +1049,14 @@ main.contacts {
     background-color: #EEEEEE;
 }
 
-.selected {
+div.selected {
     background-color: #2A3647;
-    color: white;
+    .profile-fullname {
+        color: white;
+    }
 }
 
-.selected:hover {
+div.selected:hover {
     background-color: #091931;
 }
 
@@ -1083,7 +1091,7 @@ main.contacts {
 
 .contact-detail-box {
     height: 364px;
-    width: 452px;
+    min-width: 452px;
     margin-left: 52px;
     color: black;
     .contact-detail-box-head {
@@ -1282,7 +1290,6 @@ main.contacts {
         width: 200px;
         font-size: 14px;
     }
-
     .single-task-head {
         width: 200px;
     }
@@ -1292,11 +1299,9 @@ main.contacts {
     .board-body-task {
         margin-left: 130px;
     }
-
     .board-head {
         margin-left: 130px;
     }
-
     .board-head-task {
         margin-left: 130px;
     }
@@ -1306,15 +1311,12 @@ main.contacts {
     .board-body-task {
         margin-left: 48px;
     }
-
     .board-head {
         margin-left: 48px;
     }
-
     .board-head-task {
         margin-left: 48px;
     }
-
     .empty-task-place {
         width: 180px;
     }

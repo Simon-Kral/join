@@ -127,7 +127,7 @@ function selectContacts(entry, id, selected) {
         selectedcontacts.splice(index, 1);
         entry.setAttribute('onmousedown', `dontChangeFocus(event); selectContacts(this, ${id}, ${!selected})`);
     } else {
-        selectedcontacts.push(allcontacts.find(element => element.id === id));
+        selectedcontacts.push(users[loaduser].contacts.find(element => element.id === id));
         entry.setAttribute('onmousedown', `dontChangeFocus(event); selectContacts(this, ${id}, ${!selected})`);
     }
     renderSelectedContacts();
