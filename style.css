@@ -518,7 +518,7 @@ main.add-task {
         .input-wrapper {
             display: flex;
             flex-direction: row;
-            height: 424px;
+            min-height: 424px;
         }
     }
 }
@@ -1325,5 +1325,61 @@ div.selected:hover {
 @media(max-width: 970px) {
     .single-task-head {
         width: 160px;
+    }
+}
+
+@media(max-width: 1400px) {
+    main.add-task {
+        padding: 110px 10px 32px 10px;
+    }
+}
+
+@media(max-width: 1300px) {
+    main.add-task {
+        left: 114px;
+        top: 48px;
+    }
+}
+
+@media(max-width: 1250px) {
+    main.add-task {
+        left: calc(50% - 556px / 2);
+        form {
+            gap: 0 !important;
+        }
+        .input-wrapper {
+            flex-direction: column !important;
+            .input-box {
+                min-height: 424px;
+                margin-bottom: 32px;
+            }
+        }
+        .clear-button {
+            display: none;
+        }
+    }
+}
+
+@media(max-width: 1030px) {
+    main.add-task {
+        .input-wrapper {
+            margin-bottom: 150px;
+        }
+        .bottom-section {
+            height: 88px;
+            width: 100%;
+            position: fixed;
+            bottom: 80px;
+            left: 0;
+            right: auto;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            background-color: white;
+            z-index: 800;
+            button {
+                margin: 0;
+            }
+        }
     }
 }
