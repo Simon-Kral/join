@@ -1,59 +1,71 @@
 async function init() {
-  await includeHTML();
+    await includeHTML();
 }
 
 async function includeHTML() {
-  let includeElements = document.querySelectorAll("[w3-include-html]");
-  for (let i = 0; i < includeElements.length; i++) {
-    const element = includeElements[i];
-    file = element.getAttribute("w3-include-html"); // "includes/header.html"
-    let resp = await fetch(file);
-    if (resp.ok) {
-      element.innerHTML = await resp.text();
-    } else {
-      element.innerHTML = "Page not found";
+    let includeElements = document.querySelectorAll("[w3-include-html]");
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html"); // "includes/header.html"
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = "Page not found";
+        }
     }
-  }
 }
 
 function bordAddTaskFieldHtml() {
-  return `
+    return `
         <div class="bord-add-tasks-field" onclick="noCloseContent(event)" id="add_task_page"></div>
     `;
 }
 
 function emptyTaskFieldTodo() {
-  return `
+    return `
         <div class="empty-task-place">No tasks To Do</div>
     `;
 }
 
 function emptyTaskFieldInprogress() {
-  return `
+    return `
         <div class="empty-task-place">No tasks In progress</div>
     `;
 }
 
 function emptyTaskFieldAwaitfeedback() {
-  return `
+    return `
         <div class="empty-task-place">No tasks Await feedback</div>
     `;
 }
 
 function emptyTaskFieldDone() {
-  return `
+    return `
         <div class="empty-task-place">No tasks Done</div>
     `;
 }
 
+function userTaskHtml() {
+    return `
+          <p class="user-story">User Story</p>
+      `;
+}
+
+function technicalTaskHtml() {
+    return `
+          <p class="technical-task">Technical Task</p>
+      `;
+}
+
 function todoTaskHtml(title, description, priority, i) {
-  return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
+    return `
+        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragTodo(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
             <span>${description}</span>
             <div class="place-task-progress">
-                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+                <div class="progress-bar" role="progressbar" ar ia-label="Example with label" aria-valuenow="25">
                     <div class="progressbar" id="progressbar"></div>
                 </div>
                 <p>Subtasks</p>
@@ -69,55 +81,78 @@ function todoTaskHtml(title, description, priority, i) {
     `;
 }
 
+function awaitfeedbackTaskHtml(title, description, priority, i) {
+    return `
+                  <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
+              <div id="task-variant"></div>
+              <h3>${title}</h3>
+              <span>${description}</span>
+              <div class="place-task-progress">
+                  <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+                      <div class="progressbar" id="progressbar"></div>
+                  </div>
+                  <p>Subtasks</p>
+              </div>
+              <div class="place-user-status">
+                  <div class="place-user">
+                  </div>
+                  <div>
+                      <img class="low-image" src="${priority}">
+                  </div>
+              </div>
+          </div>
+      `;
+}
+
 function fullTaskHtml(
-  title,
-  description,
-  date,
-  priority,
-  assignedto,
-  subtasks
+    title,
+    description,
+    date,
+    priority,
+    assignedto,
+    subtasks
 ) {
-  return `
-            <div class="single-task-field" onclick="noCloseContent(event)">
-                <div class="place-categorie-cross">
-                    <div id="task_variant_bord"></div>
-                    <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
-                </div>
-                <div class="place-single-information">
-                    <h1 class="task-head-bord">${title}</h1>
-                    <span class="descript">${description}</span>
-                    <div class="place-due-date-bord">
-                        <span>Due date: </span>
-                        <span class="due-date-bord">${date}</span>
-                    </div>
-                    <div class="place-priority-bord">
-                        <span>Priority:</span>
-                        <span class="priority-bord">${priority}</span>
-                    </div>
-                    <div class="assigned-to-bord">Assigned To</div>
-                    <div>${assignedto}</div>
-                    <span class="subtasks-bord">Subtasks</span>
-                    <div class="subtasks-input-bord">
-                        <div>${subtasks}</div>
-                    </div>
-                </div>
-                <div class="place-delete-edit">
-                    <div onclick="deleteSingleTask()" class="delete-place">
-                        <img class="delete" src="./assets/img/delete.png">
-                        <span>Delete</span>
-                    </div>
-                    <div class="one-px-line"></div>
-                    <div onclick="editSingleTask()" class="edit-place">
-                        <img class="edit" src="./assets/img/edit.png">
-                        <span>Edit</span>
-                    </div>
-                </div>
-            </div>
-    `;
+    return `
+              <div class="single-task-field" onclick="noCloseContent(event)">
+                  <div class="place-categorie-cross">
+                      <div id="task_variant_bord"></div>
+                      <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
+                  </div>
+                  <div class="place-single-information">
+                      <h1 class="task-head-bord">${title}</h1>
+                      <span class="descript">${description}</span>
+                      <div class="place-due-date-bord">
+                          <span>Due date: </span>
+                          <span class="due-date-bord">${date}</span>
+                      </div>
+                      <div class="place-priority-bord">
+                          <span>Priority:</span>
+                          <span class="priority-bord">${priority}</span>
+                      </div>
+                      <div class="assigned-to-bord">Assigned To</div>
+                      <div>${assignedto}</div>
+                      <span class="subtasks-bord">Subtasks</span>
+                      <div class="subtasks-input-bord">
+                          <div>${subtasks}</div>
+                      </div>
+                  </div>
+                  <div class="place-delete-edit">
+                      <div onclick="deleteSingleTask()" class="delete-place">
+                          <img class="delete" src="./assets/img/delete.png">
+                          <span>Delete</span>
+                      </div>
+                      <div class="one-px-line"></div>
+                      <div onclick="editSingleTask()" class="edit-place">
+                          <img class="edit" src="./assets/img/edit.png">
+                          <span>Edit</span>
+                      </div>
+                  </div>
+              </div>
+      `;
 }
 
 function editTaskHtml() {
-  return `
+    return `
         <div class="single-task-field" onclick="noCloseContent(event)">
             <main class="edit-task">
                 <form class="add-task-form-section" onsubmit="addToTasks();return false"  autocomplete="off">
@@ -246,7 +281,7 @@ function editTaskHtml() {
 }
 
 function inprogressTaskHtml(title, description, priority, i) {
-  return `
+    return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
@@ -268,51 +303,10 @@ function inprogressTaskHtml(title, description, priority, i) {
     `;
 }
 
-function awaitfeedbackTaskHtml(title, description, priority, i) {
-  return `
-                <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
-            <div id="task-variant"></div>
-            <h3>${title}</h3>
-            <span>${description}</span>
-            <div class="place-task-progress">
-                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                    <div class="progressbar" id="progressbar"></div>
-                </div>
-                <p>Subtasks</p>
-            </div>
-            <div class="place-user-status">
-                <div class="place-user">
-                </div>
-                <div>
-                    <img class="low-image" src="${priority}">
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function doneTaskHtml() {
-  return `
-        <h1>TestTesTodo</h1>
-    `;
-}
-
-function userTaskHtml() {
-  return `
-        <p class="user-story">User Story</p>
-    `;
-}
-
-function technicalTaskHtml() {
-  return `
-        <p class="technical-task">Technical Task</p>
-    `;
-}
-
 function fillAddTaskSection() {
-  let page = document.getElementById("add_task_page");
-  html = "";
-  html += `
+    let page = document.getElementById("add_task_page");
+    html = "";
+    html += `
         <main class="add-task">
             <h1>Add Task</h1>
             <form class="add-task-form-section" onsubmit="addToTasks();return false" autocomplete="off">
@@ -454,6 +448,6 @@ function fillAddTaskSection() {
             </div>
         </main>
     `;
-  page.innerHTML = html;
-  initAddTask();
+    page.innerHTML = html;
+    initAddTask();
 }

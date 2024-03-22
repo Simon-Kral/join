@@ -4,6 +4,8 @@ let currenttask = 0;
 
 let currentdragged;
 
+let currentdraggedarray;
+
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
     users = JSON.parse(sessionStorage.getItem('Guest'))
@@ -252,24 +254,53 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function drag(id) {
+function dragTodo(id) {
     currentdragged = id;
+    currentdraggedarray = setTodoArray();
+}
+
+function dragInProgress(id) {
+    currentdragged = id;
+    currentdraggedarray = setInProgressArray();
+}
+
+function dragAwaitFeedback(id) {
+    currentdragged = id;
+    currentdraggedarray = setAwaitFeedbackArray();
+}
+
+function dragDone(id) {
+    currentdragged = id;
+    currentdraggedarray = setDoneForm();
 }
 
 function dropInProgress(ev) {
     ev.preventDefault();
     let select = users[loaduser];
-    console.log(select['todo'][currentdragged]);
-    let selecttodo = setTodoFrom();
-    select['tasksinprogress'].push(selecttodo[currentdragged]);
-    selecttodo.splice(currentdragged, 1); 
+    select['tasksinprogress'].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1); 
     console.log(users[loaduser]);
     boardinit();
 }
 
-function setTodoFrom() {
-    let drag = users[loaduser]['todo'];
-    return drag;
+function setTodoArray() {
+    let selecttodo = users[loaduser]['todo'];
+    return selecttodo;
+}
+
+function setInProgressArray() {
+    let selectinprogress = users[loaduser]['tasksinprogress'];
+    return selectinprogress;
+}
+
+function setAwaitFeedbackArray() {
+    let selectafeedback = users[loaduser]['awaitingfeedback'];
+    return selectafeedback;
+}
+
+function setDoneForm() {
+    let selectdone = users[loaduser]['done'];
+    return selectdone;
 }
 
 function noCloseContent(event) {
