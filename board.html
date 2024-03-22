@@ -36,8 +36,8 @@
     <section class="board-head">
         <h1 class="board">Board</h1>
         <div class="place-search-task">
-            <form class="search-task-tag">
-                <input class="search-task-in" type="search" placeholder="Search...">
+            <form oninput="SearchTitelStart()" class="search-task-tag">
+                <input id="search_input" class="search-task-in" type="search" placeholder="Search...">
                 <button class="search-task-button" type="submit">Search</button>
             </form>
             <button onclick="bordAddNewTask()" class="add-task">Add task +</button>

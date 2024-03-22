@@ -1,5 +1,8 @@
 let todoforce = [];
 
+let searchresults = [];
+let results = [];
+
 let currenttask = 0;
 
 let currentdragged;
@@ -129,7 +132,6 @@ function showTodoHtml(getinformationtodo, i) {
     getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i, getinformationtodo);
     showTaskCategorySmall();
     updateProgressBar();
-    console.log(i);
 }
 
 function informationTodo(getinformationtodo) {
@@ -324,4 +326,124 @@ function noCloseContent(event) {
     event.stopPropagation();
 }
 
+function SearchTitelStart() {
+    let search = document.getElementById('search_input').value.trim().toLowerCase();
+    const searchlength = search.length;
+    let todoplace = document.getElementById(`to_do_place`);
+    todoplace.innerHTML = `<h1>Nothing Found</h1>`;
+    let inprogressplace = document.getElementById(`in_progress_place`);
+    inprogressplace.innerHTML = ``;
+    let awaitfeedbackplace = document.getElementById(`await_feedback_place`);
+    awaitfeedbackplace.innerHTML = ``;
+    let doneplace = document.getElementById(`done_place`);
+    doneplace.innerHTML = ``;
 
+    searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
+    searchClear(searchlength);
+}
+
+function searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace) {
+    if (searchlength >= 1) {
+        const resultstodo = filterTodo(search);
+        const resultsinprogress = filterInProgress(search);
+        const resultsawaitfeedback = filterAwaitFeedback(search);
+        const resultsdone = filterDone(search);
+        renderResultsTodo(resultstodo, todoplace);
+        renderResultsInProgress(resultsinprogress, inprogressplace);
+        renderResultsAwaitFeedback(resultsawaitfeedback, awaitfeedbackplace);
+        renderResultsDone(resultsdone, doneplace);
+    }
+}
+
+function searchClear(searchlength) {
+    if (searchlength <= 0) {
+        boardinit();
+    }
+}
+
+function filterTodo(search) {
+    let todoarray = setTodoArray();
+    let results = [];
+
+    for (let index = 0; index < todoarray.length; index++) {
+        let searchcollector = todoarray[index];
+        const name = searchcollector['title'];
+        if (name.toLowerCase().includes(search)) {
+            results.push(searchcollector);
+        }
+    }
+    return results;
+}
+
+
+function renderResultsTodo(resultstodo) {
+    for (let i = 0; i < resultstodo.length; i++) {
+        todocollect = resultstodo[i];
+        showTodoHtml(todocollect, i);
+    }
+}
+
+function filterInProgress(search) {
+    let inprogressarray = setInProgressArray();
+    let results = [];
+
+    for (let index = 0; index < inprogressarray.length; index++) {
+        let searchcollector = inprogressarray[index];
+        const name = searchcollector['title'];
+        if (name.toLowerCase().includes(search)) {
+            results.push(searchcollector);
+        }
+    }
+    return results;
+}
+
+
+function renderResultsInProgress(resultsinprogress) {
+    for (let i = 0; i < resultsinprogress.length; i++) {
+        todocollect = resultsinprogress[i];
+        showInProgressHtml(todocollect, i);
+    }
+}
+
+function filterAwaitFeedback(search) {
+    let afeedbackarray = setAwaitFeedbackArray();
+    let results = [];
+
+    for (let index = 0; index < afeedbackarray.length; index++) {
+        let searchcollector = afeedbackarray[index];
+        const name = searchcollector['title'];
+        if (name.toLowerCase().includes(search)) {
+            results.push(searchcollector);
+        }
+    }
+    return results;
+}
+
+
+function renderResultsAwaitFeedback(resultsawaitfeedback) {
+    for (let i = 0; i < resultsawaitfeedback.length; i++) {
+        todocollect = resultsawaitfeedback[i];
+        showAwaitFeedbackHtml(todocollect, i);
+    }
+}
+
+function filterDone(search) {
+    let donearray = setDoneForm();
+    let results = [];
+
+    for (let index = 0; index < donearray.length; index++) {
+        let searchcollector = donearray[index];
+        const name = searchcollector['title'];
+        if (name.toLowerCase().includes(search)) {
+            results.push(searchcollector);
+        }
+    }
+    return results;
+}
+
+function renderResultsDone(resultsdone) {
+    for (let i = 0; i < resultsdone.length; i++) {
+        todocollect = resultsdone[i];
+        showDoneHtml(todocollect, i);
+    }
+}
