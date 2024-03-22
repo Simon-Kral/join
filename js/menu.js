@@ -1,12 +1,8 @@
 async function guestLoginMenu() {
-    loaduser = sessionStorage.getItem('userI')
-    users = JSON.parse(sessionStorage.getItem('Guest'))
-}
-
-function menuLoginName() {
-    let menuuser = document.getElementById('menu_user');
-    let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
-    menuuser.innerHTML = username;
+    await includeHTML();
+    loaduser = sessionStorage.getItem('userI');
+    users = JSON.parse(sessionStorage.getItem('Guest'));
+    menuLoginName()
 }
 
 async function loadMenuLocalStorage() {
@@ -19,6 +15,12 @@ async function loadMenuSessionStorage() {
     users = await getItem('users')
     loaduser = sessionStorage.getItem('userI')
     menuLoginName()
+}
+
+function menuLoginName() {
+    let menuuser = document.getElementById('menu_user');
+    let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
+    menuuser.innerHTML = username;
 }
 
 function openMenu() {
