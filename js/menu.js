@@ -1,36 +1,26 @@
 async function guestLoginMenu() {
+    await includeHTML();
+    loaduser = sessionStorage.getItem('userI');
+    users = JSON.parse(sessionStorage.getItem('Guest'));
+    menuLoginName()
+}
+
+async function loadMenuLocalStorage() {
+    users = await getItem('users')
+    loaduser = localStorage.getItem('userI')
+    menuLoginName()
+}
+
+async function loadMenuSessionStorage() {
+    users = await getItem('users')
     loaduser = sessionStorage.getItem('userI')
-    users = JSON.parse(sessionStorage.getItem('Guest'))
+    menuLoginName()
 }
 
 function menuLoginName() {
     let menuuser = document.getElementById('menu_user');
     let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
     menuuser.innerHTML = username;
-}
-
-function moveToStartIfLocalEmpty() {
-    if (localStorage.getItem("userI") === null) {
-        window.location.assign("http://127.0.0.1:5500/index.html");
-    }
-}
-
-function moveToStartIfSessionEmpty() {
-    if (sessionStorage.getItem("userI") === null) {
-        window.location.assign("http://127.0.0.1:5500/index.html");
-    }
-}
-
-async function loadmenuLocalStorage() {
-    users = await getItem('users')
-    loaduser = localStorage.getItem('userI')
-    menuLoginName()
-}
-
-async function loadmenuSessionStorage() {
-    users = await getItem('users')
-    loaduser = sessionStorage.getItem('userI')
-    menuLoginName()
 }
 
 function openMenu() {

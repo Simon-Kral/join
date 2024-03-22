@@ -104,7 +104,7 @@ function Loginsessionstorage(findusers) {
 function registerGuestLogin() {
     loaduser = 0
     users = [{
-        name: '',
+        name: 'Guest',
         email: '',
         password: '',
         todo: [{

@@ -18,38 +18,58 @@ async function getItem(key) {
 
 async function loadStorage() {
     if (sessionStorage.getItem("Guest") === null) {
-        if (localStorage.getItem("userI") === null) {
-            if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() }
-        }
+        if (localStorage.getItem("userI") === null) { if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() } }
         else {
-            if (window.loadLocalStorage) {
-                loadLocalStorage()
-                loadmenuLocalStorage()
-            }
-            else {
-                loadmenuLocalStorage()
-            }
+            ifElseWindowloadLocalStorage()
         }
-        if (sessionStorage.getItem("userI") === null) {
-            if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() }
-        }
+        if (sessionStorage.getItem("userI") === null) { if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() } }
         else {
-            if (window.loadSessionStorage) {
-                loadSessionStorage()
-                loadmenuSessionStorage()
-            }
-            else {
-                loadmenuSessionStorage()
-            }
+            ifElseWindowloadSessionStorage()
         }
     }
     else {
-        if (window.guestLogin) {
-            guestLogin()
-            guestLoginMenu()
-        }
-        else {
-            guestLoginMenu()
-        }
+        ifElseWindowloadGuestLogin()
+    }
+}
+
+async function ifElseWindowloadLocalStorage(){
+    if (window.loadLocalStorage) {
+        loadLocalStorage()
+        loadMenuLocalStorage()
+    }
+    else {
+        loadMenuLocalStorage()
+    }
+}
+
+async function ifElseWindowloadSessionStorage(){
+    if (window.loadSessionStorage) {
+        loadSessionStorage()
+        loadMenuSessionStorage()
+    }
+    else {
+        loadMenuSessionStorage()
+    }
+}
+
+async function ifElseWindowloadGuestLogin(){
+    if (window.guestLogin) {
+        guestLogin()
+        guestLoginMenu()
+    }
+    else {
+        guestLoginMenu()
+    }
+}
+
+function moveToStartIfLocalEmpty() {
+    if (localStorage.getItem("userI") === null) {
+        window.location.assign("http://127.0.0.1:5500/index.html");
+    }
+}
+
+function moveToStartIfSessionEmpty() {
+    if (sessionStorage.getItem("userI") === null) {
+        window.location.assign("http://127.0.0.1:5500/index.html");
     }
 }

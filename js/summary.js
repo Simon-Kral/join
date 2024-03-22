@@ -6,6 +6,20 @@ function guestLogin() {
     sommary_name.innerHTML = '';
 }
 
+async function loadLocalStorage() {
+    users = await getItem('users')
+    loaduser = localStorage.getItem('userI')
+    loadSummaryProject()
+    userTime()
+}
+
+async function loadSessionStorage() {
+    users = await getItem('users')
+    loaduser = sessionStorage.getItem('userI')
+    loadSummaryProject()
+    userTime()
+}
+
 async function guestTime() {
     const guesttime = new Date().getHours();
 
@@ -28,20 +42,6 @@ async function userTime() {
     } else {
         summary_good_morning.innerHTML = 'Good morning,';
     }
-}
-
-async function loadLocalStorage() {
-    users = await getItem('users')
-    loaduser = localStorage.getItem('userI')
-    loadSummaryProject()
-    userTime()
-}
-
-async function loadSessionStorage() {
-    users = await getItem('users')
-    loaduser = sessionStorage.getItem('userI')
-    loadSummaryProject()
-    userTime()
 }
 
 async function loadSummaryProject() {
