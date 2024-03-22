@@ -9,25 +9,13 @@ function menuLoginName() {
     menuuser.innerHTML = username;
 }
 
-function moveToStartIfLocalEmpty() {
-    if (localStorage.getItem("userI") === null) {
-        window.location.assign("http://127.0.0.1:5500/index.html");
-    }
-}
-
-function moveToStartIfSessionEmpty() {
-    if (sessionStorage.getItem("userI") === null) {
-        window.location.assign("http://127.0.0.1:5500/index.html");
-    }
-}
-
-async function loadmenuLocalStorage() {
+async function loadMenuLocalStorage() {
     users = await getItem('users')
     loaduser = localStorage.getItem('userI')
     menuLoginName()
 }
 
-async function loadmenuSessionStorage() {
+async function loadMenuSessionStorage() {
     users = await getItem('users')
     loaduser = sessionStorage.getItem('userI')
     menuLoginName()
