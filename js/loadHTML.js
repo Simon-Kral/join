@@ -1,53 +1,53 @@
 async function init() {
-  await includeHTML();
+    await includeHTML();
 }
 
 async function includeHTML() {
-  let includeElements = document.querySelectorAll("[w3-include-html]");
-  for (let i = 0; i < includeElements.length; i++) {
-    const element = includeElements[i];
-    file = element.getAttribute("w3-include-html"); // "includes/header.html"
-    let resp = await fetch(file);
-    if (resp.ok) {
-      element.innerHTML = await resp.text();
-    } else {
-      element.innerHTML = "Page not found";
+    let includeElements = document.querySelectorAll("[w3-include-html]");
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html"); // "includes/header.html"
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = "Page not found";
+        }
     }
-  }
 }
 
 function bordAddTaskFieldHtml() {
-  return `
+    return `
         <div class="bord-add-tasks-field" onclick="noCloseContent(event)" id="add_task_page"></div>
     `;
 }
 
 function emptyTaskFieldTodo() {
-  return `
+    return `
         <div class="empty-task-place">No tasks To Do</div>
     `;
 }
 
 function emptyTaskFieldInprogress() {
-  return `
+    return `
         <div class="empty-task-place">No tasks In progress</div>
     `;
 }
 
 function emptyTaskFieldAwaitfeedback() {
-  return `
+    return `
         <div class="empty-task-place">No tasks Await feedback</div>
     `;
 }
 
 function emptyTaskFieldDone() {
-  return `
+    return `
         <div class="empty-task-place">No tasks Done</div>
     `;
 }
 
 function todoTaskHtml(title, description, priority, i) {
-  return `
+    return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
@@ -69,15 +69,8 @@ function todoTaskHtml(title, description, priority, i) {
     `;
 }
 
-function fullTaskHtml(
-  title,
-  description,
-  date,
-  priority,
-  assignedto,
-  subtasks
-) {
-  return `
+function fullTaskHtml(title, description, date, priority, assignedto, subtasks) {
+    return `
             <div class="single-task-field" onclick="noCloseContent(event)">
                 <div class="place-categorie-cross">
                     <div id="task_variant_bord"></div>
@@ -117,7 +110,7 @@ function fullTaskHtml(
 }
 
 function editTaskHtml() {
-  return `
+    return `
         <div class="single-task-field" onclick="noCloseContent(event)">
             <main class="edit-task">
                 <form class="add-task-form-section" onsubmit="addToTasks();return false"  autocomplete="off">
@@ -164,7 +157,7 @@ function editTaskHtml() {
                                     <input id="input_with_button_date" class="styled-input focus-blue" placeholder="dd/mm/yyyy"
                                         type="text" required pattern="([0-9]{2}\/[0-9]{2}\/[0-9]{4})">
                                     <input id="input_calendar" class="calendar-input" type="date" value=""
-                                        onchange="transferDate()">
+                                        onchange="transferDate()" min='1899-01-01'>
                                 </div>
                                 <span class="required-field dnone">This field is required</span>
 
@@ -212,7 +205,7 @@ function editTaskHtml() {
                                     <input class="styled-input focus-blue" placeholder="Add new subtask" type="text"
                                         id="input_with_button_subtask" onfocusin="changeSubtaskIcons('in')"
                                         onfocusout="changeSubtaskIcons('out')">
-                                    <a id="add_subtask_button" onclick="setFocusOnElement('input_with_button_subtask')">
+                                    <a id="add_subtask_button" onclick="setFocusOnElement('subtask')">
                                         <img src="./assets/img/add.png" alt="add">
                                     </a>
                                     <div id="confirm_subtask_container" class="input-with-double-button dnone">
@@ -246,7 +239,7 @@ function editTaskHtml() {
 }
 
 function inprogressTaskHtml(title, description, priority, i) {
-  return `
+    return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
@@ -269,33 +262,33 @@ function inprogressTaskHtml(title, description, priority, i) {
 }
 
 function awaitfeedbackTaskHtml() {
-  return `
+    return `
         <h1>TestTesTodo</h1>
     `;
 }
 
 function doneTaskHtml() {
-  return `
+    return `
         <h1>TestTesTodo</h1>
     `;
 }
 
 function userTaskHtml() {
-  return `
+    return `
         <p class="user-story">User Story</p>
     `;
 }
 
 function technicalTaskHtml() {
-  return `
+    return `
         <p class="technical-task">Technical Task</p>
     `;
 }
 
 function fillAddTaskSection() {
-  let page = document.getElementById("add_task_page");
-  html = "";
-  html += `
+    let page = document.getElementById("add_task_page");
+    html = "";
+    html += `
         <main class="add-task">
             <h1>Add Task</h1>
             <form class="add-task-form-section" onsubmit="addToTasks();return false" autocomplete="off">
@@ -395,7 +388,7 @@ function fillAddTaskSection() {
                                 <input class="styled-input focus-blue" placeholder="Add new subtask" type="text"
                                     id="input_with_button_subtask" onfocusin="changeSubtaskIcons('in')"
                                     onfocusout="changeSubtaskIcons('out')">
-                                <a id="add_subtask_button" onclick="setFocusOnElement('input_with_button_subtask')">
+                                <a id="add_subtask_button" onclick="setFocusOnElement('subtask')">
                                     <img src="./assets/img/add.png" alt="add">
                                 </a>
                                 <div id="confirm_subtask_container" class="input-with-double-button dnone">
@@ -420,11 +413,11 @@ function fillAddTaskSection() {
                         <span>This field is required</span>
                     </div>
                     <div class="bottom-buttons">
-                        <button class="clear-button" onclick="clearAddTaskForm()" type="button">
+                        <button class="white-button" onclick="clearAddTaskForm()" type="button">
                             <span>Clear</span>
                             <img src="./assets/img/cross.svg" alt="clear Form">
                         </button>
-                        <button class="create-task-button">
+                        <button class="blue-button">
                             <span>Create Task</span>
                             <img src="./assets/img/check.png" alt="create task">
                         </button>
@@ -437,6 +430,6 @@ function fillAddTaskSection() {
             </div>
         </main>
     `;
-  page.innerHTML = html;
-  initAddTask();
+    page.innerHTML = html;
+    initAddTask();
 }

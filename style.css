@@ -638,20 +638,6 @@ main.contacts {
     .required-header {
         display: flex;
     }
-    .focus-blue:focus {
-        outline: none;
-        border: 1px solid #5dbee7 !important;
-    }
-    .styled-input {
-        width: 398px;
-        height: 48px;
-        padding: 1px 20px;
-        border: 1px solid #d1d1d1;
-        border-radius: 10px;
-        font-size: 20px;
-        z-index: 10;
-        background-color: white;
-    }
     .input-with-button-wrapper {
         position: relative;
         display: flex;
@@ -675,6 +661,26 @@ main.contacts {
         font-family: "Poppins", sans-serif;
         color: #FF8190;
     }
+}
+
+.focus-blue:focus {
+    outline: none;
+    border: 1px solid #5dbee7 !important;
+}
+
+.styled-input {
+    width: 398px;
+    height: 48px;
+    padding: 1px 20px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    font-size: 20px;
+    z-index: 10;
+    background-color: white;
+}
+
+.edit-contact-input {
+    width: 380px;
 }
 
 #add_task_description {
@@ -907,39 +913,7 @@ main.contacts {
             margin-left: 10px;
         }
     }
-    button.clear-button {
-        width: 110px;
-        background-color: #f6f7f8;
-        border: 1px solid #2A3647;
-        span {
-            font-size: 20px;
-            color: #2A3647;
-        }
-        img {
-            margin-left: 10px;
-            filter: invert(17%) sepia(10%) saturate(1965%) hue-rotate(176deg) brightness(92%) contrast(86%);
-        }
-    }
-    button.clear-button:hover {
-        border: 2px solid #5dbee7;
-        box-shadow: 0px 4px 4px #d1d1d1;
-        span {
-            color: #5dbee7;
-        }
-        img {
-            filter: invert(67%) sepia(42%) saturate(534%) hue-rotate(155deg) brightness(95%) contrast(90%);
-        }
-    }
-    button.clear-button:active {
-        border: 1px solid #091931;
-        span {
-            color: #091931;
-        }
-        img {
-            filter: invert(7%) sepia(28%) saturate(3492%) hue-rotate(193deg) brightness(97%) contrast(97%);
-        }
-    }
-    button.create-task-button {
+    button.blue-button {
         width: 183px;
         background-color: #2A3647;
         border: none;
@@ -948,13 +922,75 @@ main.contacts {
             color: white;
         }
     }
-    button.create-task-button:hover {
-        background-color: #5dbee7;
-        box-shadow: 0px 4px 4px #d1d1d1;
+}
+
+button {
+    cursor: pointer;
+    transition: ease-in-out 100ms;
+    border-radius: 10px;
+    height: 56px;
+    margin-bottom: 8px;
+    img {
+        margin-left: 10px;
     }
-    button.create-task-button:active {
-        background-color: #091931;
+}
+
+button.white-button {
+    width: 110px;
+    background-color: #f6f7f8;
+    border: 1px solid #2A3647;
+    span {
+        font-size: 20px;
+        color: #2A3647;
     }
+    img {
+        margin-left: 10px;
+        filter: invert(17%) sepia(10%) saturate(1965%) hue-rotate(176deg) brightness(92%) contrast(86%);
+    }
+}
+
+button.white-button:hover {
+    border: 2px solid #5dbee7;
+    box-shadow: 0px 4px 4px #d1d1d1;
+    span {
+        color: #5dbee7;
+    }
+    img {
+        filter: invert(67%) sepia(42%) saturate(534%) hue-rotate(155deg) brightness(95%) contrast(90%);
+    }
+}
+
+button.white-button:active {
+    border: 1px solid #091931;
+    span {
+        color: #091931;
+    }
+    img {
+        filter: invert(7%) sepia(28%) saturate(3492%) hue-rotate(193deg) brightness(97%) contrast(97%);
+    }
+}
+
+button.blue-button {
+    min-width: 111px;
+    margin-left: 25px;
+    background-color: #2A3647;
+    border: none;
+    span {
+        font-size: 21px;
+        color: white;
+    }
+    img {
+        margin-left: 10px;
+    }
+}
+
+button.blue-button:hover {
+    background-color: #5dbee7;
+    box-shadow: 0px 4px 4px #d1d1d1;
+}
+
+button.blue-button:active {
+    background-color: #091931;
 }
 
 .drop-down {
@@ -971,7 +1007,7 @@ main.contacts {
 .contact-list-entry {
     display: flex;
     justify-content: space-between;
-    height: 24px;
+    min-height: 24px;
     padding: 16px;
     margin-bottom: 2px;
     border-radius: 10px;
@@ -1006,14 +1042,17 @@ main.contacts {
 
 .contact {
     margin: 0 52px 0px 52px;
-    padding: 15px 24px;
-    height: 48px;
+    /* padding: 15px 24px; */
+    padding: 15px 0 15px 24px;
+    min-height: 48px;
     .contact-info-box {
         width: 100%;
         display: flex;
         .profile-info {
             margin-left: 35px;
             color: black;
+            display: flex;
+            flex-direction: column;
         }
     }
     .profile-fullname {
@@ -1024,6 +1063,10 @@ main.contacts {
 .profile-email {
     font-size: 16px;
     color: #007CEE;
+}
+
+a.disabled {
+    pointer-events: none;
 }
 
 .profile-phone {
@@ -1098,22 +1141,6 @@ div.selected:hover {
         display: flex;
         align-items: center;
         margin-bottom: 21px;
-        .profile-badge-big-box {
-            .profile-badge-big {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 120px;
-                width: 120px;
-                background-color: black;
-                color: white;
-                font-size: 47px;
-                font-weight: 500;
-                border: 3px solid white;
-                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-                border-radius: 120px;
-            }
-        }
         .profile-name-with-buttons-box {
             margin-left: 54px;
             .profile-name {
@@ -1148,6 +1175,41 @@ div.selected:hover {
         font-size: 16px;
         h4 {
             margin: 21px 0 15px 0;
+        }
+    }
+}
+
+.profile-badge-big-box {
+    display: flex;
+    align-items: center;
+    .profile-badge-big {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+        width: 120px;
+        background-color: black;
+        color: white;
+        font-size: 47px;
+        font-weight: 500;
+        border: 3px solid white;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 120px;
+    }
+}
+
+.edit-contact-form-box {
+    display: flex;
+    flex-direction: column;
+    margin-left: 72px;
+    gap: 32px;
+    .input-with-img-wrapper {
+        display: flex;
+        align-items: center;
+        img {
+            position: relative;
+            right: 45px;
+            z-index: 50;
         }
     }
 }
@@ -1379,6 +1441,89 @@ div.selected:hover {
             z-index: 800;
             button {
                 margin: 0;
+            }
+        }
+    }
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    /* display: none; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1024;
+    backdrop-filter: blur(2px);
+}
+
+.overlay-box {
+    height: 592px;
+    width: 1212px;
+    background-color: white;
+    border-radius: 30px;
+    z-index: 2048;
+    display: flex;
+    .overlay-box-head {
+        height: calc(100% - 154px);
+        width: calc(453px - 46px);
+        position: relative;
+        left: 0;
+        background-color: #2A3647;
+        border-radius: 30px 0 0 30px;
+        padding: 154px 0 0 46px;
+        h1 {
+            color: white;
+            font-size: 61px;
+            margin: 16px 0;
+        }
+        h2 {
+            color: white;
+            font-size: 27px;
+            font-weight: 400;
+            margin: 0;
+        }
+    }
+    .overlay-box-body {
+        .close-overlay-box {
+            position: relative;
+            height: 32px;
+            width: 32px;
+            top: 48px;
+            left: 679px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                height: 24px;
+                width: 24px;
+                object-fit: none;
+            }
+        }
+        .overlay-body-content {
+            position: relative;
+            top: 107px;
+            left: 97px;
+            display: flex;
+            .edit-contact-form-buttons {
+                img {
+                    filter: invert(87%) sepia(99%) saturate(0%) hue-rotate(68deg) brightness(103%) contrast(100%);
+                }
+            }
+            .add-contact-form-buttons {
+                .white-button {
+                    width: 126px;
+                }
+                .blue-button {
+                    width: 214px;
+                    img {
+                        filter: invert(87%) sepia(99%) saturate(0%) hue-rotate(68deg) brightness(103%) contrast(100%);
+                    }
+                }
             }
         }
     }
