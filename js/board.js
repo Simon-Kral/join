@@ -152,7 +152,7 @@ function renderInProgress() {
 function showInProgressHtml(inprogresscollect, i) {
     let getplaceinprogress = document.getElementById('in_progress_place');
     const { categorytodo, titletodo, descriptiontodo } = informationTodo(inprogresscollect);
-    getplaceinprogress.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    getplaceinprogress.innerHTML += inprogressTaskHtml(categorytodo, titletodo, descriptiontodo, i);
     showTaskCategorySmall();
     updateProgressBar();
 }
@@ -174,10 +174,10 @@ function renderAwaitFeedback() {
     }
 }
 
-function showAwaitFeedbackHtml(inprogresscollect, i) {
+function showAwaitFeedbackHtml(awaitfeedbackcollect, i) {
     let getplaceawaitfeedback = document.getElementById('await_feedback_place');
-    const { categorytodo, titletodo, descriptiontodo } = informationTodo(inprogresscollect);
-    getplaceawaitfeedback.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    const { categorytodo, titletodo, descriptiontodo } = informationTodo(awaitfeedbackcollect);
+    getplaceawaitfeedback.innerHTML += awaitfeedbackTaskHtml(categorytodo, titletodo, descriptiontodo, i);
     showTaskCategorySmall();
     updateProgressBar();
 }
@@ -195,20 +195,14 @@ function renderDone() {
     let done = users[loaduser]['done'];
     for (let i = 0; i < done.length; i++) {
         donecollect = done[i];
-        showAwaitFeedbackHtml(donecollect);
+        showDoneHtml(donecollect, i);
     }
 }
 
-function showDoneHtml() {
-    const todotask = doneTaskHtml();
+function showDoneHtml(donecollect, i) {
     let getplacedone = document.getElementById('done_place');
-    getplacedone.innerHTML += todotask;
-}
-
-function showDoneHtml(inprogresscollect, i) {
-    let getplacedone = document.getElementById('done_place');
-    const { categorytodo, titletodo, descriptiontodo } = informationTodo(inprogresscollect);
-    getplacedone.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    const { categorytodo, titletodo, descriptiontodo } = informationTodo(donecollect);
+    getplacedone.innerHTML += doneTaskHtml(categorytodo, titletodo, descriptiontodo, i);
     showTaskCategorySmall();
     updateProgressBar();
 }
@@ -274,12 +268,35 @@ function dragDone(id) {
     currentdraggedarray = setDoneForm();
 }
 
+function dropTodo(ev) {
+    ev.preventDefault();
+    let select = users[loaduser];
+    select['todo'].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1); 
+    boardinit();
+}
+
 function dropInProgress(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     select['tasksinprogress'].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1); 
-    console.log(users[loaduser]);
+    boardinit();
+}
+
+function dropAwaitFeedBack(ev) {
+    ev.preventDefault();
+    let select = users[loaduser];
+    select['awaitingfeedback'].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1); 
+    boardinit();
+}
+
+function dropDone(ev) {
+    ev.preventDefault();
+    let select = users[loaduser];
+    select['done'].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1); 
     boardinit();
 }
 
