@@ -54,7 +54,6 @@ async function loadSummaryProject() {
     let inboard = document.getElementById('summary_in_board')
     let name = document.getElementById('sommary_name');
     loadSummaryInnerhtml(inboard, todo, done, urgent, deadline, inprogress, awaitfeedback, name)
-    console.log(users)
 }
 
 async function loadSummaryInnerhtml(inboard, todo, done, urgent, deadline, inprogress, awaitfeedback, name) {
