@@ -1,6 +1,5 @@
 let checksubtasks = [];
 let searchresults = [];
-let results = [];
 let currenttask = 0;
 let currentdragged;
 let currentdraggedarray;
@@ -320,28 +319,49 @@ function noCloseContent(event) {
     event.stopPropagation();
 }
 
-function SearchTitelStart() {
-    let search = document.getElementById('search_input').value.trim().toLowerCase();
-    const searchlength = search.length;
+function searchTaskPlace() {
     let todoplace = document.getElementById(`to_do_place`);
     let inprogressplace = document.getElementById(`in_progress_place`);
     let awaitfeedbackplace = document.getElementById(`await_feedback_place`);
     let doneplace = document.getElementById(`done_place`);
+    
+    return { todoplace, inprogressplace, awaitfeedbackplace, doneplace };
+}
 
+function getSearchInput() {
+    let search = document.getElementById('search_input').value.trim().toLowerCase();
+    const searchlength = search.length;
+    
+    return { search, searchlength };
+}
+
+function searchTitleStart() {
+    const { search, searchlength } = getSearchInput();
+    const { todoplace, inprogressplace, awaitfeedbackplace, doneplace } = searchTaskPlace();
+    
     searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
     searchClear(searchlength);
 }
 
+function filterResults(search) {
+    const resultstodo = filterTodo(search);
+    const resultsinprogress = filterInProgress(search);
+    const resultsawaitfeedback = filterAwaitFeedback(search);
+    const resultsdone = filterDone(search);
+    return {resultstodo, resultsinprogress, resultsawaitfeedback, resultsdone};
+}
+
+function renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbackplace, doneplace) {
+    renderResultsTodo(filteredResults.resultstodo, todoplace);
+    renderResultsInProgress(filteredResults.resultsinprogress, inprogressplace);
+    renderResultsAwaitFeedback(filteredResults.resultsawaitfeedback, awaitfeedbackplace);
+    renderResultsDone(filteredResults.resultsdone, doneplace);
+}
+
 function searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace) {
     if (searchlength >= 1) {
-        const resultstodo = filterTodo(search);
-        const resultsinprogress = filterInProgress(search);
-        const resultsawaitfeedback = filterAwaitFeedback(search);
-        const resultsdone = filterDone(search);
-        renderResultsTodo(resultstodo, todoplace);
-        renderResultsInProgress(resultsinprogress, inprogressplace);
-        renderResultsAwaitFeedback(resultsawaitfeedback, awaitfeedbackplace);
-        renderResultsDone(resultsdone, doneplace);
+        const filteredResults = filterResults(search);
+        renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
     }
 }
 
@@ -364,7 +384,6 @@ function filterTodo(search) {
     }
     return results;
 }
-
 
 function renderResultsTodo(resultstodo, todoplace) {
     todoplace.innerHTML = ``;
