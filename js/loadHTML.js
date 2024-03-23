@@ -1,5 +1,6 @@
 async function init() {
     await includeHTML();
+    await includeHTML();
 }
 
 async function includeHTML() {
@@ -46,9 +47,44 @@ function emptyTaskFieldDone() {
     `;
 }
 
+function userTaskHtml() {
+    return `
+          <p class="user-story">User Story</p>
+      `;
+}
+
+function technicalTaskHtml() {
+    return `
+          <p class="technical-task">Technical Task</p>
+      `;
+}
+
 function todoTaskHtml(title, description, priority, i) {
     return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
+        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragTodo(${i})">
+            <div id="task-variant"></div>
+            <h3>${title}</h3>
+            <span>${description}</span>
+            <div class="place-task-progress">
+                <div class="progress-bar" role="progressbar" ar ia-label="Example with label" aria-valuenow="25">
+                    <div class="progressbar" id="progressbar"></div>
+                </div>
+                <p>Subtasks</p>
+            </div>
+            <div class="place-user-status">
+                <div class="place-user">
+                </div>
+                <div>
+                    <img class="low-image" src="${priority}">
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function inprogressTaskHtml(title, description, priority, i) {
+    return `
+        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragInProgress(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
             <span>${description}</span>
@@ -69,44 +105,90 @@ function todoTaskHtml(title, description, priority, i) {
     `;
 }
 
+function awaitfeedbackTaskHtml(title, description, priority, i) {
+    return `
+            <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragAwaitFeedback(${i})">
+              <div id="task-variant"></div>
+              <h3>${title}</h3>
+              <span>${description}</span>
+              <div class="place-task-progress">
+                  <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+                      <div class="progressbar" id="progressbar"></div>
+                  </div>
+                  <p>Subtasks</p>
+              </div>
+              <div class="place-user-status">
+                  <div class="place-user">
+                  </div>
+                  <div>
+                      <img class="low-image" src="${priority}">
+                  </div>
+              </div>
+          </div>
+      `;
+}
+
+function doneTaskHtml(title, description, priority, i) {
+    return `
+            <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragDone(${i})">
+              <div id="task-variant"></div>
+              <h3>${title}</h3>
+              <span>${description}</span>
+              <div class="place-task-progress">
+                  <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+                      <div class="progressbar" id="progressbar"></div>
+                  </div>
+                  <p>Subtasks</p>
+              </div>
+              <div class="place-user-status">
+                  <div class="place-user">
+                  </div>
+                  <div>
+                      <img class="low-image" src="${priority}">
+                  </div>
+              </div>
+          </div>
+      `;
+}
+
 function fullTaskHtml(title, description, date, priority, assignedto, subtasks) {
     return `
-            <div class="single-task-field" onclick="noCloseContent(event)">
-                <div class="place-categorie-cross">
-                    <div id="task_variant_bord"></div>
-                    <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
-                </div>
-                <div class="place-single-information">
-                    <h1 class="task-head-bord">${title}</h1>
-                    <span class="descript">${description}</span>
-                    <div class="place-due-date-bord">
-                        <span>Due date: </span>
-                        <span class="due-date-bord">${date}</span>
-                    </div>
-                    <div class="place-priority-bord">
-                        <span>Priority:</span>
-                        <span class="priority-bord">${priority}</span>
-                    </div>
-                    <div class="assigned-to-bord">Assigned To</div>
-                    <div>${assignedto}</div>
-                    <span class="subtasks-bord">Subtasks</span>
-                    <div class="subtasks-input-bord">
-                        <div>${subtasks}</div>
-                    </div>
-                </div>
-                <div class="place-delete-edit">
-                    <div onclick="deleteSingleTask()" class="delete-place">
-                        <img class="delete" src="./assets/img/delete.png">
-                        <span>Delete</span>
-                    </div>
-                    <div class="one-px-line"></div>
-                    <div onclick="editSingleTask()" class="edit-place">
-                        <img class="edit" src="./assets/img/edit.png">
-                        <span>Edit</span>
-                    </div>
-                </div>
-            </div>
-    `;
+              <div class="single-task-field" onclick="noCloseContent(event)">
+                  <div class="place-categorie-cross">
+                      <div id="task_variant_bord"></div>
+                      <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
+                  </div>
+                  <div class="place-single-information">
+                      <h1 class="task-head-bord">${title}</h1>
+                      <span class="descript">${description}</span>
+                      <div class="place-due-date-bord">
+                          <span>Due date: </span>
+                          <span class="due-date-bord">${date}</span>
+                      </div>
+                      <div class="place-priority-bord">
+                          <span>Priority:</span>
+                          <span class="priority-bord">${priority}</span>
+                      </div>
+                      <div class="assigned-to-bord">Assigned To</div>
+                      <div>${assignedto}</div>
+                      <span class="subtasks-bord">Subtasks</span>
+                      <div class="subtasks-input-bord">
+                          <div>${subtasks}</div>
+                      </div>
+                  </div>
+                  <div class="place-delete-edit">
+                      <div onclick="deleteSingleTask()" class="delete-place">
+                          <img class="delete" src="./assets/img/delete.png">
+                          <span>Delete</span>
+                      </div>
+                      <div class="one-px-line"></div>
+                      <div onclick="editSingleTask()" class="edit-place">
+                          <img class="edit" src="./assets/img/edit.png">
+                          <span>Edit</span>
+                      </div>
+                  </div>
+              </div>
+      `;
 }
 
 function editTaskHtml() {

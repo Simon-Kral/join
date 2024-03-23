@@ -1,8 +1,13 @@
 let todoforce = [];
 
+let searchresults = [];
+let results = [];
+
 let currenttask = 0;
 
 let currentdragged;
+
+let currentdraggedarray;
 
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
@@ -22,16 +27,11 @@ async function loadSessionStorage() {
     boardinit()
 }
 
-async function createTaskBoard() {
-    showTodoHtml();
-}
-
 function boardinit() {
     renderTodo();
     renderInProgress();
     renderAwaitFeedback();
     renderDone();
-    // console.log(users[loaduser]);
     showEmptyHtmlTodo();
     showEmptyHtmlInprogress();
     showEmptyHtmlAwaitfeedback();
@@ -117,6 +117,8 @@ function openBordTask() {
 //* Start
 
 function renderTodo() {
+    let getplacetodo = document.getElementById('to_do_place');
+    getplacetodo.innerHTML = ``;
     let todo = users[loaduser]['todo'];
     for (let i = 0; i < todo.length; i++) {
         todocollect = todo[i];
@@ -127,7 +129,7 @@ function renderTodo() {
 function showTodoHtml(getinformationtodo, i) {
     let getplacetodo = document.getElementById('to_do_place');
     const { categorytodo, titletodo, descriptiontodo } = informationTodo(getinformationtodo);
-    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i, getinformationtodo);
     showTaskCategorySmall();
     updateProgressBar();
 }
@@ -140,6 +142,8 @@ function informationTodo(getinformationtodo) {
 }
 
 function renderInProgress() {
+    let getplacetodo = document.getElementById('in_progress_place');
+    getplacetodo.innerHTML = ``;
     let inprogress = users[loaduser]['tasksinprogress'];
     for (let i = 0; i < inprogress.length; i++) {
         inprogresscollect = inprogress[i];
@@ -163,17 +167,21 @@ function informationInProgress(getinformationtodo) {
 }
 
 function renderAwaitFeedback() {
+    let getplacetodo = document.getElementById('await_feedback_place');
+    getplacetodo.innerHTML = ``;
     let awaitfeedback = users[loaduser]['awaitingfeedback'];
     for (let i = 0; i < awaitfeedback.length; i++) {
         awaitfeedbackcollect = awaitfeedback[i];
-        showAwaitFeedbackHtml(awaitfeedbackcollect);
+        showAwaitFeedbackHtml(awaitfeedbackcollect, i);
     }
 }
 
-function showAwaitFeedbackHtml() {
-    const todotask = awaitfeedbackTaskHtml();
+function showAwaitFeedbackHtml(awaitfeedbackcollect, i) {
     let getplaceawaitfeedback = document.getElementById('await_feedback_place');
-    getplaceawaitfeedback.innerHTML += todotask;
+    const { categorytodo, titletodo, descriptiontodo } = informationTodo(awaitfeedbackcollect);
+    getplaceawaitfeedback.innerHTML += awaitfeedbackTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    showTaskCategorySmall();
+    updateProgressBar();
 }
 
 function informationAwaitProgress(getinformationtodo) {
@@ -184,17 +192,21 @@ function informationAwaitProgress(getinformationtodo) {
 }
 
 function renderDone() {
+    let getplacetodo = document.getElementById('done_place');
+    getplacetodo.innerHTML = ``;
     let done = users[loaduser]['done'];
     for (let i = 0; i < done.length; i++) {
         donecollect = done[i];
-        showAwaitFeedbackHtml(donecollect);
+        showDoneHtml(donecollect, i);
     }
 }
 
-function showDoneHtml() {
-    const todotask = doneTaskHtml();
+function showDoneHtml(donecollect, i) {
     let getplacedone = document.getElementById('done_place');
-    getplacedone.innerHTML += todotask;
+    const { categorytodo, titletodo, descriptiontodo } = informationTodo(donecollect);
+    getplacedone.innerHTML += doneTaskHtml(categorytodo, titletodo, descriptiontodo, i);
+    showTaskCategorySmall();
+    updateProgressBar();
 }
 
 function showTaskCategorySmall(category) {
@@ -238,23 +250,200 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function drag(id) {
+function dragTodo(id) {
     currentdragged = id;
+    currentdraggedarray = setTodoArray();
 }
 
-function drop(ev) {
+function dragInProgress(id) {
+    currentdragged = id;
+    currentdraggedarray = setInProgressArray();
+}
+
+function dragAwaitFeedback(id) {
+    currentdragged = id;
+    currentdraggedarray = setAwaitFeedbackArray();
+}
+
+function dragDone(id) {
+    currentdragged = id;
+    currentdraggedarray = setDoneForm();
+}
+
+function dropTodo(ev) {
     ev.preventDefault();
     let select = users[loaduser];
-    let drag = users[loaduser]['todo'];
-    drag[currentdragged];
-    console.log(currentdragged);
-    console.log(select);
+    select['todo'].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1); 
     boardinit();
-    console.log(drag[currentdragged]);
-    select['tasksinprogress'].push(drag[currentdragged]);
+}
+
+function dropInProgress(ev) {
+    ev.preventDefault();
+    let select = users[loaduser];
+    select['tasksinprogress'].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1); 
+    boardinit();
+}
+
+function dropAwaitFeedBack(ev) {
+    ev.preventDefault();
+    let select = users[loaduser];
+    select['awaitingfeedback'].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1); 
+    boardinit();
+}
+
+function dropDone(ev) {
+    ev.preventDefault();
+    let select = users[loaduser];
+    select['done'].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1); 
+    boardinit();
+}
+
+function setTodoArray() {
+    let selecttodo = users[loaduser]['todo'];
+    return selecttodo;
+}
+
+function setInProgressArray() {
+    let selectinprogress = users[loaduser]['tasksinprogress'];
+    return selectinprogress;
+}
+
+function setAwaitFeedbackArray() {
+    let selectafeedback = users[loaduser]['awaitingfeedback'];
+    return selectafeedback;
+}
+
+function setDoneForm() {
+    let selectdone = users[loaduser]['done'];
+    return selectdone;
 }
 
 function noCloseContent(event) {
     event.stopPropagation();
 }
 
+function SearchTitelStart() {
+    let search = document.getElementById('search_input').value.trim().toLowerCase();
+    const searchlength = search.length;
+    let todoplace = document.getElementById(`to_do_place`);
+    todoplace.innerHTML = `<h1>Nothing Found</h1>`;
+    let inprogressplace = document.getElementById(`in_progress_place`);
+    inprogressplace.innerHTML = ``;
+    let awaitfeedbackplace = document.getElementById(`await_feedback_place`);
+    awaitfeedbackplace.innerHTML = ``;
+    let doneplace = document.getElementById(`done_place`);
+    doneplace.innerHTML = ``;
+
+    searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
+    searchClear(searchlength);
+}
+
+function searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace) {
+    if (searchlength >= 1) {
+        const resultstodo = filterTodo(search);
+        const resultsinprogress = filterInProgress(search);
+        const resultsawaitfeedback = filterAwaitFeedback(search);
+        const resultsdone = filterDone(search);
+        renderResultsTodo(resultstodo, todoplace);
+        renderResultsInProgress(resultsinprogress, inprogressplace);
+        renderResultsAwaitFeedback(resultsawaitfeedback, awaitfeedbackplace);
+        renderResultsDone(resultsdone, doneplace);
+    }
+}
+
+function searchClear(searchlength) {
+    if (searchlength <= 0) {
+        boardinit();
+    }
+}
+
+function filterTodo(search) {
+    let todoarray = setTodoArray();
+    let results = [];
+
+    for (let index = 0; index < todoarray.length; index++) {
+        let searchcollector = todoarray[index];
+        const name = searchcollector['title'];
+        if (name.toLowerCase().includes(search)) {
+            results.push(searchcollector);
+        }
+    }
+    return results;
+}
+
+
+function renderResultsTodo(resultstodo) {
+    for (let i = 0; i < resultstodo.length; i++) {
+        todocollect = resultstodo[i];
+        showTodoHtml(todocollect, i);
+    }
+}
+
+function filterInProgress(search) {
+    let inprogressarray = setInProgressArray();
+    let results = [];
+
+    for (let index = 0; index < inprogressarray.length; index++) {
+        let searchcollector = inprogressarray[index];
+        const name = searchcollector['title'];
+        if (name.toLowerCase().includes(search)) {
+            results.push(searchcollector);
+        }
+    }
+    return results;
+}
+
+
+function renderResultsInProgress(resultsinprogress) {
+    for (let i = 0; i < resultsinprogress.length; i++) {
+        todocollect = resultsinprogress[i];
+        showInProgressHtml(todocollect, i);
+    }
+}
+
+function filterAwaitFeedback(search) {
+    let afeedbackarray = setAwaitFeedbackArray();
+    let results = [];
+
+    for (let index = 0; index < afeedbackarray.length; index++) {
+        let searchcollector = afeedbackarray[index];
+        const name = searchcollector['title'];
+        if (name.toLowerCase().includes(search)) {
+            results.push(searchcollector);
+        }
+    }
+    return results;
+}
+
+
+function renderResultsAwaitFeedback(resultsawaitfeedback) {
+    for (let i = 0; i < resultsawaitfeedback.length; i++) {
+        todocollect = resultsawaitfeedback[i];
+        showAwaitFeedbackHtml(todocollect, i);
+    }
+}
+
+function filterDone(search) {
+    let donearray = setDoneForm();
+    let results = [];
+
+    for (let index = 0; index < donearray.length; index++) {
+        let searchcollector = donearray[index];
+        const name = searchcollector['title'];
+        if (name.toLowerCase().includes(search)) {
+            results.push(searchcollector);
+        }
+    }
+    return results;
+}
+
+function renderResultsDone(resultsdone) {
+    for (let i = 0; i < resultsdone.length; i++) {
+        todocollect = resultsdone[i];
+        showDoneHtml(todocollect, i);
+    }
+}

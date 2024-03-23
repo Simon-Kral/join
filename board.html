@@ -36,8 +36,8 @@
     <section class="board-head">
         <h1 class="board">Board</h1>
         <div class="place-search-task">
-            <form class="search-task-tag">
-                <input class="search-task-in" type="search" placeholder="Search...">
+            <form oninput="SearchTitelStart()" class="search-task-tag">
+                <input id="search_input" class="search-task-in" type="search" placeholder="Search...">
                 <button class="search-task-button" type="submit">Search</button>
             </form>
             <button onclick="bordAddNewTask()" class="add-task">Add task +</button>
@@ -61,13 +61,13 @@
         </div>
     </section>
     <section class="board-body-task">
-        <div class="single-task" id="to_do_place" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="single-task" id="to_do_place" ondrop="dropTodo(event)" ondragover="allowDrop(event)">
         </div>
-        <div class="single-task" id="in_progress_place" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="single-task" id="in_progress_place" ondrop="dropInProgress(event)" ondragover="allowDrop(event)">
         </div>
-        <div class="single-task" id="await_feedback_place" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="single-task" id="await_feedback_place" ondrop="dropAwaitFeedBack(event)" ondragover="allowDrop(event)">
         </div>
-        <div class="single-task" id="done_place" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="single-task" id="done_place" ondrop="dropDone(event)" ondragover="allowDrop(event)">
         </div>
     </section>
     <section onclick="closeCard()" id="fullscreen_information" class="d-none">
