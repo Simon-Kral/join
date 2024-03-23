@@ -122,16 +122,9 @@ function renderTodo() {
 function showTodoHtml(getinformationtodo, i) {
     let getplacetodo = document.getElementById('to_do_place');
     const { categorytodo, titletodo, descriptiontodo } = informationTodo(getinformationtodo);
-    getplacetodo.innerHTML += todoTaskHtml(categorytodo, titletodo, descriptiontodo, i, getinformationtodo);
-    showTaskCategorySmall();
+    const choosencategory = selectCategory(categorytodo);
+    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, getinformationtodo);
     updateProgressBar();
-}
-
-function informationTodo(getinformationtodo) {
-    let categorytodo = getinformationtodo['category'];
-    let titletodo = getinformationtodo['title'];
-    let descriptiontodo = getinformationtodo['description'];
-    return { categorytodo, titletodo, descriptiontodo };
 }
 
 function renderInProgress() {
@@ -147,16 +140,9 @@ function renderInProgress() {
 function showInProgressHtml(inprogresscollect, i) {
     let getplaceinprogress = document.getElementById('in_progress_place');
     const { categorytodo, titletodo, descriptiontodo } = informationTodo(inprogresscollect);
-    getplaceinprogress.innerHTML += inprogressTaskHtml(categorytodo, titletodo, descriptiontodo, i);
-    showTaskCategorySmall();
+    const choosencategory = selectCategory(categorytodo);
+    getplaceinprogress.innerHTML += inprogressTaskHtml(choosencategory, titletodo, descriptiontodo, i);
     updateProgressBar();
-}
-
-function informationInProgress(getinformationtodo) {
-    let categoryinprogress = getinformationtodo['category'];
-    let titletodoinprogress = getinformationtodo['title'];
-    let descriptiontodoinprogress = getinformationtodo['description'];
-    return { categoryinprogress, titletodoinprogress, descriptiontodoinprogress };
 }
 
 function renderAwaitFeedback() {
@@ -172,16 +158,9 @@ function renderAwaitFeedback() {
 function showAwaitFeedbackHtml(awaitfeedbackcollect, i) {
     let getplaceawaitfeedback = document.getElementById('await_feedback_place');
     const { categorytodo, titletodo, descriptiontodo } = informationTodo(awaitfeedbackcollect);
-    getplaceawaitfeedback.innerHTML += awaitfeedbackTaskHtml(categorytodo, titletodo, descriptiontodo, i);
-    showTaskCategorySmall();
+    const choosencategory = selectCategory(categorytodo);
+    getplaceawaitfeedback.innerHTML += awaitfeedbackTaskHtml(choosencategory, titletodo, descriptiontodo, i);
     updateProgressBar();
-}
-
-function informationAwaitProgress(getinformationtodo) {
-    let categoryawaitprogress = getinformationtodo['category'];
-    let titletodoawaitprogress = getinformationtodo['title'];
-    let descriptiontodoawaitprogress = getinformationtodo['description'];
-    return { categoryawaitprogress, titletodoawaitprogress, descriptiontodoawaitprogress };
 }
 
 function renderDone() {
@@ -197,19 +176,25 @@ function renderDone() {
 function showDoneHtml(donecollect, i) {
     let getplacedone = document.getElementById('done_place');
     const { categorytodo, titletodo, descriptiontodo } = informationTodo(donecollect);
-    getplacedone.innerHTML += doneTaskHtml(categorytodo, titletodo, descriptiontodo, i);
-    showTaskCategorySmall();
+    const choosencategory = selectCategory(categorytodo);
+    getplacedone.innerHTML += doneTaskHtml(choosencategory, titletodo, descriptiontodo, i);
     updateProgressBar();
 }
 
-function showTaskCategorySmall(category) {
-    const technicalTask = technicalTaskHtml();
-    const userTask = userTaskHtml();
-    let getplacetaskcategory = document.getElementById('task-variant');
+function informationTodo(getinformationtodo) {
+    let categorytodo = getinformationtodo['category'];
+    let titletodo = getinformationtodo['title'];
+    let descriptiontodo = getinformationtodo['description'];
+    return { categorytodo, titletodo, descriptiontodo };
+}
+
+function selectCategory(category) {
     if (category == "Technical Task") {
-        getplacetaskcategory.innerHTML = technicalTask;
+        let technicaltask = technicalTaskHtml();
+        return technicaltask;
     } else {
-        getplacetaskcategory.innerHTML = userTask;
+        let userstory = userTaskHtml();
+        return userstory;
     }
 }
 
