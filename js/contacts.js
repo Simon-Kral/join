@@ -212,7 +212,7 @@ function generateEditContactHtml(contact, abbreviation, fullname) {
               </div>
               <form class="edit-contact-form-box" onsubmit="saveEditedContact(${contact.id});return false" autocomplete="off">
                   <div class="input-with-img-wrapper">
-                      <input type="text" value="${fullname}" pattern="\w+(\s\w+)+" class="styled-input focus-blue edit-contact-input" id="edit_contact_name"/>
+                      <input type="text" value="${fullname}" pattern="[A-Za-z]+([ ][A-Za-z]+)+" class="styled-input focus-blue edit-contact-input" id="edit_contact_name"/>
                       <img src="./assets/img/person.svg" alt="person" />
                   </div>
                   <div class="input-with-img-wrapper">
