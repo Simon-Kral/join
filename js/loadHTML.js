@@ -36,26 +36,32 @@ function emptyTaskFieldInprogress() {
 
 function emptyTaskFieldAwaitfeedback() {
     return `
-        <div class="empty-task-place">No tasks Await feedback</div>
+        <div class="empty-task-place">no tasks await feedback</div>
     `;
 }
 
 function emptyTaskFieldDone() {
     return `
-        <div class="empty-task-place">No tasks Done</div>
+        <div class="empty-task-place">no tasks done</div>
     `;
 }
 
 function userTaskHtml() {
     return `
-          <p class="user-story">User Story</p>
+          <p class="user-story">user story</p>
       `;
 }
 
 function technicalTaskHtml() {
     return `
-          <p class="technical-task">Technical Task</p>
+          <p class="technical-task">technical task</p>
       `;
+}
+
+function nothingFound() {
+    return `
+        <p class="empty-task-place">nothing found</p>
+    `;
 }
 
 function todoTaskHtml(title, description, priority, i) {
@@ -129,7 +135,7 @@ function awaitfeedbackTaskHtml(title, description, priority, i) {
 
 function doneTaskHtml(title, description, priority, i) {
     return `
-            <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragDone(${i})">
+        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragDone(${i})">
               <div id="task-variant"></div>
               <h3>${title}</h3>
               <span>${description}</span>
@@ -146,7 +152,7 @@ function doneTaskHtml(title, description, priority, i) {
                       <img class="low-image" src="${priority}">
                   </div>
               </div>
-          </div>
+        </div>
       `;
 }
 
