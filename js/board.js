@@ -274,7 +274,7 @@ function dropTodo(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     select['todo'].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1); 
+    currentdraggedarray.splice(currentdragged, 1);
     boardinit();
 }
 
@@ -282,7 +282,7 @@ function dropInProgress(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     select['tasksinprogress'].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1); 
+    currentdraggedarray.splice(currentdragged, 1);
     boardinit();
 }
 
@@ -290,7 +290,7 @@ function dropAwaitFeedBack(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     select['awaitingfeedback'].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1); 
+    currentdraggedarray.splice(currentdragged, 1);
     boardinit();
 }
 
@@ -298,7 +298,7 @@ function dropDone(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     select['done'].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1); 
+    currentdraggedarray.splice(currentdragged, 1);
     boardinit();
 }
 
@@ -330,13 +330,9 @@ function SearchTitelStart() {
     let search = document.getElementById('search_input').value.trim().toLowerCase();
     const searchlength = search.length;
     let todoplace = document.getElementById(`to_do_place`);
-    todoplace.innerHTML = `<h1>Nothing Found</h1>`;
     let inprogressplace = document.getElementById(`in_progress_place`);
-    inprogressplace.innerHTML = ``;
     let awaitfeedbackplace = document.getElementById(`await_feedback_place`);
-    awaitfeedbackplace.innerHTML = ``;
     let doneplace = document.getElementById(`done_place`);
-    doneplace.innerHTML = ``;
 
     searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
     searchClear(searchlength);
@@ -365,8 +361,8 @@ function filterTodo(search) {
     let todoarray = setTodoArray();
     let results = [];
 
-    for (let index = 0; index < todoarray.length; index++) {
-        let searchcollector = todoarray[index];
+    for (let t = 0; t < todoarray.length; t++) {
+        let searchcollector = todoarray[t];
         const name = searchcollector['title'];
         if (name.toLowerCase().includes(search)) {
             results.push(searchcollector);
@@ -376,10 +372,15 @@ function filterTodo(search) {
 }
 
 
-function renderResultsTodo(resultstodo) {
-    for (let i = 0; i < resultstodo.length; i++) {
-        todocollect = resultstodo[i];
-        showTodoHtml(todocollect, i);
+function renderResultsTodo(resultstodo, todoplace) {
+    todoplace.innerHTML = ``;
+    if (resultstodo <= 0) {
+        todoplace.innerHTML = nothingFound();
+    } else {
+        for (let i = 0; i < resultstodo.length; i++) {
+            todocollect = resultstodo[i];
+            showTodoHtml(todocollect, i);
+        }
     }
 }
 
@@ -398,10 +399,15 @@ function filterInProgress(search) {
 }
 
 
-function renderResultsInProgress(resultsinprogress) {
-    for (let i = 0; i < resultsinprogress.length; i++) {
-        todocollect = resultsinprogress[i];
-        showInProgressHtml(todocollect, i);
+function renderResultsInProgress(resultsinprogress, inprogressplace) {
+    inprogressplace.innerHTML = ``;
+    if (resultsinprogress <= 0) {
+        inprogressplace.innerHTML = nothingFound();
+    } else {
+        for (let i = 0; i < resultsinprogress.length; i++) {
+            todocollect = resultsinprogress[i];
+            showInProgressHtml(todocollect, i);
+        }
     }
 }
 
@@ -420,10 +426,15 @@ function filterAwaitFeedback(search) {
 }
 
 
-function renderResultsAwaitFeedback(resultsawaitfeedback) {
-    for (let i = 0; i < resultsawaitfeedback.length; i++) {
-        todocollect = resultsawaitfeedback[i];
-        showAwaitFeedbackHtml(todocollect, i);
+function renderResultsAwaitFeedback(resultsawaitfeedback, awaitfeedbackplace) {
+    awaitfeedbackplace.innerHTML = ``;
+    if (resultsawaitfeedback <= 0) {
+        awaitfeedbackplace.innerHTML = nothingFound();
+    } else {
+        for (let i = 0; i < resultsawaitfeedback.length; i++) {
+            todocollect = resultsawaitfeedback[i];
+            showAwaitFeedbackHtml(todocollect, i);
+        }
     }
 }
 
@@ -441,9 +452,14 @@ function filterDone(search) {
     return results;
 }
 
-function renderResultsDone(resultsdone) {
-    for (let i = 0; i < resultsdone.length; i++) {
-        todocollect = resultsdone[i];
-        showDoneHtml(todocollect, i);
+function renderResultsDone(resultsdone, doneplace) {
+    doneplace.innerHTML = ``;
+    if (resultsdone <= 0) {
+        doneplace.innerHTML = nothingFound();
+    } else {
+        for (let i = 0; i < resultsdone.length; i++) {
+            todocollect = resultsdone[i];
+            showDoneHtml(todocollect, i);
+        }
     }
 }
