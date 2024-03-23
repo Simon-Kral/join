@@ -16,6 +16,12 @@ async function includeHTML() {
     }
 }
 
+function emptyPlaceHtml() {
+    return `
+        <div></div>
+    `;
+}
+
 function bordAddTaskFieldHtml() {
     return `
         <div class="bord-add-tasks-field" onclick="noCloseContent(event)" id="add_task_page"></div>
@@ -94,21 +100,28 @@ function mediumPrioHtml() {
     `;
 }
 
-function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo) {
+function createProgressBar(percent) {
+    return `
+        <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+            <div class="progressbar" id="progressbar" style ="width: ${percent}%"</div>
+        </div>
+    `;
+}
+
+function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragTodo(${i})">
             <div>${choosencategory}</div>
             <h3>${title}</h3>
             <span>${description}</span>
             <div class="place-task-progress">
-                <div class="progress-bar" role="progressbar" ar ia-label="Example with label" aria-valuenow="25">
-                    <div class="progressbar" id="progressbar"></div>
-                </div>
-                <p>${i}/${subtaskstodo}Subtasks</p>
+                <div class="collect-subtask">${subtaskstodo}</div>
+                <p class="subtasktxt">${i}/${subtasklenght}Subtasks</p>
             </div>
             <div class="place-user-status">
                 <div class="place-user">
                     <p>Schmackofatz!</p>
+                    ${contactstodo}
                 </div>
                 <div>
                     ${priotodo}
@@ -171,9 +184,6 @@ function doneTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
             <h3>${title}</h3>
             <span>${description}</span>
             <div class="place-task-progress">
-                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                    <div class="progressbar" id="progressbar"></div>
-                </div>
                 <p>Subtasks</p>
               </div>
               <div class="place-user-status">
