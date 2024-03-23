@@ -283,6 +283,11 @@ p.technical-task {
     cursor: pointer;
 }
 
+.place-user-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 /* single-task-style-start */
 
