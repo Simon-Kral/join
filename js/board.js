@@ -1,12 +1,8 @@
 let todoforce = [];
-
 let searchresults = [];
 let results = [];
-
 let currenttask = 0;
-
 let currentdragged;
-
 let currentdraggedarray;
 
 function guestLogin() {
@@ -113,8 +109,6 @@ function openBordTask() {
     getplacecard.innerHTML = showfulltask;
     showTaskCategoryBig();
 }
-
-//* Start
 
 function renderTodo() {
     let getplacetodo = document.getElementById('to_do_place');
