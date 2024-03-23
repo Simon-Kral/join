@@ -64,33 +64,64 @@ function nothingFound() {
     `;
 }
 
-function todoTaskHtml(title, description, priority, i) {
+function userTaskHtml() {
+    return `
+        <p class="user-story">User Story</p>
+    `;
+}
+
+function technicalTaskHtml() {
+    return `
+        <p class="technical-task">Technical Task</p>
+    `;
+}
+
+function urugentPrioHtml() {
+    return `
+        <img class="low-image" src="./assets/img/urgent.png"></img>
+    `;
+}
+
+function lowPrioHtml() {
+    return `
+        <img class="low-image" src="./assets/img/low.png"></img>
+    `;
+}
+
+function mediumPrioHtml() {
+    return `
+        <img class="low-image" src="./assets/img/medium.png"></img>
+    `;
+}
+
+function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragTodo(${i})">
-            <div id="task-variant"></div>
+            <div>${choosencategory}</div>
             <h3>${title}</h3>
             <span>${description}</span>
             <div class="place-task-progress">
                 <div class="progress-bar" role="progressbar" ar ia-label="Example with label" aria-valuenow="25">
                     <div class="progressbar" id="progressbar"></div>
                 </div>
-                <p>Subtasks</p>
+                <p>${i}/${subtaskstodo}Subtasks</p>
             </div>
             <div class="place-user-status">
                 <div class="place-user">
+                    <p>Schmackofatz!</p>
                 </div>
                 <div>
-                    <img class="low-image" src="${priority}">
+                    ${priotodo}
                 </div>
             </div>
         </div>
     `;
 }
 
-function inprogressTaskHtml(title, description, priority, i) {
+function inprogressTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragInProgress(${i})">
-            <div id="task-variant"></div>
+            <div>${choosencategory}</div>
             <h3>${title}</h3>
             <span>${description}</span>
             <div class="place-task-progress">
@@ -103,53 +134,53 @@ function inprogressTaskHtml(title, description, priority, i) {
                 <div class="place-user">
                 </div>
                 <div>
-                    <img class="low-image" src="${priority}">
+                    ${priotodo}
                 </div>
             </div>
         </div>
     `;
 }
 
-function awaitfeedbackTaskHtml(title, description, priority, i) {
+function awaitfeedbackTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo) {
     return `
             <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragAwaitFeedback(${i})">
-              <div id="task-variant"></div>
-              <h3>${title}</h3>
-              <span>${description}</span>
-              <div class="place-task-progress">
-                  <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                      <div class="progressbar" id="progressbar"></div>
-                  </div>
-                  <p>Subtasks</p>
-              </div>
-              <div class="place-user-status">
-                  <div class="place-user">
-                  </div>
-                  <div>
-                      <img class="low-image" src="${priority}">
-                  </div>
-              </div>
-          </div>
+                <div>${choosencategory}</div>
+                <h3>${title}</h3>
+                <span>${description}</span>
+                <div class="place-task-progress">
+                    <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+                        <div class="progressbar" id="progressbar"></div>
+                    </div>
+                    <p>Subtasks</p>
+                </div>
+                <div class="place-user-status">
+                    <div class="place-user">
+                    </div>
+                    <div>
+                        ${priotodo}
+                    </div>
+                </div>
+            </div>
       `;
 }
 
-function doneTaskHtml(title, description, priority, i) {
+function doneTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragDone(${i})">
-              <div id="task-variant"></div>
-              <h3>${title}</h3>
-              <span>${description}</span>
-              <div class="place-task-progress">
-                  <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                      <div class="progressbar" id="progressbar"></div>
-                  </div>
-                  <p>Subtasks</p>
+            <div>${choosencategory}</div>
+            <h3>${title}</h3>
+            <span>${description}</span>
+            <div class="place-task-progress">
+                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+                    <div class="progressbar" id="progressbar"></div>
+                </div>
+                <p>Subtasks</p>
               </div>
               <div class="place-user-status">
                   <div class="place-user">
                   </div>
                   <div>
-                      <img class="low-image" src="${priority}">
+                        ${priotodo}
                   </div>
               </div>
         </div>
@@ -322,18 +353,6 @@ function editTaskHtml() {
                 </form>
             </main>
         </div>    
-    `;
-}
-
-function userTaskHtml() {
-    return `
-        <p class="user-story">User Story</p>
-    `;
-}
-
-function technicalTaskHtml() {
-    return `
-        <p class="technical-task">Technical Task</p>
     `;
 }
 

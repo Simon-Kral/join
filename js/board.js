@@ -121,10 +121,18 @@ function renderTodo() {
 
 function showTodoHtml(getinformationtodo, i) {
     let getplacetodo = document.getElementById('to_do_place');
-    const { categorytodo, titletodo, descriptiontodo } = informationTodo(getinformationtodo);
+    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(getinformationtodo);
     const choosencategory = selectCategory(categorytodo);
-    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, getinformationtodo);
+    const choosenpriority = selectPriority(priotodo);
+    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
     updateProgressBar();
+}
+
+function updateProgressBar() {
+    let percent = currenttask / checksubtasks.length;
+
+    percent = Math.round(percent * 100);
+    document.getElementById('progressbar').style = `width: ${percent}%`;
 }
 
 function renderInProgress() {
@@ -139,9 +147,10 @@ function renderInProgress() {
 
 function showInProgressHtml(inprogresscollect, i) {
     let getplaceinprogress = document.getElementById('in_progress_place');
-    const { categorytodo, titletodo, descriptiontodo } = informationTodo(inprogresscollect);
+    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(inprogresscollect);
     const choosencategory = selectCategory(categorytodo);
-    getplaceinprogress.innerHTML += inprogressTaskHtml(choosencategory, titletodo, descriptiontodo, i);
+    const choosenpriority = selectPriority(priotodo);
+    getplaceinprogress.innerHTML += inprogressTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
     updateProgressBar();
 }
 
@@ -157,9 +166,10 @@ function renderAwaitFeedback() {
 
 function showAwaitFeedbackHtml(awaitfeedbackcollect, i) {
     let getplaceawaitfeedback = document.getElementById('await_feedback_place');
-    const { categorytodo, titletodo, descriptiontodo } = informationTodo(awaitfeedbackcollect);
+    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(awaitfeedbackcollect);
     const choosencategory = selectCategory(categorytodo);
-    getplaceawaitfeedback.innerHTML += awaitfeedbackTaskHtml(choosencategory, titletodo, descriptiontodo, i);
+    const choosenpriority = selectPriority(priotodo);
+    getplaceawaitfeedback.innerHTML += awaitfeedbackTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
     updateProgressBar();
 }
 
@@ -175,9 +185,10 @@ function renderDone() {
 
 function showDoneHtml(donecollect, i) {
     let getplacedone = document.getElementById('done_place');
-    const { categorytodo, titletodo, descriptiontodo } = informationTodo(donecollect);
+    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(donecollect);
     const choosencategory = selectCategory(categorytodo);
-    getplacedone.innerHTML += doneTaskHtml(choosencategory, titletodo, descriptiontodo, i);
+    const choosenpriority = selectPriority(priotodo);
+    getplacedone.innerHTML += doneTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
     updateProgressBar();
 }
 
@@ -185,7 +196,10 @@ function informationTodo(getinformationtodo) {
     let categorytodo = getinformationtodo['category'];
     let titletodo = getinformationtodo['title'];
     let descriptiontodo = getinformationtodo['description'];
-    return { categorytodo, titletodo, descriptiontodo };
+    let subtaskstodo = getinformationtodo['subtasks'];
+    let contactstodo = getinformationtodo['contacts'];
+    let priotodo = getinformationtodo['prio'];
+    return { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo };
 }
 
 function selectCategory(category) {
@@ -209,19 +223,25 @@ function showTaskCategoryBig(category) {
     }
 }
 
+function selectPriority(priority) {
+    if (priority == "urgent") {
+        let urugentprio = urugentPrioHtml();
+        return urugentprio;
+    } if (priority = "low") {
+        let lowprio = lowPrioHtml();
+        return lowprio;
+    } if (priority = "medium") {
+        let mediumprio = mediumPrioHtml();
+        return mediumprio;
+    }
+}
+
 function editSingleTask() {
     const edithtml = editTaskHtml();
     let getplacetaskvariantbord = document.getElementById('add_bordtask_data');
     getplacetaskvariantbord.innerHTML = ``;
     getplacetaskvariantbord.innerHTML = edithtml;
     initAddTask();
-}
-
-function updateProgressBar() {
-    let percent = (currenttask) / checksubtasks.length;
-    percent = Math.round(percent * 100);
-
-    document.getElementById('progressbar').style = `width: ${percent}%`;
 }
 
 function allowDrop(ev) {
