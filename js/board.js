@@ -1,4 +1,4 @@
-let todoforce = [];
+let checksubtasks = [];
 let searchresults = [];
 let results = [];
 let currenttask = 0;
@@ -234,7 +234,7 @@ function editSingleTask() {
 }
 
 function updateProgressBar() {
-    let percent = (currenttask) / todoforce.length;
+    let percent = (currenttask) / checksubtasks.length;
     percent = Math.round(percent * 100);
 
     document.getElementById('progressbar').style = `width: ${percent}%`;

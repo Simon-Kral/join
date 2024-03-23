@@ -66,7 +66,7 @@ function nothingFound() {
 
 function todoTaskHtml(title, description, priority, i) {
     return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragTodo(${i})">
+        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragTodo(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
             <span>${description}</span>
@@ -89,7 +89,7 @@ function todoTaskHtml(title, description, priority, i) {
 
 function inprogressTaskHtml(title, description, priority, i) {
     return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragInProgress(${i})">
+        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragInProgress(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
             <span>${description}</span>
@@ -112,7 +112,7 @@ function inprogressTaskHtml(title, description, priority, i) {
 
 function awaitfeedbackTaskHtml(title, description, priority, i) {
     return `
-            <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragAwaitFeedback(${i})">
+            <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragAwaitFeedback(${i})">
               <div id="task-variant"></div>
               <h3>${title}</h3>
               <span>${description}</span>
@@ -135,7 +135,7 @@ function awaitfeedbackTaskHtml(title, description, priority, i) {
 
 function doneTaskHtml(title, description, priority, i) {
     return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragDone(${i})">
+        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragDone(${i})">
               <div id="task-variant"></div>
               <h3>${title}</h3>
               <span>${description}</span>
