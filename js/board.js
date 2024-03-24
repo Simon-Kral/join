@@ -123,15 +123,23 @@ function openTask(i) {
     const selectarray = currentdraggedarray[i];
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
     const choosencategory = selectCategory(categorytodo);
-    // const choosensubtasks = selectSubtasks(subtaskstodo);
-    console.log(subtaskstodo);
+    const choosensubtasks = selectSubtasks(subtaskstodo);
+    subtaskstodo;
     const choosenpriority = selectPriority(priotodo);
-    console.log(contactstodo);
-    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, subtaskstodo);
+    contactstodo;
+    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, choosensubtasks );
 }
 
-// function selectSubtasks(subtaskstodo) {
+function selectSubtasks(subtaskstodo) {
+    for (let st = 0; st < subtaskstodo.length; st++) {
+        let sublistplace = subtaskstodo[st];
+        let list = sublistplace['name']
+        console.log(list);
+    }
+}
 
+// function showCheckList(sublistplace, st) {
+//     subtaskCheckHtml
 // }
 
 function renderTodo() {
@@ -141,6 +149,7 @@ function renderTodo() {
     for (let i = 0; i < todo.length; i++) {
         todocollect = todo[i];
         showTodoHtml(todocollect, i);
+        console.log(todocollect);
     }
 }
 
@@ -251,8 +260,8 @@ function updateProgressBar(subtasks) {
         let emptyplace = emptyPlaceHtml();
         return emptyplace;
     } else {
-        let subtaskplace = createProgressBar(percent);
-        return subtaskplace;
+        let progressbar = createProgressBar(percent);
+        return progressbar;
     }
 }
 

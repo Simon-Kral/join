@@ -108,6 +108,12 @@ function createProgressBar(percent) {
     `;
 }
 
+function subtaskCheckHtml(sublistplace) {
+    return `
+        <li>${sublistplace}</li>
+    `;
+}
+
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
@@ -130,7 +136,7 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
     `;
 }
 
-function fullTaskHtml(choosencategory, title, description, i, date, priotodo, contactstodo, subtaskstodo) {
+function fullTaskHtml(choosencategory, title, description, i, priotodo, date, subtaskstodo) {
     return `
         <div class="single-task-field" onclick="noCloseContent(event)">
             <div class="place-categorie-cross">
@@ -149,7 +155,7 @@ function fullTaskHtml(choosencategory, title, description, i, date, priotodo, co
                     <span class="priority-bord">${priotodo}</span>
                 </div>
                 <div class="assigned-to-bord">Assigned To</div>
-                    <div>${contactstodo}</div>
+                    <div></div>
                     <span class="subtasks-bord">Subtasks</span>
                     <div class="subtasks-input-bord">
                         ${subtaskstodo}
