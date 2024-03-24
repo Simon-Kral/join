@@ -118,12 +118,21 @@ function openBordTask(id, element) {
 }
 
 function openTask(i) {
-    const showfulltask = fullTaskHtml(i);
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
-    getplacecard.innerHTML = showfulltask;
-    showTaskCategoryBig();
+    const selectarray = currentdraggedarray[i];
+    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
+    const choosencategory = selectCategory(categorytodo);
+    // const choosensubtasks = selectSubtasks(subtaskstodo);
+    console.log(subtaskstodo);
+    const choosenpriority = selectPriority(priotodo);
+    console.log(contactstodo);
+    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, subtaskstodo);
 }
+
+// function selectSubtasks(subtaskstodo) {
+
+// }
 
 function renderTodo() {
     let getplacetodo = document.getElementById('to_do_place');
@@ -220,7 +229,8 @@ function informationTodo(getinformationtodo) {
     let subtaskstodo = getinformationtodo['subtasks'];
     let contactstodo = getinformationtodo['contacts'];
     let priotodo = getinformationtodo['prio'];
-    return { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo };
+    let datetodo = getinformationtodo['date']
+    return { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo };
 }
 
 function selectCategory(category) {

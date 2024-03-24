@@ -120,7 +120,6 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
             </div>
             <div class="place-user-status">
                 <div class="place-user">
-                    <p>Schmackofatz!</p>
                     ${contactstodo}
                 </div>
                 <div>
@@ -131,43 +130,44 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
     `;
 }
 
-function fullTaskHtml(title, description, date, priority, assignedto, subtasks) {
+function fullTaskHtml(choosencategory, title, description, i, date, priotodo, contactstodo, subtaskstodo) {
     return `
-              <div class="single-task-field" onclick="noCloseContent(event)">
-                  <div class="place-categorie-cross">
-                      <div id="task_variant_bord"></div>
-                      <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
-                  </div>
-                  <div class="place-single-information">
-                      <h1 class="task-head-bord">${title}</h1>
-                      <span class="descript">${description}</span>
-                      <div class="place-due-date-bord">
-                          <span>Due date: </span>
-                          <span class="due-date-bord">${date}</span>
-                      </div>
-                      <div class="place-priority-bord">
-                          <span>Priority:</span>
-                          <span class="priority-bord">${priority}</span>
-                      </div>
-                      <div class="assigned-to-bord">Assigned To</div>
-                      <div>${assignedto}</div>
-                      <span class="subtasks-bord">Subtasks</span>
-                      <div class="subtasks-input-bord">
-                          <div>${subtasks}</div>
-                      </div>
-                  </div>
-                  <div class="place-delete-edit">
-                      <div onclick="deleteSingleTask()" class="delete-place">
-                          <img class="delete" src="./assets/img/delete.png">
-                          <span>Delete</span>
-                      </div>
-                      <div class="one-px-line"></div>
-                      <div onclick="editSingleTask()" class="edit-place">
-                          <img class="edit" src="./assets/img/edit.png">
-                          <span>Edit</span>
-                      </div>
-                  </div>
-              </div>
+        <div class="single-task-field" onclick="noCloseContent(event)">
+            <div class="place-categorie-cross">
+                <div class="collect-category">${choosencategory}</div>
+                <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
+            </div>
+            <div class="place-single-information">
+                <h1 class="task-head-bord">${title}</h1>
+                <span class="descript">${description}</span>
+                <div class="place-due-date-bord">
+                    <span>Due date:&nbsp;</span>
+                    <span class="due-date-bord">${date}</span>
+                </div>
+                <div class="place-priority-bord">
+                    <span>Priority:&nbsp;</span>
+                    <span class="priority-bord">${priotodo}</span>
+                </div>
+                <div class="assigned-to-bord">Assigned To</div>
+                    <div>${contactstodo}</div>
+                    <span class="subtasks-bord">Subtasks</span>
+                    <div class="subtasks-input-bord">
+                        ${subtaskstodo}
+                        <div></div>
+                    </div>
+                </div>
+                <div class="place-delete-edit">
+                    <div onclick="deleteSingleTask()" class="delete-place">
+                        <img class="delete" src="./assets/img/delete.png">
+                        <span>Delete</span>
+                    </div>
+                    <div class="one-px-line"></div>
+                <div onclick="editSingleTask()" class="edit-place">
+                    <img class="edit" src="./assets/img/edit.png">
+                    <span>Edit</span>
+                </div>
+            </div>
+        </div>
       `;
 }
 
