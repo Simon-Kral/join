@@ -101,8 +101,24 @@ function awaitfeedbackNewTask() {
     fillAddTaskSection();
 }
 
-function openBordTask() {
-    const showfulltask = fullTaskHtml();
+function openBordTask(id, element) {
+    if (element.parentElement && element.parentElement.id === 'to_do_place') {
+        dragTodo(id);
+        openTask(id);
+    } if (element.parentElement && element.parentElement.id === 'in_progress_place') {
+        dragInProgress(id);
+        openTask(id);
+    } if (element.parentElement && element.parentElement.id === 'await_feedback_place') {
+        dragAwaitFeedback(id);
+        openTask(id); 
+    } if (element.parentElement && element.parentElement.id === 'done_place') {
+        dragDone(id);
+        openTask(id); 
+    }
+}
+
+function openTask(i) {
+    const showfulltask = fullTaskHtml(i);
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
     getplacecard.innerHTML = showfulltask;
@@ -126,7 +142,15 @@ function showTodoHtml(getinformationtodo, i) {
     const choosenpriority = selectPriority(priotodo);
     const barupdated = updateProgressBar(subtaskstodo);
     const subtasklenght = subtaskstodo.length;
-    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, contactstodo, choosenpriority, subtasklenght);
+    const selectcontacts = selectContacts(contactstodo);
+    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght);
+}
+
+function selectContacts(contactstodo) {
+    for (let s = 0; s < contactstodo.length; s++) {
+        const contacts = contactstodo[s];
+        return contacts;
+    }
 }
 
 function renderInProgress() {
@@ -144,8 +168,9 @@ function showInProgressHtml(inprogresscollect, i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(inprogresscollect);
     const choosencategory = selectCategory(categorytodo);
     const choosenpriority = selectPriority(priotodo);
-    getplaceinprogress.innerHTML += inprogressTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
-    // updateProgressBar();
+    const barupdated = updateProgressBar(subtaskstodo);
+    const subtasklenght = subtaskstodo.length;
+    getplaceinprogress.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, contactstodo, choosenpriority, subtasklenght);
 }
 
 function renderAwaitFeedback() {
@@ -163,8 +188,9 @@ function showAwaitFeedbackHtml(awaitfeedbackcollect, i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(awaitfeedbackcollect);
     const choosencategory = selectCategory(categorytodo);
     const choosenpriority = selectPriority(priotodo);
-    getplaceawaitfeedback.innerHTML += awaitfeedbackTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
-    // updateProgressBar();
+    const barupdated = updateProgressBar(subtaskstodo);
+    const subtasklenght = subtaskstodo.length;
+    getplaceawaitfeedback.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, contactstodo, choosenpriority, subtasklenght);
 }
 
 function renderDone() {
@@ -182,8 +208,9 @@ function showDoneHtml(donecollect, i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(donecollect);
     const choosencategory = selectCategory(categorytodo);
     const choosenpriority = selectPriority(priotodo);
-    getplacedone.innerHTML += doneTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
-    // updateProgressBar();
+    const barupdated = updateProgressBar(subtaskstodo);
+    const subtasklenght = subtaskstodo.length;
+    getplacedone.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, contactstodo, choosenpriority, subtasklenght);
 }
 
 function informationTodo(getinformationtodo) {
@@ -205,6 +232,7 @@ function selectCategory(category) {
         return userstory;
     }
 }
+
 function updateProgressBar(subtasks) {
     let percent = currenttask / subtasks.length;
     percent = Math.round(percent * 100);
@@ -252,6 +280,18 @@ function editSingleTask() {
 
 function allowDrop(ev) {
     ev.preventDefault();
+}
+
+function drag(id, element) {
+    if (element.parentElement && element.parentElement.id === 'to_do_place') {
+        dragTodo(id);
+    } if (element.parentElement && element.parentElement.id === 'in_progress_place') {
+        dragInProgress(id);
+    } if (element.parentElement && element.parentElement.id === 'await_feedback_place') {
+        dragAwaitFeedback(id); 
+    } if (element.parentElement && element.parentElement.id === 'done_place') {
+        dragDone(id); 
+    }
 }
 
 function dragTodo(id) {
@@ -335,21 +375,21 @@ function searchTaskPlace() {
     let inprogressplace = document.getElementById(`in_progress_place`);
     let awaitfeedbackplace = document.getElementById(`await_feedback_place`);
     let doneplace = document.getElementById(`done_place`);
-    
+
     return { todoplace, inprogressplace, awaitfeedbackplace, doneplace };
 }
 
 function getSearchInput() {
     let search = document.getElementById('search_input').value.trim().toLowerCase();
     const searchlength = search.length;
-    
+
     return { search, searchlength };
 }
 
 function searchTitleStart() {
     const { search, searchlength } = getSearchInput();
     const { todoplace, inprogressplace, awaitfeedbackplace, doneplace } = searchTaskPlace();
-    
+
     searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
     searchClear(searchlength);
 }
@@ -359,7 +399,7 @@ function filterResults(search) {
     const resultsinprogress = filterInProgress(search);
     const resultsawaitfeedback = filterAwaitFeedback(search);
     const resultsdone = filterDone(search);
-    return {resultstodo, resultsinprogress, resultsawaitfeedback, resultsdone};
+    return { resultstodo, resultsinprogress, resultsawaitfeedback, resultsdone };
 }
 
 function renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbackplace, doneplace) {

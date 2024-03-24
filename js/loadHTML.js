@@ -110,8 +110,8 @@ function createProgressBar(percent) {
 
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght) {
     return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragTodo(${i})">
-            <div>${choosencategory}</div>
+        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
+            <div class="collect-category">${choosencategory}</div>
             <h3>${title}</h3>
             <span>${description}</span>
             <div class="place-task-progress">
@@ -129,72 +129,6 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
             </div>
         </div>
     `;
-}
-
-function inprogressTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo) {
-    return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragInProgress(${i})">
-            <div>${choosencategory}</div>
-            <h3>${title}</h3>
-            <span>${description}</span>
-            <div class="place-task-progress">
-                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                    <div class="progressbar" id="progressbar"></div>
-                </div>
-                <p>Subtasks</p>
-            </div>
-            <div class="place-user-status">
-                <div class="place-user">
-                </div>
-                <div>
-                    ${priotodo}
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function awaitfeedbackTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo) {
-    return `
-            <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragAwaitFeedback(${i})">
-                <div>${choosencategory}</div>
-                <h3>${title}</h3>
-                <span>${description}</span>
-                <div class="place-task-progress">
-                    <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                        <div class="progressbar" id="progressbar"></div>
-                    </div>
-                    <p>Subtasks</p>
-                </div>
-                <div class="place-user-status">
-                    <div class="place-user">
-                    </div>
-                    <div>
-                        ${priotodo}
-                    </div>
-                </div>
-            </div>
-      `;
-}
-
-function doneTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo) {
-    return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i})" draggable="true" ondragstart="dragDone(${i})">
-            <div>${choosencategory}</div>
-            <h3>${title}</h3>
-            <span>${description}</span>
-            <div class="place-task-progress">
-                <p>Subtasks</p>
-              </div>
-              <div class="place-user-status">
-                  <div class="place-user">
-                  </div>
-                  <div>
-                        ${priotodo}
-                  </div>
-              </div>
-        </div>
-      `;
 }
 
 function fullTaskHtml(title, description, date, priority, assignedto, subtasks) {

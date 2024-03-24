@@ -295,6 +295,10 @@ p.subtasktxt {
     cursor: pointer;
 }
 
+.collect-category {
+    display: flex;
+}
+
 .place-user-status {
     display: flex;
     justify-content: space-between;
