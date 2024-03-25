@@ -1,9 +1,9 @@
 function guestLogin() {
     loaduser = sessionStorage.getItem('userI')
-    guestTime()
     users = JSON.parse(sessionStorage.getItem('Guest'))
     loadSummaryProject()
     sommary_name.innerHTML = '';
+    guestTime()
 }
 
 async function loadLocalStorage() {
