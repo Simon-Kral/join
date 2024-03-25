@@ -20,45 +20,65 @@ async function loadStorage() {
     if (sessionStorage.getItem("Guest") === null) {
         if (localStorage.getItem("userI") === null) { if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() } }
         else {
-            ifElseWindowloadLocalStorage()
+            loadAll()
         }
         if (sessionStorage.getItem("userI") === null) { if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() } }
         else {
-            ifElseWindowloadSessionStorage()
+            loadAll()
         }
     }
     else {
-        ifElseWindowloadGuestLogin()
+        loadAll()
     }
 }
 
-async function ifElseWindowloadLocalStorage(){
-    if (window.loadLocalStorage) {
-        loadLocalStorage()
-        loadMenuLocalStorage()
+
+async function loadAll() {
+    if (sessionStorage.getItem("Guest") === null) {
+        users = await getItem('users')
+        loaduser = localStorage.getItem('userI')
     }
     else {
-        loadMenuLocalStorage()
+        loaduser = sessionStorage.getItem('userI')
+        users = JSON.parse(sessionStorage.getItem('Guest'))
+    }
+    loadAllIfElse()
+    if (sessionStorage.getItem("Guest")) { await includeHTML(); }
+    menuLoginName()
+}
+
+async function loadAllIfElse() {
+    if (window.loadSummaryProject) {
+        loadSummaryProject()
+        timeIfElse()
+    }
+    if (window.boardinit) {
+        boardinit()
+    }
+    if (window.fillAddTaskSectionload && window.boardinit == null) {
+        fillAddTaskSection()
+    }
+    if (window.initContacts) {
+        contactsIfElse()
     }
 }
 
-async function ifElseWindowloadSessionStorage(){
-    if (window.loadSessionStorage) {
-        loadSessionStorage()
-        loadMenuSessionStorage()
+async function contactsIfElse() {
+    if (sessionStorage.getItem("Guest") === null) {
+        await initContacts();
     }
     else {
-        loadMenuSessionStorage()
+        renderContacts();
     }
 }
 
-async function ifElseWindowloadGuestLogin(){
-    if (window.guestLogin) {
-        guestLogin()
-        guestLoginMenu()
+async function timeIfElse() {
+    if (sessionStorage.getItem("Guest") === null) {
+        userTime()
     }
     else {
-        guestLoginMenu()
+        guestTime()
+        sommary_name.innerHTML = '';
     }
 }
 

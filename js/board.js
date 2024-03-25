@@ -4,24 +4,6 @@ let currenttask = 0;
 let currentdragged;
 let currentdraggedarray;
 
-function guestLogin() {
-    loaduser = sessionStorage.getItem('userI')
-    users = JSON.parse(sessionStorage.getItem('Guest'))
-    boardinit()
-}
-
-async function loadLocalStorage() {
-    users = await getItem('users')
-    loaduser = localStorage.getItem('userI')
-    boardinit()
-}
-
-async function loadSessionStorage() {
-    users = await getItem('users')
-    loaduser = sessionStorage.getItem('userI')
-    boardinit()
-}
-
 function boardinit() {
     renderTodo();
     renderInProgress();
