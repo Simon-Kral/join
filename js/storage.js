@@ -35,8 +35,14 @@ async function loadStorage() {
 
 async function loadAll() {
     if (sessionStorage.getItem("Guest") === null) {
-        users = await getItem('users')
-        loaduser = localStorage.getItem('userI')
+        if (sessionStorage.getItem("userI") === null) {
+            users = await getItem('users')
+            loaduser = localStorage.getItem('userI')
+        }
+        else {
+            users = await getItem('users')
+            loaduser = sessionStorage.getItem('userI')
+        }
     }
     else {
         loaduser = sessionStorage.getItem('userI')
