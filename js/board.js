@@ -106,23 +106,10 @@ function openTask(i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
     const choosencategory = selectCategory(categorytodo);
     const choosensubtasks = selectSubtasks(subtaskstodo);
-    subtaskstodo;
     const choosenpriority = selectPriority(priotodo);
     contactstodo;
     getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, choosensubtasks );
 }
-
-function selectSubtasks(subtaskstodo) {
-    for (let st = 0; st < subtaskstodo.length; st++) {
-        let sublistplace = subtaskstodo[st];
-        let list = sublistplace['name']
-        console.log(list);
-    }
-}
-
-// function showCheckList(sublistplace, st) {
-//     subtaskCheckHtml
-// }
 
 function renderTodo() {
     let getplacetodo = document.getElementById('to_do_place');
@@ -131,7 +118,6 @@ function renderTodo() {
     for (let i = 0; i < todo.length; i++) {
         todocollect = todo[i];
         showTodoHtml(todocollect, i);
-        console.log(todocollect);
     }
 }
 
@@ -147,8 +133,10 @@ function showTodoHtml(getinformationtodo, i) {
 }
 
 function selectContacts(contactstodo) {
-    for (let s = 0; s < contactstodo.length; s++) {
+    for (let s = 1; s < contactstodo.length; s++) {
         const contacts = contactstodo[s];
+        const listcontacts = contacts;
+        console.log(listcontacts, s);
         return contacts;
     }
 }
@@ -293,6 +281,16 @@ function drag(id, element) {
     } if (element.parentElement && element.parentElement.id === 'done_place') {
         dragDone(id); 
     }
+}
+
+function selectSubtasks(subtaskstodo) {
+    let iteratedList = [];
+    for (let st = 1; st < subtaskstodo.length; st++) {
+        let sublistplace = subtaskstodo[st];
+        let list = sublistplace['name'];
+        iteratedList.push(list);
+    }
+    return iteratedList;
 }
 
 function dragTodo(id) {

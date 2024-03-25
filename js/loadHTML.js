@@ -158,7 +158,9 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
                     <div></div>
                     <span class="subtasks-bord">Subtasks</span>
                     <div class="subtasks-input-bord">
-                        ${subtaskstodo}
+                        <ul>
+                        <li>${subtaskstodo}</li>
+                        </ul>
                         <div></div>
                     </div>
                 </div>
