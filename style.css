@@ -485,7 +485,7 @@ h1.legal-head {
 
 .law {
     position: relative;
-    top: 128px;
+    top: 206px;
     margin-left: 290px;
     margin-right: 64px;
 }
@@ -1341,7 +1341,7 @@ div.selected:hover {
     font-size: 16px;
 
     .head-wrapper {
-        font-size: 61px;
+        font-size: 30px;
         display: flex;
         align-items: center;
         justify-content: space-between;
