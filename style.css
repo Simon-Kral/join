@@ -426,6 +426,7 @@ img.edit {
     margin: 40px;
     max-height: 100%;
     overflow: auto;
+    width: 100%;
 }
 
 .place-single-information::-webkit-scrollbar {
@@ -464,6 +465,11 @@ h1.task-head-bord {
     padding-top: 24px;
     padding-bottom: 24px;
 }
+
+/* .descript {
+    display: flex;
+    width: 100%;
+} */
 
 
 /* information-card-end */

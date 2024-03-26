@@ -106,9 +106,10 @@ function openTask(i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
     const choosencategory = selectCategory(categorytodo);
     const choosensubtasks = selectSubtasks(subtaskstodo);
+    const getsubtaskhtml = selectSubtaskHtml(choosensubtasks);
     const choosenpriority = selectPriority(priotodo);
     contactstodo;
-    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, choosensubtasks );
+    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml );
 }
 
 function renderTodo() {

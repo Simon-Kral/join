@@ -108,11 +108,17 @@ function createProgressBar(percent) {
     `;
 }
 
-function subtaskCheckHtml(sublistplace) {
-    return `
-        <li>${sublistplace}</li>
-    `;
+function selectSubtaskHtml(sublist) {
+    let html = ""; // Initialize html to an empty string
+    
+    for (let i = 0; i < sublist.length; i++) {
+        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}">`;
+        html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
+    }
+    
+    return html; // Return the generated HTML string
 }
+
 
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght) {
     return `
@@ -155,13 +161,11 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
                     <span class="priority-bord">${priotodo}</span>
                 </div>
                 <div class="assigned-to-bord">Assigned To</div>
-                    <div></div>
                     <span class="subtasks-bord">Subtasks</span>
                     <div class="subtasks-input-bord">
                         <ul>
-                        <li>${subtaskstodo}</li>
+                            ${subtaskstodo}
                         </ul>
-                        <div></div>
                     </div>
                 </div>
                 <div class="place-delete-edit">
