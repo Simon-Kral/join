@@ -106,10 +106,10 @@ function openTask(i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
     const choosencategory = selectCategory(categorytodo);
     const choosensubtasks = selectSubtasks(subtaskstodo);
-    const getsubtaskhtml = selectSubtaskHtml(choosensubtasks);
+    const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, subtaskstodo);
     const choosenpriority = selectPriority(priotodo);
     contactstodo;
-    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml );
+    getplacecard.innerHTML = fullTaskHtml( choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml );
 }
 
 function renderTodo() {
@@ -129,8 +129,9 @@ function showTodoHtml(getinformationtodo, i) {
     const choosenpriority = selectPriority(priotodo);
     const barupdated = updateProgressBar(subtaskstodo);
     const subtasklenght = subtaskstodo.length;
+    const selectedCheckboxCount = countSelectedCheckboxes();
     const selectcontacts = selectContacts(contactstodo);
-    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght);
+    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght, selectedCheckboxCount);
 }
 
 function selectContacts(contactstodo) {

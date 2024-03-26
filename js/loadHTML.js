@@ -108,19 +108,27 @@ function createProgressBar(percent) {
     `;
 }
 
-function selectSubtaskHtml(sublist) {
-    let html = ""; // Initialize html to an empty string
-    
-    for (let i = 0; i < sublist.length; i++) {
-        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}">`;
-        html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
-    }
-    
-    return html; // Return the generated HTML string
+let selectedCheckboxes = [];
+
+function updateSelectedCheckboxes(index, isChecked) {
+    selectedCheckboxes[index] = isChecked;
 }
 
+function countSelectedCheckboxes() {
+    return selectedCheckboxes.filter(checkbox => checkbox).length;
+}
 
-function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght) {
+function selectSubtaskHtml(sublist) {
+    let html = "";
+    for (let i = 0; i < sublist.length; i++) {
+        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)">`;
+        html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
+        selectedCheckboxes.push(false); // Initialisierung der Checkbox-Status im Array
+    }
+    return html; 
+}
+
+function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght, selectedCheckboxCount) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
             <div class="collect-category">${choosencategory}</div>
@@ -128,7 +136,7 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
             <span>${description}</span>
             <div class="place-task-progress">
                 <div class="collect-subtask">${subtaskstodo}</div>
-                <p class="subtasktxt">${i}/${subtasklenght}Subtasks</p>
+                <p class="subtasktxt">${selectedCheckboxCount}/${subtasklenght}Subtasks</p>
             </div>
             <div class="place-user-status">
                 <div class="place-user">
