@@ -109,22 +109,34 @@ function createProgressBar(percent) {
 }
 
 let selectedCheckboxes = [];
+let selectedSubtasks = [];
+let task = [];
 
 function updateSelectedCheckboxes(index, isChecked) {
     selectedCheckboxes[index] = isChecked;
+    console.log(isChecked);
+    console.log(selectedSubtasks[index]);
+    console.log(currentdraggedarray);
+    const check = users[loaduser];
+    console.log(check[currentdraggedarray]);
+    
 }
 
 function countSelectedCheckboxes() {
     return selectedCheckboxes.filter(checkbox => checkbox).length;
-}
+}   
 
-function selectSubtaskHtml(sublist) {
+function selectSubtaskHtml(sublist, selectarray) {
     let html = "";
     for (let i = 0; i < sublist.length; i++) {
-        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)">`;
+        const subtask = sublist[i];
+        const isChecked = subtask.isChecked ? 'checked' : '';
+        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
         html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
-        selectedCheckboxes.push(false); // Initialisierung der Checkbox-Status im Array
+        selectedCheckboxes.push(false); // Initialisierung der Checkbox-Status im Array  
+        selectedSubtasks.push(subtask);
     }
+    task.push(selectarray);
     return html; 
 }
 
