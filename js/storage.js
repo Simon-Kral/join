@@ -18,13 +18,27 @@ async function getItem(key) {
 
 async function loadStorage() {
     if (sessionStorage.getItem("Guest") === null) {
-        if (localStorage.getItem("userI") === null) { if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() } }
-        else {
-            loadAll()
-        }
-        if (sessionStorage.getItem("userI") === null) { if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() } }
-        else {
-            loadAll()
+        ifLocalStorageExist()
+        ifSessionStorageExist()
+    }
+    else {
+        loadAll()
+    }
+}
+
+async function ifLocalStorageExist() {
+    if (sessionStorage.getItem("userI") === null) {
+        moveToStartIfLocalEmpty()
+    }
+    else {
+        loadAll()
+    }
+}
+
+async function ifSessionStorageExist() {
+    if (sessionStorage.getItem("userI") === null) {
+        if (localStorage.getItem("userI") === null) {
+            moveToStartIfSessionEmpty()
         }
     }
     else {
@@ -32,17 +46,9 @@ async function loadStorage() {
     }
 }
 
-
 async function loadAll() {
     if (sessionStorage.getItem("Guest") === null) {
-        if (sessionStorage.getItem("userI") === null) {
-            users = await getItem('users')
-            loaduser = localStorage.getItem('userI')
-        }
-        else {
-            users = await getItem('users')
-            loaduser = sessionStorage.getItem('userI')
-        }
+        await loadAllIfElseLocalOrSession()
     }
     else {
         loaduser = sessionStorage.getItem('userI')
@@ -51,6 +57,17 @@ async function loadAll() {
     loadAllIfElse()
     if (sessionStorage.getItem("Guest")) { await includeHTML(); }
     menuLoginName()
+}
+
+async function loadAllIfElseLocalOrSession() {
+    if (sessionStorage.getItem("userI") === null) {
+        users = await getItem('users')
+        loaduser = localStorage.getItem('userI')
+    }
+    else {
+        users = await getItem('users')
+        loaduser = sessionStorage.getItem('userI')
+    }
 }
 
 async function loadAllIfElse() {
@@ -90,12 +107,12 @@ async function timeIfElse() {
 
 function moveToStartIfLocalEmpty() {
     if (localStorage.getItem("userI") === null) {
-        window.location.assign("http://127.0.0.1:5500/index.html");
+        window.location.assign("index.html");
     }
 }
 
 function moveToStartIfSessionEmpty() {
     if (sessionStorage.getItem("userI") === null) {
-        window.location.assign("http://127.0.0.1:5500/index.html");
+        window.location.assign("index.html");
     }
 }
