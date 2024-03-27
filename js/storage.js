@@ -27,19 +27,19 @@ async function loadStorage() {
 }
 
 async function ifLocalStorageExist() {
-    if (sessionStorage.getItem("userI") === null) { 
-        moveToStartIfLocalEmpty() 
-    } 
-else {
-    loadAll()
-}
+    if (sessionStorage.getItem("userI") === null) {
+        moveToStartIfLocalEmpty()
+    }
+    else {
+        loadAll()
+    }
 }
 
 async function ifSessionStorageExist() {
-    if (sessionStorage.getItem("userI") === null) { 
-        if (localStorage.getItem("userI") === null) { 
-            moveToStartIfSessionEmpty() 
-        } 
+    if (sessionStorage.getItem("userI") === null) {
+        if (localStorage.getItem("userI") === null) {
+            moveToStartIfSessionEmpty()
+        }
     }
     else {
         loadAll()
@@ -48,7 +48,7 @@ async function ifSessionStorageExist() {
 
 async function loadAll() {
     if (sessionStorage.getItem("Guest") === null) {
-       await loadAllIfElseLocalOrSession()
+        await loadAllIfElseLocalOrSession()
     }
     else {
         loaduser = sessionStorage.getItem('userI')
