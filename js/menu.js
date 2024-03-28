@@ -1,36 +1,41 @@
 async function guestLoginMenu() {
     await includeHTML();
-    loaduser = sessionStorage.getItem('userI');
-    users = JSON.parse(sessionStorage.getItem('Guest'));
-    menuLoginName()
+    loaduser = sessionStorage.getItem("userI");
+    users = JSON.parse(sessionStorage.getItem("Guest"));
+    menuLoginName();
 }
 
 async function loadMenuLocalStorage() {
-    users = await getItem('users')
-    loaduser = localStorage.getItem('userI')
-    menuLoginName()
+    users = await getItem("users");
+    loaduser = localStorage.getItem("userI");
+    menuLoginName();
 }
 
 async function loadMenuSessionStorage() {
-    users = await getItem('users')
-    loaduser = sessionStorage.getItem('userI')
-    menuLoginName()
+    users = await getItem("users");
+    loaduser = sessionStorage.getItem("userI");
+    menuLoginName();
 }
 
 function menuLoginName() {
-    let menuuser = document.getElementById('menu_user');
-    let username = users[loaduser].name.split(' ').slice(0, 2).map(wort => wort[0]).join('').toUpperCase()
+    let menuuser = document.getElementById("menu_user");
+    let username = users[loaduser].name
+        .split(" ")
+        .slice(0, 2)
+        .map((wort) => wort[0])
+        .join("")
+        .toUpperCase();
     menuuser.innerHTML = username;
 }
 
 function openMenu() {
-    let openmenu = document.getElementById('menu_open');
-    openmenu.innerHTML = menuInnerHTML()
+    let openmenu = document.getElementById("menu_open");
+    openmenu.innerHTML = menuInnerHTML();
 }
 
 function closeMenu() {
-    let openmenu = document.getElementById('menu_open');
-    openmenu.innerHTML = '';
+    let openmenu = document.getElementById("menu_open");
+    openmenu.innerHTML = "";
 }
 
 function menuInnerHTML() {
@@ -43,13 +48,13 @@ function menuInnerHTML() {
     <div class="menu-close" onclick="closeMenu()"></div>
     `;
 
-    return menu
+    return menu;
 }
 
 function logOut() {
-    loaduser = []
-    localStorage.removeItem('userI')
-    sessionStorage.removeItem('userI')
-    sessionStorage.removeItem('Guest')
-    sessionStorage.removeItem('handyWelcomePlayed')
+    loaduser = [];
+    localStorage.removeItem("userI");
+    sessionStorage.removeItem("userI");
+    sessionStorage.removeItem("Guest");
+    sessionStorage.removeItem("handyWelcomePlayed");
 }
