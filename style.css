@@ -295,6 +295,10 @@ p.subtasktxt {
     cursor: pointer;
 }
 
+.collect-category {
+    display: flex;
+}
+
 .place-user-status {
     display: flex;
     justify-content: space-between;
@@ -423,6 +427,7 @@ img.edit {
     margin: 40px;
     max-height: 100%;
     overflow: auto;
+    width: 100%;
 }
 
 .place-single-information::-webkit-scrollbar {
@@ -462,6 +467,11 @@ h1.task-head-bord {
     padding-bottom: 24px;
 }
 
+/* .descript {
+    display: flex;
+    width: 100%;
+} */
+
 
 /* information-card-end */
 
@@ -482,7 +492,7 @@ h1.legal-head {
 
 .law {
     position: relative;
-    top: 128px;
+    top: 206px;
     margin-left: 290px;
     margin-right: 64px;
 }
@@ -1244,7 +1254,7 @@ div.selected:hover {
     margin-bottom: 160px;
     font-size: 16px;
     .head-wrapper {
-        font-size: 61px;
+        font-size: 30px;
         display: flex;
         align-items: center;
         justify-content: space-between;

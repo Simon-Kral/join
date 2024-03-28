@@ -66,6 +66,7 @@ function nothingFound() {
 
 function todoTaskHtml(title, description, priority, i) {
     return `
+<<<<<<< HEAD
         <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragTodo(${i})">
             <div id="task-variant"></div>
             <h3>${title}</h3>
@@ -78,6 +79,90 @@ function todoTaskHtml(title, description, priority, i) {
             </div>
             <div class="place-user-status">
                 <div class="place-user">
+=======
+        <p class="user-story">User Story</p>
+    `;
+}
+
+function technicalTaskHtml() {
+    return `
+        <p class="technical-task">Technical Task</p>
+    `;
+}
+
+function urugentPrioHtml() {
+    return `
+        <img class="low-image" src="./assets/img/urgent.png"></img>
+    `;
+}
+
+function lowPrioHtml() {
+    return `
+        <img class="low-image" src="./assets/img/low.png"></img>
+    `;
+}
+
+function mediumPrioHtml() {
+    return `
+        <img class="low-image" src="./assets/img/medium.png"></img>
+    `;
+}
+
+function createProgressBar(percent) {
+    return `
+        <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+            <div class="progressbar" id="progressbar" style ="width: ${percent}%"</div>
+        </div>
+    `;
+}
+
+let selectedCheckboxes = [];
+let selectedSubtasks = [];
+let task = [];
+
+function updateSelectedCheckboxes(index, isChecked) {
+    selectedCheckboxes[index] = isChecked;
+    console.log(isChecked);
+    console.log(selectedSubtasks[index]);
+    console.log(currentdraggedarray);
+    console.log(users[loaduser]['todo'][3]['subtasks'][1]);
+    let ult = users[loaduser]['todo'];
+    let nsn = ult[3]['subtasks'];
+    nsn[1].push(selectedSubtasks[index].isChecked);
+}
+
+function countSelectedCheckboxes() {
+    return selectedCheckboxes.filter(checkbox => checkbox).length;
+}   
+
+function selectSubtaskHtml(sublist, selectarray) {
+    let html = "";
+    for (let i = 0; i < sublist.length; i++) {
+        const subtask = sublist[i];
+        const isChecked = subtask.isChecked ? 'checked' : '';
+        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
+        html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
+        selectedCheckboxes.push(false); // Initialisierung der Checkbox-Status im Array  
+        selectedSubtasks.push(subtask);
+    }
+    task.push(selectarray);
+    return html; 
+}
+
+function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght, selectedCheckboxCount) {
+    return `
+        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
+            <div class="collect-category">${choosencategory}</div>
+            <h3>${title}</h3>
+            <span>${description}</span>
+            <div class="place-task-progress">
+                <div class="collect-subtask">${subtaskstodo}</div>
+                <p class="subtasktxt">${selectedCheckboxCount}/${subtasklenght}Subtasks</p>
+            </div>
+            <div class="place-user-status">
+                <div class="place-user">
+                    ${contactstodo}
+>>>>>>> ddbbbe81703b3e69c404fd9164fcd99fa31d3a86
                 </div>
                 <div>
                     <img class="low-image" src="${priority}">
@@ -87,6 +172,7 @@ function todoTaskHtml(title, description, priority, i) {
     `;
 }
 
+<<<<<<< HEAD
 function inprogressTaskHtml(title, description, priority, i) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragInProgress(${i})">
@@ -98,10 +184,23 @@ function inprogressTaskHtml(title, description, priority, i) {
                     <div class="progressbar" id="progressbar"></div>
                 </div>
                 <p>Subtasks</p>
+=======
+function fullTaskHtml(choosencategory, title, description, i, priotodo, date, subtaskstodo) {
+    return `
+        <div class="single-task-field" onclick="noCloseContent(event)">
+            <div class="place-categorie-cross">
+                <div class="collect-category">${choosencategory}</div>
+                <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
+>>>>>>> ddbbbe81703b3e69c404fd9164fcd99fa31d3a86
             </div>
-            <div class="place-user-status">
-                <div class="place-user">
+            <div class="place-single-information">
+                <h1 class="task-head-bord">${title}</h1>
+                <span class="descript">${description}</span>
+                <div class="place-due-date-bord">
+                    <span>Due date:&nbsp;</span>
+                    <span class="due-date-bord">${date}</span>
                 </div>
+<<<<<<< HEAD
                 <div>
                     <img class="low-image" src="${priority}">
                 </div>
@@ -193,6 +292,32 @@ function fullTaskHtml(title, description, date, priority, assignedto, subtasks) 
                       </div>
                   </div>
               </div>
+=======
+                <div class="place-priority-bord">
+                    <span>Priority:&nbsp;</span>
+                    <span class="priority-bord">${priotodo}</span>
+                </div>
+                <div class="assigned-to-bord">Assigned To</div>
+                    <span class="subtasks-bord">Subtasks</span>
+                    <div class="subtasks-input-bord">
+                        <ul>
+                            ${subtaskstodo}
+                        </ul>
+                    </div>
+                </div>
+                <div class="place-delete-edit">
+                    <div onclick="deleteSingleTask()" class="delete-place">
+                        <img class="delete" src="./assets/img/delete.png">
+                        <span>Delete</span>
+                    </div>
+                    <div class="one-px-line"></div>
+                <div onclick="editSingleTask()" class="edit-place">
+                    <img class="edit" src="./assets/img/edit.png">
+                    <span>Edit</span>
+                </div>
+            </div>
+        </div>
+>>>>>>> ddbbbe81703b3e69c404fd9164fcd99fa31d3a86
       `;
 }
 
