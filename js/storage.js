@@ -16,7 +16,6 @@ async function getItem(key) {
 
 async function loadStorage() {
     if (sessionStorage.getItem("Guest") === null) {
-<<<<<<< HEAD
         if (localStorage.getItem("userI") === null) {
             if (sessionStorage.getItem("userI") === null) {
                 moveToStartIfLocalEmpty();
@@ -60,92 +59,6 @@ async function ifElseWindowloadGuestLogin() {
         guestLoginMenu();
     } else {
         guestLoginMenu();
-=======
-        ifLocalStorageExist()
-        ifSessionStorageExist()
-    }
-    else {
-        loadAll()
-    }
-}
-
-async function ifLocalStorageExist() {
-    if (sessionStorage.getItem("userI") === null) {
-        moveToStartIfLocalEmpty()
-    }
-    else {
-        loadAll()
-    }
-}
-
-async function ifSessionStorageExist() {
-    if (sessionStorage.getItem("userI") === null) {
-        if (localStorage.getItem("userI") === null) {
-            moveToStartIfSessionEmpty()
-        }
-    }
-    else {
-        loadAll()
-    }
-}
-
-async function loadAll() {
-    if (sessionStorage.getItem("Guest") === null) {
-        await loadAllIfElseLocalOrSession()
-    }
-    else {
-        loaduser = sessionStorage.getItem('userI')
-        users = JSON.parse(sessionStorage.getItem('Guest'))
-    }
-    loadAllIfElse()
-    if (sessionStorage.getItem("Guest")) { await includeHTML(); }
-    menuLoginName()
-}
-
-async function loadAllIfElseLocalOrSession() {
-    if (sessionStorage.getItem("userI") === null) {
-        users = await getItem('users')
-        loaduser = localStorage.getItem('userI')
-    }
-    else {
-        users = await getItem('users')
-        loaduser = sessionStorage.getItem('userI')
-    }
-}
-
-async function loadAllIfElse() {
-    if (window.loadSummaryProject) {
-        loadSummaryProject()
-        timeIfElse()
-    }
-    if (window.boardinit) {
-        boardinit()
-    }
-    if (window.fillAddTaskSectionload && window.boardinit == null) {
-        fillAddTaskSection()
-    }
-    if (window.initContacts) {
-        contactsIfElse()
-    }
-}
-
-async function contactsIfElse() {
-    if (sessionStorage.getItem("Guest") === null) {
-        await initContacts();
-    }
-    else {
-        renderContacts();
-    }
-}
-
-async function timeIfElse() {
-    if (sessionStorage.getItem("Guest") === null) {
-        userTime()
-    }
-    else {
-        guestTime()
-        sommary_name.innerHTML = '';
->>>>>>> ddbbbe81703b3e69c404fd9164fcd99fa31d3a86
     }
 }
 

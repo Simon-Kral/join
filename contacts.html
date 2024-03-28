@@ -30,7 +30,6 @@
     <body onload="init(), loadStorage()">
         <div w3-include-html="./assets/templates/desktop_template.html"></div>
         <div class="overlay dnone"></div>
-
         <main class="contacts">
             <div class="contact-list-box">
                 <div class="add-contact-button-box">
@@ -42,26 +41,14 @@
                 <div id="contact-list"></div>
             </div>
             <div class="contact-detail">
-                <div class="contact-detail-head-wrapper">
-                    <div class="contact-detail-head">
-                        <h1>Contacts</h1>
-
-                        <div class="seperator-vertical-blue"></div>
-                        <div>
-                            <span>Better with a team</span>
-                        </div>
-                        <div class="seperator-horizontal-blue"></div>
+                <div class="contact-detail-head">
+                    <h1>Contacts</h1>
+                    <div class="seperator-vertical-blue"></div>
+                    <div>
+                        <span>Better with a team</span>
                     </div>
-                    <a class="go-back-button dnone">
-                        <img onclick="switchToDefault()" src="./assets/img/arrow_left.svg" alt="arrow_left" />
-                    </a>
                 </div>
                 <div class="contact-detail-box" id="contact-detail-box"></div>
-            </div>
-            <div class="open-menu-button-box dnone" onclick="openSideMenu(event)">
-                <button type="button">
-                    <img src="./assets/img/more_vert.svg" alt="more" />
-                </button>
             </div>
         </main>
     </body>
