@@ -5,7 +5,7 @@ async function loadstorageitems() {
     if (localStorage.getItem("userI") === null) { }
     else {
         if (localStorage.getItem('userI').length > 0) {
-            window.location.assign("http://127.0.0.1:5500/summary.html");
+            window.location.assign("summary.html");
         }
     }
     loadUsers();
@@ -74,7 +74,7 @@ function LoginLocalstorage(findusers) {
 
         loaduser.push(userI);
         localStorage.setItem('userI', loaduser)
-        window.location.assign("http://127.0.0.1:5500/summary.html");
+        window.location.assign("summary.html");
         loginValueEmpty();
     }
     else {
@@ -90,7 +90,7 @@ function Loginsessionstorage(findusers) {
 
         loaduser.push(userI);
         sessionStorage.setItem('userI', loaduser)
-        window.location.assign("http://127.0.0.1:5500/summary.html");
+        window.location.assign("summary.html");
         loginValueEmpty();
     }
     else {

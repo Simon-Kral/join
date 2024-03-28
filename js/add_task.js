@@ -51,7 +51,8 @@ function renderAssignedTo(searchterm) {
                 dropdown.innerHTML += generateContactDropdownHtml(abbreviation, fullname, color, id);
             }
         }
-    } else {}
+    } else {
+    }
 }
 
 function setFilter(input) {
@@ -123,7 +124,7 @@ function clearAllPrioButtons() {
         inputs[i].checked = false;
     }
     let labels = document.querySelectorAll(".highlighted-button");
-    [].forEach.call(labels, function(label) {
+    [].forEach.call(labels, function (label) {
         label.classList.remove("highlighted-button");
     });
 }
@@ -189,7 +190,7 @@ function addSubtask(inputid) {
     let input = document.getElementById(inputid);
     let content = document.getElementById("selected_subtasks");
     let subtaskid = allsubtasks[0].idcounter;
-    let arrayelement = { id: subtaskid, name: input.value, isChecked: };
+    let arrayelement = { id: subtaskid, name: input.value, isChecked: false };
     allsubtasks.push(arrayelement);
     allsubtasks[0].idcounter++;
     let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${subtaskid})">`;
@@ -238,10 +239,10 @@ function clearAddTaskForm() {
 }
 
 function clearErrorStyle() {
-    document.querySelectorAll("input").forEach(function(input) {
+    document.querySelectorAll("input").forEach(function (input) {
         input.style.borderColor = "#D1D1D1";
     });
-    document.querySelectorAll(".required-field").forEach(function(requiredfield) {
+    document.querySelectorAll(".required-field").forEach(function (requiredfield) {
         requiredfield.classList.add("dnone");
     });
 }
@@ -350,14 +351,14 @@ async function saveTask() {
 }
 
 function addAddTaskEventListeners() {
-    document.querySelectorAll("[required]").forEach(function(input) {
-        input.addEventListener("invalid", function() {
+    document.querySelectorAll("[required]").forEach(function (input) {
+        input.addEventListener("invalid", function () {
             input.style.borderColor = "#FF8190";
-            document.querySelectorAll(".required-field").forEach(function(requiredfield) {
+            document.querySelectorAll(".required-field").forEach(function (requiredfield) {
                 requiredfield.classList.remove("dnone");
             });
         });
-        input.addEventListener("change", function() {
+        input.addEventListener("change", function () {
             input.style.borderColor = "#D1D1D1";
             input.parentElement.nextElementSibling.classList.add("dnone");
         });

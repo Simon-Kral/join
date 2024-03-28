@@ -111,6 +111,7 @@ function updateSelectedCheckboxes(index, isChecked) {
     console.log(isChecked);
     console.log(selectedSubtasks[index]);
     console.log(currentdraggedarray);
+<<<<<<< HEAD
     console.log(users[loaduser]["todo"][3]["subtasks"][1]);
     let ult = users[loaduser]["todo"];
     let nsn = ult[3]["subtasks"];
@@ -120,11 +121,30 @@ function updateSelectedCheckboxes(index, isChecked) {
 function countSelectedCheckboxes() {
     return selectedCheckboxes.filter((checkbox) => checkbox).length;
 }
+=======
+    console.log(users[loaduser]['todo'][3]['subtasks'][1]);
+    let ult = users[loaduser]['todo'];
+    let nsn = ult[3]['subtasks'];
+    let newischecked = {
+        "isChecked": [isChecked]
+    }
+    let checkfin = nsn[1];
+    // nsn[1].push(selectedSubtasks[index][newischecked]);
+    console.log(newischecked);
+    console.log(nsn[1]);
+    checkfin.push(newischecked);
+}
+
+function countSelectedCheckboxes() {
+    return selectedCheckboxes.filter(checkbox => checkbox).length;
+}   
+>>>>>>> 0fa4d66436186543e91b82dda6b740ae518ac0e3
 
 function selectSubtaskHtml(sublist, selectarray) {
     let html = "";
     for (let i = 0; i < sublist.length; i++) {
         const subtask = sublist[i];
+<<<<<<< HEAD
         const isChecked = subtask.isChecked ? "checked" : "";
         html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
         html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
@@ -133,6 +153,16 @@ function selectSubtaskHtml(sublist, selectarray) {
     }
     task.push(selectarray);
     return html;
+=======
+        const isChecked = subtask.isChecked ? 'checked' : '';
+        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
+        html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
+        selectedCheckboxes.push(false); // Initialisierung der Checkbox-Status im Array  
+        selectedSubtasks.push(subtask);
+    }
+    task.push(selectarray);
+    return html; 
+>>>>>>> 0fa4d66436186543e91b82dda6b740ae518ac0e3
 }
 
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght, selectedCheckboxCount) {

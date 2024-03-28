@@ -2,25 +2,6 @@ let checksubtasks = [];
 let searchresults = [];
 let currenttask = 0;
 let currentdragged;
-let currentdraggedarray;
-
-function guestLogin() {
-    loaduser = sessionStorage.getItem('userI')
-    users = JSON.parse(sessionStorage.getItem('Guest'))
-    boardinit()
-}
-
-async function loadLocalStorage() {
-    users = await getItem('users')
-    loaduser = localStorage.getItem('userI')
-    boardinit()
-}
-
-async function loadSessionStorage() {
-    users = await getItem('users')
-    loaduser = sessionStorage.getItem('userI')
-    boardinit()
-}
 
 function boardinit() {
     renderTodo();
@@ -101,12 +82,33 @@ function awaitfeedbackNewTask() {
     fillAddTaskSection();
 }
 
-function openBordTask() {
-    const showfulltask = fullTaskHtml();
+function openBordTask(id, element) {
+    if (element.parentElement && element.parentElement.id === 'to_do_place') {
+        dragTodo(id);
+        openTask(id);
+    } if (element.parentElement && element.parentElement.id === 'in_progress_place') {
+        dragInProgress(id);
+        openTask(id);
+    } if (element.parentElement && element.parentElement.id === 'await_feedback_place') {
+        dragAwaitFeedback(id);
+        openTask(id);
+    } if (element.parentElement && element.parentElement.id === 'done_place') {
+        dragDone(id);
+        openTask(id);
+    }
+}
+
+function openTask(i) {
     let getplacecard = document.getElementById('add_bordtask_data');
     document.getElementById('fullscreen_information').classList.remove('d-none');
-    getplacecard.innerHTML = showfulltask;
-    showTaskCategoryBig();
+    const selectarray = currentdraggedarray[i];
+    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
+    const choosencategory = selectCategory(categorytodo);
+    const choosensubtasks = selectSubtasks(subtaskstodo);
+    const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
+    const choosenpriority = selectPriority(priotodo);
+    contactstodo;
+    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml);
 }
 
 function renderTodo() {
@@ -126,7 +128,18 @@ function showTodoHtml(getinformationtodo, i) {
     const choosenpriority = selectPriority(priotodo);
     const barupdated = updateProgressBar(subtaskstodo);
     const subtasklenght = subtaskstodo.length;
-    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, contactstodo, choosenpriority, subtasklenght);
+    const selectedCheckboxCount = countSelectedCheckboxes();
+    const selectcontacts = selectContacts(contactstodo);
+    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght, selectedCheckboxCount);
+}
+
+function selectContacts(contactstodo) {
+    for (let s = 1; s < contactstodo.length; s++) {
+        const contacts = contactstodo[s];
+        const listcontacts = contacts;
+        console.log(listcontacts, s);
+        return contacts;
+    }
 }
 
 function renderInProgress() {
@@ -144,8 +157,9 @@ function showInProgressHtml(inprogresscollect, i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(inprogresscollect);
     const choosencategory = selectCategory(categorytodo);
     const choosenpriority = selectPriority(priotodo);
-    getplaceinprogress.innerHTML += inprogressTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
-    // updateProgressBar();
+    const barupdated = updateProgressBar(subtaskstodo);
+    const subtasklenght = subtaskstodo.length;
+    getplaceinprogress.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, contactstodo, choosenpriority, subtasklenght);
 }
 
 function renderAwaitFeedback() {
@@ -163,8 +177,9 @@ function showAwaitFeedbackHtml(awaitfeedbackcollect, i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(awaitfeedbackcollect);
     const choosencategory = selectCategory(categorytodo);
     const choosenpriority = selectPriority(priotodo);
-    getplaceawaitfeedback.innerHTML += awaitfeedbackTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
-    // updateProgressBar();
+    const barupdated = updateProgressBar(subtaskstodo);
+    const subtasklenght = subtaskstodo.length;
+    getplaceawaitfeedback.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, contactstodo, choosenpriority, subtasklenght);
 }
 
 function renderDone() {
@@ -182,8 +197,9 @@ function showDoneHtml(donecollect, i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(donecollect);
     const choosencategory = selectCategory(categorytodo);
     const choosenpriority = selectPriority(priotodo);
-    getplacedone.innerHTML += doneTaskHtml(choosencategory, titletodo, descriptiontodo, i, subtaskstodo, contactstodo, choosenpriority);
-    // updateProgressBar();
+    const barupdated = updateProgressBar(subtaskstodo);
+    const subtasklenght = subtaskstodo.length;
+    getplacedone.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, contactstodo, choosenpriority, subtasklenght);
 }
 
 function informationTodo(getinformationtodo) {
@@ -193,7 +209,8 @@ function informationTodo(getinformationtodo) {
     let subtaskstodo = getinformationtodo['subtasks'];
     let contactstodo = getinformationtodo['contacts'];
     let priotodo = getinformationtodo['prio'];
-    return { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo };
+    let datetodo = getinformationtodo['date']
+    return { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo };
 }
 
 function selectCategory(category) {
@@ -205,6 +222,7 @@ function selectCategory(category) {
         return userstory;
     }
 }
+
 function updateProgressBar(subtasks) {
     let percent = currenttask / subtasks.length;
     percent = Math.round(percent * 100);
@@ -213,8 +231,8 @@ function updateProgressBar(subtasks) {
         let emptyplace = emptyPlaceHtml();
         return emptyplace;
     } else {
-        let subtaskplace = createProgressBar(percent);
-        return subtaskplace;
+        let progressbar = createProgressBar(percent);
+        return progressbar;
     }
 }
 
@@ -252,6 +270,28 @@ function editSingleTask() {
 
 function allowDrop(ev) {
     ev.preventDefault();
+}
+
+function drag(id, element) {
+    if (element.parentElement && element.parentElement.id === 'to_do_place') {
+        dragTodo(id);
+    } if (element.parentElement && element.parentElement.id === 'in_progress_place') {
+        dragInProgress(id);
+    } if (element.parentElement && element.parentElement.id === 'await_feedback_place') {
+        dragAwaitFeedback(id);
+    } if (element.parentElement && element.parentElement.id === 'done_place') {
+        dragDone(id);
+    }
+}
+
+function selectSubtasks(subtaskstodo) {
+    let iteratedList = [];
+    for (let st = 1; st < subtaskstodo.length; st++) {
+        let sublistplace = subtaskstodo[st];
+        let list = sublistplace['name'];
+        iteratedList.push(list);
+    }
+    return iteratedList;
 }
 
 function dragTodo(id) {
@@ -308,6 +348,7 @@ function dropDone(ev) {
 
 function setTodoArray() {
     let selecttodo = users[loaduser]['todo'];
+    checkboxtodo = selecttodo;
     return selecttodo;
 }
 
@@ -335,21 +376,21 @@ function searchTaskPlace() {
     let inprogressplace = document.getElementById(`in_progress_place`);
     let awaitfeedbackplace = document.getElementById(`await_feedback_place`);
     let doneplace = document.getElementById(`done_place`);
-    
+
     return { todoplace, inprogressplace, awaitfeedbackplace, doneplace };
 }
 
 function getSearchInput() {
     let search = document.getElementById('search_input').value.trim().toLowerCase();
     const searchlength = search.length;
-    
+
     return { search, searchlength };
 }
 
 function searchTitleStart() {
     const { search, searchlength } = getSearchInput();
     const { todoplace, inprogressplace, awaitfeedbackplace, doneplace } = searchTaskPlace();
-    
+
     searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
     searchClear(searchlength);
 }
@@ -359,7 +400,7 @@ function filterResults(search) {
     const resultsinprogress = filterInProgress(search);
     const resultsawaitfeedback = filterAwaitFeedback(search);
     const resultsdone = filterDone(search);
-    return {resultstodo, resultsinprogress, resultsawaitfeedback, resultsdone};
+    return { resultstodo, resultsinprogress, resultsawaitfeedback, resultsdone };
 }
 
 function renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbackplace, doneplace) {

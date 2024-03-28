@@ -1,22 +1,3 @@
-async function guestLoginMenu() {
-    await includeHTML();
-    loaduser = sessionStorage.getItem("userI");
-    users = JSON.parse(sessionStorage.getItem("Guest"));
-    menuLoginName();
-}
-
-async function loadMenuLocalStorage() {
-    users = await getItem("users");
-    loaduser = localStorage.getItem("userI");
-    menuLoginName();
-}
-
-async function loadMenuSessionStorage() {
-    users = await getItem("users");
-    loaduser = sessionStorage.getItem("userI");
-    menuLoginName();
-}
-
 function menuLoginName() {
     let menuuser = document.getElementById("menu_user");
     let username = users[loaduser].name
