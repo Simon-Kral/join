@@ -120,7 +120,15 @@ function updateSelectedCheckboxes(index, isChecked) {
     console.log(users[loaduser]['todo'][3]['subtasks'][1]);
     let ult = users[loaduser]['todo'];
     let nsn = ult[3]['subtasks'];
-    nsn[1].push(selectedSubtasks[index].isChecked);
+    let newischecked = {
+        "isChecked": [isChecked]
+    }
+    let checkfin = nsn[1];
+    // nsn[1].push(selectedSubtasks[index][newischecked]);
+    console.log(newischecked);
+    console.log(nsn[1]);
+    checkfin.push(newischecked);
+
 }
 
 function countSelectedCheckboxes() {
