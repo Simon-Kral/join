@@ -117,9 +117,10 @@ function updateSelectedCheckboxes(index, isChecked) {
     console.log(isChecked);
     console.log(selectedSubtasks[index]);
     console.log(currentdraggedarray);
-    const check = users[loaduser];
-    console.log(check[currentdraggedarray]);
-    
+    console.log(users[loaduser]['todo'][3]['subtasks'][1]);
+    let ult = users[loaduser]['todo'];
+    let nsn = ult[3]['subtasks'];
+    nsn[1].push(selectedSubtasks[index].isChecked);
 }
 
 function countSelectedCheckboxes() {
