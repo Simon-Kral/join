@@ -16,6 +16,12 @@ async function includeHTML() {
     }
 }
 
+function emptyPlaceHtml() {
+    return `
+        <div></div>
+    `;
+}
+
 function bordAddTaskFieldHtml() {
     return `
         <div class="bord-add-tasks-field" onclick="noCloseContent(event)" id="add_task_page"></div>
