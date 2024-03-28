@@ -1,9 +1,9 @@
 let colors = ["#FF7A00", "#FF5EB3", "#6E52FF", "#9327FF", "#00BEE8", "#1FD7C1", "#FF745E", "#FFA35E", "#FC71FF", "#FFC701", "#0038FF", "#C3FF2B", "#FFE62B", "#FF4646", "#FFBB2B"];
 
-function guestLogin() {
+async function guestLogin() {
     loaduser = sessionStorage.getItem("userI");
     users = JSON.parse(sessionStorage.getItem("Guest"));
-    renderContacts();
+    await initContacts();
 }
 
 async function loadLocalStorage() {
@@ -21,6 +21,7 @@ async function loadSessionStorage() {
 async function initContacts() {
     await sortContacts();
     renderContacts();
+    setResizeBehaviour();
 }
 
 async function sortContacts() {
@@ -48,33 +49,6 @@ function renderContacts() {
     }
 }
 
-function generateSeparatorHtml(letter) {
-    return /*html*/ `
-        <div class="contact-list-separator-box">
-            <span id="separator-letter-span">${letter}</span>
-            <div class="separator-horizontal"></div>
-        </div>
-    `;
-}
-
-function generateContactHtml(contact, abbreviation, fullname) {
-    let html = "";
-    html += /*html*/ `
-        <div class="contact contact-list-entry pointer" onclick="openContact(${contact.id}, this)">
-            <div class="contact-info-box">
-                <div>
-                    <span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>
-                </div>
-                <div class="profile-info">
-                    <span class="profile-fullname">${fullname}</span>
-                    <a class="profile-email disabled" href="mailto:${contact.email}">${contact.email}</a>
-                </div>
-            </div>
-        </div>
-    `;
-    return html;
-}
-
 function openContact(id, card) {
     let contentbox = document.getElementById("contact-detail-box");
     document.querySelectorAll(".selected").forEach(function (selectedfield) {
@@ -85,44 +59,53 @@ function openContact(id, card) {
     const fullname = contact.firstname + " " + contact.lastname;
     contentbox.innerHTML = "";
     contentbox.innerHTML += generateContactDetailBoxHtml(contact, abbreviation, fullname);
-    if (card) {
+    if (card && document.documentElement.clientWidth > 850) {
         card.classList.add("selected");
         card.querySelector(".profile-fullname").classList.add("selected");
     }
+    document.documentElement.clientWidth <= 500 ? changeViewMobile() : "";
 }
 
-function generateContactDetailBoxHtml(contact, abbreviation, fullname) {
-    let html = "";
-    html += /*html*/ `
-        <div class="contact-detail-box-head">
-            <div class="profile-badge-big-box">
-                <span class="profile-badge-big" style="background-color: ${contact.color};">${abbreviation}</span>
-            </div>
-            <div class="profile-name-with-buttons-box">
-                <div class="profile-name">${fullname}</div>
-                <div class="profile-buttons">
-                    <a onclick="openContactEdition(${contact.id}, '${abbreviation}', '${fullname}')">
-                        <img src="./assets/img/edit.svg" alt="edit contact">
-                        <span>Edit</span>
-                    </a>
-                    <a onclick="deleteContact(${contact.id})">
-                        <img src="./assets/img/delete.svg" alt="delete contact">
-                        <span>Delete</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="contact-information-box">
-            <span>Contact Information</span>
-        </div>
-        <div class="contact-detail-box-body">
-            <h4>Email</h4>
-            <a class="profile-email" href="mailto:${contact.email}">${contact.email}</a>
-            <h4>Phone</h4>
-            <a class="profile-phone" href="mailto:tel:${contact.phone}">${contact.phone}</a>
-        </div>
-    `;
-    return html;
+function setResizeBehaviour() {
+    window.addEventListener("resize", function () {
+        if (document.documentElement.clientWidth > 500) {
+            switchToDefault();
+        }
+    });
+}
+
+function switchToDefault() {
+    document.querySelector(".contact-detail").classList.remove("mobile-contact-detail");
+    document.querySelector(".contact-list-box").style.removeProperty("width");
+    document.querySelector(".contact-list-box").classList.remove("dnone");
+    document.querySelector(".open-menu-button-box").classList.add("dnone");
+    document.querySelector(".go-back-button").classList.add("dnone");
+}
+
+function changeViewMobile() {
+    document.querySelector(".contact-detail").classList.add("mobile-contact-detail");
+    document.querySelector(".contact-list-box").style.width = "0px";
+    document.querySelector(".contact-list-box").classList.add("dnone");
+    document.querySelector(".open-menu-button-box").classList.remove("dnone");
+    document.querySelector(".go-back-button").classList.remove("dnone");
+}
+
+function openSideMenu(event) {
+    debugger;
+    let menu = document.querySelector(".profile-buttons");
+    let main = document.querySelector("main.contacts");
+    console.log(main);
+    menu.style.width = "96px";
+    menu.style.padding = "10px";
+    event.stopPropagation();
+    main.onclick = closeSideMenu();
+}
+
+function closeSideMenu() {
+    console.log("test");
+    let menu = document.querySelector(".profile-buttons");
+    menu.style.removeProperty("width");
+    menu.style.removeProperty("padding");
 }
 
 async function deleteContact(id) {
@@ -193,53 +176,6 @@ async function saveToServer() {
     }
 }
 
-function generateEditContactHtml(contact, abbreviation, fullname) {
-    let html = "";
-    html += /*html*/ `
-    <div class="overlay-box">
-      <div class="overlay-box-head">
-          <img src="./assets/img/join_logo.svg" alt="logo" />
-          <h1>Edit contact</h1>
-          <img src="./assets/img/line_horizontal.svg" alt="line" />
-      </div>
-      <div class="overlay-box-body">
-          <a class="close-overlay-box" onclick="closeOverlay()">
-              <img src="./assets/img/cross.svg" alt="close" />
-          </a>
-          <div class="overlay-body-content">
-              <div class="profile-badge-big-box">
-                  <span class="profile-badge-big" style="background-color: ${contact.color}">${abbreviation}</span>
-              </div>
-              <form class="edit-contact-form-box" onsubmit="saveEditedContact(${contact.id});return false" autocomplete="off">
-                  <div class="input-with-img-wrapper">
-                      <input type="text" value="${fullname}" pattern="[A-Za-z]+([ ][A-Za-z]+)+" class="styled-input focus-blue edit-contact-input" id="edit_contact_name"/>
-                      <img src="./assets/img/person.svg" alt="person" />
-                  </div>
-                  <div class="input-with-img-wrapper">
-                      <input type="email" value="${contact.email}" class="styled-input focus-blue edit-contact-input" id="edit_contact_email"/>
-                      <img src="./assets/img/mail.svg" alt="mail" />
-                  </div>
-                  <div class="input-with-img-wrapper">
-                      <input type="tel" value="${contact.phone}" class="styled-input focus-blue edit-contact-input" id="edit_contact_phone"/>
-                      <img src="./assets/img/call.svg" alt="call" />
-                  </div>
-                  <div class="edit-contact-form-buttons">
-                      <button type="button" class="white-button" onclick="deleteContact(${contact.id})">
-                          <span>Delete</span>
-                      </button>
-                      <button type="submit" id="edit-contact-save-button" class="blue-button">
-                          <span>Save</span>
-                          <img src="./assets/img/check.svg" alt="check" />
-                      </button>
-                  </div>
-              </form>
-          </div>
-      </div>
-    </div>
-  `;
-    return html;
-}
-
 function openContactAdding() {
     let overlay = document.querySelector(".overlay");
     let color = colors[Math.floor(Math.random() * colors.length)];
@@ -266,54 +202,4 @@ function buildNewContactArray(name, email, phone, color) {
     counter++;
     users[loaduser].contacts.find((element) => element.idcounter).idcounter = counter;
     return { id: counter, firstname: name.firstname, lastname: name.lastname, email: email, phone: phone, color: color };
-}
-
-function generateAddContactHtml(color) {
-    let html = "";
-    html += /*html*/ `
-  <div class="overlay-box">
-    <div class="overlay-box-head">
-        <img src="./assets/img/join_logo.svg" alt="logo" />
-        <h1>Add contact</h1>
-        <h2>Tasks are better with a team!</h2>
-        <img src="./assets/img/line_horizontal.svg" alt="line" />
-    </div>
-    <div class="overlay-box-body">
-        <a class="close-overlay-box" onclick="closeOverlay()">
-            <img src="./assets/img/cross.svg" alt="close" />
-        </a>
-        <div class="overlay-body-content">
-            <div class="profile-badge-big-box">
-                <span class="profile-badge-big" style="background-color: ${color}"><img src="./assets/img/person_big.svg" alt="person"></span>
-            </div>
-            <form name="addContact" class="edit-contact-form-box" onsubmit="saveNewContact();return false" autocomplete="off">
-                <div class="input-with-img-wrapper">
-                    <input required placeholder="Name" type="text" pattern="[A-Za-z]+([ ][A-Za-z]+)+" class="styled-input focus-blue edit-contact-input" id="add_contact_name"/>
-                    <img src="./assets/img/person.svg" alt="person" />
-                </div>
-                <div class="input-with-img-wrapper">
-                    <input required placeholder="Email" type="email" class="styled-input focus-blue edit-contact-input" id="add_contact_email"/>
-                    <img src="./assets/img/mail.svg" alt="mail" />
-                </div>
-                <div class="input-with-img-wrapper">
-                    <input required placeholder="Phone" type="tel" class="styled-input focus-blue edit-contact-input" id="add_contact_phone"/>
-                    <img src="./assets/img/call.svg" alt="call" />
-                </div>
-                <input type="text" class="dnone" value="${color}" id="add_contact_color">
-                <div class="add-contact-form-buttons">
-                    <button type="button" class="white-button" onclick="closeOverlay()">
-                        <span>Cancel</span>
-                        <img src="./assets/img/cross.svg" alt="cross" />
-                    </button>
-                    <button type="submit" id="add-contact-save-button" class="blue-button">
-                        <span>Create contact</span>
-                        <img src="./assets/img/check.svg" alt="check" />
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-  </div>
-`;
-    return html;
 }
