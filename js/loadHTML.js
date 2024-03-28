@@ -66,8 +66,78 @@ function nothingFound() {
 
 function todoTaskHtml(title, description, priority, i) {
     return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragTodo(${i})">
-            <div id="task-variant"></div>
+        <p class="user-story">User Story</p>
+    `;
+}
+
+function technicalTaskHtml() {
+    return `
+        <p class="technical-task">Technical Task</p>
+    `;
+}
+
+function urugentPrioHtml() {
+    return `
+        <img class="low-image" src="./assets/img/urgent.png"></img>
+    `;
+}
+
+function lowPrioHtml() {
+    return `
+        <img class="low-image" src="./assets/img/low.png"></img>
+    `;
+}
+
+function mediumPrioHtml() {
+    return `
+        <img class="low-image" src="./assets/img/medium.png"></img>
+    `;
+}
+
+function createProgressBar(percent) {
+    return `
+        <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+            <div class="progressbar" id="progressbar" style ="width: ${percent}%"</div>
+        </div>
+    `;
+}
+
+let selectedCheckboxes = [];
+let selectedSubtasks = [];
+let task = [];
+
+function updateSelectedCheckboxes(index, isChecked) {
+    selectedCheckboxes[index] = isChecked;
+    console.log(isChecked);
+    console.log(selectedSubtasks[index]);
+    console.log(currentdraggedarray);
+    const check = users[loaduser];
+    console.log(check[currentdraggedarray]);
+    
+}
+
+function countSelectedCheckboxes() {
+    return selectedCheckboxes.filter(checkbox => checkbox).length;
+}   
+
+function selectSubtaskHtml(sublist, selectarray) {
+    let html = "";
+    for (let i = 0; i < sublist.length; i++) {
+        const subtask = sublist[i];
+        const isChecked = subtask.isChecked ? 'checked' : '';
+        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
+        html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
+        selectedCheckboxes.push(false); // Initialisierung der Checkbox-Status im Array  
+        selectedSubtasks.push(subtask);
+    }
+    task.push(selectarray);
+    return html; 
+}
+
+function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght, selectedCheckboxCount) {
+    return `
+        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
+            <div class="collect-category">${choosencategory}</div>
             <h3>${title}</h3>
             <span>${description}</span>
             <div class="place-task-progress">
