@@ -2,6 +2,7 @@ let checksubtasks = [];
 let searchresults = [];
 let currenttask = 0;
 let currentdragged;
+let currentdraggedarray;
 
 function boardinit() {
     renderTodo();
@@ -348,7 +349,6 @@ function dropDone(ev) {
 
 function setTodoArray() {
     let selecttodo = users[loaduser]['todo'];
-    checkboxtodo = selecttodo;
     return selecttodo;
 }
 
