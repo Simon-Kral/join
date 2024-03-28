@@ -18,11 +18,29 @@ async function getItem(key) {
 
 async function loadStorage() {
     if (sessionStorage.getItem("Guest") === null) {
-        ifLocalStorageExist()
-        ifSessionStorageExist()
+        await loadAllIfElseLocalOrSession()
     }
     else {
-        loadAll()
+        loaduser = sessionStorage.getItem('userI')
+        users = JSON.parse(sessionStorage.getItem('Guest'))
+    }
+    loadAllIfElse()
+    if (sessionStorage.getItem("Guest")) { 
+        await includeHTML(); 
+    }
+    menuLoginName()
+}
+
+async function loadAllIfElseLocalOrSession() {
+    if (sessionStorage.getItem("userI") === null) {
+        users = await getItem('users')
+        loaduser = localStorage.getItem('userI')
+        ifLocalStorageExist()
+    }
+    else {
+        users = await getItem('users')
+        loaduser = sessionStorage.getItem('userI')
+        ifSessionStorageExist
     }
 }
 
@@ -43,30 +61,6 @@ async function ifSessionStorageExist() {
     }
     else {
         loadAll()
-    }
-}
-
-async function loadAll() {
-    if (sessionStorage.getItem("Guest") === null) {
-        await loadAllIfElseLocalOrSession()
-    }
-    else {
-        loaduser = sessionStorage.getItem('userI')
-        users = JSON.parse(sessionStorage.getItem('Guest'))
-    }
-    loadAllIfElse()
-    if (sessionStorage.getItem("Guest")) { await includeHTML(); }
-    menuLoginName()
-}
-
-async function loadAllIfElseLocalOrSession() {
-    if (sessionStorage.getItem("userI") === null) {
-        users = await getItem('users')
-        loaduser = localStorage.getItem('userI')
-    }
-    else {
-        users = await getItem('users')
-        loaduser = sessionStorage.getItem('userI')
     }
 }
 

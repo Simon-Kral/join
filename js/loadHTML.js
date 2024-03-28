@@ -123,12 +123,17 @@ function updateSelectedCheckboxes(index, isChecked) {
     let newischecked = {
         "isChecked": [isChecked]
     }
+<<<<<<< HEAD
     let checkfin = nsn[1];
     // nsn[1].push(selectedSubtasks[index][newischecked]);
     console.log(newischecked);
     console.log(nsn[1]);
     checkfin.push(newischecked);
 
+=======
+    // nsn[1].push(selectedSubtasks[index][newischecked]);
+    console.log(newischecked);
+>>>>>>> a704ae49754ff113af1221a2eae3ffd02b0bb19f
 }
 
 function countSelectedCheckboxes() {
