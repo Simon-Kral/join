@@ -903,11 +903,10 @@
         margin-right: 160px !important;
         margin-bottom: 256px !important;
     }
-
-    .help {
+    .help{
         margin-left: 160px !important;
         margin-right: 160px !important;
-    }
+}
 }
 
 @media only screen and (max-width: 1030px) {
@@ -916,11 +915,10 @@
         margin-right: 16.5px !important;
         margin-bottom: 256px !important;
     }
-
-    .help {
+    .help{
         margin-left: 16.5px !important;
         margin-right: 16.5px !important;
-    }
+}
 
     .menu-joinlogo {
         display: none;
@@ -1028,7 +1026,6 @@
     .head-wrapper {
         font-size: 47px !important;
     }
-
     .menu-joinlogo-handy {
         margin-left: 20px !important;
     }
@@ -1516,43 +1513,3 @@
         margin-right: 100px;
     }
 }
-
-
-@media only screen and (max-height: 880px) {
-   
-  .register-sign-up-flex {
-        bottom: 0px;
-    }
-
-    .register-sign-up-box {
-        margin-top: 60px;
-    }
-
-    .register-login-flex, .start-register-background {
-        height: 800px;
-    }
-    
-    .register-rights {
-        bottom: -40px;
-    }
-}
-
-@media only screen and (max-height: 680px) {
-   
-    .register-sign-up-flex {
-          bottom: -60px;
-      }
-  
-      .register-sign-up-box {
-          margin-top: 60px;
-      }
-  
-      .register-login-flex, .start-register-background {
-          height: 800px;
-      }
-      
-  
-      .register-rights {
-          bottom: -100px;
-      }
-  }

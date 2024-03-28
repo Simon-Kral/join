@@ -16,12 +16,13 @@ async function getItem(key) {
 
 async function loadStorage() {
     if (sessionStorage.getItem("Guest") === null) {
-        if (localStorage.getItem("userI") === null) {
-            if (sessionStorage.getItem("userI") === null) {
-                moveToStartIfLocalEmpty();
-            }
-        } else {
-            ifElseWindowloadLocalStorage();
+        if (localStorage.getItem("userI") === null) { if (sessionStorage.getItem("userI") === null) { moveToStartIfLocalEmpty() } }
+        else {
+            loadAll()
+        }
+        if (sessionStorage.getItem("userI") === null) { if (localStorage.getItem("userI") === null) { moveToStartIfSessionEmpty() } }
+        else {
+            loadAll()
         }
         if (sessionStorage.getItem("userI") === null) {
             if (localStorage.getItem("userI") === null) {
@@ -35,21 +36,40 @@ async function loadStorage() {
     }
 }
 
-async function ifElseWindowloadLocalStorage() {
-    if (window.loadLocalStorage) {
-        loadLocalStorage();
-        loadMenuLocalStorage();
-    } else {
-        loadMenuLocalStorage();
+
+async function loadAll() {
+    if (sessionStorage.getItem("Guest") === null) {
+        if (sessionStorage.getItem("userI") === null) {
+            users = await getItem('users')
+            loaduser = localStorage.getItem('userI')
+        }
+        else {
+            users = await getItem('users')
+            loaduser = sessionStorage.getItem('userI')
+        }
     }
+    else {
+        loaduser = sessionStorage.getItem('userI')
+        users = JSON.parse(sessionStorage.getItem('Guest'))
+    }
+    loadAllIfElse()
+    if (sessionStorage.getItem("Guest")) { await includeHTML(); }
+    menuLoginName()
 }
 
-async function ifElseWindowloadSessionStorage() {
-    if (window.loadSessionStorage) {
-        loadSessionStorage();
-        loadMenuSessionStorage();
-    } else {
-        loadMenuSessionStorage();
+async function loadAllIfElse() {
+    if (window.loadSummaryProject) {
+        loadSummaryProject()
+        timeIfElse()
+    }
+    if (window.boardinit) {
+        boardinit()
+    }
+    if (window.fillAddTaskSectionload && window.boardinit == null) {
+        fillAddTaskSection()
+    }
+    if (window.initContacts) {
+        contactsIfElse()
     }
 }
 
@@ -64,12 +84,12 @@ async function ifElseWindowloadGuestLogin() {
 
 function moveToStartIfLocalEmpty() {
     if (localStorage.getItem("userI") === null) {
-        window.location.assign("index.html");
+        window.location.assign("http://127.0.0.1:5500/index.html");
     }
 }
 
 function moveToStartIfSessionEmpty() {
     if (sessionStorage.getItem("userI") === null) {
-        window.location.assign("index.html");
+        window.location.assign("http://127.0.0.1:5500/index.html");
     }
 }

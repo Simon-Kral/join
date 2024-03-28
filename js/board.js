@@ -92,10 +92,10 @@ function openBordTask(id, element) {
         openTask(id);
     } if (element.parentElement && element.parentElement.id === 'await_feedback_place') {
         dragAwaitFeedback(id);
-        openTask(id);
+        openTask(id); 
     } if (element.parentElement && element.parentElement.id === 'done_place') {
         dragDone(id);
-        openTask(id);
+        openTask(id); 
     }
 }
 
@@ -109,7 +109,7 @@ function openTask(i) {
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
     contactstodo;
-    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml);
+    getplacecard.innerHTML = fullTaskHtml( choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml );
 }
 
 function renderTodo() {
@@ -279,9 +279,9 @@ function drag(id, element) {
     } if (element.parentElement && element.parentElement.id === 'in_progress_place') {
         dragInProgress(id);
     } if (element.parentElement && element.parentElement.id === 'await_feedback_place') {
-        dragAwaitFeedback(id);
+        dragAwaitFeedback(id); 
     } if (element.parentElement && element.parentElement.id === 'done_place') {
-        dragDone(id);
+        dragDone(id); 
     }
 }
 
