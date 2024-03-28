@@ -16,6 +16,12 @@ async function includeHTML() {
     }
 }
 
+function emptyPlaceHtml() {
+    return `
+        <div></div>
+    `;
+}
+
 function bordAddTaskFieldHtml() {
     return `
         <div class="bord-add-tasks-field" onclick="noCloseContent(event)" id="add_task_page"></div>
@@ -64,7 +70,7 @@ function nothingFound() {
     `;
 }
 
-function todoTaskHtml(title, description, priority, i) {
+function userTaskHtml() {
     return `
         <p class="user-story">User Story</p>
     `;
@@ -111,9 +117,14 @@ function updateSelectedCheckboxes(index, isChecked) {
     console.log(isChecked);
     console.log(selectedSubtasks[index]);
     console.log(currentdraggedarray);
-    const check = users[loaduser];
-    console.log(check[currentdraggedarray]);
-    
+    console.log(users[loaduser]['todo'][3]['subtasks'][1]);
+    let ult = users[loaduser]['todo'];
+    let nsn = ult[3]['subtasks'];
+    let newischecked = {
+        "isChecked": [isChecked]
+    }
+    // nsn[1].push(selectedSubtasks[index][newischecked]);
+    console.log(newischecked);
 }
 
 function countSelectedCheckboxes() {
@@ -141,33 +152,27 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
             <h3>${title}</h3>
             <span>${description}</span>
             <div class="place-task-progress">
-                <div class="progress-bar" role="progressbar" ar ia-label="Example with label" aria-valuenow="25">
-                    <div class="progressbar" id="progressbar"></div>
-                </div>
-                <p>Subtasks</p>
+                <div class="collect-subtask">${subtaskstodo}</div>
+                <p class="subtasktxt">${selectedCheckboxCount}/${subtasklenght}Subtasks</p>
             </div>
             <div class="place-user-status">
                 <div class="place-user">
+                    ${contactstodo}
                 </div>
                 <div>
-                    <img class="low-image" src="${priority}">
+                    ${priotodo}
                 </div>
             </div>
         </div>
     `;
 }
 
-function inprogressTaskHtml(title, description, priority, i) {
+function fullTaskHtml(choosencategory, title, description, i, priotodo, date, subtaskstodo) {
     return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragInProgress(${i})">
-            <div id="task-variant"></div>
-            <h3>${title}</h3>
-            <span>${description}</span>
-            <div class="place-task-progress">
-                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                    <div class="progressbar" id="progressbar"></div>
-                </div>
-                <p>Subtasks</p>
+        <div class="single-task-field" onclick="noCloseContent(event)">
+            <div class="place-categorie-cross">
+                <div class="collect-category">${choosencategory}</div>
+                <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
             </div>
             <div class="place-single-information">
                 <h1 class="task-head-bord">${title}</h1>
@@ -176,97 +181,30 @@ function inprogressTaskHtml(title, description, priority, i) {
                     <span>Due date:&nbsp;</span>
                     <span class="due-date-bord">${date}</span>
                 </div>
-                <div>
-                    <img class="low-image" src="${priority}">
+                <div class="place-priority-bord">
+                    <span>Priority:&nbsp;</span>
+                    <span class="priority-bord">${priotodo}</span>
+                </div>
+                <div class="assigned-to-bord">Assigned To</div>
+                    <span class="subtasks-bord">Subtasks</span>
+                    <div class="subtasks-input-bord">
+                        <ul>
+                            ${subtaskstodo}
+                        </ul>
+                    </div>
+                </div>
+                <div class="place-delete-edit">
+                    <div onclick="deleteSingleTask()" class="delete-place">
+                        <img class="delete" src="./assets/img/delete.png">
+                        <span>Delete</span>
+                    </div>
+                    <div class="one-px-line"></div>
+                <div onclick="editSingleTask()" class="edit-place">
+                    <img class="edit" src="./assets/img/edit.png">
+                    <span>Edit</span>
                 </div>
             </div>
         </div>
-    `;
-}
-
-function awaitfeedbackTaskHtml(title, description, priority, i) {
-    return `
-            <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragAwaitFeedback(${i})">
-              <div id="task-variant"></div>
-              <h3>${title}</h3>
-              <span>${description}</span>
-              <div class="place-task-progress">
-                  <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                      <div class="progressbar" id="progressbar"></div>
-                  </div>
-                  <p>Subtasks</p>
-              </div>
-              <div class="place-user-status">
-                  <div class="place-user">
-                  </div>
-                  <div>
-                      <img class="low-image" src="${priority}">
-                  </div>
-              </div>
-          </div>
-      `;
-}
-
-function doneTaskHtml(title, description, priority, i) {
-    return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="dragDone(${i})">
-              <div id="task-variant"></div>
-              <h3>${title}</h3>
-              <span>${description}</span>
-              <div class="place-task-progress">
-                  <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                      <div class="progressbar" id="progressbar"></div>
-                  </div>
-                  <p>Subtasks</p>
-              </div>
-              <div class="place-user-status">
-                  <div class="place-user">
-                  </div>
-                  <div>
-                      <img class="low-image" src="${priority}">
-                  </div>
-              </div>
-        </div>
-      `;
-}
-
-function fullTaskHtml(title, description, date, priority, assignedto, subtasks) {
-    return `
-              <div class="single-task-field" onclick="noCloseContent(event)">
-                  <div class="place-categorie-cross">
-                      <div id="task_variant_bord"></div>
-                      <img onclick="closeCard()" class="single-task-close" src="./assets/img/close.png">
-                  </div>
-                  <div class="place-single-information">
-                      <h1 class="task-head-bord">${title}</h1>
-                      <span class="descript">${description}</span>
-                      <div class="place-due-date-bord">
-                          <span>Due date: </span>
-                          <span class="due-date-bord">${date}</span>
-                      </div>
-                      <div class="place-priority-bord">
-                          <span>Priority:</span>
-                          <span class="priority-bord">${priority}</span>
-                      </div>
-                      <div class="assigned-to-bord">Assigned To</div>
-                      <div>${assignedto}</div>
-                      <span class="subtasks-bord">Subtasks</span>
-                      <div class="subtasks-input-bord">
-                          <div>${subtasks}</div>
-                      </div>
-                  </div>
-                  <div class="place-delete-edit">
-                      <div onclick="deleteSingleTask()" class="delete-place">
-                          <img class="delete" src="./assets/img/delete.png">
-                          <span>Delete</span>
-                      </div>
-                      <div class="one-px-line"></div>
-                      <div onclick="editSingleTask()" class="edit-place">
-                          <img class="edit" src="./assets/img/edit.png">
-                          <span>Edit</span>
-                      </div>
-                  </div>
-              </div>
       `;
 }
 
@@ -399,53 +337,6 @@ function editTaskHtml() {
     `;
 }
 
-function inprogressTaskHtml(title, description, priority, i) {
-    return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask()" draggable="true" ondragstart="drag(${i})">
-            <div id="task-variant"></div>
-            <h3>${title}</h3>
-            <span>${description}</span>
-            <div class="place-task-progress">
-                <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
-                    <div class="progressbar" id="progressbar"></div>
-                </div>
-                <p>Subtasks</p>
-            </div>
-            <div class="place-user-status">
-                <div class="place-user">
-                </div>
-                <div>
-                    <img class="low-image" src="${priority}">
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function awaitfeedbackTaskHtml() {
-    return `
-        <h1>TestTesTodo</h1>
-    `;
-}
-
-function doneTaskHtml() {
-    return `
-        <h1>TestTesTodo</h1>
-    `;
-}
-
-function userTaskHtml() {
-    return `
-        <p class="user-story">User Story</p>
-    `;
-}
-
-function technicalTaskHtml() {
-    return `
-        <p class="technical-task">Technical Task</p>
-    `;
-}
-
 function fillAddTaskSection() {
     let page = document.getElementById("add_task_page");
     html = "";
@@ -454,7 +345,7 @@ function fillAddTaskSection() {
             <h1>Add Task</h1>
             <form class="add-task-form-section" onsubmit="addToTasks();return false" autocomplete="off">
                 <div class="input-wrapper">
-                    <section class="input-box box-left">
+                    <section class="input-box">
                         <div id="add_task_title">
                             <div class="required-header">
                                 <h3>Title</h3>
@@ -489,7 +380,7 @@ function fillAddTaskSection() {
                         </div>
                     </section>
                     <section class="separator-vertical"></section>
-                    <section class="input-box box-right">
+                    <section class="input-box">
                         <div id="add_task_due_date">
                             <div class="required-header">
                                 <h3>Due date</h3>
@@ -569,7 +460,7 @@ function fillAddTaskSection() {
                     </section>
                 </div>
                 <section class="bottom-section">
-                    <div class="bottom-text" id="required-info">
+                    <div class="bottom-text">
                         <span style="color: #FF8190;">*</span>
                         <span>This field is required</span>
                     </div>
@@ -593,225 +484,4 @@ function fillAddTaskSection() {
     `;
     page.innerHTML = html;
     initAddTask();
-}
-
-function generateCategoryHtml(name, id) {
-    html = "";
-    html += `
-        <div class="drop-down-category-entry pointer" onmousedown="dontChangeFocus(event); selectCategory (${id})">
-            <span class="category-name">${name}</span>
-        </div>
-    `;
-    return html;
-}
-
-function generateContactDropdownHtml(abbreviation, fullname, color, id) {
-    html = "";
-    html += `
-        <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectContacts (this, ${id})">
-            <div class="profile-info-box">
-                <span class="profile-badge" style="background-color: ${color};">${abbreviation}</span>
-                <span class="profile-fullname">${fullname}</span>
-            </div>
-            <img src="./assets/img/check_button_unchecked.svg" alt="">
-        </div>
-    `;
-    return html;
-}
-
-function generateSubtaskHtml(name, id) {
-    let html = "";
-    html += `
-    <ul>
-        <li>${name}</li>
-    </ul>
-    <div id="edit-subtask-buttons" class="double-button-container" ondblclick="fstopPropagation(event)">
-        <a id="delete_subtask_button" onclick="editSubtask(this.parentElement.parentElement, ${id})">
-            <img src="./assets/img/edit.svg" alt="add">
-        </a>
-        <div class="separator-vertical"></div>
-        <a id="change_subtask_button"
-            onclick="deleteSubtask(this.parentElement.parentElement, ${id})">
-            <img src="./assets/img/delete.svg" alt="add">
-        </a>
-    </div>
-  `;
-    return html;
-}
-
-function generateEditSubtaskHtml(id) {
-    let html = "";
-    html += `
-        <input type="text" id="subtask_edition_input_${id}">
-        <div id="subtask_edition_buttons" class="double-button-container">
-            <a id="delete_subtask_button"
-                onclick="deleteSubtask(this.parentElement.parentElement, ${id})">
-                <img src="./assets/img/delete.svg" alt="delete">
-            </a>
-            <div class="separator-vertical"></div>
-            <a id="change_subtask_button"
-                onclick="confirmChangeSubtask(this.parentElement.parentElement, ${id})">
-                <img src="./assets/img/check.svg" alt="check">
-            </a>
-        </div>
-    `;
-    return html;
-}
-
-function generateSeparatorHtml(letter) {
-    return /*html*/ `
-        <div class="contact-list-separator-box">
-            <span id="separator-letter-span">${letter}</span>
-            <div class="separator-horizontal"></div>
-        </div>
-    `;
-}
-
-function generateContactHtml(contact, abbreviation, fullname) {
-    let html = "";
-    html += /*html*/ `
-        <div class="contact contact-list-entry pointer" onclick="openContact(${contact.id}, this)">
-            <div class="contact-info-box">
-                <div>
-                    <span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>
-                </div>
-                <div class="profile-info">
-                    <span class="profile-fullname">${fullname}</span>
-                    <a class="profile-email disabled" href="mailto:${contact.email}">${contact.email}</a>
-                </div>
-            </div>
-        </div>
-    `;
-    return html;
-}
-
-function generateContactDetailBoxHtml(contact, abbreviation, fullname) {
-    let html = "";
-    html += /*html*/ `
-        <div class="contact-detail-box-head">
-            <div class="profile-badge-big-box">
-                <span class="profile-badge-big" style="background-color: ${contact.color};">${abbreviation}</span>
-            </div>
-            <div class="profile-name-with-buttons-box">
-                <div class="profile-name">${fullname}</div>
-                <div class="profile-buttons">
-                    <a onclick="openContactEdition(${contact.id}, '${abbreviation}', '${fullname}')">
-                        <img src="./assets/img/edit.svg" alt="edit contact">
-                        <span>Edit</span>
-                    </a>
-                    <a onclick="deleteContact(${contact.id})">
-                        <img src="./assets/img/delete.svg" alt="delete contact">
-                        <span>Delete</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="contact-information-box">
-            <span>Contact Information</span>
-        </div>
-        <div class="contact-detail-box-body">
-            <h4>Email</h4>
-            <a class="profile-email" href="mailto:${contact.email}">${contact.email}</a>
-            <h4>Phone</h4>
-            <a class="profile-phone" href="tel:${contact.phone}">${contact.phone}</a>
-        </div>
-    `;
-    return html;
-}
-
-function generateEditContactHtml(contact, abbreviation, fullname) {
-    let html = "";
-    html += /*html*/ `
-    <div class="overlay-box">
-      <div class="overlay-box-head">
-          <img src="./assets/img/join_logo.svg" alt="logo" />
-          <h1>Edit contact</h1>
-          <img src="./assets/img/line_horizontal.svg" alt="line" />
-      </div>
-      <div class="overlay-box-body">
-          <a class="close-overlay-box" onclick="closeOverlay()">
-              <img src="./assets/img/cross.svg" alt="close" />
-          </a>
-          <div class="overlay-body-content">
-              <div class="profile-badge-big-box">
-                  <span class="profile-badge-big" style="background-color: ${contact.color}">${abbreviation}</span>
-              </div>
-              <form class="edit-contact-form-box" onsubmit="saveEditedContact(${contact.id});return false" autocomplete="off">
-                  <div class="input-with-img-wrapper">
-                      <input type="text" value="${fullname}" pattern="[A-Za-z]+([ ][A-Za-z]+)+" class="styled-input focus-blue edit-contact-input" id="edit_contact_name"/>
-                      <img src="./assets/img/person.svg" alt="person" />
-                  </div>
-                  <div class="input-with-img-wrapper">
-                      <input type="email" value="${contact.email}" class="styled-input focus-blue edit-contact-input" id="edit_contact_email"/>
-                      <img src="./assets/img/mail.svg" alt="mail" />
-                  </div>
-                  <div class="input-with-img-wrapper">
-                      <input type="tel" value="${contact.phone}" class="styled-input focus-blue edit-contact-input" id="edit_contact_phone"/>
-                      <img src="./assets/img/call.svg" alt="call" />
-                  </div>
-                  <div class="edit-contact-form-buttons">
-                      <button type="button" class="white-button" onclick="deleteContact(${contact.id})">
-                          <span>Delete</span>
-                      </button>
-                      <button type="submit" id="edit-contact-save-button" class="blue-button">
-                          <span>Save</span>
-                          <img src="./assets/img/check.svg" alt="check" />
-                      </button>
-                  </div>
-              </form>
-          </div>
-      </div>
-    </div>
-  `;
-    return html;
-}
-
-function generateAddContactHtml(color) {
-    let html = "";
-    html += /*html*/ `
-  <div class="overlay-box">
-    <div class="overlay-box-head">
-        <img src="./assets/img/join_logo.svg" alt="logo" />
-        <h1>Add contact</h1>
-        <h2>Tasks are better with a team!</h2>
-        <img src="./assets/img/line_horizontal.svg" alt="line" />
-    </div>
-    <div class="overlay-box-body">
-        <a class="close-overlay-box" onclick="closeOverlay()">
-            <img src="./assets/img/cross.svg" alt="close" />
-        </a>
-        <div class="overlay-body-content">
-            <div class="profile-badge-big-box">
-                <span class="profile-badge-big" style="background-color: ${color}"><img src="./assets/img/person_big.svg" alt="person"></span>
-            </div>
-            <form name="addContact" class="edit-contact-form-box" onsubmit="saveNewContact();return false" autocomplete="off">
-                <div class="input-with-img-wrapper">
-                    <input required placeholder="Name" type="text" pattern="[A-Za-z]+([ ][A-Za-z]+)+" class="styled-input focus-blue edit-contact-input" id="add_contact_name"/>
-                    <img src="./assets/img/person.svg" alt="person" />
-                </div>
-                <div class="input-with-img-wrapper">
-                    <input required placeholder="Email" type="email" class="styled-input focus-blue edit-contact-input" id="add_contact_email"/>
-                    <img src="./assets/img/mail.svg" alt="mail" />
-                </div>
-                <div class="input-with-img-wrapper">
-                    <input required placeholder="Phone" type="tel" class="styled-input focus-blue edit-contact-input" id="add_contact_phone"/>
-                    <img src="./assets/img/call.svg" alt="call" />
-                </div>
-                <input type="text" class="dnone" value="${color}" id="add_contact_color">
-                <div class="add-contact-form-buttons">
-                    <button type="button" class="white-button" onclick="closeOverlay()">
-                        <span>Cancel</span>
-                        <img src="./assets/img/cross.svg" alt="cross" />
-                    </button>
-                    <button type="submit" id="add-contact-save-button" class="blue-button">
-                        <span>Create contact</span>
-                        <img src="./assets/img/check.svg" alt="check" />
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-  </div>
-`;
-    return html;
 }
