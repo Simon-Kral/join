@@ -8,21 +8,9 @@ let selectedcontacts = [];
 
 let currentTask = {};
 
-function guestLogin() {
-    loaduser = sessionStorage.getItem("userI");
-    users = JSON.parse(sessionStorage.getItem("Guest"));
-    fillAddTaskSection();
-}
 
-async function loadLocalStorage() {
-    users = await getItem("users");
-    loaduser = localStorage.getItem("userI");
-    fillAddTaskSection();
-}
 
-async function loadSessionStorage() {
-    users = await getItem("users");
-    loaduser = sessionStorage.getItem("userI");
+async function fillAddTaskSectionload() {
     fillAddTaskSection();
 }
 
