@@ -9,16 +9,17 @@ let selectedcontacts = [];
 let currentTask = {};
 
 
+
 async function fillAddTaskSectionload() {
     fillAddTaskSection();
 }
 
 function initAddTask() {
-    // loadFromLocalStorage();
     renderAssignedTo();
     renderCategory();
     addAddTaskEventListeners();
     setMinDate();
+    selectPrio("medium");
 }
 
 function renderAssignedTo(searchterm) {
@@ -35,7 +36,7 @@ function renderAssignedTo(searchterm) {
             const color = contact.color;
             const id = contact.id;
             if (!searchterm || fullname.toLowerCase().includes(searchterm)) {
-                dropdown.innerHTML += generateContactHtml(abbreviation, fullname, color, id);
+                dropdown.innerHTML += generateContactDropdownHtml(abbreviation, fullname, color, id);
             }
         }
     } else {
@@ -65,30 +66,6 @@ function renderCategory(searchterm) {
             dropdown.innerHTML += generateCategoryHtml(name, id);
         }
     }
-}
-
-function generateContactHtml(abbreviation, fullname, color, id) {
-    html = "";
-    html += `
-        <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectContacts (this, ${id})">
-            <div class="profile-info-box">
-                <span class="profile-badge" style="background-color: ${color};">${abbreviation}</span>
-                <span class="profile-fullname">${fullname}</span>
-            </div>
-            <img src="./assets/img/check_button_unchecked.svg" alt="">
-        </div>
-    `;
-    return html;
-}
-
-function generateCategoryHtml(name, id) {
-    html = "";
-    html += `
-        <div class="drop-down-category-entry pointer" onmousedown="dontChangeFocus(event); selectCategory (${id})">
-            <span class="category-name">${name}</span>
-        </div>
-    `;
-    return html;
 }
 
 function dontChangeFocus(event) {
@@ -144,6 +121,7 @@ function selectCategory(id) {
     const input = document.getElementById("input_with_button_category");
     const selectedcategory = allcategories.find((element) => element.id === id);
     input.value = selectedcategory.name;
+    input.blur();
 }
 
 function renderSelectedContacts() {
@@ -200,7 +178,7 @@ function addSubtask(inputid) {
     let input = document.getElementById(inputid);
     let content = document.getElementById("selected_subtasks");
     let subtaskid = allsubtasks[0].idcounter;
-    let arrayelement = { id: subtaskid, name: input.value };
+    let arrayelement = { id: subtaskid, name: input.value, isChecked: false };
     allsubtasks.push(arrayelement);
     allsubtasks[0].idcounter++;
     let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${subtaskid})">`;
@@ -208,45 +186,6 @@ function addSubtask(inputid) {
     html += `</div>`;
     content.innerHTML += html;
     input.value = "";
-}
-
-function generateSubtaskHtml(name, id) {
-    let html = "";
-    html += `
-    <ul>
-        <li>${name}</li>
-    </ul>
-    <div id="edit-subtask-buttons" class="double-button-container" ondblclick="fstopPropagation(event)">
-        <a id="delete_subtask_button" onclick="editSubtask(this.parentElement.parentElement, ${id})">
-            <img src="./assets/img/edit.svg" alt="add">
-        </a>
-        <div class="separator-vertical"></div>
-        <a id="change_subtask_button"
-            onclick="deleteSubtask(this.parentElement.parentElement, ${id})">
-            <img src="./assets/img/delete.svg" alt="add">
-        </a>
-    </div>
-  `;
-    return html;
-}
-
-function generateEditSubtaskHtml(id) {
-    let html = "";
-    html += `
-        <input type="text" id="subtask_edition_input_${id}">
-        <div id="subtask_edition_buttons" class="double-button-container">
-            <a id="delete_subtask_button"
-                onclick="deleteSubtask(this.parentElement.parentElement, ${id})">
-                <img src="./assets/img/delete.svg" alt="delete">
-            </a>
-            <div class="separator-vertical"></div>
-            <a id="change_subtask_button"
-                onclick="confirmChangeSubtask(this.parentElement.parentElement, ${id})">
-                <img src="./assets/img/check.svg" alt="check">
-            </a>
-        </div>
-    `;
-    return html;
 }
 
 function fstopPropagation(event) {
