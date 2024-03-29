@@ -8,8 +8,6 @@ let selectedcontacts = [];
 
 let currentTask = {};
 
-
-
 async function fillAddTaskSectionload() {
     fillAddTaskSection();
 }
