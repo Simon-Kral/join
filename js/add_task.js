@@ -26,19 +26,19 @@ function renderAssignedTo(searchterm) {
         dropdown.innerHTML = "";
         for (let i = 0; i < users[loaduser].contacts.length; i++) {
             const contact = users[loaduser].contacts[i];
-            if (!contact.firstname) {
-                continue;
-            }
-            const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
-            const fullname = contact.firstname + " " + contact.lastname;
-            const color = contact.color;
-            const id = contact.id;
-            if (!searchterm || fullname.toLowerCase().includes(searchterm)) {
-                dropdown.innerHTML += generateContactDropdownHtml(abbreviation, fullname, color, id);
-            }
+            if (!contact.firstname) continue;
+            const contactdata = generateContactData(contact);
+            if (!searchterm || contactdata.fullname.toLowerCase().includes(searchterm)) dropdown.innerHTML += generateContactDropdownHtml(contact, contactdata);
         }
-    } else {
     }
+}
+
+function generateContactData(contact) {
+    const contactdata = {};
+    contactdata.abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
+    contactdata.fullname = contact.firstname + " " + contact.lastname;
+    contactdata.firstLetter = contact.firstname.charAt(0).toUpperCase();
+    return contactdata;
 }
 
 function setFilter(input) {
@@ -55,14 +55,8 @@ function renderCategory(searchterm) {
     dropdown.innerHTML = "";
     for (let i = 0; i < allcategories.length; i++) {
         const category = allcategories[i];
-        if (!category.name) {
-            continue;
-        }
-        const name = category.name;
-        const id = category.id;
-        if (!searchterm || name.toLowerCase().includes(searchterm)) {
-            dropdown.innerHTML += generateCategoryHtml(name, id);
-        }
+        if (!category.name) continue;
+        if (!searchterm || name.toLowerCase().includes(searchterm)) dropdown.innerHTML += generateCategoryHtml(category);
     }
 }
 

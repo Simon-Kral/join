@@ -529,23 +529,23 @@ function fillAddTaskSection() {
     initAddTask();
 }
 
-function generateCategoryHtml(name, id) {
+function generateCategoryHtml(category) {
     html = "";
     html += `
-        <div class="drop-down-category-entry pointer" onmousedown="dontChangeFocus(event); selectCategory (${id})">
-            <span class="category-name">${name}</span>
+        <div class="drop-down-category-entry pointer" onmousedown="dontChangeFocus(event); selectCategory (${category.id})">
+            <span class="category-name">${category.name}</span>
         </div>
     `;
     return html;
 }
 
-function generateContactDropdownHtml(abbreviation, fullname, color, id) {
+function generateContactDropdownHtml(contact, contactdata) {
     html = "";
     html += `
-        <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectContacts (this, ${id})">
+        <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectContacts (this, ${contact.id})">
             <div class="profile-info-box">
-                <span class="profile-badge" style="background-color: ${color};">${abbreviation}</span>
-                <span class="profile-fullname">${fullname}</span>
+                <span class="profile-badge" style="background-color: ${contact.color};">${contactdata.abbreviation}</span>
+                <span class="profile-fullname">${contactdata.fullname}</span>
             </div>
             <img src="./assets/img/check_button_unchecked.svg" alt="">
         </div>
@@ -601,16 +601,16 @@ function generateSeparatorHtml(letter) {
     `;
 }
 
-function generateContactHtml(contact, abbreviation, fullname) {
+function generateContactHtml(contact, contactdata) {
     let html = "";
     html += /*html*/ `
         <div class="contact contact-list-entry pointer" onclick="openContact(${contact.id}, this)">
             <div class="contact-info-box">
                 <div>
-                    <span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>
+                    <span class="profile-badge" style="background-color: ${contact.color};">${contactdata.abbreviation}</span>
                 </div>
                 <div class="profile-info">
-                    <span class="profile-fullname">${fullname}</span>
+                    <span class="profile-fullname">${contactdata.fullname}</span>
                     <a class="profile-email disabled" href="mailto:${contact.email}">${contact.email}</a>
                 </div>
             </div>
@@ -619,17 +619,17 @@ function generateContactHtml(contact, abbreviation, fullname) {
     return html;
 }
 
-function generateContactDetailBoxHtml(contact, abbreviation, fullname) {
+function generateContactDetailBoxHtml(contact, contactdata) {
     let html = "";
     html += /*html*/ `
         <div class="contact-detail-box-head">
             <div class="profile-badge-big-box">
-                <span class="profile-badge-big" style="background-color: ${contact.color};">${abbreviation}</span>
+                <span class="profile-badge-big" style="background-color: ${contact.color};">${contactdata.abbreviation}</span>
             </div>
             <div class="profile-name-with-buttons-box">
-                <div class="profile-name">${fullname}</div>
+                <div class="profile-name">${contactdata.fullname}</div>
                 <div class="profile-buttons">
-                    <a onclick="openContactEdition(${contact.id}, '${abbreviation}', '${fullname}')">
+                    <a onclick="openContactEdition(${contact.id}, '${contactdata.abbreviation}', '${contactdata.fullname}')">
                         <img src="./assets/img/edit.svg" alt="edit contact">
                         <span>Edit</span>
                     </a>

@@ -12,40 +12,47 @@ async function sortContacts() {
 }
 
 function renderContacts() {
-    let list = document.getElementById("contact-list");
+    const list = document.getElementById("contact-list");
     list.innerHTML = "";
     let prevLetter = "";
     for (let i = 0; i < users[loaduser].contacts.length; i++) {
         const contact = users[loaduser].contacts[i];
-        if (!contact.firstname) {
-            continue;
+        if (!contact.firstname) continue;
+        const contactdata = generateContactData(contact);
+        if (contactdata.firstLetter !== prevLetter) {
+            list.innerHTML += generateSeparatorHtml(contactdata.firstLetter);
+            prevLetter = contactdata.firstLetter;
         }
-        const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
-        const fullname = contact.firstname + " " + contact.lastname;
-        const firstLetter = contact.firstname.charAt(0).toUpperCase();
-        if (firstLetter !== prevLetter) {
-            list.innerHTML += generateSeparatorHtml(firstLetter);
-            prevLetter = firstLetter;
-        }
-        list.innerHTML += generateContactHtml(contact, abbreviation, fullname);
+        list.innerHTML += generateContactHtml(contact, contactdata);
     }
+}
+
+function generateContactData(contact) {
+    const contactdata = {};
+    contactdata.abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
+    contactdata.fullname = contact.firstname + " " + contact.lastname;
+    contactdata.firstLetter = contact.firstname.charAt(0).toUpperCase();
+    return contactdata;
 }
 
 function openContact(id, card) {
     let contentbox = document.getElementById("contact-detail-box");
-    document.querySelectorAll(".selected").forEach(function (selectedfield) {
-        selectedfield.classList.remove("selected");
-    });
-    const contact = users[loaduser].contacts.find((element) => element.id === id);
-    const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
-    const fullname = contact.firstname + " " + contact.lastname;
     contentbox.innerHTML = "";
-    contentbox.innerHTML += generateContactDetailBoxHtml(contact, abbreviation, fullname);
+    unselectSelected();
+    const contact = users[loaduser].contacts.find((element) => element.id === id);
+    const contactdata = generateContactData(contact);
+    contentbox.innerHTML += generateContactDetailBoxHtml(contact, contactdata);
     if (card && document.documentElement.clientWidth > 850) {
         card.classList.add("selected");
         card.querySelector(".profile-fullname").classList.add("selected");
     }
     document.documentElement.clientWidth <= 500 ? changeViewMobile() : "";
+}
+
+function unselectSelected() {
+    document.querySelectorAll(".selected").forEach(function (selectedfield) {
+        selectedfield.classList.remove("selected");
+    });
 }
 
 function setResizeBehaviour() {
