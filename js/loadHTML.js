@@ -142,7 +142,7 @@ function selectSubtaskHtml(sublist, selectarray) {
     return html;
 }
 
-function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght, selectedCheckboxCount) {
+function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priotodo, subtasklenght, selectedCheckboxCount, priority) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
             <div class="collect-category">${choosencategory}</div>
