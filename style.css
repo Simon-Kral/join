@@ -1013,7 +1013,7 @@ button.white-button:active {
 }
 
 button.blue-button {
-    min-width: 111px;
+    width: 111px;
     margin-left: 25px;
     background-color: #2A3647;
     border: none;
@@ -1226,8 +1226,8 @@ div.selected:hover {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 120px;
-        width: 120px;
+        height: 114px;
+        width: 114px;
         background-color: black;
         color: white;
         font-size: 47px;
@@ -1624,8 +1624,8 @@ div.selected:hover {
                     }
                 }
                 .profile-badge-big {
-                    height: 80px;
-                    width: 80px;
+                    height: 76px;
+                    width: 76px;
                     font-size: 27px;
                 }
                 .profile-name {
@@ -1845,6 +1845,7 @@ div.selected:hover {
 }
 
 .overlay-box {
+    position: relative;
     height: 592px;
     width: 1212px;
     background-color: white;
@@ -1871,25 +1872,25 @@ div.selected:hover {
             margin: 0;
         }
     }
-    .overlay-box-body {
-        .close-overlay-box {
-            position: relative;
-            height: 32px;
-            width: 32px;
-            top: 48px;
-            left: 679px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            img {
-                height: 24px;
-                width: 24px;
-                object-fit: none;
-            }
+    .close-overlay-box {
+        position: absolute;
+        height: 32px;
+        width: 32px;
+        top: 48px;
+        right: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            height: 24px;
+            width: 24px;
+            object-fit: none;
         }
+    }
+    .overlay-box-body {
         .overlay-body-content {
             position: relative;
-            top: 107px;
+            top: 137px;
             left: 97px;
             display: flex;
             .edit-contact-form-buttons {
@@ -1908,6 +1909,319 @@ div.selected:hover {
                     }
                 }
             }
+        }
+    }
+}
+
+@media(max-width: 1300px) {
+    .overlay-box {
+        height: 400px;
+        width: 800px;
+        background-color: white;
+        border-radius: 20px;
+        z-index: 2048;
+        display: flex;
+        .edit-contact-form-box {
+            margin-left: 48px;
+            gap: 21px;
+        }
+        .overlay-box-head {
+            height: calc(100% - 103px);
+            width: calc(302px - 31px);
+            position: relative;
+            left: 0;
+            background-color: #2A3647;
+            border-radius: 20px 0 0 20px;
+            padding: 103px 0 0 31px;
+            h1 {
+                color: white;
+                font-size: 40px;
+                margin: 11px 0;
+            }
+            h2 {
+                color: white;
+                font-size: 18px;
+                font-weight: 400;
+                margin: 0;
+            }
+        }
+        .overlay-box-body {
+            .overlay-body-content {
+                position: relative;
+                top: 91px;
+                left: 64px;
+                display: flex;
+                .add-contact-form-buttons {
+                    button {
+                        height: 37px;
+                        span {
+                            font-size: 13px;
+                        }
+                        img {
+                            margin-left: 7px;
+                            height: 9px;
+                            width: 9px;
+                        }
+                    }
+                    .white-button {
+                        width: 84px;
+                    }
+                    .blue-button {
+                        width: 143px;
+                    }
+                }
+            }
+        }
+        .profile-badge-big-box {
+            .profile-badge-big {
+                height: 76px;
+                width: 76px;
+                font-size: 31px;
+                img {
+                    width: 43px;
+                    height: 43px;
+                }
+            }
+        }
+        .edit-contact-form-box {
+            .input-with-img-wrapper {
+                .styled-input {
+                    width: 253px;
+                    height: 32px;
+                    font-size: 14px;
+                    padding: 1px 14px;
+                    border-radius: 7px;
+                }
+                img {
+                    right: 30px;
+                    height: 16px;
+                    width: 16px;
+                }
+            }
+        }
+        .close-overlay-box {
+            height: 22px;
+            width: 22px;
+            top: 32px;
+            right: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                height: 16px;
+                width: 16px;
+                object-fit: none;
+            }
+        }
+    }
+    button.white-button {
+        width: 73px;
+        height: 37px;
+        span {
+            font-size: 13px;
+        }
+    }
+    button.blue-button {
+        width: 74px;
+        height: 37px;
+        margin-left: 17px;
+        span {
+            font-size: 13px;
+        }
+        img {
+            margin-left: 7px;
+            height: 9px;
+            width: 9px;
+        }
+    }
+}
+
+@media(max-width: 950px) {
+    img[alt="logo"] {
+        display: none;
+    }
+    .overlay-box {
+        height: 760px;
+        width: 396px;
+        border-radius: 30px;
+        flex-direction: column;
+        .overlay-box-head {
+            height: 351px;
+            width: 396px;
+            border-radius: 20px 20px 0 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            h1 {
+                font-size: 47px;
+                margin: 11px 0;
+                margin-left: 24px;
+            }
+            h2 {
+                font-size: 24px;
+                margin-left: 24px;
+            }
+            img {
+                object-fit: none;
+                margin-left: 24px;
+                margin-top: 12px;
+            }
+        }
+        .overlay-box-body {
+            .overlay-body-content {
+                top: -60px;
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 32px;
+                .add-contact-form-buttons {
+                    display: flex;
+                    justify-content: center;
+                    button {
+                        height: 51px;
+                        span {
+                            font-size: 20px;
+                        }
+                        img {
+                            margin-left: 10px;
+                            height: 16px;
+                            width: 16px;
+                        }
+                    }
+                    .white-button {
+                        display: none;
+                    }
+                    .blue-button {
+                        width: 202px;
+                    }
+                }
+                .edit-contact-form-buttons {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+        .profile-badge-big-box {
+            .profile-badge-big {
+                height: 114px;
+                width: 114px;
+            }
+        }
+        .edit-contact-form-box {
+            .input-with-img-wrapper {
+                .styled-input {
+                    width: 340px;
+                    margin-left: 22px;
+                    height: 41px;
+                    font-size: 20px;
+                    padding: 1px 21px;
+                    border-radius: 10px;
+                }
+                img {
+                    right: 44px;
+                    height: 24px;
+                    width: 24px;
+                }
+            }
+        }
+        .edit-contact-form-box {
+            margin-left: 0;
+            gap: 24px;
+        }
+        .close-overlay-box {
+            img {
+                filter: invert(100%) sepia(35%) saturate(2%) hue-rotate(63deg) brightness(106%) contrast(100%);
+            }
+        }
+    }
+    button.white-button {
+        width: 82px;
+        height: 51px;
+        span {
+            font-size: 20px;
+        }
+    }
+    button.blue-button {
+        width: 99px;
+        height: 51px;
+        margin-left: 17px;
+        span {
+            font-size: 20px;
+        }
+        img {
+            margin-left: 7px;
+            height: 16px;
+            width: 16px;
+        }
+    }
+}
+
+@media(max-width: 450px) {
+    .overlay-box {
+        width: 300px;
+        height: auto;
+        .overlay-box-head {
+            height: 260px;
+            width: 300px;
+            h1 {
+                font-size: 40px;
+                margin-top: 0;
+            }
+            h2 {
+                font-size: 18px;
+            }
+        }
+        .overlay-box-body {
+            .overlay-body-content {
+                top: -50px;
+                gap: 24px;
+            }
+        }
+        .profile-badge-big-box {
+            .profile-badge-big {
+                height: 94px;
+                width: 94px;
+            }
+        }
+        .edit-contact-form-box {
+            .input-with-img-wrapper {
+                .styled-input {
+                    width: 236px;
+                }
+            }
+        }
+        .edit-contact-form-box {
+            margin-left: 0;
+            gap: 24px;
+        }
+        .close-overlay-box {
+            img {
+                filter: invert(100%) sepia(35%) saturate(2%) hue-rotate(63deg) brightness(106%) contrast(100%);
+            }
+        }
+    }
+    button.white-button {
+        width: 82px;
+        height: 51px;
+        span {
+            font-size: 20px;
+        }
+    }
+    button.blue-button {
+        width: 99px;
+        height: 51px;
+        margin-left: 17px;
+        span {
+            font-size: 20px;
+        }
+        img {
+            margin-left: 7px;
+            height: 16px;
+            width: 16px;
         }
     }
 }

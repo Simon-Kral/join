@@ -57,12 +57,15 @@ function setResizeBehaviour() {
 }
 
 function switchToDefault() {
+    let profilebuttons = document.querySelector(".profile-buttons");
     document.querySelector(".contact-detail").classList.remove("mobile-contact-detail");
     document.querySelector(".contact-list-box").style.removeProperty("width");
     document.querySelector(".contact-list-box").classList.remove("dnone");
     document.querySelector(".open-menu-button-box").classList.add("dnone");
     document.querySelector(".go-back-button").classList.add("dnone");
-    document.querySelector(".profile-buttons").classList.remove("animation-mobile-sidebar");
+    if (profilebuttons) {
+        profilebuttons.classList.remove("animation-mobile-sidebar");
+    }
 }
 
 function changeViewMobile() {

@@ -657,15 +657,13 @@ function generateEditContactHtml(contact, abbreviation, fullname) {
     let html = "";
     html += /*html*/ `
     <div class="overlay-box">
+
       <div class="overlay-box-head">
           <img src="./assets/img/join_logo.svg" alt="logo" />
           <h1>Edit contact</h1>
           <img src="./assets/img/line_horizontal.svg" alt="line" />
       </div>
       <div class="overlay-box-body">
-          <a class="close-overlay-box" onclick="closeOverlay()">
-              <img src="./assets/img/cross.svg" alt="close" />
-          </a>
           <div class="overlay-body-content">
               <div class="profile-badge-big-box">
                   <span class="profile-badge-big" style="background-color: ${contact.color}">${abbreviation}</span>
@@ -695,6 +693,9 @@ function generateEditContactHtml(contact, abbreviation, fullname) {
               </form>
           </div>
       </div>
+      <a class="close-overlay-box" onclick="closeOverlay()">
+      <img src="./assets/img/cross.svg" alt="close" />
+  </a>
     </div>
   `;
     return html;
