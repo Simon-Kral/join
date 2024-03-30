@@ -1825,6 +1825,10 @@ div.selected:hover {
     }
 }
 
+.animation-mobile-sidebar {
+    transition: width 0.3s ease-in-out;
+}
+
 .overlay {
     background: rgba(0, 0, 0, 0.2);
     position: fixed;

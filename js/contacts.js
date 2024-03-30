@@ -62,6 +62,7 @@ function switchToDefault() {
     document.querySelector(".contact-list-box").classList.remove("dnone");
     document.querySelector(".open-menu-button-box").classList.add("dnone");
     document.querySelector(".go-back-button").classList.add("dnone");
+    document.querySelector(".profile-buttons").classList.remove("animation-mobile-sidebar");
 }
 
 function changeViewMobile() {
@@ -72,21 +73,21 @@ function changeViewMobile() {
     document.querySelector(".go-back-button").classList.remove("dnone");
 }
 
-function openSideMenu(event) {
-    debugger;
+function openContactsSideMenu(event) {
     let menu = document.querySelector(".profile-buttons");
     let main = document.querySelector("main.contacts");
-    console.log(main);
+    menu.classList.add("animation-mobile-sidebar");
     menu.style.width = "96px";
     menu.style.padding = "10px";
     event.stopPropagation();
-    main.onclick = closeSideMenu();
+    main.onclick = closeContactsSideMenu;
 }
 
-function closeSideMenu() {
-    console.log("test");
+async function closeContactsSideMenu() {
     let menu = document.querySelector(".profile-buttons");
+    let main = document.querySelector("main.contacts");
     menu.style.removeProperty("width");
+    await delay(300);
     menu.style.removeProperty("padding");
 }
 
@@ -184,4 +185,10 @@ function buildNewContactArray(name, email, phone, color) {
     counter++;
     users[loaduser].contacts.find((element) => element.idcounter).idcounter = counter;
     return { id: counter, firstname: name.firstname, lastname: name.lastname, email: email, phone: phone, color: color };
+}
+
+function delay(milliseconds) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, milliseconds);
+    });
 }
