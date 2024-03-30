@@ -529,4 +529,9 @@ function renderResultsDone(resultsdone, doneplace) {
     }
 }
 
-
+async function deleteSingleTask(i) {
+    users[loaduser]['todo'].splice(i, 1);
+    boardinit();
+    closeCard();
+    await setItem('users', JSON.stringify(users));
+}

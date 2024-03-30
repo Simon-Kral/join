@@ -121,7 +121,6 @@ function updateSelectedCheckboxes(index, isChecked) {
     let ult = users[loaduser]["todo"];
     let nsn = ult[3]["subtasks"]
     let icic = nsn["ischecked"];
-    icic.push(isChecked);
 }
 
 function countSelectedCheckboxes() {
@@ -191,7 +190,7 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
                     </div>
                 </div>
                 <div class="place-delete-edit">
-                    <div onclick="deleteSingleTask()" class="delete-place">
+                    <div onclick="deleteSingleTask(${i})" class="delete-place">
                         <img class="delete" src="./assets/img/delete.png">
                         <span>Delete</span>
                     </div>
