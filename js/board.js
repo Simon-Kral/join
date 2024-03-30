@@ -314,36 +314,40 @@ function dragDone(id) {
     currentdraggedarray = setDoneForm();
 }
 
-function dropTodo(ev) {
+async function dropTodo(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     select['todo'].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
+    await setItem('users', JSON.stringify(users));
 }
 
-function dropInProgress(ev) {
+async function dropInProgress(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     select['tasksinprogress'].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
+    await setItem('users', JSON.stringify(users));
 }
 
-function dropAwaitFeedBack(ev) {
+async function dropAwaitFeedBack(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     select['awaitingfeedback'].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
+    await setItem('users', JSON.stringify(users));
 }
 
-function dropDone(ev) {
+async function dropDone(ev) {
     ev.preventDefault();
     let select = users[loaduser];
     select['done'].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
+    await setItem('users', JSON.stringify(users));
 }
 
 function setTodoArray() {
