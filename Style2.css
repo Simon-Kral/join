@@ -914,7 +914,7 @@
     .law {
         margin-left: 16.5px !important;
         margin-right: 16.5px !important;
-        margin-bottom: 256px !important;
+        margin-bottom: 356px !important;
     }
 
     .help {
@@ -1026,7 +1026,7 @@
 @media only screen and (max-width: 700px) {
 
     .head-wrapper {
-        font-size: 47px !important;
+        font-size: 24px !important;
     }
 
     .menu-joinlogo-handy {
