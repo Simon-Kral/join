@@ -498,6 +498,7 @@ h1.legal-head {
 }
 
 .law {
+    margin-bottom: 200px;
     position: relative;
     top: 206px;
     margin-left: 290px;
@@ -1257,7 +1258,7 @@ div.selected:hover {
 .help {
     color: black;
     margin-top: 206px;
-    margin-left: 328px;
+    margin-left: 290px;
     margin-bottom: 160px;
     font-size: 16px;
     .head-wrapper {
