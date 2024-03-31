@@ -1536,11 +1536,14 @@ div.selected:hover {
     .add_task_prio {
         #prio-buttons {
             label {
-                font-size: 16px;
-                width: 100px;
+                font-size: 14px;
+                width: 90px;
                 img {
-                    width: 16px;
+                    width: 14px;
                 }
+            }
+            .highlighted-button {
+                font-size: 14px;
             }
         }
     }
@@ -1578,17 +1581,6 @@ div.selected:hover {
     }
     .drop-down {
         width: 290px;
-    }
-    .add_task_prio {
-        #prio-buttons {
-            label {
-                font-size: 14px;
-                width: 90px;
-                img {
-                    width: 14px;
-                }
-            }
-        }
     }
     #selected_subtasks {
         width: 290px !important;

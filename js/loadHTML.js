@@ -670,7 +670,7 @@ function generateEditContactHtml(contact, abbreviation, fullname) {
               </div>
               <form class="edit-contact-form-box" onsubmit="saveEditedContact(${contact.id});return false" autocomplete="off">
                   <div class="input-with-img-wrapper">
-                      <input type="text" value="${fullname}" pattern="[A-Za-z]+([ ][A-Za-z]+)+" class="styled-input focus-blue edit-contact-input" id="edit_contact_name" oninvalid="this.setCustomValidity('Enter your full name here: Firstname (Secondname) Lastname')" oninput="this.setCustomValidity('')" maxlength="35">
+                      <input type="text" value="${fullname}" pattern="[A-Za-zäöüÄÖÜ]+([ ][A-Za-zäöüÄÖÜ]+)+" class="styled-input focus-blue edit-contact-input" id="edit_contact_name" oninvalid="this.setCustomValidity('Enter your full name here: Firstname (Secondname) Lastname')" oninput="this.setCustomValidity('')" maxlength="35">
                       <img src="./assets/img/person.svg" alt="person" />
                   </div>
                   <div class="input-with-img-wrapper">
@@ -721,7 +721,7 @@ function generateAddContactHtml(color) {
             </div>
             <form name="addContact" class="edit-contact-form-box" onsubmit="saveNewContact();return false" autocomplete="off">
                 <div class="input-with-img-wrapper">
-                    <input required placeholder="Name" type="text" pattern="[A-Za-z]+([ ][A-Za-z]+)+" class="styled-input focus-blue edit-contact-input" id="add_contact_name" oninvalid="this.setCustomValidity('Enter your full name here: Firstname (Secondname) Lastname')" oninput="this.setCustomValidity('')" maxlength="35">
+                    <input required placeholder="Name" type="text" pattern="[A-Za-zäöüÄÖÜ]+([ ][A-Za-zäöüÄÖÜ]+)+" class="styled-input focus-blue edit-contact-input" id="add_contact_name" oninvalid="this.setCustomValidity('Enter your full name here: Firstname (Secondname) Lastname')" oninput="this.setCustomValidity('')" maxlength="35">
                     <img src="./assets/img/person.svg" alt="person" />
                 </div>
                 <div class="input-with-img-wrapper">
