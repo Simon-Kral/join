@@ -1331,7 +1331,6 @@ div.selected:hover {
     color: white;
     background-color: #2a3647;
     border-radius: 20px;
-    display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 420;
@@ -1342,6 +1341,21 @@ div.selected:hover {
     img {
         margin-right: 30px;
     }
+}
+
+#contact-added-notification {
+    position: absolute;
+    bottom: 58%;
+    left: 30%;
+    width: 326px;
+    height: 74px;
+    color: white;
+    background-color: #2a3647;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    z-index: 420;
+    display: none;
 }
 
 .notification-display {

@@ -188,6 +188,9 @@ async function saveNewContact() {
     await saveToServer();
     initContacts();
     closeOverlay();
+    document.getElementById("contact-added-notification").classList.add("notification-display");
+    await delay(1500);
+    document.getElementById("contact-added-notification").classList.remove("notification-display");
 }
 
 function buildNewContactArray(name, email, phone, color) {
