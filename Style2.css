@@ -1518,7 +1518,7 @@
 }
 
 
-@media only screen and (max-height: 880px) {
+@media only screen and (max-height: 880px) and (max-width: 700px) {
    
   .register-sign-up-flex {
         bottom: 0px;
@@ -1537,7 +1537,7 @@
     }
 }
 
-@media only screen and (max-height: 680px) {
+@media only screen and (max-height: 680px) and (max-width: 700px) {
    
     .register-sign-up-flex {
           bottom: -60px;
