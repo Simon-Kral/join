@@ -56,7 +56,7 @@ function renderCategory(searchterm) {
     for (let i = 0; i < allcategories.length; i++) {
         const category = allcategories[i];
         if (!category.name) continue;
-        if (!searchterm || name.toLowerCase().includes(searchterm)) dropdown.innerHTML += generateCategoryHtml(category);
+        if (!searchterm || category.name.toLowerCase().includes(searchterm)) dropdown.innerHTML += generateCategoryHtml(category);
     }
 }
 
@@ -110,6 +110,7 @@ function clearAllPrioButtons() {
 }
 
 function selectCategory(id) {
+    debugger;
     const input = document.getElementById("input_with_button_category");
     const selectedcategory = allcategories.find((element) => element.id === id);
     input.value = selectedcategory.name;

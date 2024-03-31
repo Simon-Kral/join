@@ -532,7 +532,7 @@ function fillAddTaskSection() {
 function generateCategoryHtml(category) {
     html = "";
     html += `
-        <div class="drop-down-category-entry pointer" onmousedown="dontChangeFocus(event); selectCategory (${category.id})">
+        <div class="drop-down-category-entry pointer" onmousedown="dontChangeFocus(event); selectCategory(${category.id})">
             <span class="category-name">${category.name}</span>
         </div>
     `;
@@ -542,7 +542,7 @@ function generateCategoryHtml(category) {
 function generateContactDropdownHtml(contact, contactdata) {
     html = "";
     html += `
-        <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectContacts (this, ${contact.id})">
+        <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectContacts(this, ${contact.id})">
             <div class="profile-info-box">
                 <span class="profile-badge" style="background-color: ${contact.color};">${contactdata.abbreviation}</span>
                 <span class="profile-fullname">${contactdata.fullname}</span>
