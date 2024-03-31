@@ -70,10 +70,10 @@ function selectTaskContacts(entry, id, selected) {
     if (selected === true) {
         const index = selectedcontacts.findIndex((element) => element.id === id);
         selectedcontacts.splice(index, 1);
-        entry.setAttribute("onmousedown", `dontChangeFocus(event); selectContacts(this, ${id}, ${!selected})`);
+        entry.setAttribute("onmousedown", `dontChangeFocus(event); selectTaskContacts(this, ${id}, ${!selected})`);
     } else {
         selectedcontacts.push(users[loaduser].contacts.find((element) => element.id === id));
-        entry.setAttribute("onmousedown", `dontChangeFocus(event); selectContacts(this, ${id}, ${!selected})`);
+        entry.setAttribute("onmousedown", `dontChangeFocus(event); selectTaskContacts(this, ${id}, ${!selected})`);
     }
     renderSelectedContacts();
 }
