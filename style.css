@@ -1472,6 +1472,14 @@ div.selected:hover {
             display: none;
         }
     }
+    .create-task-button {
+        height: 56px !important;
+        img {
+            margin-left: 10px !important;
+            height: 12px !important;
+            width: 16px !important;
+        }
+    }
 }
 
 @media(max-width: 1030px) {
