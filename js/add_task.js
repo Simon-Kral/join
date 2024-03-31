@@ -64,7 +64,7 @@ function dontChangeFocus(event) {
     event.preventDefault();
 }
 
-function selectContacts(entry, id, selected) {
+function selectTaskContacts(entry, id, selected) {
     entry.classList.toggle("selected");
     entry.children[1].attributes[0].value === "./assets/img/check_button_unchecked.svg" ? (entry.children[1].src = "./assets/img/check_button_checked.svg") : entry.children[1].attributes[0].value === "./assets/img/check_button_checked.svg" ? (entry.children[1].src = "./assets/img/check_button_unchecked.svg") : "";
     if (selected === true) {
@@ -109,8 +109,7 @@ function clearAllPrioButtons() {
     });
 }
 
-function selectCategory(id) {
-    debugger;
+function selectTaskCategory(id) {
     const input = document.getElementById("input_with_button_category");
     const selectedcategory = allcategories.find((element) => element.id === id);
     input.value = selectedcategory.name;

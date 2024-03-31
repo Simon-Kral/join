@@ -1318,7 +1318,7 @@ div.selected:hover {
         margin: 32px 48px;
     }
     .bottom-section {
-        margin: 0 48px;
+        margin: 32px 48px 0 48px;
     }
 }
 
