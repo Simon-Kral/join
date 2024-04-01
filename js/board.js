@@ -110,8 +110,8 @@ function openTask(i) {
     const choosensubtasks = selectSubtasks(subtaskstodo);
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
-    contactstodo;
-    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml);
+    const selectcontacts = selectContacts(contactstodo);
+    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts);
 }
 
 function renderTodo() {
@@ -137,11 +137,12 @@ function showTodoHtml(getinformationtodo, i) {
 }
 
 function selectContacts(contactstodo) {
+    let contacthtml = "";
     for (let s = 1; s < contactstodo.length; s++) {
-        const contacts = contactstodo[s];
-        const listcontacts = contacts;
-        // console.log(listcontacts, s);
-        return contacts;
+        const contact = contactstodo[s];
+        const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
+        contacthtml = `<span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>`;
+        return contacthtml;
     }
 }
 
@@ -389,21 +390,18 @@ function searchTaskPlace() {
     let inprogressplace = document.getElementById(`in_progress_place`);
     let awaitfeedbackplace = document.getElementById(`await_feedback_place`);
     let doneplace = document.getElementById(`done_place`);
-
     return { todoplace, inprogressplace, awaitfeedbackplace, doneplace };
 }
 
 function getSearchInput() {
     let search = document.getElementById('search_input').value.trim().toLowerCase();
     const searchlength = search.length;
-
     return { search, searchlength };
 }
 
 function searchTitleStart() {
     const { search, searchlength } = getSearchInput();
     const { todoplace, inprogressplace, awaitfeedbackplace, doneplace } = searchTaskPlace();
-
     searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
     searchClear(searchlength);
 }
@@ -543,7 +541,7 @@ function renderResultsDone(resultsdone, doneplace) {
 }
 
 async function deleteSingleTask(i) {
-    users[loaduser]['todo'].splice(i, 1);
+    currentdraggedarray.splice(i, 1);
     boardinit();
     closeCard();
     await saveToServer();
@@ -577,9 +575,9 @@ function selectSubtaskHtml(sublist, selectarray) {
     let html = "";
     for (let i = 0; i < sublist.length; i++) {
         const subtask = sublist[i];
-        const isChecked = subtask.isChecked ? "checked" : "";
+        const isChecked = subtask.isChecked ? "checked" : ""; 
         html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
-        html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
+        html += `<label for="subtask${i}">${subtask}</label></li>`; 
     }
     task = selectarray;
     return html;

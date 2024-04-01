@@ -130,7 +130,7 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
     `;
 }
 
-function fullTaskHtml(choosencategory, title, description, i, priotodo, date, subtaskstodo) {
+function fullTaskHtml(choosencategory, title, description, i, priotodo, date, subtaskstodo, contacts) {
     return `
         <div class="single-task-field" onclick="noCloseContent(event)">
             <div class="place-categorie-cross">
@@ -149,6 +149,9 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
                     <span class="priority-bord">${priotodo}</span>
                 </div>
                 <div class="assigned-to-bord">Assigned To</div>
+                    <div class="place-user">
+                        ${contacts}
+                    </div>
                     <span class="subtasks-bord">Subtasks</span>
                     <div class="subtasks-input-bord">
                         <ul>
