@@ -145,7 +145,7 @@ function showTodoHtml(getinformationtodo, i) {
     const choosenpriority = selectPriority(priotodo);
     const selectedCheckboxCount = countSelectedCheckboxes(subtaskstodo);
     const barupdated = updateProgressBar(subtaskstodo, selectedCheckboxCount);
-    const subtasklenght = subtaskstodo.length;
+    const subtasklenght = subtaskstodo.length - 1;
     const selectcontacts = selectContacts(contactstodo);
     getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght, selectedCheckboxCount);
 }
@@ -177,7 +177,7 @@ function showInProgressHtml(inprogresscollect, i) {
     const choosenpriority = selectPriority(priotodo);
     const selectedCheckboxCount = countSelectedCheckboxes(subtaskstodo);
     const barupdated = updateProgressBar(subtaskstodo, selectedCheckboxCount);
-    const subtasklenght = subtaskstodo.length;
+    const subtasklenght = subtaskstodo.length - 1;
     const selectcontacts = selectContacts(contactstodo);
     getplaceinprogress.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght, selectedCheckboxCount);
 }
@@ -199,7 +199,7 @@ function showAwaitFeedbackHtml(awaitfeedbackcollect, i) {
     const choosenpriority = selectPriority(priotodo);
     const selectedCheckboxCount = countSelectedCheckboxes(subtaskstodo);
     const barupdated = updateProgressBar(subtaskstodo, selectedCheckboxCount);
-    const subtasklenght = subtaskstodo.length;
+    const subtasklenght = subtaskstodo.length - 1;
     const selectcontacts = selectContacts(contactstodo);
     getplaceawaitfeedback.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght, selectedCheckboxCount);
 }
@@ -221,7 +221,7 @@ function showDoneHtml(donecollect, i) {
     const choosenpriority = selectPriority(priotodo);
     const selectedCheckboxCount = countSelectedCheckboxes(subtaskstodo);
     const barupdated = updateProgressBar(subtaskstodo, selectedCheckboxCount);
-    const subtasklenght = subtaskstodo.length;
+    const subtasklenght = subtaskstodo.length - 1;
     const selectcontacts = selectContacts(contactstodo);
     getplacedone.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght, selectedCheckboxCount);
 }
@@ -581,9 +581,9 @@ function selectSubtaskHtml(sublist, selectarray) {
     let html = "";
     for (let i = 0; i < sublist.length; i++) {
         const subtask = sublist[i];
-        const isChecked = subtask.isChecked ? "checked" : ""; 
+        const isChecked = subtask.isChecked ? "checked" : "";
         html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
-        html += `<label for="subtask${i}">${subtask}</label></li>`; 
+        html += `<label for="subtask${i}">${subtask}</label></li>`;
     }
     task = selectarray;
     return html;

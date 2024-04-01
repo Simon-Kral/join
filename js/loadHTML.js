@@ -116,7 +116,7 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
             <span>${description}</span>
             <div class="place-task-progress">
                 <div class="collect-subtask">${subtaskstodo}</div>
-                <p class="subtasktxt">${selectedCheckboxCount}/${subtasklenght}Subtasks</p>
+                <p class="subtasktxt">${selectedCheckboxCount - 1}/${subtasklenght}Subtasks</p>
             </div>
             <div class="place-user-status">
                 <div class="place-user">
@@ -197,20 +197,6 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
                                         id="add_task_description_textarea">${descriptiontodo}</textarea>
                                 </div>
                             </div>
-                            <div id="add_task_assigned_to">
-                                <h3>Assigned to</h3>
-                                <div class="input-with-button-wrapper">
-                                    <input class="styled-input focus-blue" placeholder="Select contacts to assign" type="text"
-                                        id="input_with_button_assigned_to"
-                                        onfocusin="openDropDownMenu('drop_down_assigned_to', 'in')"
-                                        onfocusout="openDropDownMenu('drop_down_assigned_to', 'out')" oninput="setFilter(this)">
-                                    <a onclick="setFocusOnElement('input_with_button_assigned_to', event)">
-                                        <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
-                                    </a>
-                                </div>
-                                <div class="drop-down dnone custom-scrollbar" id="drop_down_assigned_to"></div>
-                                <div id="selected_contacts"></div>
-                            </div>
                         </section>
                         <section class="input-box">
                             <div id="add_task_due_date">
@@ -247,12 +233,26 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
                                     </label>
                                 </div>
                             </div>
+                            <div id="add_task_assigned_to">
+                                <h3>Assigned to</h3>
+                                <div class="input-with-button-wrapper">
+                                    <input class="styled-input focus-blue" placeholder="Select contacts to assign" type="text"
+                                        id="input_with_button_assigned_to"
+                                        onfocusin="openDropDownMenu('drop_down_assigned_to', 'in')"
+                                        onfocusout="openDropDownMenu('drop_down_assigned_to', 'out')" oninput="setFilter(this)">
+                                    <a onclick="setFocusOnElement('input_with_button_assigned_to', event)">
+                                        <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
+                                    </a>
+                                    </div>
+                                    <div class="drop-down dnone custom-scrollbar" id="drop_down_assigned_to"></div>
+                                <div id="selected_contacts"></div>
+                            </div>
                             <div id="add_task_subtask">
                                 <h3>Subtask</h3>
                                 <div class="input-with-button-wrapper">
                                     <input class="styled-input focus-blue" placeholder="Add new subtask" type="text"
                                         id="input_with_button_subtask" onfocusin="changeSubtaskIcons('in')"
-                                        onfocusout="changeSubtaskIcons('out')"  maxlength="35">
+                                        onfocusout="changeSubtaskIcons('out')" maxlength="35">
                                     <a id="add_subtask_button" onclick="setFocusOnElement('subtask')">
                                         <img src="./assets/img/add.png" alt="add">
                                     </a>
