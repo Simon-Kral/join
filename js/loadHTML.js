@@ -70,7 +70,7 @@ function nothingFound() {
     `;
 }
 
-function todoTaskHtml(title, description, priority, i) {
+function todoTaskHtml() {
     return `
         <p class="user-story">User Story</p>
     `;
@@ -106,35 +106,6 @@ function createProgressBar(percent) {
             <div class="progressbar" id="progressbar" style ="width: ${percent}%"</div>
         </div>
     `;
-}
-
-let selectedCheckboxes = [];
-let selectedSubtasks = [];
-let task;
-
-function updateSelectedCheckboxes(index, isChecked) {
-    selectedCheckboxes[index] = isChecked;
-    console.log(isChecked);
-    console.log(selectedSubtasks[index]);
-    task["subtasks"][index]["isChecked"] = isChecked;
-}
-
-function countSelectedCheckboxes() {
-    return selectedCheckboxes.filter((checkbox) => checkbox).length;
-}
-
-function selectSubtaskHtml(sublist, selectarray) {
-    let html = "";
-    for (let i = 0; i < sublist.length; i++) {
-        const subtask = sublist[i];
-        const isChecked = subtask.isChecked ? "checked" : "";
-        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
-        html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
-        selectedCheckboxes.push(false); 
-        selectedSubtasks.push(subtask);
-    }
-    task = selectarray;
-    return html;
 }
 
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priority, subtasklenght, selectedCheckboxCount) {
