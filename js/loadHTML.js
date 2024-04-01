@@ -508,7 +508,7 @@ function fillAddTaskSection() {
                             <span>Clear</span>
                             <img src="./assets/img/cross.svg" alt="clear Form">
                         </button>
-                        <button class="blue-button">
+                        <button class="blue-button create-task-button">
                             <span>Create Task</span>
                             <img src="./assets/img/check.png" alt="create task">
                         </button>
