@@ -2,6 +2,8 @@ let checksubtasks = [];
 let searchresults = [];
 let currenttask = 0;
 let currentdragged;
+let currentdraggedarray;
+
 
 function boardinit() {
     renderTodo();
@@ -48,6 +50,7 @@ function showEmptyHtmlDone() {
 
 function closeCard() {
     document.getElementById('fullscreen_information').classList.add('d-none');
+    boardinit();
 }
 
 function bordAddNewTask() {
@@ -126,9 +129,9 @@ function showTodoHtml(getinformationtodo, i) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(getinformationtodo);
     const choosencategory = selectCategory(categorytodo);
     const choosenpriority = selectPriority(priotodo);
-    const barupdated = updateProgressBar(subtaskstodo);
-    const subtasklenght = subtaskstodo.length;
     const selectedCheckboxCount = countSelectedCheckboxes();
+    const barupdated = updateProgressBar(subtaskstodo, selectedCheckboxCount);
+    const subtasklenght = subtaskstodo.length;
     const selectcontacts = selectContacts(contactstodo);
     getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght, selectedCheckboxCount);
 }
@@ -223,8 +226,8 @@ function selectCategory(category) {
     }
 }
 
-function updateProgressBar(subtasks) {
-    let percent = currenttask / subtasks.length;
+function updateProgressBar(subtasks, selectedCheckboxCount) {
+    let percent = selectedCheckboxCount / subtasks.length;
     percent = Math.round(percent * 100);
 
     if (subtasks <= 0) {
@@ -320,7 +323,7 @@ async function dropTodo(ev) {
     select['todo'].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
-    await setItem('users', JSON.stringify(users));
+    await saveToServer();
 }
 
 async function dropInProgress(ev) {
@@ -329,7 +332,7 @@ async function dropInProgress(ev) {
     select['tasksinprogress'].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
-    await setItem('users', JSON.stringify(users));
+    await saveToServer();
 }
 
 async function dropAwaitFeedBack(ev) {
@@ -338,7 +341,7 @@ async function dropAwaitFeedBack(ev) {
     select['awaitingfeedback'].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
-    await setItem('users', JSON.stringify(users));
+    await saveToServer();
 }
 
 async function dropDone(ev) {
@@ -347,7 +350,7 @@ async function dropDone(ev) {
     select['done'].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
-    await setItem('users', JSON.stringify(users));
+    await saveToServer();
 }
 
 function setTodoArray() {
@@ -537,5 +540,13 @@ async function deleteSingleTask(i) {
     users[loaduser]['todo'].splice(i, 1);
     boardinit();
     closeCard();
-    await setItem('users', JSON.stringify(users));
+    await saveToServer();
+}
+
+async function saveToServer() {
+    if (sessionStorage.getItem("Guest") === null) {
+        await setItem("users", JSON.stringify(users));
+    } else {
+        sessionStorage.setItem("Guest", JSON.stringify(users));
+    }
 }

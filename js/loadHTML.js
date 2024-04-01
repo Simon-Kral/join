@@ -110,18 +110,13 @@ function createProgressBar(percent) {
 
 let selectedCheckboxes = [];
 let selectedSubtasks = [];
-let task = [];
+let task;
 
 function updateSelectedCheckboxes(index, isChecked) {
     selectedCheckboxes[index] = isChecked;
     console.log(isChecked);
     console.log(selectedSubtasks[index]);
-    console.log(currentdraggedarray);
-    console.log(users[loaduser]["todo"][3]["subtasks"][1]);
-    let ult = users[loaduser]["todo"];
-    let nsn = ult[3]["subtasks"];
-    let icic = nsn[2]["ischecked"];
-    console.log(icic);
+    task["subtasks"][index]["isChecked"] = isChecked;
 }
 
 function countSelectedCheckboxes() {
@@ -135,10 +130,10 @@ function selectSubtaskHtml(sublist, selectarray) {
         const isChecked = subtask.isChecked ? "checked" : "";
         html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
         html += `<label for="subtask${i}">${sublist[i]}</label></li>`;
-        selectedCheckboxes.push(false); // Initialisierung der Checkbox-Status im Array
+        selectedCheckboxes.push(false); 
         selectedSubtasks.push(subtask);
     }
-    task.push(selectarray);
+    task = selectarray;
     return html;
 }
 
