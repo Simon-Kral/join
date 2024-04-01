@@ -114,6 +114,20 @@ function openTask(i) {
     getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts);
 }
 
+function editSingleTask(i) {
+    let getplacetaskvariantbord = document.getElementById('add_bordtask_data');
+    const selectarray = currentdraggedarray[i];
+    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
+    categorytodo;
+    const choosensubtasks = selectSubtasks(subtaskstodo);
+    const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
+    const choosenpriority = selectPriority(priotodo);
+    const selectcontacts = selectContacts(contactstodo);
+    getplacetaskvariantbord.innerHTML = ``;
+    getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts);
+    initAddTask();
+}
+
 function renderTodo() {
     let getplacetodo = document.getElementById('to_do_place');
     getplacetodo.innerHTML = ``;
@@ -268,14 +282,6 @@ function showTaskCategoryBig(category) {
     } else {
         getplacebordcategory.innerHTML = userTask;
     }
-}
-
-function editSingleTask() {
-    const edithtml = editTaskHtml();
-    let getplacetaskvariantbord = document.getElementById('add_bordtask_data');
-    getplacetaskvariantbord.innerHTML = ``;
-    getplacetaskvariantbord.innerHTML = edithtml;
-    initAddTask();
 }
 
 function allowDrop(ev) {

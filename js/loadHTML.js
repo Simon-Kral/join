@@ -165,7 +165,7 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
                         <span>Delete</span>
                     </div>
                     <div class="one-px-line"></div>
-                <div onclick="editSingleTask()" class="edit-place">
+                <div onclick="editSingleTask(${i})" class="edit-place">
                     <img class="edit" src="./assets/img/edit.png">
                     <span>Edit</span>
                 </div>
@@ -174,7 +174,7 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
       `;
 }
 
-function editTaskHtml() {
+function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts) {
     return `
         <div class="single-task-field" onclick="noCloseContent(event)">
             <main class="edit-task">
@@ -187,14 +187,14 @@ function editTaskHtml() {
                                     <h3 style="color: #FF8190;">*</h3>
                                 </div>
                                 <input class="styled-input focus-blue" placeholder="Enter a title" required type="text"
-                                    id="add_task_title_input" maxlength="35">
+                                    id="add_task_title_input" maxlength="35" value="${titletodo}">
                             </div>
                             <span class="required-field dnone">This field is required</span>
                             <div id="add_task_description">
                                 <h3>Description</h3>
                                 <div class="textarea-wrapper">
                                     <textarea class="focus-blue" placeholder="Enter a Description" name="add_task_description"
-                                        id="add_task_description_textarea"></textarea>
+                                        id="add_task_description_textarea">${descriptiontodo}</textarea>
                                 </div>
                             </div>
                             <div id="add_task_assigned_to">
@@ -220,7 +220,7 @@ function editTaskHtml() {
                                 </div>
                                 <div class="input-with-button-wrapper">
                                     <input id="input_with_button_date" class="styled-input focus-blue" placeholder="dd/mm/yyyy"
-                                        type="text" required pattern="([0-9]{2}\/[0-9]{2}\/[0-9]{4})">
+                                        type="text" required pattern="([0-9]{2}\/[0-9]{2}\/[0-9]{4})" value="${datetodo}">
                                     <input id="input_calendar" class="calendar-input" type="date" value=""
                                         onchange="transferDate()" min='1899-01-01'>
                                 </div>
@@ -246,23 +246,6 @@ function editTaskHtml() {
                                         <img src="./assets/img/low.svg" alt="low">
                                     </label>
                                 </div>
-                            </div>
-                            <div id="add_task_category">
-                                <div class="required-header">
-                                    <h3>Category</h3>
-                                    <h3 style="color: #FF8190;">*</h3>
-                                </div>
-                                <div class="input-with-button-wrapper">
-                                    <input class="styled-input focus-blue" placeholder="Select task category" required
-                                        type="text" id="input_with_button_category"
-                                        onfocusin="openDropDownMenu('drop_down_category', 'in')"
-                                        onfocusout="openDropDownMenu('drop_down_category', 'out')"  oninput="setFilter(this)">
-                                    <a onclick="setFocusOnElement('input_with_button_category', event)">
-                                        <img id="drop_down_category_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
-                                    </a>
-                                </div>
-                                <span class="required-field dnone">This field is required</span>
-                                <div class="drop-down dnone" id="drop_down_category"></div>
                             </div>
                             <div id="add_task_subtask">
                                 <h3>Subtask</h3>
