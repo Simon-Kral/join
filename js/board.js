@@ -61,30 +61,6 @@ function bordAddNewTask() {
     fillAddTaskSection();
 }
 
-function todoNewTask() {
-    const todocard = bordAddTaskFieldHtml();
-    let getplacecard = document.getElementById('add_bordtask_data');
-    document.getElementById('fullscreen_information').classList.remove('d-none');
-    getplacecard.innerHTML = todocard;
-    fillAddTaskSection();
-}
-
-function inprogressNewTask() {
-    const inprogresscard = bordAddTaskFieldHtml();
-    let getplacecard = document.getElementById('add_bordtask_data');
-    document.getElementById('fullscreen_information').classList.remove('d-none');
-    getplacecard.innerHTML = inprogresscard;
-    fillAddTaskSection();
-}
-
-function awaitfeedbackNewTask() {
-    const awaitfeedbackcard = bordAddTaskFieldHtml();
-    let getplacecard = document.getElementById('add_bordtask_data');
-    document.getElementById('fullscreen_information').classList.remove('d-none');
-    getplacecard.innerHTML = awaitfeedbackcard;
-    fillAddTaskSection();
-}
-
 function openBordTask(id, element) {
     if (element.parentElement && element.parentElement.id === 'to_do_place') {
         dragTodo(id);

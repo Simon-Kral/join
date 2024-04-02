@@ -149,7 +149,7 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
                     <span class="priority-bord">${priotodo}</span>
                 </div>
                 <div class="assigned-to-bord">Assigned To</div>
-                    <div class="place-user">
+                    <div class="place-user-single-card">
                         ${contacts}
                     </div>
                     <span class="subtasks-bord">Subtasks</span>

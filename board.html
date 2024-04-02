@@ -46,15 +46,15 @@
     <section class="board-head-task">
         <div class="single-task-head">
             <p>To do</p>
-            <button onclick="todoNewTask()" class="style-task-button">+</button>
+            <button onclick="bordAddNewTask()" class="style-task-button">+</button>
         </div>
-        <div class="single-task-head">
+        <div id="in_progress_head" class="single-task-head">
             <p>In progress</p>
-            <button onclick="showInProgressHtml(), inprogressNewTask()" class="style-task-button">+</button>
+            <button onclick="bordAddNewTask()" class="style-task-button">+</button>
         </div>
-        <div class="single-task-head">
+        <div id="await_feedback_head" class="single-task-head">
             <p>Await feedback</p>
-            <button onclick="showAwaitFeedbackHtml(), awaitfeedbackNewTask()" class="style-task-button">+</button>
+            <button onclick="bordAddNewTask()" class="style-task-button">+</button>
         </div>
         <div class="single-task-head">
             <p>Done</p>

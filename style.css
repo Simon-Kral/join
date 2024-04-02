@@ -317,6 +317,10 @@ p.subtasktxt {
     width: 100%;
 }
 
+.place-user-single-card {
+    display: flex;
+    margin-right: -0px;
+}
 
 /* single-task-style-start */
 
