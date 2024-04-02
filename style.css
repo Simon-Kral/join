@@ -302,6 +302,14 @@ p.subtasktxt {
     display: flex;
 }
 
+.place-user {
+    display: flex;
+}
+
+.place-user .profile-badge {
+    margin-right: -18px;
+}
+
 .place-user-status {
     display: flex;
     justify-content: space-between;

@@ -232,13 +232,13 @@ function selectCategory(category) {
 }
 
 function selectContacts(contactstodo) {
-    let contacthtml = {};
+    let contacthtml = "";
     for (let s = 1; s < contactstodo.length; s++) {
         const contact = contactstodo[s];
         const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
-        contacthtml = `<span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>`;
-        return contacthtml;
+        contacthtml += `<span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>`;
     }
+    return contacthtml;
 }
 
 function selectPriority(priority) {
@@ -255,14 +255,8 @@ function selectPriority(priority) {
 }
 
 function showTaskCategoryBig(category) {
-    const technicalTask = technicalTaskHtml();
-    const userTask = userTaskHtml();
-    let getplacebordcategory = document.getElementById('task_variant_bord');
-    if (category == "Technical Task") {
-        getplacebordcategory.innerHTML = technicalTask;
-    } else {
-        getplacebordcategory.innerHTML = userTask;
-    }
+    const html = category === "Technical Task" ? technicalTaskHtml() : userTaskHtml();
+    document.getElementById('task_variant_bord').innerHTML = html;
 }
 
 function allowDrop(ev) {
