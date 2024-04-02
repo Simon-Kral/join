@@ -150,16 +150,6 @@ function showTodoHtml(getinformationtodo, i) {
     getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklenght, selectedCheckboxCount);
 }
 
-function selectContacts(contactstodo) {
-    let contacthtml = {};
-    for (let s = 1; s < contactstodo.length; s++) {
-        const contact = contactstodo[s];
-        const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
-        contacthtml = `<span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>`;
-        return contacthtml;
-    }
-}
-
 function renderInProgress() {
     let getplacetodo = document.getElementById('in_progress_place');
     getplacetodo.innerHTML = ``;
@@ -238,29 +228,26 @@ function informationTodo(getinformationtodo) {
 }
 
 function selectCategory(category) {
-    if (category == "Technical Task") {
-        let technicaltask = technicalTaskHtml();
-        return technicaltask;
-    } else {
-        let userstory = userTaskHtml();
-        return userstory;
-    }
+    return category == "Technical Task" ? technicalTaskHtml() : userTaskHtml();
 }
 
-function updateProgressBar(subtasks, selectedCheckboxCount) {
-    let percent = selectedCheckboxCount / subtasks.length;
-    if (selectedCheckboxCount === 1) {
-        percent == 0;
-    } else {
-        percent = Math.round(percent * 100);
-    }
+// function selectCategory(category) {
+//     if (category == "Technical Task") {
+//         let technicaltask = technicalTaskHtml();
+//         return technicaltask;
+//     } else {
+//         let userstory = userTaskHtml();
+//         return userstory;
+//     }
+// }
 
-    if (subtasks <= 0) {
-        let emptyplace = emptyPlaceHtml();
-        return emptyplace;
-    } else {
-        let progressbar = createProgressBar(percent);
-        return progressbar;
+function selectContacts(contactstodo) {
+    let contacthtml = {};
+    for (let s = 1; s < contactstodo.length; s++) {
+        const contact = contactstodo[s];
+        const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
+        contacthtml = `<span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>`;
+        return contacthtml;
     }
 }
 
@@ -301,6 +288,23 @@ function drag(id, element) {
         dragAwaitFeedback(id);
     } if (element.parentElement && element.parentElement.id === 'done_place') {
         dragDone(id);
+    }
+}
+
+function updateProgressBar(subtasks, selectedCheckboxCount) {
+    let percent = selectedCheckboxCount / subtasks.length;
+    if (selectedCheckboxCount === 1) {
+        percent = 0;
+    } else {
+        percent = Math.round(percent * 100);
+    }
+
+    if (subtasks <= 0) {
+        let emptyplace = emptyPlaceHtml();
+        return emptyplace;
+    } else {
+        let progressbar = createProgressBar(percent);
+        return progressbar;
     }
 }
 
