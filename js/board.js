@@ -231,16 +231,6 @@ function selectCategory(category) {
     return category == "Technical Task" ? technicalTaskHtml() : userTaskHtml();
 }
 
-// function selectCategory(category) {
-//     if (category == "Technical Task") {
-//         let technicaltask = technicalTaskHtml();
-//         return technicaltask;
-//     } else {
-//         let userstory = userTaskHtml();
-//         return userstory;
-//     }
-// }
-
 function selectContacts(contactstodo) {
     let contacthtml = {};
     for (let s = 1; s < contactstodo.length; s++) {
@@ -292,20 +282,8 @@ function drag(id, element) {
 }
 
 function updateProgressBar(subtasks, selectedCheckboxCount) {
-    let percent = selectedCheckboxCount / subtasks.length;
-    if (selectedCheckboxCount === 1) {
-        percent = 0;
-    } else {
-        percent = Math.round(percent * 100);
-    }
-
-    if (subtasks <= 0) {
-        let emptyplace = emptyPlaceHtml();
-        return emptyplace;
-    } else {
-        let progressbar = createProgressBar(percent);
-        return progressbar;
-    }
+    let percent = selectedCheckboxCount === 1 ? 0 : Math.round(selectedCheckboxCount / subtasks.length * 100);
+    return subtasks <= 0 ? emptyPlaceHtml() : createProgressBar(percent);
 }
 
 function selectSubtasks(subtaskstodo) {
@@ -316,6 +294,34 @@ function selectSubtasks(subtaskstodo) {
         iteratedList.push(list);
     }
     return iteratedList;
+}
+
+async function updateSelectedCheckboxes(index, isChecked) {
+    task["subtasks"][index]["isChecked"] = isChecked;
+    await saveToServer();
+}
+
+function countSelectedCheckboxes(subtaskstodo) {
+    let count = 1;
+    for (let checkindex = 0; checkindex < subtaskstodo.length; checkindex++) {
+        const check = subtaskstodo[checkindex]["isChecked"];
+        if (check === true) {
+            count++;
+        }
+    }
+    return count;
+}
+
+function selectSubtaskHtml(sublist, selectarray) {
+    let html = "";
+    for (let i = 0; i < sublist.length; i++) {
+        const subtask = sublist[i];
+        const isChecked = subtask.isChecked ? "checked" : "";
+        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
+        html += `<label for="subtask${i}">${subtask}</label></li>`;
+    }
+    task = selectarray;
+    return html;
 }
 
 function dragTodo(id) {
@@ -336,6 +342,27 @@ function dragAwaitFeedback(id) {
 function dragDone(id) {
     currentdragged = id;
     currentdraggedarray = setDoneForm();
+}
+
+function setTodoArray() {
+    let selecttodo = users[loaduser]['todo'];
+    checkboxtodo = selecttodo;
+    return selecttodo;
+}
+
+function setInProgressArray() {
+    let selectinprogress = users[loaduser]['tasksinprogress'];
+    return selectinprogress;
+}
+
+function setAwaitFeedbackArray() {
+    let selectafeedback = users[loaduser]['awaitingfeedback'];
+    return selectafeedback;
+}
+
+function setDoneForm() {
+    let selectdone = users[loaduser]['done'];
+    return selectdone;
 }
 
 async function dropTodo(ev) {
@@ -374,183 +401,78 @@ async function dropDone(ev) {
     await saveToServer();
 }
 
-function setTodoArray() {
-    let selecttodo = users[loaduser]['todo'];
-    checkboxtodo = selecttodo;
-    return selecttodo;
-}
-
-function setInProgressArray() {
-    let selectinprogress = users[loaduser]['tasksinprogress'];
-    return selectinprogress;
-}
-
-function setAwaitFeedbackArray() {
-    let selectafeedback = users[loaduser]['awaitingfeedback'];
-    return selectafeedback;
-}
-
-function setDoneForm() {
-    let selectdone = users[loaduser]['done'];
-    return selectdone;
-}
-
 function noCloseContent(event) {
     event.stopPropagation();
 }
 
 function searchTaskPlace() {
-    let todoplace = document.getElementById(`to_do_place`);
-    let inprogressplace = document.getElementById(`in_progress_place`);
-    let awaitfeedbackplace = document.getElementById(`await_feedback_place`);
-    let doneplace = document.getElementById(`done_place`);
-    return { todoplace, inprogressplace, awaitfeedbackplace, doneplace };
+    return {
+        todoplace: document.getElementById(`to_do_place`),
+        inprogressplace: document.getElementById(`in_progress_place`),
+        awaitfeedbackplace: document.getElementById(`await_feedback_place`),
+        doneplace: document.getElementById(`done_place`)
+    };
 }
 
 function getSearchInput() {
-    let search = document.getElementById('search_input').value.trim().toLowerCase();
-    const searchlength = search.length;
-    return { search, searchlength };
+    const search = document.getElementById('search_input').value.trim().toLowerCase();
+    return { search, searchlength: search.length };
 }
 
 function searchTitleStart() {
     const { search, searchlength } = getSearchInput();
     const { todoplace, inprogressplace, awaitfeedbackplace, doneplace } = searchTaskPlace();
-    searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
-    searchClear(searchlength);
-}
-
-function filterResults(search) {
-    const resultstodo = filterTodo(search);
-    const resultsinprogress = filterInProgress(search);
-    const resultsawaitfeedback = filterAwaitFeedback(search);
-    const resultsdone = filterDone(search);
-    return { resultstodo, resultsinprogress, resultsawaitfeedback, resultsdone };
-}
-
-function renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbackplace, doneplace) {
-    renderResultsTodo(filteredResults.resultstodo, todoplace);
-    renderResultsInProgress(filteredResults.resultsinprogress, inprogressplace);
-    renderResultsAwaitFeedback(filteredResults.resultsawaitfeedback, awaitfeedbackplace);
-    renderResultsDone(filteredResults.resultsdone, doneplace);
-}
-
-function searchStart(searchlength, search, todoplace, inprogressplace, awaitfeedbackplace, doneplace) {
     if (searchlength >= 1) {
         const filteredResults = filterResults(search);
         renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
-    }
-}
-
-function searchClear(searchlength) {
-    if (searchlength <= 0) {
+    } else {
         boardinit();
     }
 }
 
-function filterTodo(search) {
-    let todoarray = setTodoArray();
-    let results = [];
-
-    for (let t = 0; t < todoarray.length; t++) {
-        let searchcollector = todoarray[t];
-        const name = searchcollector['title'];
-        if (name.toLowerCase().includes(search)) {
-            results.push(searchcollector);
-        }
-    }
-    return results;
+function filterResults(search) {
+    return {
+        resultstodo: filterArray(setTodoArray(), search),
+        resultsinprogress: filterArray(setInProgressArray(), search),
+        resultsawaitfeedback: filterArray(setAwaitFeedbackArray(), search),
+        resultsdone: filterArray(setDoneForm(), search)
+    };
 }
 
-function renderResultsTodo(resultstodo, todoplace) {
-    todoplace.innerHTML = ``;
-    if (resultstodo <= 0) {
-        todoplace.innerHTML = nothingFound();
+function filterArray(array, search) {
+    return array.filter(item => item.title.toLowerCase().includes(search));
+}
+
+function renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbackplace, doneplace) {
+    renderResultsCategory(filteredResults.resultstodo, todoplace);
+    renderResultsCategory(filteredResults.resultsinprogress, inprogressplace);
+    renderResultsCategory(filteredResults.resultsawaitfeedback, awaitfeedbackplace);
+    renderResultsCategory(filteredResults.resultsdone, doneplace);
+}
+
+function renderResultsCategory(results, place) {
+    place.innerHTML = '';
+    if (results.length <= 0) {
+        place.innerHTML = nothingFound();
     } else {
-        for (let i = 0; i < resultstodo.length; i++) {
-            todocollect = resultstodo[i];
-            showTodoHtml(todocollect, i);
-        }
+        results.forEach((item, index) => showHtml(item, place, index));
     }
 }
 
-function filterInProgress(search) {
-    let inprogressarray = setInProgressArray();
-    let results = [];
-
-    for (let index = 0; index < inprogressarray.length; index++) {
-        let searchcollector = inprogressarray[index];
-        const name = searchcollector['title'];
-        if (name.toLowerCase().includes(search)) {
-            results.push(searchcollector);
-        }
-    }
-    return results;
-}
-
-
-function renderResultsInProgress(resultsinprogress, inprogressplace) {
-    inprogressplace.innerHTML = ``;
-    if (resultsinprogress <= 0) {
-        inprogressplace.innerHTML = nothingFound();
-    } else {
-        for (let i = 0; i < resultsinprogress.length; i++) {
-            todocollect = resultsinprogress[i];
-            showInProgressHtml(todocollect, i);
-        }
-    }
-}
-
-function filterAwaitFeedback(search) {
-    let afeedbackarray = setAwaitFeedbackArray();
-    let results = [];
-
-    for (let index = 0; index < afeedbackarray.length; index++) {
-        let searchcollector = afeedbackarray[index];
-        const name = searchcollector['title'];
-        if (name.toLowerCase().includes(search)) {
-            results.push(searchcollector);
-        }
-    }
-    return results;
-}
-
-
-function renderResultsAwaitFeedback(resultsawaitfeedback, awaitfeedbackplace) {
-    awaitfeedbackplace.innerHTML = ``;
-    if (resultsawaitfeedback <= 0) {
-        awaitfeedbackplace.innerHTML = nothingFound();
-    } else {
-        for (let i = 0; i < resultsawaitfeedback.length; i++) {
-            todocollect = resultsawaitfeedback[i];
-            showAwaitFeedbackHtml(todocollect, i);
-        }
-    }
-}
-
-function filterDone(search) {
-    let donearray = setDoneForm();
-    let results = [];
-
-    for (let index = 0; index < donearray.length; index++) {
-        let searchcollector = donearray[index];
-        const name = searchcollector['title'];
-        if (name.toLowerCase().includes(search)) {
-            results.push(searchcollector);
-        }
-    }
-    return results;
-}
-
-function renderResultsDone(resultsdone, doneplace) {
-    doneplace.innerHTML = ``;
-    if (resultsdone <= 0) {
-        doneplace.innerHTML = nothingFound();
-    } else {
-        for (let i = 0; i < resultsdone.length; i++) {
-            todocollect = resultsdone[i];
-            showDoneHtml(todocollect, i);
-        }
+function showHtml(item, place, index) {
+    switch (place.id) {
+        case 'to_do_place':
+            showTodoHtml(item, index);
+            break;
+        case 'in_progress_place':
+            showInProgressHtml(item, index);
+            break;
+        case 'await_feedback_place':
+            showAwaitFeedbackHtml(item, index);
+            break;
+        case 'done_place':
+            showDoneHtml(item, index);
+            break;
     }
 }
 
@@ -567,32 +489,4 @@ async function saveToServer() {
     } else {
         sessionStorage.setItem("Guest", JSON.stringify(users));
     }
-}
-
-async function updateSelectedCheckboxes(index, isChecked) {
-    task["subtasks"][index]["isChecked"] = isChecked;
-    await saveToServer();
-}
-
-function countSelectedCheckboxes(subtaskstodo) {
-    let count = 1;
-    for (let checkindex = 0; checkindex < subtaskstodo.length; checkindex++) {
-        const check = subtaskstodo[checkindex]["isChecked"];
-        if (check === true) {
-            count++;
-        }
-    }
-    return count;
-}
-
-function selectSubtaskHtml(sublist, selectarray) {
-    let html = "";
-    for (let i = 0; i < sublist.length; i++) {
-        const subtask = sublist[i];
-        const isChecked = subtask.isChecked ? "checked" : "";
-        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
-        html += `<label for="subtask${i}">${subtask}</label></li>`;
-    }
-    task = selectarray;
-    return html;
 }
