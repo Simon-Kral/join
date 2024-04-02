@@ -151,7 +151,7 @@ function showTodoHtml(getinformationtodo, i) {
 }
 
 function selectContacts(contactstodo) {
-    let contacthtml = "";
+    let contacthtml = {};
     for (let s = 1; s < contactstodo.length; s++) {
         const contact = contactstodo[s];
         const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
@@ -249,7 +249,11 @@ function selectCategory(category) {
 
 function updateProgressBar(subtasks, selectedCheckboxCount) {
     let percent = selectedCheckboxCount / subtasks.length;
-    percent = Math.round(percent * 100);
+    if (selectedCheckboxCount === 1) {
+        percent == 0;
+    } else {
+        percent = Math.round(percent * 100);
+    }
 
     if (subtasks <= 0) {
         let emptyplace = emptyPlaceHtml();
