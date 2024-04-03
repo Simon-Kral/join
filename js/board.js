@@ -4,7 +4,7 @@ let currentdragged;
 let currentdraggedarray;
 let task;
 
-function boardinit() { renderTodo(); renderInProgress(); renderAwaitFeedback(); renderDone(); showEmptyHtmlTodo(); showEmptyHtmlInprogress(); showEmptyHtmlAwaitfeedback(); 
+function boardinit() { renderTasks(); showEmptyHtmlTodo(); showEmptyHtmlInprogress(); showEmptyHtmlAwaitfeedback(); 
             showEmptyHtmlDone(); emptyBoxHtmlTodo(); emptyBoxHtmlInprogress(); emptyBoxHtmlAwaitfeedback(); emptyBoxHtmlDone();
 }
 
@@ -108,83 +108,34 @@ function editSingleTask(i) {
     initAddTask(i, priotodo);
 }
 
-function renderTodo() {
-    let getplacetodo = document.getElementById("to_do_place");
-    getplacetodo.innerHTML = ``;
-    let todo = users[loaduser]["todo"];
-    for (let i = 0; i < todo.length; i++) {
-        todocollect = todo[i];
-        showTodoHtml(todocollect, i);
-    }
+function renderTasks() {
+    const taskSections = ["to_do_place", "in_progress_place", "await_feedback_place", "done_place"];
+    
+    taskSections.forEach(sectionId => {
+        let sectionElement = document.getElementById(sectionId);
+        sectionElement.innerHTML = ``;
+        
+        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] :
+                    sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] :
+                    sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] :
+                    sectionId === "done_place" ? users[loaduser]["done"] : [];
+
+        tasks.forEach((task, index) => {
+            showTaskHtml(task, index, sectionId);
+        });
+    });
 }
 
-function showTodoHtml(getinformationtodo, i) {
-    let getplacetodo = document.getElementById("to_do_place");
-    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(getinformationtodo);
+function showTaskHtml(task, index, sectionId) {
+    let sectionElement = document.getElementById(sectionId);
+    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(task);
     const { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, subtasklength, selectcontacts } = informationsFactory(categorytodo, priotodo, subtaskstodo, contactstodo);
-    getplacetodo.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklength, selectedCheckboxCount);
+    sectionElement.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, index, barupdated, selectcontacts, choosenpriority, subtasklength, selectedCheckboxCount);
 }
 
-function renderInProgress() {
-    let getplacetodo = document.getElementById("in_progress_place");
-    getplacetodo.innerHTML = ``;
-    let inprogress = users[loaduser]["tasksinprogress"];
-    for (let i = 0; i < inprogress.length; i++) {
-        inprogresscollect = inprogress[i];
-        showInProgressHtml(inprogresscollect, i);
-    }
-}
-
-function showInProgressHtml(inprogresscollect, i) {
-    let getplaceinprogress = document.getElementById("in_progress_place");
-    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(inprogresscollect);
-    const { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, subtasklength, selectcontacts } = informationsFactory(categorytodo, priotodo, subtaskstodo, contactstodo);
-    getplaceinprogress.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklength, selectedCheckboxCount);
-}
-
-function renderAwaitFeedback() {
-    let getplacetodo = document.getElementById("await_feedback_place");
-    getplacetodo.innerHTML = ``;
-    let awaitfeedback = users[loaduser]["awaitingfeedback"];
-    for (let i = 0; i < awaitfeedback.length; i++) {
-        awaitfeedbackcollect = awaitfeedback[i];
-        showAwaitFeedbackHtml(awaitfeedbackcollect, i);
-    }
-}
-
-function showAwaitFeedbackHtml(awaitfeedbackcollect, i) {
-    let getplaceawaitfeedback = document.getElementById("await_feedback_place");
-    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(awaitfeedbackcollect);
-    const { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, subtasklength, selectcontacts } = informationsFactory(categorytodo, priotodo, subtaskstodo, contactstodo);
-    getplaceawaitfeedback.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklength, selectedCheckboxCount);
-}
-
-function renderDone() {
-    let getplacetodo = document.getElementById("done_place");
-    getplacetodo.innerHTML = ``;
-    let done = users[loaduser]["done"];
-    for (let i = 0; i < done.length; i++) {
-        donecollect = done[i];
-        showDoneHtml(donecollect, i);
-    }
-}
-
-function showDoneHtml(donecollect, i) {
-    let getplacedone = document.getElementById("done_place");
-    const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(donecollect);
-    const { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, subtasklength, selectcontacts } = informationsFactory(categorytodo, priotodo, subtaskstodo, contactstodo);
-    getplacedone.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, i, barupdated, selectcontacts, choosenpriority, subtasklength, selectedCheckboxCount);
-}
-
-function informationTodo(getinformationtodo) {
-    let categorytodo = getinformationtodo["category"];
-    let titletodo = getinformationtodo["title"];
-    let descriptiontodo = getinformationtodo["description"];
-    let subtaskstodo = getinformationtodo["subtasks"];
-    let contactstodo = getinformationtodo["contacts"];
-    let priotodo = getinformationtodo["prio"];
-    let datetodo = getinformationtodo["date"];
-    return { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo };
+function informationTodo(task) {
+    let { category, title, description, subtasks, contacts, prio, date } = task;
+    return { categorytodo: category, titletodo: title, descriptiontodo: description, subtaskstodo: subtasks, contactstodo: contacts, priotodo: prio, datetodo: date };
 }
 
 function informationsFactory(category, priority, subtasks, contacts) {
@@ -411,11 +362,10 @@ function renderResultsCategory(results, place) {
 }
 
 function showHtml(item, place, index) {
-    (place.id === "to_do_place") ? showTodoHtml(item, index) :
-    (place.id === "in_progress_place") ? showInProgressHtml(item, index) :
-    (place.id === "await_feedback_place") ? showAwaitFeedbackHtml(item, index) :
-    (place.id === "done_place") ? showDoneHtml(item, index) :
-    null;
+    (place.id === "to_do_place") && showTaskHtml(item, index, "to_do_place");
+    (place.id === "in_progress_place") && showTaskHtml(item, index, "in_progress_place");
+    (place.id === "await_feedback_place") && showTaskHtml(item, index, "await_feedback_place");
+    (place.id === "done_place") && showTaskHtml(item, index, "done_place");
 }
 
 async function deleteSingleTask(i) {
