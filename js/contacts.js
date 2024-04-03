@@ -63,7 +63,6 @@ function switchViewOnSize() {
 }
 
 function switchToDefault() {
-    console.log("testSwitch");
     let profilebuttons = document.querySelector(".profile-buttons");
     document.querySelector(".contact-list-box").style.removeProperty("width");
     document.querySelector(".contact-list-box").classList.remove("dnone");
