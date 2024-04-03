@@ -16,12 +16,6 @@ async function includeHTML() {
     }
 }
 
-function emptyPlaceHtml() {
-    return `
-        <div></div>
-    `;
-}
-
 function bordAddTaskFieldHtml() {
     return `
         <div class="bord-add-tasks-field" onclick="noCloseContent(event)" id="add_task_page"></div>
@@ -104,6 +98,15 @@ function createProgressBar(percent) {
     return `
         <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
             <div class="progressbar" id="progressbar" style ="width: ${percent}%"</div>
+        </div>
+    `;
+}
+
+function hoverBoxHtml() {
+    return `
+        <div ondragover="this.style.background = '#F4F4F4'; this.style.borderStyle = 'dashed';" 
+            ondragleave="this.style.background = '#f6f7f8'; this.style.borderStyle = 'none';" 
+            class="box-hover">
         </div>
     `;
 }

@@ -13,6 +13,34 @@ function boardinit() {
     showEmptyHtmlInprogress();
     showEmptyHtmlAwaitfeedback();
     showEmptyHtmlDone();
+    emptyBoxHtmlTodo();
+    emptyBoxHtmlInprogress();
+    emptyBoxHtmlAwaitfeedback();
+    emptyBoxHtmlDone();
+}
+
+function emptyBoxHtmlTodo() {
+    const empty = hoverBoxHtml();
+    let getplacetodo = document.getElementById("to_do_place");
+    getplacetodo.innerHTML += empty;
+}
+
+function emptyBoxHtmlInprogress() {
+    const empty = hoverBoxHtml();
+    let getplacetodo = document.getElementById("in_progress_place");
+    getplacetodo.innerHTML += empty;
+}
+
+function emptyBoxHtmlAwaitfeedback() {
+    const empty = hoverBoxHtml();
+    let getplacetodo = document.getElementById("await_feedback_place");
+    getplacetodo.innerHTML += empty;
+}
+
+function emptyBoxHtmlDone() {
+    const empty = hoverBoxHtml();
+    let getplacetodo = document.getElementById("done_place");
+    getplacetodo.innerHTML += empty;
 }
 
 function showEmptyHtmlTodo() {
