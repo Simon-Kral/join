@@ -12,9 +12,9 @@ async function fillAddTaskSectionload() {
     fillAddTaskSection();
 }
 
-function initAddTask() {
+function initAddTask(i) {
     renderAssignedTo();
-    renderCategory();
+    i === undefined ? renderCategory() : "";
     addAddTaskEventListeners();
     setMinDate();
     selectPrio("medium");

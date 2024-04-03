@@ -50,13 +50,13 @@ function openContact(id, card) {
 }
 
 function unselectSelected() {
-    document.querySelectorAll(".selected").forEach(function (selectedfield) {
+    document.querySelectorAll(".selected").forEach(function(selectedfield) {
         selectedfield.classList.remove("selected");
     });
 }
 
 function setResizeBehaviour() {
-    window.addEventListener("resize", function () {
+    window.addEventListener("resize", function() {
         if (document.documentElement.clientWidth > 500) {
             switchToDefault();
         }
@@ -64,12 +64,13 @@ function setResizeBehaviour() {
 }
 
 function switchToDefault() {
+    console.log("testSwitch");
     let profilebuttons = document.querySelector(".profile-buttons");
-    document.querySelector(".contact-detail").classList.remove("mobile-contact-detail");
     document.querySelector(".contact-list-box").style.removeProperty("width");
     document.querySelector(".contact-list-box").classList.remove("dnone");
     document.querySelector(".open-menu-button-box").classList.add("dnone");
     document.querySelector(".go-back-button").classList.add("dnone");
+    document.querySelector(".contact-detail").classList.remove("mobile-contact-detail");
     if (profilebuttons) {
         profilebuttons.classList.remove("animation-mobile-sidebar");
     }
@@ -156,7 +157,7 @@ function formatName(fullname) {
 }
 
 function capitalize(string) {
-    return string.replace(/(?<=[-\s]+|^)([a-zA-Z])/g, function (match) {
+    return string.replace(/(?<=[-\s]+|^)([a-zA-Z])/g, function(match) {
         return match.toUpperCase();
     });
 }
