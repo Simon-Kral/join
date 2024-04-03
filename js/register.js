@@ -188,59 +188,89 @@ function registerGuestLogin() {
             password: "",
             todo: [
                 {
-                    title: "w",
-                    description: "",
-                    date: "14/03/2024",
+                    title: "CSS Architecture Planning",
+                    description: "Define CSS naming conventions and structures",
+                    date: "14/09/2024",
                     category: "Technical Task",
                     prio: "urgent",
                     subtasks: [
                         {
                             idcounter: 0,
                         },
-                    ],
-                    contacts: [],
-                },
-                {
-                    title: "w",
-                    description: "",
-                    date: "14/03/2024",
-                    category: "Technical Task",
-                    prio: "urgent",
-                    subtasks: [
                         {
-                            idcounter: 0,
+                            id: 1,
+                            name: "who does what",
+                            isChecked: true
+                        },
+                        {
+                            id: 2,
+                            name: "what time",
+                            isChecked: false
+                        }
+                    ],
+                    contacts: [
+                        { idcounter: 2 },
+                        {
+                            id: 1,
+                            firstname: "Sofia",
+                            lastname: "Müller",
+                            email: "sofiam@gmail.com",
+                            phone: "+49 1111 111 11 1",
+                            color: "#00BEE8",
+                        },
+                        {
+                            id: 2,
+                            firstname: "Anton",
+                            lastname: "Mayer",
+                            email: "antom@gmail.com",
+                            phone: "+49 1111 111 11 1",
+                            color: "#FF7A00",
                         },
                     ],
-                    contacts: [],
-                },
-                {
-                    title: "w",
-                    description: "",
-                    date: "14/03/2024",
-                    category: "Technical Task",
-                    prio: "urgent",
-                    subtasks: [
-                        {
-                            idcounter: 0,
-                        },
-                    ],
-                    contacts: [],
-                },
+                },            
             ],
             done: [],
             Urgent: [
                 {
-                    title: "w",
-                    description: "",
-                    date: "14/03/2024",
+                    title: "CSS Architecture Planning",
+                    description: "Define CSS naming conventions and structures",
+                    date: "14/09/2024",
                     category: "Technical Task",
                     prio: "urgent",
                     subtasks: [
                         {
                             idcounter: 0,
                         },
+                        {
+                            id: 1,
+                            name: "who does what",
+                            isChecked: true
+                        },
+                        {
+                            id: 2,
+                            name: "what time",
+                            isChecked: false
+                        }
                     ],
-                    contacts: [],
+                    contacts: [
+                        { idcounter: 2 },
+                        {
+                            id: 1,
+                            firstname: "Sofia",
+                            lastname: "Müller",
+                            email: "sofiam@gmail.com",
+                            phone: "+49 1111 111 11 1",
+                            color: "#00BEE8",
+                        },
+                        {
+                            id: 2,
+                            firstname: "Anton",
+                            lastname: "Mayer",
+                            email: "antom@gmail.com",
+                            phone: "+49 1111 111 11 1",
+                            color: "#FF7A00",
+                        },
+                    ],
                 },
             ],
             tasksinprogress: [],
