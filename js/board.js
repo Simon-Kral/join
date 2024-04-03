@@ -4,43 +4,30 @@ let currentdragged;
 let currentdraggedarray;
 let task;
 
-function boardinit() {
-    renderTodo();
-    renderInProgress();
-    renderAwaitFeedback();
-    renderDone();
-    showEmptyHtmlTodo();
-    showEmptyHtmlInprogress();
-    showEmptyHtmlAwaitfeedback();
-    showEmptyHtmlDone();
-    emptyBoxHtmlTodo();
-    emptyBoxHtmlInprogress();
-    emptyBoxHtmlAwaitfeedback();
-    emptyBoxHtmlDone();
+function boardinit() { renderTodo(); renderInProgress(); renderAwaitFeedback(); renderDone(); showEmptyHtmlTodo(); showEmptyHtmlInprogress(); showEmptyHtmlAwaitfeedback(); 
+            showEmptyHtmlDone(); emptyBoxHtmlTodo(); emptyBoxHtmlInprogress(); emptyBoxHtmlAwaitfeedback(); emptyBoxHtmlDone();
+}
+
+function emptyBoxHtml(containerId) {
+    const empty = hoverBoxHtml();
+    let getPlace = document.getElementById(containerId);
+    getPlace.innerHTML += empty;
 }
 
 function emptyBoxHtmlTodo() {
-    const empty = hoverBoxHtml();
-    let getplacetodo = document.getElementById("to_do_place");
-    getplacetodo.innerHTML += empty;
+    emptyBoxHtml("to_do_place");
 }
 
 function emptyBoxHtmlInprogress() {
-    const empty = hoverBoxHtml();
-    let getplacetodo = document.getElementById("in_progress_place");
-    getplacetodo.innerHTML += empty;
+    emptyBoxHtml("in_progress_place");
 }
 
 function emptyBoxHtmlAwaitfeedback() {
-    const empty = hoverBoxHtml();
-    let getplacetodo = document.getElementById("await_feedback_place");
-    getplacetodo.innerHTML += empty;
+    emptyBoxHtml("await_feedback_place");
 }
 
 function emptyBoxHtmlDone() {
-    const empty = hoverBoxHtml();
-    let getplacetodo = document.getElementById("done_place");
-    getplacetodo.innerHTML += empty;
+    emptyBoxHtml("done_place");
 }
 
 function showEmptyHtmlTodo() {
@@ -89,22 +76,10 @@ function bordAddNewTask() {
 }
 
 function openBordTask(id, element) {
-    if (element.parentElement && element.parentElement.id === "to_do_place") {
-        dragTodo(id);
-        openTask(id);
-    }
-    if (element.parentElement && element.parentElement.id === "in_progress_place") {
-        dragInProgress(id);
-        openTask(id);
-    }
-    if (element.parentElement && element.parentElement.id === "await_feedback_place") {
-        dragAwaitFeedback(id);
-        openTask(id);
-    }
-    if (element.parentElement && element.parentElement.id === "done_place") {
-        dragDone(id);
-        openTask(id);
-    }
+    (element.parentElement && element.parentElement.id === "to_do_place") ? (dragTodo(id), openTask(id)) :
+    (element.parentElement && element.parentElement.id === "in_progress_place") ? (dragInProgress(id), openTask(id)) :
+    (element.parentElement && element.parentElement.id === "await_feedback_place") ? (dragAwaitFeedback(id), openTask(id)) :
+    (element.parentElement && element.parentElement.id === "done_place") && (dragDone(id), openTask(id));
 }
 
 function openTask(i) {
@@ -129,7 +104,6 @@ function editSingleTask(i) {
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
     const selectcontacts = selectContacts(contactstodo);
-    getplacetaskvariantbord.innerHTML = ``;
     getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts);
     initAddTask(i, priotodo);
 }
@@ -238,18 +212,10 @@ function selectContacts(contactstodo) {
 }
 
 function selectPriority(priority) {
-    if (priority == "urgent") {
-        let urugentprio = urugentPrioHtml();
-        return urugentprio;
-    }
-    if ((priority = "low")) {
-        let lowprio = lowPrioHtml();
-        return lowprio;
-    }
-    if ((priority = "medium")) {
-        let mediumprio = mediumPrioHtml();
-        return mediumprio;
-    }
+    return priority === "urgent" ? urugentPrioHtml() :
+           priority === "low" ? lowPrioHtml() :
+           priority === "medium" ? mediumPrioHtml() :
+           null;
 }
 
 function showTaskCategoryBig(category) {
@@ -262,18 +228,15 @@ function allowDrop(ev) {
 }
 
 function drag(id, element) {
-    if (element.parentElement && element.parentElement.id === "to_do_place") {
-        dragTodo(id);
-    }
-    if (element.parentElement && element.parentElement.id === "in_progress_place") {
-        dragInProgress(id);
-    }
-    if (element.parentElement && element.parentElement.id === "await_feedback_place") {
-        dragAwaitFeedback(id);
-    }
-    if (element.parentElement && element.parentElement.id === "done_place") {
-        dragDone(id);
-    }
+    const parentElementId = element.parentElement ? element.parentElement.id : null;
+    const dragFunctions = {
+        "to_do_place": dragTodo,
+        "in_progress_place": dragInProgress,
+        "await_feedback_place": dragAwaitFeedback,
+        "done_place": dragDone
+    };
+    const dragFunction = dragFunctions[parentElementId];
+    dragFunction ? dragFunction(id) : null;
 }
 
 function updateProgressBar(subtasks, selectedCheckboxCount) {
@@ -417,12 +380,9 @@ function getSearchInput() {
 function searchTitleStart() {
     const { search, searchlength } = getSearchInput();
     const { todoplace, inprogressplace, awaitfeedbackplace, doneplace } = searchTaskPlace();
-    if (searchlength >= 1) {
-        const filteredResults = filterResults(search);
-        renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbackplace, doneplace);
-    } else {
+    searchlength >= 1 ? 
+        renderResults(filterResults(search), todoplace, inprogressplace, awaitfeedbackplace, doneplace) : 
         boardinit();
-    }
 }
 
 function filterResults(search) {
@@ -447,28 +407,15 @@ function renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbac
 
 function renderResultsCategory(results, place) {
     place.innerHTML = "";
-    if (results.length <= 0) {
-        place.innerHTML = nothingFound();
-    } else {
-        results.forEach((item, index) => showHtml(item, place, index));
-    }
+    (results.length <= 0) ? place.innerHTML = nothingFound() : results.forEach((item, index) => showHtml(item, place, index));
 }
 
 function showHtml(item, place, index) {
-    switch (place.id) {
-        case "to_do_place":
-            showTodoHtml(item, index);
-            break;
-        case "in_progress_place":
-            showInProgressHtml(item, index);
-            break;
-        case "await_feedback_place":
-            showAwaitFeedbackHtml(item, index);
-            break;
-        case "done_place":
-            showDoneHtml(item, index);
-            break;
-    }
+    (place.id === "to_do_place") ? showTodoHtml(item, index) :
+    (place.id === "in_progress_place") ? showInProgressHtml(item, index) :
+    (place.id === "await_feedback_place") ? showAwaitFeedbackHtml(item, index) :
+    (place.id === "done_place") ? showDoneHtml(item, index) :
+    null;
 }
 
 async function deleteSingleTask(i) {
@@ -479,9 +426,5 @@ async function deleteSingleTask(i) {
 }
 
 async function saveToServer() {
-    if (sessionStorage.getItem("Guest") === null) {
-        await setItem("users", JSON.stringify(users));
-    } else {
-        sessionStorage.setItem("Guest", JSON.stringify(users));
-    }
+    sessionStorage.getItem("Guest") === null ? await setItem("users", JSON.stringify(users)) : sessionStorage.setItem("Guest", JSON.stringify(users));
 }
