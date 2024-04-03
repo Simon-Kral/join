@@ -314,11 +314,14 @@ p.subtasktxt {
     margin: 8px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 8px 8px #00000009;
+    transition: 0.4s;
 }
 
 .todo-task-container:hover {
+    transition: 0.1s;
     transform: rotate(20deg);
     cursor: pointer;
+    background-color: rgb(231, 255, 254);
 }
 
 .collect-category {
