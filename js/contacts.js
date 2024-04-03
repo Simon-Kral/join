@@ -1,4 +1,5 @@
 let colors = ["#FF7A00", "#FF5EB3", "#6E52FF", "#9327FF", "#00BEE8", "#1FD7C1", "#FF745E", "#FFA35E", "#FC71FF", "#FFC701", "#0038FF", "#C3FF2B", "#FFE62B", "#FF4646", "#FFBB2B"];
+window.onresize = switchViewOnSize;
 
 async function initContacts() {
     await sortContacts();
@@ -50,17 +51,15 @@ function openContact(id, card) {
 }
 
 function unselectSelected() {
-    document.querySelectorAll(".selected").forEach(function(selectedfield) {
+    document.querySelectorAll(".selected").forEach(function (selectedfield) {
         selectedfield.classList.remove("selected");
     });
 }
 
-function setResizeBehaviour() {
-    window.addEventListener("resize", function() {
-        if (document.documentElement.clientWidth > 500) {
-            switchToDefault();
-        }
-    });
+function switchViewOnSize() {
+    if (document.documentElement.clientWidth > 500) {
+        switchToDefault();
+    }
 }
 
 function switchToDefault() {
@@ -157,7 +156,7 @@ function formatName(fullname) {
 }
 
 function capitalize(string) {
-    return string.replace(/(?<=[-\s]+|^)([a-zA-Z])/g, function(match) {
+    return string.replace(/(?<=[-\s]+|^)([a-zA-Z])/g, function (match) {
         return match.toUpperCase();
     });
 }
