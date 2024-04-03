@@ -12,12 +12,12 @@ async function fillAddTaskSectionload() {
     fillAddTaskSection();
 }
 
-function initAddTask(i) {
+function initAddTask(i, priotodo) {
     renderAssignedTo();
     i === undefined ? renderCategory() : "";
     addAddTaskEventListeners();
     setMinDate();
-    selectPrio("medium");
+    priotodo === undefined ? selectPrio("medium") : selectPrio(priotodo);
 }
 
 function renderAssignedTo(searchterm) {

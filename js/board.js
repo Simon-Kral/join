@@ -103,7 +103,7 @@ function editSingleTask(i) {
     const selectcontacts = selectContacts(contactstodo);
     getplacetaskvariantbord.innerHTML = ``;
     getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts);
-    initAddTask(i);
+    initAddTask(i, priotodo);
 }
 
 function renderTodo() {

@@ -211,7 +211,6 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
                                         onchange="transferDate()" min='1899-01-01'>
                                 </div>
                                 <span class="required-field dnone">This field is required</span>
-
                             </div>
                             <div class="add_task_prio">
                                 <h3>Prio</h3>
@@ -246,6 +245,9 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
                                     </div>
                                     <div class="drop-down dnone custom-scrollbar" id="drop_down_assigned_to"></div>
                                 <div id="selected_contacts"></div>
+                            </div>
+                            <div class="place-user-single-card">
+                                ${selectcontacts}
                             </div>
                             <div id="add_task_subtask">
                                 <h3>Subtask</h3>
