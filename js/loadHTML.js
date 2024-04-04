@@ -115,8 +115,8 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
             <div class="collect-category">${choosencategory}</div>
-            <h3>${title}</h3>
-            <span>${description}</span>
+            <h3 class="bord-title">${title}</h3>
+            <span class="bord-descript">${description}</span>
             <div class="place-task-progress">
                 <div class="collect-subtask">${subtaskstodo}</div>
                 <p class="subtasktxt">${selectedCheckboxCount - 1}/${subtasklenght}Subtasks</p>

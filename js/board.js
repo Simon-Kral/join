@@ -208,15 +208,20 @@ function selectSubtasks(subtaskstodo) {
 async function updateSelectedCheckboxes(index, isChecked) {
     task["subtasks"][index]["isChecked"] = isChecked;
     await saveToServer();
+
+    const imgElement = document.getElementById(`subtask${index}`);
+    if (isChecked == true) {
+        imgElement.src = "./assets/img/bord_check.png";
+    } else {
+        imgElement.src = "./assets/img/bord_uncheck.png";
+    }
 }
 
 function countSelectedCheckboxes(subtaskstodo) {
-    let count = 1;
+    let count = 1; // Start counting from 1
     for (let checkindex = 0; checkindex < subtaskstodo.length; checkindex++) {
         const check = subtaskstodo[checkindex]["isChecked"];
-        if (check === true) {
-            count++;
-        }
+        check == true ? count++ : "" ; 
     }
     return count;
 }
@@ -225,9 +230,11 @@ function selectSubtaskHtml(sublist, selectarray) {
     let html = "";
     for (let i = 0; i < sublist.length; i++) {
         const subtask = sublist[i];
-        const isChecked = subtask.isChecked ? "checked" : "";
-        html += `<li><input type="checkbox" id="subtask${i}" name="subtask${i}" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
-        html += `<label for="subtask${i}">${subtask}</label></li>`;
+        const isChecked = selectarray["subtasks"][i]["isChecked"] ? "checked" : ""; 
+        const imgSrc = selectarray["subtasks"][i]["isChecked"] ? "./assets/img/bord_check.png" : "./assets/img/bord_uncheck.png";
+        html += `<li><input class="check-bord" id="toggle_button${i}" type="checkbox" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
+        html += `<label for="toggle_button${i}"><img id="subtask${i}" src="${imgSrc}"></label>`;
+        html += `<label class="single-subtask-element" for="subtask${i}">${subtask}</label></li>`;
     }
     task = selectarray;
     return html;
