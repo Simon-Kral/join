@@ -115,13 +115,10 @@ function renderTasks() {
         let sectionElement = document.getElementById(sectionId);
         sectionElement.innerHTML = ``;
         
-        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] :
-                    sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] :
-                    sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] :
-                    sectionId === "done_place" ? users[loaduser]["done"] : [];
-
+        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] : sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] :
+                    sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] : sectionId === "done_place" ? users[loaduser]["done"] : [];
         tasks.forEach((task, index) => {
-            showTaskHtml(task, index, sectionId);
+        showTaskHtml(task, index, sectionId);
         });
     });
 }
@@ -163,10 +160,7 @@ function selectContacts(contactstodo) {
 }
 
 function selectPriority(priority) {
-    return priority === "urgent" ? urugentPrioHtml() :
-           priority === "low" ? lowPrioHtml() :
-           priority === "medium" ? mediumPrioHtml() :
-           null;
+    return priority === "urgent" ? urugentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : null;
 }
 
 function showTaskCategoryBig(category) {

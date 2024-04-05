@@ -262,6 +262,7 @@ h3.bord-title {
 
 .bord-descript {
     color: #A8A8A8;
+    word-break: break-all;
 }
 
 .single-task {
@@ -269,7 +270,7 @@ h3.bord-title {
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    width: 252px;
+    width: 332px;
 }
 
 p.user-story {
@@ -334,6 +335,10 @@ p.subtasktxt {
     cursor: pointer;
     background-color: rgb(231, 255, 254);
 }
+
+/* .single-task-head {
+    background: #a8a8a8ad;
+} */
 
 .collect-category {
     display: flex;
