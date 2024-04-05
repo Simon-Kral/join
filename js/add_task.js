@@ -189,9 +189,9 @@ function addSubtask(inputid) {
     input.value = "";
 }
 
-function renderSubtask(name, subtaskid) {
-    let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${subtaskid})">`;
-    html += generateSubtaskHtml(name, subtaskid);
+function renderSubtask(name, id) {
+    let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${id})">`;
+    html += generateSubtaskHtml(name, id);
     html += `</div>`;
     return html;
 }
