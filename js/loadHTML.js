@@ -249,8 +249,7 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
                                     <div class="drop-down dnone custom-scrollbar" id="drop_down_assigned_to"></div>
                                 <div id="selected_contacts"></div>
                             </div>
-                            <div class="place-user-single-card">
-                                ${selectcontacts}
+                            <div class="edit-place-user-single-card">
                             </div>
                             <div id="add_task_subtask">
                                 <h3>Subtask</h3>

@@ -258,11 +258,12 @@ h3.bord-title {
     padding-top: 24px;
     margin-block-start: 0;
     margin-block-end: 0;
+    word-break: break-all;
 }
 
 .bord-descript {
     color: #A8A8A8;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .single-task {
@@ -364,6 +365,10 @@ p.subtasktxt {
     display: flex;
     flex-direction: column;
     margin-right: -0px;
+}
+
+.edit-place-user-single-card {
+    display: flex;
 }
 
 .place-user-single-card .profile-badge {
@@ -547,10 +552,11 @@ h1.task-head-bord {
 }
 
 
-/* .descript {
-    display: flex;
-    width: 100%;
-} */
+.descript {
+    font-weight: 400;
+    font-size: 20px;
+    word-break: break-word;
+}
 
 
 /* .descript {
