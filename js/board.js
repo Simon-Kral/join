@@ -387,9 +387,7 @@ function editContactsFactory(selectcontacts) {
     for (let j = 0; j < selectcontacts.length; j++) {
         const selected = selectcontacts[j];
         const idselected = selected['id'];
-        console.log(selected);
-        console.log(idselected);
-        selectTaskContacts(idselected, selected);
+        selectContactById(idselected);
     }
     
 }
