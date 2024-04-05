@@ -103,8 +103,9 @@ function editSingleTask(i) {
     const choosensubtasks = selectSubtasks(subtaskstodo);
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
-    const selectcontacts = selectContacts(contactstodo);
-    getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts);
+    // const selectcontacts = selectContacts(contactstodo);
+    const choosencontacts = editContactsFactory(contactstodo);
+    getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, choosencontacts);
     initAddTask(i, priotodo);
 }
 
@@ -378,4 +379,16 @@ async function deleteSingleTask(i) {
 
 async function saveToServer() {
     sessionStorage.getItem("Guest") === null ? await setItem("users", JSON.stringify(users)) : sessionStorage.setItem("Guest", JSON.stringify(users));
+}
+
+function editContactsFactory(selectcontacts) {
+    console.log(selectcontacts);
+    for (let j = 0; j < selectcontacts.length; j++) {
+        const selected = selectcontacts[j];
+        const idselected = selected['id'];
+        console.log(selected);
+        console.log(idselected);
+        selectTaskContacts(idselected, selected);
+    }
+    
 }
