@@ -110,6 +110,7 @@ function editSingleTask(i) {
     // const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
     getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo);
+    initAddTask(i, priotodo);
     editContactsFactory(contactstodo);
     editSubtaskFactory(subtaskstodo);
 }
@@ -392,11 +393,10 @@ function editContactsFactory(selectcontacts) {
 }
 
 function editSubtaskFactory(subtaskstodo) {
+    let content = document.getElementById("selected_subtasks");
     for (let h = 0; h < subtaskstodo.length; h++) {
         const selected = subtaskstodo[h];
-        const idselected = selected['id'];
-        renderSubtask(idselected);
-        console.log(idselected);
+        if (!selected.name) continue;
+        content.innerHTML += renderSubtask(selected.name, selected.id);
     }
-    console.log(subtaskstodo);
 }
