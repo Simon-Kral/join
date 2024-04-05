@@ -18,6 +18,7 @@ function emptyBoxHtmlTodo() {
     emptyBoxHtml("to_do_place");
 }
 
+
 function emptyBoxHtmlInprogress() {
     emptyBoxHtml("in_progress_place");
 }
@@ -67,12 +68,12 @@ function closeCard() {
     boardinit();
 }
 
-function bordAddNewTask() {
+function bordAddNewTask(array) {
     const card = bordAddTaskFieldHtml();
     let getplacecard = document.getElementById("add_bordtask_data");
     document.getElementById("fullscreen_information").classList.remove("d-none");
     getplacecard.innerHTML = card;
-    fillAddTaskSection();
+    fillAddTaskSection(array);
 }
 
 function openBordTask(id, element) {
@@ -115,13 +116,10 @@ function renderTasks() {
         let sectionElement = document.getElementById(sectionId);
         sectionElement.innerHTML = ``;
         
-        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] :
-                    sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] :
-                    sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] :
-                    sectionId === "done_place" ? users[loaduser]["done"] : [];
-
+        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] : sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] :
+                    sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] : sectionId === "done_place" ? users[loaduser]["done"] : [];
         tasks.forEach((task, index) => {
-            showTaskHtml(task, index, sectionId);
+        showTaskHtml(task, index, sectionId);
         });
     });
 }
@@ -163,10 +161,7 @@ function selectContacts(contactstodo) {
 }
 
 function selectPriority(priority) {
-    return priority === "urgent" ? urugentPrioHtml() :
-           priority === "low" ? lowPrioHtml() :
-           priority === "medium" ? mediumPrioHtml() :
-           null;
+    return priority === "urgent" ? urugentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : null;
 }
 
 function showTaskCategoryBig(category) {

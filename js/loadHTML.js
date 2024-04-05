@@ -249,8 +249,7 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
                                     <div class="drop-down dnone custom-scrollbar" id="drop_down_assigned_to"></div>
                                 <div id="selected_contacts"></div>
                             </div>
-                            <div class="place-user-single-card">
-                                ${selectcontacts}
+                            <div class="edit-place-user-single-card">
                             </div>
                             <div id="add_task_subtask">
                                 <h3>Subtask</h3>
@@ -315,13 +314,13 @@ function technicalTaskHtml() {
     `;
 }
 
-function fillAddTaskSection() {
+function fillAddTaskSection(array) {
     let page = document.getElementById("add_task_page");
     html = "";
     html += /*html*/ `
         <main class="add-task">
             <h1>Add Task</h1>
-            <form class="add-task-form-section" onsubmit="addToTasks();return false" autocomplete="off">
+            <form class="add-task-form-section" onsubmit="addToTasks(${array});return false" autocomplete="off">
                 <div class="input-wrapper">
                     <section class="input-box box-left">
                         <div id="add_task_title">

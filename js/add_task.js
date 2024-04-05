@@ -302,12 +302,12 @@ function formatDate(date) {
     return { day, month, year };
 }
 
-async function addToTasks() {
+async function addToTasks(array) {
     addDataFromInputs();
     addPrio();
     currentTask.subtasks = allsubtasks;
     currentTask.contacts = selectedcontacts;
-    await saveTask();
+    await saveTask(array);
     clearAddTaskForm();
     document.getElementById("task-added-notification").classList.add("notification-display");
     await delay(1000);
@@ -331,14 +331,20 @@ function addPrio() {
     }
 }
 
-async function saveTask() {
-    users[loaduser].todo.push(currentTask);
-    currentTask.prio === "urgent" ? users[loaduser].Urgent.push(currentTask) : "";
-    if (sessionStorage.getItem("Guest") === null) {
-        await setItem("users", JSON.stringify(users));
+function checkIncomingArray(array) {
+    if (array && array.id === "in_progress_head") {
+        users[loaduser].tasksinprogress.push(currentTask);
+    } else if (array && array.id === "await_feedback_head") {
+        users[loaduser].awaitingfeedback.push(currentTask);
     } else {
-        sessionStorage.setItem("Guest", JSON.stringify(users));
+        users[loaduser].todo.push(currentTask);
     }
+}
+
+async function saveTask(array) {
+    checkIncomingArray(array);
+    currentTask.prio === "urgent" ? users[loaduser].Urgent.push(currentTask) : "";
+    sessionStorage.getItem("Guest") === null ? await setItem("users", JSON.stringify(users)) : sessionStorage.setItem("Guest", JSON.stringify(users));
     tasks.push(currentTask);
 }
 

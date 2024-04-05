@@ -258,10 +258,12 @@ h3.bord-title {
     padding-top: 24px;
     margin-block-start: 0;
     margin-block-end: 0;
+    word-break: break-all;
 }
 
 .bord-descript {
     color: #A8A8A8;
+    word-break: break-word;
 }
 
 .single-task {
@@ -269,7 +271,7 @@ h3.bord-title {
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    width: 252px;
+    width: 332px;
 }
 
 p.user-story {
@@ -335,6 +337,10 @@ p.subtasktxt {
     background-color: rgb(231, 255, 254);
 }
 
+/* .single-task-head {
+    background: #a8a8a8ad;
+} */
+
 .collect-category {
     display: flex;
 }
@@ -359,6 +365,10 @@ p.subtasktxt {
     display: flex;
     flex-direction: column;
     margin-right: -0px;
+}
+
+.edit-place-user-single-card {
+    display: flex;
 }
 
 .place-user-single-card .profile-badge {
@@ -524,6 +534,7 @@ h1.task-head-bord {
     margin-block-start: 0;
     margin-block-end: 0;
     padding-bottom: 24px;
+    word-break: break-word;
 }
 
 .place-due-date-bord {
@@ -541,10 +552,11 @@ h1.task-head-bord {
 }
 
 
-/* .descript {
-    display: flex;
-    width: 100%;
-} */
+.descript {
+    font-weight: 400;
+    font-size: 20px;
+    word-break: break-word;
+}
 
 
 /* .descript {
