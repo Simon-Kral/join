@@ -72,6 +72,7 @@ function showEmptyHtmlDone() {
 
 function closeCard() {
     document.getElementById("fullscreen_information").classList.add("d-none");
+    selectedcontacts = [];
     boardinit();
 }
 

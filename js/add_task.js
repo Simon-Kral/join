@@ -185,11 +185,16 @@ function addSubtask(inputid) {
     let arrayelement = { id: subtaskid, name: input.value, isChecked: false };
     allsubtasks.push(arrayelement);
     allsubtasks[0].idcounter++;
-    let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${subtaskid})">`;
-    html += generateSubtaskHtml(input.value, subtaskid);
-    html += `</div>`;
-    content.innerHTML += html;
+
+    content.innerHTML += renderSubtask(input.value, subtaskid);
     input.value = "";
+}
+
+function renderSubtask(name, subtaskid) {
+    let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${subtaskid})">`;
+    html += generateSubtaskHtml(name, subtaskid);
+    html += `</div>`;
+    return html;
 }
 
 function fstopPropagation(event) {
