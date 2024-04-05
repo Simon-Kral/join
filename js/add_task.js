@@ -87,12 +87,14 @@ function handleClickPrio(prio) {
 }
 
 function selectContactById(id) {
+    let pattern = /[0-9]+/g;
     let allContainers = document.querySelectorAll("div.contact-list-entry");
     for (let i = 0; i < allContainers.length; i++) {
         const container = allContainers[i];
-        const onMouseDownFunction = `${container.attributes.onmousedown.value}`;
-        const containerId = onMouseDownFunction.charAt(onMouseDownFunction.length - 2);
-        if (containerId == id) {
+        const onMouseDownFunction = container.attributes.onmousedown.value;
+        let match = pattern.exec(`${onMouseDownFunction}`);
+        console.log(match);
+        if (match == `${id}`) {
             selectTaskContacts(container, id);
         }
     }

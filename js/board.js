@@ -4,8 +4,16 @@ let currentdragged;
 let currentdraggedarray;
 let task;
 
-function boardinit() { renderTasks(); showEmptyHtmlTodo(); showEmptyHtmlInprogress(); showEmptyHtmlAwaitfeedback(); 
-            showEmptyHtmlDone(); emptyBoxHtmlTodo(); emptyBoxHtmlInprogress(); emptyBoxHtmlAwaitfeedback(); emptyBoxHtmlDone();
+function boardinit() {
+    renderTasks();
+    showEmptyHtmlTodo();
+    showEmptyHtmlInprogress();
+    showEmptyHtmlAwaitfeedback();
+    showEmptyHtmlDone();
+    emptyBoxHtmlTodo();
+    emptyBoxHtmlInprogress();
+    emptyBoxHtmlAwaitfeedback();
+    emptyBoxHtmlDone();
 }
 
 function emptyBoxHtml(containerId) {
@@ -17,7 +25,6 @@ function emptyBoxHtml(containerId) {
 function emptyBoxHtmlTodo() {
     emptyBoxHtml("to_do_place");
 }
-
 
 function emptyBoxHtmlInprogress() {
     emptyBoxHtml("in_progress_place");
@@ -77,10 +84,7 @@ function bordAddNewTask(array) {
 }
 
 function openBordTask(id, element) {
-    (element.parentElement && element.parentElement.id === "to_do_place") ? (dragTodo(id), openTask(id)) :
-    (element.parentElement && element.parentElement.id === "in_progress_place") ? (dragInProgress(id), openTask(id)) :
-    (element.parentElement && element.parentElement.id === "await_feedback_place") ? (dragAwaitFeedback(id), openTask(id)) :
-    (element.parentElement && element.parentElement.id === "done_place") && (dragDone(id), openTask(id));
+    element.parentElement && element.parentElement.id === "to_do_place" ? (dragTodo(id), openTask(id)) : element.parentElement && element.parentElement.id === "in_progress_place" ? (dragInProgress(id), openTask(id)) : element.parentElement && element.parentElement.id === "await_feedback_place" ? (dragAwaitFeedback(id), openTask(id)) : element.parentElement && element.parentElement.id === "done_place" && (dragDone(id), openTask(id));
 }
 
 function openTask(i) {
@@ -112,15 +116,14 @@ function editSingleTask(i) {
 
 function renderTasks() {
     const taskSections = ["to_do_place", "in_progress_place", "await_feedback_place", "done_place"];
-    
-    taskSections.forEach(sectionId => {
+
+    taskSections.forEach((sectionId) => {
         let sectionElement = document.getElementById(sectionId);
         sectionElement.innerHTML = ``;
-        
-        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] : sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] :
-                    sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] : sectionId === "done_place" ? users[loaduser]["done"] : [];
+
+        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] : sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] : sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] : sectionId === "done_place" ? users[loaduser]["done"] : [];
         tasks.forEach((task, index) => {
-        showTaskHtml(task, index, sectionId);
+            showTaskHtml(task, index, sectionId);
         });
     });
 }
@@ -177,10 +180,10 @@ function allowDrop(ev) {
 function drag(id, element) {
     const parentElementId = element.parentElement ? element.parentElement.id : null;
     const dragFunctions = {
-        "to_do_place": dragTodo,
-        "in_progress_place": dragInProgress,
-        "await_feedback_place": dragAwaitFeedback,
-        "done_place": dragDone
+        to_do_place: dragTodo,
+        in_progress_place: dragInProgress,
+        await_feedback_place: dragAwaitFeedback,
+        done_place: dragDone,
     };
     const dragFunction = dragFunctions[parentElementId];
     dragFunction ? dragFunction(id) : null;
@@ -217,7 +220,7 @@ function countSelectedCheckboxes(subtaskstodo) {
     let count = 1; // Start counting from 1
     for (let checkindex = 0; checkindex < subtaskstodo.length; checkindex++) {
         const check = subtaskstodo[checkindex]["isChecked"];
-        check == true ? count++ : "" ; 
+        check == true ? count++ : "";
     }
     return count;
 }
@@ -226,7 +229,7 @@ function selectSubtaskHtml(sublist, selectarray) {
     let html = "";
     for (let i = 0; i < sublist.length; i++) {
         const subtask = sublist[i];
-        const isChecked = selectarray["subtasks"][i]["isChecked"] ? "checked" : ""; 
+        const isChecked = selectarray["subtasks"][i]["isChecked"] ? "checked" : "";
         const imgSrc = selectarray["subtasks"][i]["isChecked"] ? "./assets/img/bord_check.png" : "./assets/img/bord_uncheck.png";
         html += `<li><input class="check-bord" id="toggle_button${i}" type="checkbox" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
         html += `<label for="toggle_button${i}"><img id="subtask${i}" src="${imgSrc}"></label>`;
@@ -334,9 +337,7 @@ function getSearchInput() {
 function searchTitleStart() {
     const { search, searchlength } = getSearchInput();
     const { todoplace, inprogressplace, awaitfeedbackplace, doneplace } = searchTaskPlace();
-    searchlength >= 1 ? 
-        renderResults(filterResults(search), todoplace, inprogressplace, awaitfeedbackplace, doneplace) : 
-        boardinit();
+    searchlength >= 1 ? renderResults(filterResults(search), todoplace, inprogressplace, awaitfeedbackplace, doneplace) : boardinit();
 }
 
 function filterResults(search) {
@@ -361,14 +362,14 @@ function renderResults(filteredResults, todoplace, inprogressplace, awaitfeedbac
 
 function renderResultsCategory(results, place) {
     place.innerHTML = "";
-    (results.length <= 0) ? place.innerHTML = nothingFound() : results.forEach((item, index) => showHtml(item, place, index));
+    results.length <= 0 ? (place.innerHTML = nothingFound()) : results.forEach((item, index) => showHtml(item, place, index));
 }
 
 function showHtml(item, place, index) {
-    (place.id === "to_do_place") && showTaskHtml(item, index, "to_do_place");
-    (place.id === "in_progress_place") && showTaskHtml(item, index, "in_progress_place");
-    (place.id === "await_feedback_place") && showTaskHtml(item, index, "await_feedback_place");
-    (place.id === "done_place") && showTaskHtml(item, index, "done_place");
+    place.id === "to_do_place" && showTaskHtml(item, index, "to_do_place");
+    place.id === "in_progress_place" && showTaskHtml(item, index, "in_progress_place");
+    place.id === "await_feedback_place" && showTaskHtml(item, index, "await_feedback_place");
+    place.id === "done_place" && showTaskHtml(item, index, "done_place");
 }
 
 async function deleteSingleTask(i) {
@@ -383,11 +384,9 @@ async function saveToServer() {
 }
 
 function editContactsFactory(selectcontacts) {
-    console.log(selectcontacts);
     for (let j = 0; j < selectcontacts.length; j++) {
         const selected = selectcontacts[j];
-        const idselected = selected['id'];
+        const idselected = selected["id"];
         selectContactById(idselected);
     }
-    
 }
