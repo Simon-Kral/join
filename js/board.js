@@ -392,7 +392,7 @@ function editContactsFactory(selectcontacts) {
 }
 
 function editSubtaskFactory(subtaskstodo) {
-    for (let h = 0; h < subtaskstodo.length; h++) {
+    for (let h = 1; h < subtaskstodo.length - 1; h++) {
         const selected = subtaskstodo[h];
         const idselected = selected['id'];
         renderSubtask(idselected);
