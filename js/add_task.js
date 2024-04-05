@@ -185,7 +185,6 @@ function addSubtask(inputid) {
     let arrayelement = { id: subtaskid, name: input.value, isChecked: false };
     allsubtasks.push(arrayelement);
     allsubtasks[0].idcounter++;
-
     content.innerHTML += renderSubtask(input.value, subtaskid);
     input.value = "";
 }
