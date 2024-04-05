@@ -87,7 +87,6 @@ function handleClickPrio(prio) {
 }
 
 function selectContactById(id) {
-    debugger;
     let allContainers = document.querySelectorAll("div.contact-list-entry");
     for (let i = 0; i < allContainers.length; i++) {
         const container = allContainers[i];
