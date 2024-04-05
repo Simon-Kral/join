@@ -524,6 +524,7 @@ h1.task-head-bord {
     margin-block-start: 0;
     margin-block-end: 0;
     padding-bottom: 24px;
+    word-break: break-word;
 }
 
 .place-due-date-bord {
