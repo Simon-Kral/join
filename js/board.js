@@ -67,12 +67,12 @@ function closeCard() {
     boardinit();
 }
 
-function bordAddNewTask() {
+function bordAddNewTask(array) {
     const card = bordAddTaskFieldHtml();
     let getplacecard = document.getElementById("add_bordtask_data");
     document.getElementById("fullscreen_information").classList.remove("d-none");
     getplacecard.innerHTML = card;
-    fillAddTaskSection();
+    fillAddTaskSection(array);
 }
 
 function openBordTask(id, element) {

@@ -315,13 +315,13 @@ function technicalTaskHtml() {
     `;
 }
 
-function fillAddTaskSection() {
+function fillAddTaskSection(array) {
     let page = document.getElementById("add_task_page");
     html = "";
     html += /*html*/ `
         <main class="add-task">
             <h1>Add Task</h1>
-            <form class="add-task-form-section" onsubmit="addToTasks();return false" autocomplete="off">
+            <form class="add-task-form-section" onsubmit="addToTasks(${array});return false" autocomplete="off">
                 <div class="input-wrapper">
                     <section class="input-box box-left">
                         <div id="add_task_title">
