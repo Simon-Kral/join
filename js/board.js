@@ -72,6 +72,7 @@ function showEmptyHtmlDone() {
 
 function closeCard() {
     document.getElementById("fullscreen_information").classList.add("d-none");
+    selectedcontacts = [];
     boardinit();
 }
 
@@ -105,12 +106,12 @@ function editSingleTask(i) {
     const selectarray = currentdraggedarray[i];
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
     categorytodo;
-    const choosensubtasks = selectSubtasks(subtaskstodo);
-    const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
+    // const choosensubtasks = selectSubtasks(subtaskstodo);
+    // const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
-    getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml);
-    initAddTask(i, priotodo);
+    getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo);
     editContactsFactory(contactstodo);
+    editSubtaskFactory(subtaskstodo);
 }
 
 function renderTasks() {
@@ -388,4 +389,14 @@ function editContactsFactory(selectcontacts) {
         const idselected = selected["id"];
         selectContactById(idselected);
     }
+}
+
+function editSubtaskFactory(subtaskstodo) {
+    for (let h = 0; h < subtaskstodo.length; h++) {
+        const selected = subtaskstodo[h];
+        const idselected = selected['id'];
+        renderSubtask(idselected);
+        console.log(idselected);
+    }
+    console.log(subtaskstodo);
 }

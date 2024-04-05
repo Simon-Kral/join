@@ -556,11 +556,11 @@ h1.task-head-bord {
     word-break: break-word;
 }
 
-
-/* .descript {
-    display: flex;
-    width: 100%;
-} */
+.single-task-design {
+    color: #2A3647;
+    font-weight: 400;
+    font-size: 20px;
+}
 
 
 /* information-card-end */
