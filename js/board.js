@@ -110,6 +110,7 @@ function editSingleTask(i) {
     // const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
     getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo);
+    initAddTask(i, priotodo);
     editContactsFactory(contactstodo);
     editSubtaskFactory(subtaskstodo);
 }

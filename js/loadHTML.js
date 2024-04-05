@@ -155,7 +155,7 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
                     <div class="place-user-single-card">
                         ${contacts}
                     </div>
-                    <span class="subtasks-bord">Subtasks</span>
+                    <span class="subtasks-bord single-task-design">Subtasks:</span>
                     <div class="subtasks-input-bord">
                         <ul>
                             ${subtaskstodo}

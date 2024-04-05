@@ -262,6 +262,8 @@ h3.bord-title {
 .bord-descript {
     color: #A8A8A8;
     word-break: break-word;
+    height: 200px;
+    word-wrap:break-word;
 }
 
 .single-task {
@@ -546,7 +548,11 @@ h1.task-head-bord {
 }
 
 .due-date-bord {
+    color: #000000;
     padding-left: 25px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
 }
 
 
