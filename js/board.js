@@ -393,8 +393,12 @@ function editContactsFactory(selectcontacts) {
 }
 
 function editSubtaskFactory(subtaskstodo) {
+<<<<<<< HEAD
     let content = document.getElementById("selected_subtasks");
     for (let h = 0; h < subtaskstodo.length; h++) {
+=======
+    for (let h = 1; h < subtaskstodo.length - 1; h++) {
+>>>>>>> 2b8577297d9c99acde73d77bd209fd5b5ab0e63a
         const selected = subtaskstodo[h];
         if (!selected.name) continue;
         content.innerHTML += renderSubtask(selected.name, selected.id);
