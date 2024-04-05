@@ -86,6 +86,18 @@ function handleClickPrio(prio) {
     }
 }
 
+function selectContactById(id) {
+    let allContainers = document.querySelectorAll("div.contact-list-entry");
+    for (let i = 0; i < allContainers.length; i++) {
+        const container = allContainers[i];
+        const onMouseDownFunction = `${container.attributes.onmousedown.value}`;
+        const containerId = onMouseDownFunction.charAt(onMouseDownFunction.length - 2);
+        if (containerId == id) {
+            selectTaskContacts(container, id);
+        }
+    }
+}
+
 function selectPrio(prio) {
     let input = document.getElementById("prio_" + prio);
     let label = document.getElementById("prio_" + prio + "_label");

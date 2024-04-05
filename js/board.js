@@ -18,6 +18,7 @@ function emptyBoxHtmlTodo() {
     emptyBoxHtml("to_do_place");
 }
 
+
 function emptyBoxHtmlInprogress() {
     emptyBoxHtml("in_progress_place");
 }
