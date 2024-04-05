@@ -104,10 +104,9 @@ function editSingleTask(i) {
     const choosensubtasks = selectSubtasks(subtaskstodo);
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
-    // const selectcontacts = selectContacts(contactstodo);
-    const choosencontacts = editContactsFactory(contactstodo);
-    getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, choosencontacts);
+    getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml);
     initAddTask(i, priotodo);
+    editContactsFactory(contactstodo);
 }
 
 function renderTasks() {
@@ -389,5 +388,4 @@ function editContactsFactory(selectcontacts) {
         const idselected = selected['id'];
         selectContactById(idselected);
     }
-    
 }
