@@ -319,7 +319,7 @@ function addPrio() {
     }
 }
 
-async function saveTask(array) {
+function checkIncomingArray(array) {
     if (array && array.id === "in_progress_head") {
         users[loaduser].tasksinprogress.push(currentTask);
     } else if (array && array.id === "await_feedback_head") {
@@ -327,6 +327,10 @@ async function saveTask(array) {
     } else {
         users[loaduser].todo.push(currentTask);
     }
+}
+
+async function saveTask(array) {
+    checkIncomingArray(array);
     currentTask.prio === "urgent" ? users[loaduser].Urgent.push(currentTask) : "";
     sessionStorage.getItem("Guest") === null ? await setItem("users", JSON.stringify(users)) : sessionStorage.setItem("Guest", JSON.stringify(users));
     tasks.push(currentTask);
