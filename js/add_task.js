@@ -87,13 +87,12 @@ function handleClickPrio(prio) {
 }
 
 function selectContactById(id) {
-    let pattern = /[0-9]+/g;
+    debugger;
     let allContainers = document.querySelectorAll("div.contact-list-entry");
     for (let i = 0; i < allContainers.length; i++) {
         const container = allContainers[i];
         const onMouseDownFunction = container.attributes.onmousedown.value;
-        let match = pattern.exec(`${onMouseDownFunction}`);
-        console.log(match);
+        let match = /[0-9]+/g.exec(`${onMouseDownFunction}`);
         if (match == `${id}`) {
             selectTaskContacts(container, id);
         }
