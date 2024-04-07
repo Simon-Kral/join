@@ -49,6 +49,30 @@ h1.board {
     line-height: 73.2px;
 }
 
+.add-task-new {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-image: url("./assets/img/mobile_addtask_black.png");
+    background-repeat: no-repeat;
+    border: none;
+    margin-bottom: 0;
+}
+
+.add-task-new:hover {
+    cursor: pointer;
+    background-image: url("./assets/img/mobile_addtask_blue.png");
+}
+
+.place-bord-header-botton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 form.search-task-tag {
     color: #555;
     display: flex;
@@ -1650,26 +1674,6 @@ div.selected:hover {
     }
 }
 
-@media(max-width: 1030px) {
-    .board-body-task {
-        margin-left: 48px;
-    }
-
-    .board-head {
-        margin-left: 48px;
-    }
-
-    .board-head-task {
-        margin-left: 48px;
-    }
-
-    .single-task {
-        padding-left: 72px;
-        flex-direction: row;
-        align-items: start;
-    }
-}
-
 @media(max-width: 1300px) {
     main.add-task {
         left: 104px;
@@ -1782,6 +1786,46 @@ div.selected:hover {
             }
         }
     }
+
+    .board-body-task {
+        margin-left: 48px;
+    }
+
+    .board-head {
+        margin-left: 48px;
+    }
+
+    .board-head-task {
+        margin-left: 48px;
+    }
+
+    .single-task {
+        flex-direction: row;
+        align-items: start;
+    }
+}
+
+@media(max-width: 850px) {
+    .board-head {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .search-task-tag {
+        width: 392px;
+    }
+
+    .search-task-in {
+        width: 392px;
+    }
+
+    .add-task {
+        display: none;
+    }
+
+    .add-task-new {
+        display: flex;
+    }
 }
 
 @media(max-width: 700px) {
@@ -1856,6 +1900,18 @@ div.selected:hover {
         #required-info {
             display: none;
         }
+    }
+
+    .board-body-task {
+        margin-left: 16px;
+    }
+
+    .board-head {
+        margin-left: 16px;
+    }
+
+    .board-head-task {
+        margin-left: 16px;
     }
 }
 
@@ -2571,6 +2627,12 @@ div.selected:hover {
             height: 16px;
             width: 16px;
         }
+    }
+}
+
+@media(max-width: 550px) {
+    .place-bord-header-botton {
+        width: 392px;
     }
 }
 
