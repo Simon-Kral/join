@@ -104,9 +104,13 @@ function openTask(i) {
     const choosencategory = selectCategory(categorytodo);
     const choosensubtasks = selectSubtasks(subtaskstodo);
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
-    const choosenpriority = selectPriority(priotodo);
+    const choosenpriority = selectPriorityOpenTask(priotodo);
     const selectcontacts = selectContacts(contactstodo);
     getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts);
+}
+
+function selectPriorityOpenTask(priority) {
+    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : null;
 }
 
 function editSingleTask(i) {

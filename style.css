@@ -1665,7 +1665,7 @@ div.selected:hover {
     }
 
     .single-task::-webkit-scrollbar {
-        display: none;
+        height: 4px;
     }
 
     .place-bord-buttons {
@@ -2738,5 +2738,9 @@ div.selected:hover {
 
     .place-bord-header-botton {
         width: 286px;
+    }
+
+    .single-task::-webkit-scrollbar {
+        display: none;
     }
 }

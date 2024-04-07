@@ -94,6 +94,27 @@ function mediumPrioHtml() {
     `;
 }
 
+function urugentPrioHtmlOpenTask() {
+    return `
+        <span>Urgent</span>
+        <img class="low-image" src="./assets/img/urgent.png"></img>
+    `;
+}
+
+function lowPrioHtmlOpenTask() {
+    return `
+        <span>Low</span>
+        <img class="low-image" src="./assets/img/low.png"></img>
+    `;
+}
+
+function mediumPrioHtmlOpenTask() {
+    return `
+        <span>Medium</span>
+        <img class="low-image" src="./assets/img/medium.png"></img>
+    `;
+}
+
 function createProgressBar(percent) {
     return `
         <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
