@@ -41,8 +41,7 @@ let todo = [
                 color: "#FF7A00",
             },
         ],
-    },
-]
+    },]
 let tasksinprogress = [
     {
         title: "Daily Kochwelt Recipe",
@@ -82,8 +81,7 @@ let tasksinprogress = [
                 color: "#FFBB2B",
             },
         ],
-    },
-]
+    },]
 let awaitingfeedback = [{
     title: "HTML Base Template Creation",
     description: "Create reusable HTML base templates",
@@ -114,8 +112,7 @@ let awaitingfeedback = [{
             color: "#FC71FF",
         },
     ],
-},
-]
+},]
 let Urgent = [{
     title: "CSS Architecture Planning",
     description: "Define CSS naming conventions and structures",
@@ -156,8 +153,7 @@ let Urgent = [{
             color: "#FF7A00",
         },
     ],
-},
-]
+},]
 let contacts = [
     { idcounter: 9 },
     {
@@ -207,8 +203,7 @@ let contacts = [
         email: "eva@gmail.com",
         phone: "+49 1111 111 11 1",
         color: "#FFBB2B",
-    },
-]
+    },]
 
 async function loadstorageitems() {
     if (localStorage.getItem("userI") === null) {
@@ -256,7 +251,6 @@ async function ifelseRegister() {
             awaitingfeedback,
             contacts,
         });
-
         await setItem("users", JSON.stringify(users));
         resetForm();
     }
@@ -278,7 +272,6 @@ function login() {
 function LoginLocalstorage(findusers) {
     if (findusers) {
         let userI = users.findIndex((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
-
         loaduser.push(userI);
         localStorage.setItem("userI", loaduser);
         window.location.assign("summary.html");
@@ -295,7 +288,6 @@ function LoginLocalstorage(findusers) {
 function Loginsessionstorage(findusers) {
     if (findusers) {
         let userI = users.findIndex((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
-
         loaduser.push(userI);
         sessionStorage.setItem("userI", loaduser);
         window.location.assign("summary.html");
@@ -311,20 +303,17 @@ function Loginsessionstorage(findusers) {
 
 function registerGuestLogin() {
     loaduser = 0;
-    users = [
-        {
-            name: "Guest",
-            email: "",
-            password: "",
-            todo,
-            done: [],
-            Urgent,
-            tasksinprogress,
-            awaitingfeedback,
-            contacts,
-        },
-    ];
-
+    users = [{
+        name: "Guest",
+        email: "",
+        password: "",
+        todo,
+        done: [],
+        Urgent,
+        tasksinprogress,
+        awaitingfeedback,
+        contacts,
+    },];
     sessionStorage.setItem("userI", loaduser);
     sessionStorage.setItem("Guest", JSON.stringify(users));
 }
@@ -356,7 +345,6 @@ function singedUpSuccesRemove() {
 
 function changeLoginImg() {
     let loginpwimg = document.getElementById("register_pw_login_img");
-
     if (loginpwimg.src.endsWith("assets/img/register_lock.png")) {
         loginpwimg.src = "assets/img/visibility_off.png";
     }
@@ -365,7 +353,6 @@ function changeLoginImg() {
 function changeSigninImg() {
     let signinimg = document.getElementById("register_pw_sign_in_img");
     let signinimgconfirm = document.getElementById("register_pw_sign_in_confirm_img");
-
     if (signinimg.src.endsWith("assets/img/register_lock.png")) {
         signinimg.src = "assets/img/visibility_off.png";
         signinimgconfirm.src = "assets/img/visibility_off.png";
@@ -379,7 +366,6 @@ function changeSigninImg() {
 function encryptPassword1() {
     let loginpw = document.getElementById("register_pw_login_value");
     let loginpwimg = document.getElementById("register_pw_login_img");
-
     if (loginpwimg.src.endsWith("assets/img/visibility_off.png")) {
         loginpw.type = "text";
         loginpwimg.src = "assets/img/visibility.png";

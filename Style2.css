@@ -1025,6 +1025,10 @@
 
 @media only screen and (max-width: 700px) {
 
+    .summary-upcoming-deadline {
+        margin-left: 20px;
+    }
+
     .head-wrapper {
         font-size: 24px !important;
     }
@@ -1258,6 +1262,8 @@
 
     .summary-urgent {
         margin-left: 56px;
+
+        margin-right: 20px;
 
         h3 {
             font-size: 47px;
