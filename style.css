@@ -38,10 +38,9 @@ li {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    top: 96px;
-    height: 232px;
     margin-left: 328px;
     margin-right: 64px;
+    margin-top: 98px;
 }
 
 h1.board {
@@ -150,26 +149,16 @@ button.add-task:hover {
     align-items: center;
 }
 
-.board-head-task {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    top: 50.5px;
-    margin-left: 328px;
-    margin-right: 64px;
-}
-
 .single-task-head {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 246px;
+    flex-direction: column;
+    width: 252px;
 }
 
 .board-body-task {
     display: flex;
     justify-content: space-between;
-    position: relative;
     top: 80.5px;
     margin-left: 328px;
     margin-right: 64px;
@@ -177,24 +166,20 @@ button.add-task:hover {
 
 .style-task-button {
     display: flex;
-    justify-content: center;
     align-items: center;
-    border: solid 2px;
-    border-radius: 8px;
-    border-color: #2A3647;
-    gap: 10px;
-    padding: 3px;
-    width: 24px;
-    height: 24px;
-    font-weight: 700;
-    font-size: 16px;
-    text-align: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-image: url("./assets/img/button_plus.png");
+    background-repeat: no-repeat;
+    border: none;
+    background-color: none;
+    margin-bottom: 0;
 }
 
 .style-task-button:hover {
     cursor: pointer;
-    border-color: #29ABE2;
-    color: #29ABE2;
+    background-image: url("./assets/img/button_plus_blue.png");
 }
 
 .empty-task-place {
@@ -259,11 +244,13 @@ h3.bord-title {
     word-break: break-all;
 }
 
+.bord-descript-max-height {
+    max-height: 100px;
+    overflow: auto;
+}
+
 .bord-descript {
     color: #A8A8A8;
-    word-break: break-word;
-    height: 200px;
-    word-wrap:break-word;
 }
 
 .single-task {
@@ -321,7 +308,7 @@ p.subtasktxt {
 }
 
 .todo-task-container {
-    width: 252px;
+    width: 236px;
     border-radius: 24px;
     padding: 16px;
     margin: 8px;
@@ -337,9 +324,22 @@ p.subtasktxt {
     background-color: rgb(231, 255, 254);
 }
 
-/* .single-task-head {
-    background: #a8a8a8ad;
-} */
+.single-task-header {
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 32.4px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.place-bord-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 252px;
+    padding: 16px;
+    margin: 8px;
+}
 
 .collect-category {
     display: flex;
@@ -1601,7 +1601,25 @@ div.selected:hover {
     border: 8px solid #ffffff;
 }
 
-@media(max-width: 1400px) {
+@media(max-width: 1650px) {
+    .board-head {
+        margin-left: 252px;
+    }
+
+    .board-head-task {
+        margin-left: 252px;
+    }
+
+    .board-body-task {
+        margin-left: 252px;
+    }
+}
+
+/* @media(max-width: 1480px) {
+
+} */
+
+/* @media(max-width: 1400px) {
     .empty-task-place {
         width: 200px;
         font-size: 14px;
@@ -1624,7 +1642,7 @@ div.selected:hover {
     .board-head-task {
         margin-left: 130px;
     }
-}
+} */
 
 @media(max-width: 1030px) {
     .board-body-task {
@@ -1650,7 +1668,7 @@ div.selected:hover {
     }
 }
 
-@media(max-width: 1400px) {}
+/* @media(max-width: 1400px) {} */
 
 @media(max-width: 1300px) {
     main.add-task {
