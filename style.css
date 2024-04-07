@@ -265,7 +265,7 @@ h3.bord-title {
     padding-top: 24px;
     margin-block-start: 0;
     margin-block-end: 0;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .bord-descript-max-height {
@@ -557,7 +557,7 @@ h1.task-head-bord {
     margin-block-start: 0;
     margin-block-end: 0;
     padding-bottom: 24px;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 
 .place-due-date-bord {
