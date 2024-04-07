@@ -23,19 +23,27 @@ function emptyBoxHtml(containerId) {
 }
 
 function emptyBoxHtmlTodo() {
-    emptyBoxHtml("to_do_place");
+    if (users[loaduser]["todo"].length > 0) {
+        emptyBoxHtml("to_do_place");
+    }
 }
 
 function emptyBoxHtmlInprogress() {
-    emptyBoxHtml("in_progress_place");
+    if (users[loaduser]["tasksinprogress"].length > 0) {
+        emptyBoxHtml("in_progress_place");
+    }
 }
 
 function emptyBoxHtmlAwaitfeedback() {
-    emptyBoxHtml("await_feedback_place");
+    if (users[loaduser]["awaitingfeedback"].length > 0) {
+        emptyBoxHtml("await_feedback_place");
+    }
 }
 
 function emptyBoxHtmlDone() {
-    emptyBoxHtml("done_place");
+    if (users[loaduser]["done"].length > 0) {
+        emptyBoxHtml("done_place");
+    }
 }
 
 function showEmptyHtmlTodo() {
@@ -106,8 +114,6 @@ function editSingleTask(i) {
     const selectarray = currentdraggedarray[i];
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
     categorytodo;
-    // const choosensubtasks = selectSubtasks(subtaskstodo);
-    // const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
     getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo);
     initAddTask(i, priotodo);

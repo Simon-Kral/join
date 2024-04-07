@@ -1653,13 +1653,19 @@ div.selected:hover {
     }
 
     .single-task-head {
-        width: 392px;
+        width: 100%;
         align-items: start;
     }
 
     .single-task {
         align-items: start;
         flex-direction: row;
+        max-width: 100%;
+        overflow: auto;
+    }
+
+    .single-task::-webkit-scrollbar {
+        display: none;
     }
 
     .place-bord-buttons {
@@ -1671,6 +1677,10 @@ div.selected:hover {
         padding-left: 0px;
         margin-right: 0px;
         margin-left: 0px;
+    }
+
+    .todo-task-container:hover {
+        transform: none;
     }
 }
 
@@ -1789,6 +1799,7 @@ div.selected:hover {
 
     .board-body-task {
         margin-left: 48px;
+        margin-bottom: 98px;
     }
 
     .board-head {
@@ -1904,6 +1915,7 @@ div.selected:hover {
 
     .board-body-task {
         margin-left: 16px;
+        margin-right: 16px;
     }
 
     .board-head {
@@ -2712,5 +2724,19 @@ div.selected:hover {
             height: 16px;
             width: 16px;
         }
+    }
+}
+
+@media (max-width: 420px) {
+    .search-task-tag {
+        width: 286px;
+    }
+
+    .place-bord-buttons {
+        width: 286px;
+    }
+
+    .place-bord-header-botton {
+        width: 286px;
     }
 }
