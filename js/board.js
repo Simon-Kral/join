@@ -109,10 +109,6 @@ function openTask(i) {
     getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts);
 }
 
-function selectPriorityOpenTask(priority) {
-    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : null;
-}
-
 function editSingleTask(i) {
     let getplacetaskvariantbord = document.getElementById("add_bordtask_data");
     const selectarray = currentdraggedarray[i];
@@ -179,6 +175,10 @@ function selectPriority(priority) {
     return priority === "urgent" ? urugentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : null;
 }
 
+function selectPriorityOpenTask(priority) {
+    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : null;
+}
+
 function showTaskCategoryBig(category) {
     const html = category === "Technical Task" ? technicalTaskHtml() : userTaskHtml();
     document.getElementById("task_variant_bord").innerHTML = html;
@@ -202,7 +202,8 @@ function drag(id, element) {
 
 function updateProgressBar(subtasks, selectedCheckboxCount) {
     let percent = selectedCheckboxCount === 1 ? 0 : Math.round((selectedCheckboxCount / subtasks.length) * 100);
-    return subtasks <= 0 ? emptyPlaceHtml() : createProgressBar(percent);
+    let checksubs = createProgressBar(percent);
+    return checksubs;
 }
 
 function selectSubtasks(subtaskstodo) {
