@@ -106,6 +106,7 @@ function openTask(i, key) {
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriorityOpenTask(priotodo);
     const selectcontacts = selectContacts(contactstodo);
+    console.log(contactstodo);
     getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts, key);
 }
 
