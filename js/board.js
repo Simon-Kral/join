@@ -93,10 +93,10 @@ function bordAddNewTask(array) {
 }
 
 function openBordTask(id, element) {
-    element.parentElement && element.parentElement.id === "to_do_place" ? (dragTodo(id), openTask(id)) : element.parentElement && element.parentElement.id === "in_progress_place" ? (dragInProgress(id), openTask(id)) : element.parentElement && element.parentElement.id === "await_feedback_place" ? (dragAwaitFeedback(id), openTask(id)) : element.parentElement && element.parentElement.id === "done_place" && (dragDone(id), openTask(id));
+    element.parentElement && element.parentElement.id === "to_do_place" ? (dragTodo(id), openTask(id, "todo")) : element.parentElement && element.parentElement.id === "in_progress_place" ? (dragInProgress(id), openTask(id, "tasksinprogress")) : element.parentElement && element.parentElement.id === "await_feedback_place" ? (dragAwaitFeedback(id), openTask(id, "awaitingfeedback")) : element.parentElement && element.parentElement.id === "done_place" && (dragDone(id), openTask(id, "done"));
 }
 
-function openTask(i) {
+function openTask(i, key) {
     let getplacecard = document.getElementById("add_bordtask_data");
     document.getElementById("fullscreen_information").classList.remove("d-none");
     const selectarray = currentdraggedarray[i];
@@ -106,16 +106,16 @@ function openTask(i) {
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriorityOpenTask(priotodo);
     const selectcontacts = selectContacts(contactstodo);
-    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts);
+    getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts, key);
 }
 
-function editSingleTask(i) {
+function editSingleTask(i, key) {
     let getplacetaskvariantbord = document.getElementById("add_bordtask_data");
     const selectarray = currentdraggedarray[i];
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
     categorytodo;
     const choosenpriority = selectPriority(priotodo);
-    getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo);
+    getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, key);
     initAddTask(i, priotodo);
     editContactsFactory(contactstodo);
     editSubtaskFactory(subtaskstodo);
@@ -423,7 +423,6 @@ function editSubtaskFactory(subtaskstodo) {
     let content = document.getElementById("selected_subtasks");
     for (let h = 1; h < subtaskstodo.length - 1; h++) {
         const selected = subtaskstodo[h];
-        if (!selected.name) continue;
-        content.innerHTML += renderSubtask(selected.name, selected.id);
+        addSubtask(0, selected);
     }
 }
