@@ -123,7 +123,7 @@ function createProgressBar(percent) {
     `;
 }
 
-function hoverBoxHtml() {
+function hoverHtml() {
     return `
         <div ondragover="this.style.background = '#F4F4F4'; this.style.borderStyle = 'dashed';" 
             ondragleave="this.style.background = '#f6f7f8'; this.style.borderStyle = 'none';" 
@@ -132,7 +132,17 @@ function hoverBoxHtml() {
     `;
 }
 
-function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priority, subtasklenght, selectedCheckboxCount) {
+function subtaskProgressbarHtml(subtasklenght, selectedCheckboxCount) {
+    return `
+        <p class="subtasktxt">${selectedCheckboxCount - 1}/${subtasklenght}Subtasks</p>
+    `;
+}
+
+function empty() {
+    return ``;
+}
+
+function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priority, choosensubs) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
             <div class="collect-category">${choosencategory}</div>
@@ -142,7 +152,7 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
             </div>
             <div class="place-task-progress">
                 <div class="collect-subtask">${subtaskstodo}</div>
-                <p class="subtasktxt">${selectedCheckboxCount - 1}/${subtasklenght}Subtasks</p>
+                <p class="subtasktxt">${choosensubs}</p>
             </div>
             <div class="place-user-status">
                 <div class="place-user">

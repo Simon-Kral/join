@@ -10,37 +10,37 @@ function boardinit() {
     showEmptyHtmlInprogress();
     showEmptyHtmlAwaitfeedback();
     showEmptyHtmlDone();
-    emptyBoxHtmlTodo();
-    emptyBoxHtmlInprogress();
-    emptyBoxHtmlAwaitfeedback();
-    emptyBoxHtmlDone();
+    hoverBoxHtmlTodo();
+    hoverBoxHtmlInprogress();
+    hoverBoxHtmlAwaitfeedback();
+    hoverBoxHtmlDone();
 }
 
 function emptyBoxHtml(containerId) {
-    const empty = hoverBoxHtml();
+    const empty = hoverHtml();
     let getPlace = document.getElementById(containerId);
     getPlace.innerHTML += empty;
 }
 
-function emptyBoxHtmlTodo() {
+function hoverBoxHtmlTodo() {
     if (users[loaduser]["todo"].length > 0) {
         emptyBoxHtml("to_do_place");
     }
 }
 
-function emptyBoxHtmlInprogress() {
+function hoverBoxHtmlInprogress() {
     if (users[loaduser]["tasksinprogress"].length > 0) {
         emptyBoxHtml("in_progress_place");
     }
 }
 
-function emptyBoxHtmlAwaitfeedback() {
+function hoverBoxHtmlAwaitfeedback() {
     if (users[loaduser]["awaitingfeedback"].length > 0) {
         emptyBoxHtml("await_feedback_place");
     }
 }
 
-function emptyBoxHtmlDone() {
+function hoverBoxHtmlDone() {
     if (users[loaduser]["done"].length > 0) {
         emptyBoxHtml("done_place");
     }
@@ -138,8 +138,8 @@ function renderTasks() {
 function showTaskHtml(task, index, sectionId) {
     let sectionElement = document.getElementById(sectionId);
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(task);
-    const { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, subtasklength, selectcontacts } = informationsFactory(categorytodo, priotodo, subtaskstodo, contactstodo);
-    sectionElement.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, index, barupdated, selectcontacts, choosenpriority, subtasklength, selectedCheckboxCount);
+    const { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, choosensubs, selectcontacts } = informationsFactory(categorytodo, priotodo, subtaskstodo, contactstodo);
+    sectionElement.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, index, barupdated, selectcontacts, choosenpriority, choosensubs, selectedCheckboxCount);
 }
 
 function informationTodo(task) {
@@ -152,9 +152,9 @@ function informationsFactory(category, priority, subtasks, contacts) {
     const choosenpriority = selectPriority(priority);
     const selectedCheckboxCount = countSelectedCheckboxes(subtasks);
     const barupdated = updateProgressBar(subtasks, selectedCheckboxCount);
-    const subtasklength = subtasks.length - 1;
+    const choosensubs = choosenSubtasks(subtasks, selectedCheckboxCount);
     const selectcontacts = selectContacts(contacts);
-    return { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, subtasklength, selectcontacts };
+    return { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, choosensubs, selectcontacts };
 }
 
 function selectCategory(category) {
@@ -200,10 +200,26 @@ function drag(id, element) {
     dragFunction ? dragFunction(id) : null;
 }
 
+function choosenSubtasks(subtasks, selectedCheckboxCount) {
+    let subtasklength = subtasks.length;
+    if (subtasklength <= 1) {
+        let nullsubs = empty();
+        return nullsubs;
+    } else {
+        let checksubs = subtaskProgressbarHtml(subtasklength -1, selectedCheckboxCount);
+        return checksubs;
+    }
+}
+
 function updateProgressBar(subtasks, selectedCheckboxCount) {
     let percent = selectedCheckboxCount === 1 ? 0 : Math.round((selectedCheckboxCount / subtasks.length) * 100);
-    let checksubs = createProgressBar(percent);
-    return checksubs;
+    if (subtasks.length <= 1) {
+        let nullsubs = empty();
+        return nullsubs;
+    } else {
+        let checksubs = createProgressBar(percent);
+        return checksubs;
+    }
 }
 
 function selectSubtasks(subtaskstodo) {
