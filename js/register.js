@@ -1,5 +1,209 @@
 let users = [];
 let loaduser = [];
+let todo = [
+    {
+        title: "CSS Architecture Planning",
+        description: "Define CSS naming conventions and structures",
+        date: "14/09/2024",
+        category: "Technical Task",
+        prio: "urgent",
+        subtasks: [
+            {
+                idcounter: 0,
+            },
+            {
+                id: 1,
+                name: "who does what",
+                isChecked: true
+            },
+            {
+                id: 2,
+                name: "what time",
+                isChecked: false
+            }
+        ],
+        contacts: [
+            { idcounter: 2 },
+            {
+                id: 1,
+                firstname: "Sofia",
+                lastname: "Müller",
+                email: "sofiam@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#00BEE8",
+            },
+            {
+                id: 2,
+                firstname: "Anton",
+                lastname: "Mayer",
+                email: "antom@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#FF7A00",
+            },
+        ],
+    },]
+let tasksinprogress = [
+    {
+        title: "Daily Kochwelt Recipe",
+        description: "Implement daily recipe and portion calculator",
+        date: "14/09/2024",
+        category: "User Story",
+        prio: "low",
+        subtasks: [
+            {
+                idcounter: 0,
+            },
+        ],
+        contacts: [
+            { idcounter: 2 },
+            {
+                id: 3,
+                firstname: "Benedikt",
+                lastname: "Ziegler",
+                email: "benedikt@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#6E52FF",
+            },
+            {
+                id: 4,
+                firstname: "David",
+                lastname: "Eisenberg",
+                email: "davidberg@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#FC71FF",
+            },
+            {
+                id: 5,
+                firstname: "Eva",
+                lastname: "Fischer",
+                email: "eva@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#FFBB2B",
+            },
+        ],
+    },]
+let awaitingfeedback = [{
+    title: "HTML Base Template Creation",
+    description: "Create reusable HTML base templates",
+    date: "14/09/2024",
+    category: "Technical Task",
+    prio: "low",
+    subtasks: [
+        {
+            idcounter: 0,
+        },
+    ],
+    contacts: [
+        { idcounter: 2 },
+        {
+            id: 3,
+            firstname: "Benedikt",
+            lastname: "Ziegler",
+            email: "benedikt@gmail.com",
+            phone: "+49 1111 111 11 1",
+            color: "#6E52FF",
+        },
+        {
+            id: 4,
+            firstname: "David",
+            lastname: "Eisenberg",
+            email: "davidberg@gmail.com",
+            phone: "+49 1111 111 11 1",
+            color: "#FC71FF",
+        },
+    ],
+},]
+let Urgent = [{
+    title: "CSS Architecture Planning",
+    description: "Define CSS naming conventions and structures",
+    date: "14/09/2024",
+    category: "Technical Task",
+    prio: "urgent",
+    subtasks: [
+        {
+            idcounter: 0,
+        },
+        {
+            id: 1,
+            name: "who does what",
+            isChecked: true
+        },
+        {
+            id: 2,
+            name: "what time",
+            isChecked: false
+        }
+    ],
+    contacts: [
+        { idcounter: 2 },
+        {
+            id: 1,
+            firstname: "Sofia",
+            lastname: "Müller",
+            email: "sofiam@gmail.com",
+            phone: "+49 1111 111 11 1",
+            color: "#00BEE8",
+        },
+        {
+            id: 2,
+            firstname: "Anton",
+            lastname: "Mayer",
+            email: "antom@gmail.com",
+            phone: "+49 1111 111 11 1",
+            color: "#FF7A00",
+        },
+    ],
+},]
+let contacts = [
+    { idcounter: 9 },
+    {
+        id: 0,
+        firstname: "Sofia",
+        lastname: "Müller",
+        email: "sofiam@gmail.com",
+        phone: "+49 1111 111 11 1",
+        color: "#00BEE8",
+    },
+    {
+        id: 1,
+        firstname: "Anton",
+        lastname: "Mayer",
+        email: "antom@gmail.com",
+        phone: "+49 1111 111 11 1",
+        color: "#FF7A00",
+    },
+    {
+        id: 2,
+        firstname: "Anja",
+        lastname: "Schulz",
+        email: "schulz@hotmail.com",
+        phone: "+49 1111 111 11 1",
+        color: "#9327FF",
+    },
+    {
+        id: 3,
+        firstname: "Benedikt",
+        lastname: "Ziegler",
+        email: "benedikt@gmail.com",
+        phone: "+49 1111 111 11 1",
+        color: "#6E52FF",
+    },
+    {
+        id: 4,
+        firstname: "David",
+        lastname: "Eisenberg",
+        email: "davidberg@gmail.com",
+        phone: "+49 1111 111 11 1",
+        color: "#FC71FF",
+    },
+    {
+        id: 5,
+        firstname: "Eva",
+        lastname: "Fischer",
+        email: "eva@gmail.com",
+        phone: "+49 1111 111 11 1",
+        color: "#FFBB2B",
+    },]
 
 async function loadstorageitems() {
     if (localStorage.getItem("userI") === null) {
@@ -40,93 +244,13 @@ async function ifelseRegister() {
             name: register_name.value,
             email: register_email.value,
             password: register_pw_sign_in.value,
-            todo: [],
+            todo,
             done: [],
-            Urgent: [],
-            tasksinprogress: [],
-            awaitingfeedback: [],
-            contacts: [{ idcounter: 9 }, {
-                id: 0,
-                firstname: "Sofia",
-                lastname: "Müller",
-                email: "sofiam@gmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#00BEE8",
-            },
-            {
-                id: 1,
-                firstname: "Anton",
-                lastname: "Mayer",
-                email: "antom@gmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#FF7A00",
-            },
-            {
-                id: 2,
-                firstname: "Anja",
-                lastname: "Schulz",
-                email: "schulz@hotmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#9327FF",
-            },
-            {
-                id: 3,
-                firstname: "Benedikt",
-                lastname: "Ziegler",
-                email: "benedikt@gmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#6E52FF",
-            },
-            {
-                id: 4,
-                firstname: "David",
-                lastname: "Eisenberg",
-                email: "davidberg@gmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#FC71FF",
-            },
-            {
-                id: 5,
-                firstname: "Eva",
-                lastname: "Fischer",
-                email: "eva@gmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#FFBB2B",
-            },
-            {
-                id: 6,
-                firstname: "Emmanuel",
-                lastname: "Mauer",
-                email: "emmanuelma@gmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#1FD7C1",
-            },
-            {
-                id: 7,
-                firstname: "Marcel",
-                lastname: "Bauer",
-                email: "bauer@gmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#462F8A",
-            },
-            {
-                id: 8,
-                firstname: "Tatjana",
-                lastname: "Wolf",
-                email: "wolf@gmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#FF4646",
-            },
-            {
-                id: 9,
-                firstname: "Tatjana",
-                lastname: "Wolf",
-                email: "wolf@gmail.com",
-                phone: "+49 1111 111 11 1",
-                color: "#FF4646",
-            },],
+            Urgent,
+            tasksinprogress,
+            awaitingfeedback,
+            contacts,
         });
-
         await setItem("users", JSON.stringify(users));
         resetForm();
     }
@@ -148,7 +272,6 @@ function login() {
 function LoginLocalstorage(findusers) {
     if (findusers) {
         let userI = users.findIndex((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
-
         loaduser.push(userI);
         localStorage.setItem("userI", loaduser);
         window.location.assign("summary.html");
@@ -165,7 +288,6 @@ function LoginLocalstorage(findusers) {
 function Loginsessionstorage(findusers) {
     if (findusers) {
         let userI = users.findIndex((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
-
         loaduser.push(userI);
         sessionStorage.setItem("userI", loaduser);
         window.location.assign("summary.html");
@@ -181,185 +303,17 @@ function Loginsessionstorage(findusers) {
 
 function registerGuestLogin() {
     loaduser = 0;
-    users = [
-        {
-            name: "Guest",
-            email: "",
-            password: "",
-            todo: [
-                {
-                    title: "CSS Architecture Planning",
-                    description: "Define CSS naming conventions and structures",
-                    date: "14/09/2024",
-                    category: "Technical Task",
-                    prio: "urgent",
-                    subtasks: [
-                        {
-                            idcounter: 0,
-                        },
-                        {
-                            id: 1,
-                            name: "who does what",
-                            isChecked: true
-                        },
-                        {
-                            id: 2,
-                            name: "what time",
-                            isChecked: false
-                        }
-                    ],
-                    contacts: [
-                        { idcounter: 2 },
-                        {
-                            id: 1,
-                            firstname: "Sofia",
-                            lastname: "Müller",
-                            email: "sofiam@gmail.com",
-                            phone: "+49 1111 111 11 1",
-                            color: "#00BEE8",
-                        },
-                        {
-                            id: 2,
-                            firstname: "Anton",
-                            lastname: "Mayer",
-                            email: "antom@gmail.com",
-                            phone: "+49 1111 111 11 1",
-                            color: "#FF7A00",
-                        },
-                    ],
-                },            
-            ],
-            done: [],
-            Urgent: [
-                {
-                    title: "CSS Architecture Planning",
-                    description: "Define CSS naming conventions and structures",
-                    date: "14/09/2024",
-                    category: "Technical Task",
-                    prio: "urgent",
-                    subtasks: [
-                        {
-                            idcounter: 0,
-                        },
-                        {
-                            id: 1,
-                            name: "who does what",
-                            isChecked: true
-                        },
-                        {
-                            id: 2,
-                            name: "what time",
-                            isChecked: false
-                        }
-                    ],
-                    contacts: [
-                        { idcounter: 2 },
-                        {
-                            id: 1,
-                            firstname: "Sofia",
-                            lastname: "Müller",
-                            email: "sofiam@gmail.com",
-                            phone: "+49 1111 111 11 1",
-                            color: "#00BEE8",
-                        },
-                        {
-                            id: 2,
-                            firstname: "Anton",
-                            lastname: "Mayer",
-                            email: "antom@gmail.com",
-                            phone: "+49 1111 111 11 1",
-                            color: "#FF7A00",
-                        },
-                    ],
-                },
-            ],
-            tasksinprogress: [],
-            awaitingfeedback: [],
-            contacts: [
-                { idcounter: 9 },
-                {
-                    id: 0,
-                    firstname: "Sofia",
-                    lastname: "Müller",
-                    email: "sofiam@gmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#00BEE8",
-                },
-                {
-                    id: 1,
-                    firstname: "Anton",
-                    lastname: "Mayer",
-                    email: "antom@gmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#FF7A00",
-                },
-                {
-                    id: 2,
-                    firstname: "Anja",
-                    lastname: "Schulz",
-                    email: "schulz@hotmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#9327FF",
-                },
-                {
-                    id: 3,
-                    firstname: "Benedikt",
-                    lastname: "Ziegler",
-                    email: "benedikt@gmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#6E52FF",
-                },
-                {
-                    id: 4,
-                    firstname: "David",
-                    lastname: "Eisenberg",
-                    email: "davidberg@gmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#FC71FF",
-                },
-                {
-                    id: 5,
-                    firstname: "Eva",
-                    lastname: "Fischer",
-                    email: "eva@gmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#FFBB2B",
-                },
-                {
-                    id: 6,
-                    firstname: "Emmanuel",
-                    lastname: "Mauer",
-                    email: "emmanuelma@gmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#1FD7C1",
-                },
-                {
-                    id: 7,
-                    firstname: "Marcel",
-                    lastname: "Bauer",
-                    email: "bauer@gmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#462F8A",
-                },
-                {
-                    id: 8,
-                    firstname: "Tatjana",
-                    lastname: "Wolf",
-                    email: "wolf@gmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#FF4646",
-                },
-                {
-                    id: 9,
-                    firstname: "Tatjana",
-                    lastname: "Wolf",
-                    email: "wolf@gmail.com",
-                    phone: "+49 1111 111 11 1",
-                    color: "#FF4646",
-                },
-            ],
-        },
-    ];
+    users = [{
+        name: "Guest",
+        email: "",
+        password: "",
+        todo,
+        done: [],
+        Urgent,
+        tasksinprogress,
+        awaitingfeedback,
+        contacts,
+    },];
     sessionStorage.setItem("userI", loaduser);
     sessionStorage.setItem("Guest", JSON.stringify(users));
 }
@@ -391,7 +345,6 @@ function singedUpSuccesRemove() {
 
 function changeLoginImg() {
     let loginpwimg = document.getElementById("register_pw_login_img");
-
     if (loginpwimg.src.endsWith("assets/img/register_lock.png")) {
         loginpwimg.src = "assets/img/visibility_off.png";
     }
@@ -400,7 +353,6 @@ function changeLoginImg() {
 function changeSigninImg() {
     let signinimg = document.getElementById("register_pw_sign_in_img");
     let signinimgconfirm = document.getElementById("register_pw_sign_in_confirm_img");
-
     if (signinimg.src.endsWith("assets/img/register_lock.png")) {
         signinimg.src = "assets/img/visibility_off.png";
         signinimgconfirm.src = "assets/img/visibility_off.png";
@@ -414,7 +366,6 @@ function changeSigninImg() {
 function encryptPassword1() {
     let loginpw = document.getElementById("register_pw_login_value");
     let loginpwimg = document.getElementById("register_pw_login_img");
-
     if (loginpwimg.src.endsWith("assets/img/visibility_off.png")) {
         loginpw.type = "text";
         loginpwimg.src = "assets/img/visibility.png";

@@ -94,6 +94,27 @@ function mediumPrioHtml() {
     `;
 }
 
+function urugentPrioHtmlOpenTask() {
+    return `
+        <span>Urgent</span>
+        <img class="low-image" src="./assets/img/urgent.png"></img>
+    `;
+}
+
+function lowPrioHtmlOpenTask() {
+    return `
+        <span>Low</span>
+        <img class="low-image" src="./assets/img/low.png"></img>
+    `;
+}
+
+function mediumPrioHtmlOpenTask() {
+    return `
+        <span>Medium</span>
+        <img class="low-image" src="./assets/img/medium.png"></img>
+    `;
+}
+
 function createProgressBar(percent) {
     return `
         <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
@@ -116,7 +137,9 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
             <div class="collect-category">${choosencategory}</div>
             <h3 class="bord-title">${title}</h3>
-            <span class="bord-descript">${description}</span>
+            <div class="bord-descript-max-height">
+                <span class="bord-descript">${description}</span>
+            </div>
             <div class="place-task-progress">
                 <div class="collect-subtask">${subtaskstodo}</div>
                 <p class="subtasktxt">${selectedCheckboxCount - 1}/${subtasklenght}Subtasks</p>
@@ -142,7 +165,7 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
             </div>
             <div class="place-single-information">
                 <h1 class="task-head-bord">${title}</h1>
-                <span class="descript">${description}</span>
+                <div class="descript">${description}</div>
                 <div class="place-due-date-bord">
                     <span class="single-task-design">Due date:&nbsp;</span>
                     <span class="due-date-bord">${date}</span>
@@ -155,7 +178,7 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
                     <div class="place-user-single-card">
                         ${contacts}
                     </div>
-                    <span class="subtasks-bord">Subtasks</span>
+                    <span class="subtasks-bord single-task-design">Subtasks:</span>
                     <div class="subtasks-input-bord">
                         <ul>
                             ${subtaskstodo}

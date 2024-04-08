@@ -32,7 +32,10 @@
     <body onload="init(), loadStorage()">
         <div w3-include-html="./assets/templates/desktop_template.html"></div>
         <section class="board-head">
-            <h1 class="board">Board</h1>
+            <div class="place-bord-header-botton">
+                <h1 class="board">Board</h1>
+                <button onclick="bordAddNewTask()" class="add-task-new"></button>
+            </div>
             <div class="place-search-task">
                 <form oninput="searchTitleStart()" class="search-task-tag">
                     <input id="search_input" class="search-task-in" type="search" placeholder="Search..." />
@@ -41,28 +44,34 @@
                 <button onclick="bordAddNewTask()" class="add-task">Add task +</button>
             </div>
         </section>
-        <section class="board-head-task">
-            <div class="single-task-head todo">
-                <p>To do</p>
-                <button onclick="bordAddNewTask()" class="style-task-button">+</button>
+        <section class="board-body-task">
+            <div class="single-task-head">
+                <div class="place-bord-buttons">
+                    <p class="single-task-header">To do</p>
+                    <button onclick="bordAddNewTask()" class="style-task-button"></button>
+                </div>
+                <div class="single-task" id="to_do_place" ondrop="dropTodo(event)" ondragover="allowDrop(event)"></div>
             </div>
             <div id="in_progress_head" class="single-task-head">
-                <p>In progress</p>
-                <button onclick="bordAddNewTask('in_progress_head')" class="style-task-button">+</button>
+                <div class="place-bord-buttons">
+                    <p class="single-task-header">In progress</p>
+                    <button onclick="bordAddNewTask('in_progress_head')" class="style-task-button"></button>
+                </div>
+                <div class="single-task" id="in_progress_place" ondrop="dropInProgress(event)" ondragover="allowDrop(event)"></div>
             </div>
             <div id="await_feedback_head" class="single-task-head">
-                <p>Await feedback</p>
-                <button onclick="bordAddNewTask('await_feedback_head')" class="style-task-button">+</button>
+                <div class="place-bord-buttons">
+                    <p class="single-task-header">Await feedback</p>
+                    <button onclick="bordAddNewTask('await_feedback_head')" class="style-task-button"></button>
+                </div>
+                <div class="single-task" id="await_feedback_place" ondrop="dropAwaitFeedBack(event)" ondragover="allowDrop(event)"></div>
             </div>
             <div id="done_head" class="single-task-head">
-                <p>Done</p>
+                <div class="place-bord-buttons">
+                    <p class="single-task-header">Done</p>
+                </div>
+                <div class="single-task" id="done_place" ondrop="dropDone(event)" ondragover="allowDrop(event)"></div>
             </div>
-        </section>
-        <section class="board-body-task">
-            <div class="single-task" id="to_do_place" ondrop="dropTodo(event)" ondragover="allowDrop(event)"></div>
-            <div class="single-task" id="in_progress_place" ondrop="dropInProgress(event)" ondragover="allowDrop(event)"></div>
-            <div class="single-task" id="await_feedback_place" ondrop="dropAwaitFeedBack(event)" ondragover="allowDrop(event)"></div>
-            <div class="single-task" id="done_place" ondrop="dropDone(event)" ondragover="allowDrop(event)"></div>
         </section>
         <section onclick="closeCard()" id="fullscreen_information" class="d-none">
             <div class="information-bordcard" id="add_bordtask_data"></div>

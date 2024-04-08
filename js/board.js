@@ -23,19 +23,27 @@ function emptyBoxHtml(containerId) {
 }
 
 function emptyBoxHtmlTodo() {
-    emptyBoxHtml("to_do_place");
+    if (users[loaduser]["todo"].length > 0) {
+        emptyBoxHtml("to_do_place");
+    }
 }
 
 function emptyBoxHtmlInprogress() {
-    emptyBoxHtml("in_progress_place");
+    if (users[loaduser]["tasksinprogress"].length > 0) {
+        emptyBoxHtml("in_progress_place");
+    }
 }
 
 function emptyBoxHtmlAwaitfeedback() {
-    emptyBoxHtml("await_feedback_place");
+    if (users[loaduser]["awaitingfeedback"].length > 0) {
+        emptyBoxHtml("await_feedback_place");
+    }
 }
 
 function emptyBoxHtmlDone() {
-    emptyBoxHtml("done_place");
+    if (users[loaduser]["done"].length > 0) {
+        emptyBoxHtml("done_place");
+    }
 }
 
 function showEmptyHtmlTodo() {
@@ -96,7 +104,7 @@ function openTask(i, key) {
     const choosencategory = selectCategory(categorytodo);
     const choosensubtasks = selectSubtasks(subtaskstodo);
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
-    const choosenpriority = selectPriority(priotodo);
+    const choosenpriority = selectPriorityOpenTask(priotodo);
     const selectcontacts = selectContacts(contactstodo);
     getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts, key);
 }
@@ -106,8 +114,6 @@ function editSingleTask(i, key) {
     const selectarray = currentdraggedarray[i];
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
     categorytodo;
-    // const choosensubtasks = selectSubtasks(subtaskstodo);
-    // const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriority(priotodo);
     getplacetaskvariantbord.innerHTML = editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, key);
     initAddTask(i, priotodo);
@@ -169,6 +175,10 @@ function selectPriority(priority) {
     return priority === "urgent" ? urugentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : null;
 }
 
+function selectPriorityOpenTask(priority) {
+    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : null;
+}
+
 function showTaskCategoryBig(category) {
     const html = category === "Technical Task" ? technicalTaskHtml() : userTaskHtml();
     document.getElementById("task_variant_bord").innerHTML = html;
@@ -192,7 +202,8 @@ function drag(id, element) {
 
 function updateProgressBar(subtasks, selectedCheckboxCount) {
     let percent = selectedCheckboxCount === 1 ? 0 : Math.round((selectedCheckboxCount / subtasks.length) * 100);
-    return subtasks <= 0 ? emptyPlaceHtml() : createProgressBar(percent);
+    let checksubs = createProgressBar(percent);
+    return checksubs;
 }
 
 function selectSubtasks(subtaskstodo) {
