@@ -111,7 +111,6 @@ function openTask(i, key) {
 }
 
 function editSingleTask(i, key) {
-    debugger;
     let getplacetaskvariantbord = document.getElementById("add_bordtask_data");
     const selectarray = currentdraggedarray[i];
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
@@ -208,7 +207,7 @@ function choosenSubtasks(subtasks, selectedCheckboxCount) {
         let nullsubs = empty();
         return nullsubs;
     } else {
-        let checksubs = subtaskProgressbarHtml(subtasklength -1, selectedCheckboxCount);
+        let checksubs = subtaskProgressbarHtml(subtasklength - 1, selectedCheckboxCount);
         return checksubs;
     }
 }
