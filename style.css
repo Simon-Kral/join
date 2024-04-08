@@ -249,6 +249,7 @@ button.add-task:hover {
     background-color: #F4F4F4;
     width: 128px;
     border-radius: 8px;
+    height: 20px;
 }
 
 .progressbar {
@@ -282,6 +283,10 @@ h3.bord-title {
     justify-content: start;
     align-items: center;
     flex-direction: column;
+}
+
+.single-task::-webkit-scrollbar-thumb {
+    background-color: #d8d2d2;
 }
 
 p.user-story {
@@ -2742,5 +2747,6 @@ div.selected:hover {
 
     .single-task::-webkit-scrollbar {
         display: none;
+        background-color: #A8A8A8;
     }
 }
