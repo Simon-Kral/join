@@ -78,19 +78,19 @@ function technicalTaskHtml() {
 
 function urugentPrioHtml() {
     return `
-        <img class="low-image" src="./assets/img/urgent.png"></img>
+        <img class="low-image" src="./assets/img/urgent.svg"></img>
     `;
 }
 
 function lowPrioHtml() {
     return `
-        <img class="low-image" src="./assets/img/low.png"></img>
+        <img class="low-image" src="./assets/img/low.svg"></img>
     `;
 }
 
 function mediumPrioHtml() {
     return `
-        <img class="low-image" src="./assets/img/medium.png"></img>
+        <img class="low-image" src="./assets/img/medium.svg"></img>
     `;
 }
 
@@ -133,7 +133,7 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
     `;
 }
 
-function fullTaskHtml(choosencategory, title, description, i, priotodo, date, subtaskstodo, contacts) {
+function fullTaskHtml(choosencategory, title, description, i, priotodo, date, subtaskstodo, contacts, key) {
     return `
         <div class="single-task-field" onclick="noCloseContent(event)">
             <div class="place-categorie-cross">
@@ -168,7 +168,7 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
                         <span>Delete</span>
                     </div>
                     <div class="one-px-line"></div>
-                <div onclick="editSingleTask(${i})" class="edit-place">
+                <div onclick="editSingleTask(${i}, '${key}')" class="edit-place">
                     <img class="edit" src="./assets/img/edit.png">
                     <span>Edit</span>
                 </div>
@@ -177,11 +177,11 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
       `;
 }
 
-function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts) {
+function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, key) {
     return `
         <div class="single-task-field" onclick="noCloseContent(event)">
             <main class="edit-task">
-                <form class="add-task-form-section" onsubmit="addToTasks();return false"  autocomplete="off">
+                <form class="add-task-form-section" onsubmit="applyChangesToTask(${i}, '${key}');return false"  autocomplete="off">
                     <div class="input-wrapper scroll-wrapper">
                         <section class="input-box">
                             <div id="add_task_title">

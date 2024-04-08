@@ -178,14 +178,27 @@ function clearInput(id) {
     input.value = "";
 }
 
-function addSubtask(inputid) {
-    let input = document.getElementById(inputid);
+function addSubtask(inputid, subtask) {
+    let input;
+    let subtaskname;
+    let subtaskid;
+    let subtaskIsChecked;
+    if (!subtask) {
+        input = document.getElementById(inputid);
+        subtaskid = allsubtasks[0].idcounter;
+        subtaskname = input.value;
+        subtaskIsChecked = false;
+    } else {
+        input = subtask;
+        subtaskid = input.id;
+        subtaskname = input.name;
+        subtaskIsChecked = input.isChecked;
+    }
     let content = document.getElementById("selected_subtasks");
-    let subtaskid = allsubtasks[0].idcounter;
-    let arrayelement = { id: subtaskid, name: input.value, isChecked: false };
+    let arrayelement = { id: subtaskid, name: subtaskname, isChecked: subtaskIsChecked };
     allsubtasks.push(arrayelement);
     allsubtasks[0].idcounter++;
-    content.innerHTML += renderSubtask(input.value, subtaskid);
+    content.innerHTML += renderSubtask(subtaskname, subtaskid);
     input.value = "";
 }
 
@@ -247,7 +260,7 @@ function clearInputs() {
     let inputs = getAllAddTaskFormInputs();
     for (let i = 0; i < inputs.length; i++) {
         const input = inputs[i];
-        document.getElementById(`${input}`).value = "";
+        if (document.getElementById(`${input}`)) document.getElementById(`${input}`).value = "";
     }
     document.getElementById("input_with_button_assigned_to").value = "";
     document.getElementById("input_with_button_subtask").value = "";
@@ -307,24 +320,49 @@ function formatDate(date) {
 }
 
 async function addToTasks(array) {
-    addDataFromInputs();
+    addDataToCurrentTask();
+    await saveTask(array);
+    clearAddTaskForm();
+    clearAddTaskArrays();
+    await showTaskNotification();
+    window.location.assign("./board.html");
+}
+async function applyChangesToTask(i, key) {
+    addDataToCurrentTask(i);
+    await saveEditedTask(i, key);
+    clearAddTaskForm();
+    clearAddTaskArrays();
+}
+
+function addDataToCurrentTask(i) {
+    addDataFromInputs(i);
     addPrio();
     currentTask.subtasks = allsubtasks;
     currentTask.contacts = selectedcontacts;
-    await saveTask(array);
-    clearAddTaskForm();
-    document.getElementById("task-added-notification").classList.add("notification-display");
-    await delay(1000);
-    window.location.assign("./board.html");
 }
 
-function addDataFromInputs() {
+function clearAddTaskArrays() {
+    allsubtasks = [{ idcounter: 0 }];
+    selectedcontacts = [];
+    currentTask = {};
+}
+
+async function showTaskNotification() {
+    document.getElementById("task-added-notification").classList.add("notification-display");
+    await delay(1000);
+}
+
+function addDataFromInputs(i) {
+    debugger;
     let inputs = getAllAddTaskFormInputs(true);
     Object.entries(inputs).forEach((entry) => {
         let [key, value] = entry;
-        let inputvalue = document.getElementById(`${value}`).value;
-        currentTask[`${key}`] = inputvalue;
+        if (document.getElementById(`${value}`)) {
+            let inputvalue = document.getElementById(`${value}`).value;
+            currentTask[`${key}`] = inputvalue;
+        }
     });
+    if (!currentTask.category) currentTask.category = currentdraggedarray[i].category;
 }
 
 function addPrio() {
@@ -345,11 +383,30 @@ function checkIncomingArray(array) {
     }
 }
 
+function changeIncomingArray(i, key) {
+    if (key === "tasksinprogress") {
+        users[loaduser].tasksinprogress[i] = currentTask;
+    } else if (key === "awaitingfeedback") {
+        users[loaduser].awaitingfeedback[i] = currentTask;
+    } else if (key === "done") {
+        users[loaduser].done[i] = currentTask;
+    } else {
+        users[loaduser].todo[i] = currentTask;
+    }
+}
+
 async function saveTask(array) {
     checkIncomingArray(array);
     currentTask.prio === "urgent" ? users[loaduser].Urgent.push(currentTask) : "";
     sessionStorage.getItem("Guest") === null ? await setItem("users", JSON.stringify(users)) : sessionStorage.setItem("Guest", JSON.stringify(users));
     tasks.push(currentTask);
+}
+async function saveEditedTask(i, key) {
+    changeIncomingArray(i, key);
+    if (currentdraggedarray[i].prio != "urgent" && currentTask.prio === "urgent") users[loaduser].Urgent.push(currentTask);
+    sessionStorage.getItem("Guest") === null ? await setItem("users", JSON.stringify(users)) : sessionStorage.setItem("Guest", JSON.stringify(users));
+    tasks.push(currentTask);
+    closeCard();
 }
 
 function addAddTaskEventListeners() {
