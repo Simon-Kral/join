@@ -99,7 +99,6 @@ function selectContactById(id) {
 }
 
 function selectPrio(prio) {
-    debugger;
     let input = document.getElementById("prio_" + prio);
     let label = document.getElementById("prio_" + prio + "_label");
     let container = label.parentElement;
