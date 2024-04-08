@@ -90,7 +90,7 @@ function lowPrioHtml() {
 
 function mediumPrioHtml() {
     return `
-        <img class="low-image" src="./assets/img/medium.png"></img>
+        <img class="low-image" src="./assets/img/medium_two.png"></img>
     `;
 }
 
@@ -111,7 +111,7 @@ function lowPrioHtmlOpenTask() {
 function mediumPrioHtmlOpenTask() {
     return `
         <span>Medium</span>
-        <img class="low-image" src="./assets/img/medium.png"></img>
+        <img class="low-image" src="./assets/img/medium_two.png"></img>
     `;
 }
 
