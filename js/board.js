@@ -110,6 +110,7 @@ function openTask(i, key) {
 }
 
 function editSingleTask(i, key) {
+    debugger;
     let getplacetaskvariantbord = document.getElementById("add_bordtask_data");
     const selectarray = currentdraggedarray[i];
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
@@ -405,8 +406,9 @@ function editContactsFactory(selectcontacts) {
 
 function editSubtaskFactory(subtaskstodo) {
     let content = document.getElementById("selected_subtasks");
-    for (let h = 1; h < subtaskstodo.length - 1; h++) {
+    console.log(subtaskstodo);
+    for (let h = 0; h < subtaskstodo.length; h++) {
         const selected = subtaskstodo[h];
-        addSubtask(0, selected);
+        if (selected.name) addSubtask(0, selected);
     }
 }

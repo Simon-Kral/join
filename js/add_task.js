@@ -14,7 +14,7 @@ async function fillAddTaskSectionload() {
 
 function initAddTask(i, priotodo) {
     renderAssignedTo();
-    i === undefined ? renderCategory() : "";
+    if (i === undefined) renderCategory();
     addAddTaskEventListeners();
     setMinDate();
     priotodo === undefined ? selectPrio("medium") : selectPrio(priotodo);
@@ -99,6 +99,7 @@ function selectContactById(id) {
 }
 
 function selectPrio(prio) {
+    debugger;
     let input = document.getElementById("prio_" + prio);
     let label = document.getElementById("prio_" + prio + "_label");
     let container = label.parentElement;
@@ -353,7 +354,6 @@ async function showTaskNotification() {
 }
 
 function addDataFromInputs(i) {
-    debugger;
     let inputs = getAllAddTaskFormInputs(true);
     Object.entries(inputs).forEach((entry) => {
         let [key, value] = entry;

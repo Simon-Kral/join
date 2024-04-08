@@ -78,19 +78,19 @@ function technicalTaskHtml() {
 
 function urugentPrioHtml() {
     return `
-        <img class="low-image" src="./assets/img/urgent.svg"></img>
+        <img class="low-image" src="./assets/img/urgent.png"></img>
     `;
 }
 
 function lowPrioHtml() {
     return `
-        <img class="low-image" src="./assets/img/low.svg"></img>
+        <img class="low-image" src="./assets/img/low.png"></img>
     `;
 }
 
 function mediumPrioHtml() {
     return `
-        <img class="low-image" src="./assets/img/medium.svg"></img>
+        <img class="low-image" src="./assets/img/medium.png"></img>
     `;
 }
 
