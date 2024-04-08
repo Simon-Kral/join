@@ -225,7 +225,7 @@ function choosenSubtasks(subtasks, selectedCheckboxCount) {
         let nullsubs = empty();
         return nullsubs;
     } else {
-        let checksubs = subtaskProgressbarHtml(subtasklength -1, selectedCheckboxCount);
+        let checksubs = subtaskProgressbarHtml(subtasklength - 1, selectedCheckboxCount);
         return checksubs;
     }
 }

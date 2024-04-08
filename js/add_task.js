@@ -17,7 +17,7 @@ function initAddTask(i, priotodo) {
     if (i === undefined) renderCategory();
     addAddTaskEventListeners();
     setMinDate();
-    priotodo === undefined ? selectPrio("medium") : selectPrio(priotodo);
+    selectPrio("medium");
 }
 
 function renderAssignedTo(searchterm) {
@@ -107,7 +107,7 @@ function selectPrio(prio) {
         highlightedlabel.classList.remove("highlighted-button");
     }
     label.classList.add("highlighted-button");
-    input.value = prio;
+    input.checked = true;
 }
 
 function clearAllPrioButtons() {
