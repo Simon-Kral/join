@@ -105,13 +105,11 @@ function openTask(i, key) {
     const choosensubtasks = selectSubtasks(subtaskstodo);
     const getsubtaskhtml = selectSubtaskHtml(choosensubtasks, selectarray);
     const choosenpriority = selectPriorityOpenTask(priotodo);
-    const selectcontacts = selectContacts(contactstodo);
-    console.log(contactstodo);
+    const selectcontacts = selectContactsOpenTask(contactstodo);
     getplacecard.innerHTML = fullTaskHtml(choosencategory, titletodo, descriptiontodo, i, choosenpriority, datetodo, getsubtaskhtml, selectcontacts, key);
 }
 
 function editSingleTask(i, key) {
-    debugger;
     let getplacetaskvariantbord = document.getElementById("add_bordtask_data");
     const selectarray = currentdraggedarray[i];
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo, datetodo } = informationTodo(selectarray);
@@ -165,20 +163,39 @@ function selectCategory(category) {
 
 function selectContacts(contactstodo) {
     let contacthtml = "";
-    for (let s = 1; s < contactstodo.length; s++) {
+    for (let s = 0; s < contactstodo.length; s++) {
         const contact = contactstodo[s];
         const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
-        contacthtml += `<span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>`;
+        contacthtml += `
+            <div class="contact-name-place">
+                <span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>
+            </div>`;
+    }
+    return contacthtml;
+}
+
+function selectContactsOpenTask(contactstodo) {
+    let contacthtml = "";
+    for (let s = 0; s < contactstodo.length; s++) {
+        const contact = contactstodo[s];
+        const selectfirstnamecon = contact['firstname'];
+        const selectlastnamecon = contact['lastname'];
+        const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
+        contacthtml += `
+            <div class="contact-name-place">
+                <span class="profile-badge" style="background-color: ${contact.color};">${abbreviation}</span>
+                <span>${selectfirstnamecon}&nbsp;${selectlastnamecon}</span>
+            </div>`;
     }
     return contacthtml;
 }
 
 function selectPriority(priority) {
-    return priority === "urgent" ? urugentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : null;
+    return priority === "urgent" ? urugentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : mediumPrioHtml();
 }
 
 function selectPriorityOpenTask(priority) {
-    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : null;
+    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : mediumPrioHtmlOpenTask();
 }
 
 function showTaskCategoryBig(category) {
@@ -422,8 +439,6 @@ function editContactsFactory(selectcontacts) {
 }
 
 function editSubtaskFactory(subtaskstodo) {
-    let content = document.getElementById("selected_subtasks");
-    console.log(subtaskstodo);
     for (let h = 0; h < subtaskstodo.length; h++) {
         const selected = subtaskstodo[h];
         if (selected.name) addSubtask(0, selected);

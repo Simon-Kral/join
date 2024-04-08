@@ -336,7 +336,8 @@ p.subtasktxt {
 }
 
 .todo-task-container {
-    width: 236px;
+    max-width: 236px;
+    min-width: 236px;
     border-radius: 24px;
     padding: 16px;
     margin: 8px;
@@ -401,6 +402,12 @@ p.subtasktxt {
 
 .place-user-single-card .profile-badge {
     margin: 8px;
+}
+
+.contact-name-place {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .check-bord {
