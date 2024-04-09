@@ -166,6 +166,7 @@ function selectContacts(contactstodo) {
     for (let s = 0; s < contactstodo.length; s++) {
         const contact = contactstodo[s];
         if (!contact.firstname) continue;
+        if (!contact.firstname) continue;
         const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
         contacthtml += `
             <div class="contact-name-place">
@@ -180,8 +181,8 @@ function selectContactsOpenTask(contactstodo) {
     for (let s = 0; s < contactstodo.length; s++) {
         const contact = contactstodo[s];
         if (!contact.firstname) continue;
-        const selectfirstnamecon = contact['firstname'];
-        const selectlastnamecon = contact['lastname'];
+        const selectfirstnamecon = contact["firstname"];
+        const selectlastnamecon = contact["lastname"];
         const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
         contacthtml += `
             <div class="contact-name-place">
