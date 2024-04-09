@@ -283,6 +283,7 @@ h3.bord-title {
     justify-content: start;
     align-items: center;
     flex-direction: column;
+    overscroll-behavior-x: auto;
 }
 
 .single-task::-webkit-scrollbar-thumb {
@@ -353,6 +354,28 @@ p.subtasktxt {
     background-color: rgb(231, 255, 254);
 }
 
+.mobile-move-place {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button.move-mobile {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 27px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+button.move-mobile:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+}
+
 .single-task-header {
     font-weight: 700;
     font-size: 27px;
@@ -372,6 +395,7 @@ p.subtasktxt {
 
 .collect-category {
     display: flex;
+    height: 27px;
 }
 
 .place-user {
@@ -1691,7 +1715,7 @@ div.selected:hover {
     }
 
     .todo-task-container:hover {
-        transform: none;
+        transform: rotate(3deg);
     }
 }
 
@@ -2695,6 +2719,10 @@ div.selected:hover {
 
     .due-date-bord {
         font-size: 16px;
+    }
+
+    button.move-mobile {
+        display: flex;
     }
 }
 
