@@ -329,6 +329,8 @@ async function addToTasks(array) {
 }
 async function applyChangesToTask(i, key) {
     addDataToCurrentTask(i);
+    if (currentdraggedarray[i].prio != "urgent" && currentTask.prio === "urgent") users[loaduser].Urgent.push(currentTask);
+    if (currentdraggedarray[i].prio === "urgent" && currentTask.prio != "urgent") users[loaduser].Urgent.splice(0, 1);
     await saveEditedTask(i, key);
     clearAddTaskForm();
     clearAddTaskArrays();
@@ -402,7 +404,6 @@ async function saveTask(array) {
 }
 async function saveEditedTask(i, key) {
     changeIncomingArray(i, key);
-    if (currentdraggedarray[i].prio != "urgent" && currentTask.prio === "urgent") users[loaduser].Urgent.push(currentTask);
     sessionStorage.getItem("Guest") === null ? await setItem("users", JSON.stringify(users)) : sessionStorage.setItem("Guest", JSON.stringify(users));
     tasks.push(currentTask);
     closeCard();
