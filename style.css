@@ -454,7 +454,7 @@ p.subtasktxt {
     justify-content: space-between;
     align-items: start;
     flex-direction: column;
-    height: 931px;
+    height: 871px;
     width: 525px;
     background-color: #FFFFFF;
     border-radius: 30px;
@@ -2653,6 +2653,51 @@ div.selected:hover {
     }
 }
 
+@media(max-width: 750px) {
+    .single-task-field {
+        height: 640px;
+        width: 392px;
+    }
+
+    .place-categorie-cross {
+        margin-top: 24px;
+        margin-right: 24px;
+        margin-left: 24px;
+        width: 348px;
+    }
+
+    .place-single-information {
+        margin-top: 24px;
+        margin-right: 24px;
+        margin-left: 24px;
+        width: 348px;
+    }
+
+    .place-delete-edit {
+        margin-bottom: 24px;
+        margin-right: 24px;
+        margin-left: 24px;
+        width: 348px;
+    }
+
+    h1.task-head-bord {
+        font-size: 36px;
+        line-height: 43.2px;
+    }
+
+    .descript {
+        font-size: 16px;
+    }
+
+    .single-task-design {
+        font-size: 16px;
+    }
+
+    .due-date-bord {
+        font-size: 16px;
+    }
+}
+
 @media(max-width: 550px) {
     .place-bord-header-botton {
         width: 392px;
@@ -2736,6 +2781,37 @@ div.selected:hover {
             width: 16px;
         }
     }
+
+    .single-task-field {
+        height: 640px;
+        width: 300px;
+    }
+
+    .place-categorie-cross {
+        margin-top: 24px;
+        margin-right: 8px;
+        margin-left: 8px;
+        width: 266px;
+    }
+
+    .place-single-information {
+        margin-top: 24px;
+        margin-right: 8px;
+        margin-left: 8px;
+        width: 266px;
+    }
+
+    .place-delete-edit {
+        margin-bottom: 24px;
+        margin-right: 8px;
+        margin-left: 8px;
+        width: 266px;
+    }
+
+    h1.task-head-bord {
+        font-size: 36px;
+        line-height: 43.2px;
+    }
 }
 
 @media (max-width: 420px) {
@@ -2754,5 +2830,11 @@ div.selected:hover {
     .single-task::-webkit-scrollbar {
         display: none;
         background-color: #A8A8A8;
+    }
+}
+
+@media(max-height: 850px) {
+    .single-task-field {
+        height: 600px;
     }
 }
