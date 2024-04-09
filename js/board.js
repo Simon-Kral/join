@@ -219,7 +219,15 @@ function drag(id, element) {
     };
     const dragFunction = dragFunctions[parentElementId];
     dragFunction ? dragFunction(id) : null;
+    // emptytaskplacedrop()
 }
+
+// function emptytaskplacedrop(){
+//     if (document.getElementById('empty-task-place-drop0')) {
+//         let emptytaskplacedrop0 = document.getElementById('empty-task-place-drop0')
+//         emptytaskplacedrop0.style.backgroundColor = '#E7E7E7';
+//     }
+// }
 
 function choosenSubtasks(subtasks, selectedCheckboxCount) {
     let subtasklength = subtasks.length;
