@@ -49,7 +49,7 @@ h1.board {
     line-height: 73.2px;
 }
 
-.add-task-new {
+.add-task-new-button {
     display: none;
     align-items: center;
     justify-content: center;
@@ -61,7 +61,7 @@ h1.board {
     margin-bottom: 0;
 }
 
-.add-task-new:hover {
+.add-task-new-button:hover {
     cursor: pointer;
     background-image: url("./assets/img/mobile_addtask_blue.png");
 }
@@ -149,7 +149,7 @@ button.search-task-button[type="submit"]:focus {
     border: none;
 }
 
-button.add-task {
+button.add-task-button {
     background-color: #2A3647;
     width: 160px;
     height: 56px;
@@ -161,7 +161,7 @@ button.add-task {
     margin-left: 32px;
 }
 
-button.add-task:hover {
+button.add-task-button:hover {
     background-color: #29ABE2;
     box-shadow: 0px 4px #00000025;
     cursor: pointer;
@@ -1729,6 +1729,12 @@ div.selected:hover {
     }
     .search-task-in {
         width: 392px;
+    }
+    .add-task-button {
+        display: none;
+    }
+    .add-task-new-button {
+        display: flex;
     }
 }
 
