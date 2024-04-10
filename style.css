@@ -647,9 +647,9 @@ h1.legal-head {
 }
 
 .law {
-    margin-bottom: 200px;
+    margin-bottom: 200px !important;
     position: relative;
-    top: 206px;
+    margin-top: 206px;
     margin-left: 290px;
     margin-right: 64px;
 }
