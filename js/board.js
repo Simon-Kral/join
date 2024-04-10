@@ -139,7 +139,8 @@ function showTaskHtml(task, index, sectionId) {
     let sectionElement = document.getElementById(sectionId);
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(task);
     const { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, choosensubs, selectcontacts } = informationsFactory(categorytodo, priotodo, subtaskstodo, contactstodo);
-    sectionElement.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, index, barupdated, selectcontacts, choosenpriority, choosensubs, selectedCheckboxCount);
+    sectionElement.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, index, barupdated, selectcontacts, choosenpriority, choosensubs, selectedCheckboxCount, sectionId);
+    console.log(sectionId);
 }
 
 function informationTodo(task) {
@@ -165,7 +166,6 @@ function selectContacts(contactstodo) {
     let contacthtml = "";
     for (let s = 0; s < contactstodo.length; s++) {
         const contact = contactstodo[s];
-        if (!contact.firstname) continue;
         if (!contact.firstname) continue;
         const abbreviation = contact.firstname.charAt(0) + contact.lastname.charAt(0);
         contacthtml += `
@@ -459,3 +459,21 @@ function editSubtaskFactory(subtaskstodo) {
 function openMoveMenue(i, ele) {
     console.log(i, ele);
 }
+
+// function openMoveMenue(event) {
+//     const parentTodoContainer = event.target.closest('.todo-task-container');
+//     if (parentTodoContainer) {
+//         const parentElementId = parentTodoContainer.id;
+//         if (parentElementId === 'to_do_place') {
+//             // Führe die entsprechenden Aktionen für to_do_place aus
+//             // Beispiel: dragTodoPlace();
+//             console.log('Moving to to_do_place');
+//         } else {
+//             console.log('Not moving to to_do_place');
+//         }
+//     } else {
+//         console.log('Parent todo container not found');
+//     }
+//     // Verhindere, dass das Ereignis weitergeleitet wird
+//     event.stopPropagation();
+// }
