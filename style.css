@@ -647,9 +647,9 @@ h1.legal-head {
 }
 
 .law {
-    margin-bottom: 200px;
+    margin-bottom: 200px !important;
     position: relative;
-    top: 206px;
+    margin-top: 206px;
     margin-left: 290px;
     margin-right: 64px;
 }
@@ -2684,41 +2684,34 @@ div.selected:hover {
         height: 640px;
         width: 392px;
     }
-
     .place-categorie-cross {
         margin-top: 24px;
         margin-right: 24px;
         margin-left: 24px;
         width: 348px;
     }
-
     .place-single-information {
         margin-top: 24px;
         margin-right: 24px;
         margin-left: 24px;
         width: 348px;
     }
-
     .place-delete-edit {
         margin-bottom: 24px;
         margin-right: 24px;
         margin-left: 24px;
         width: 348px;
     }
-
     h1.task-head-bord {
         font-size: 36px;
         line-height: 43.2px;
     }
-
     .descript {
         font-size: 16px;
     }
-
     .single-task-design {
         font-size: 16px;
     }
-
     .due-date-bord {
         font-size: 16px;
     }
@@ -2811,33 +2804,28 @@ div.selected:hover {
             width: 16px;
         }
     }
-
     .single-task-field {
         height: 640px;
         width: 300px;
     }
-
     .place-categorie-cross {
         margin-top: 24px;
         margin-right: 8px;
         margin-left: 8px;
         width: 266px;
     }
-
     .place-single-information {
         margin-top: 24px;
         margin-right: 8px;
         margin-left: 8px;
         width: 266px;
     }
-
     .place-delete-edit {
         margin-bottom: 24px;
         margin-right: 8px;
         margin-left: 8px;
         width: 266px;
     }
-
     h1.task-head-bord {
         font-size: 36px;
         line-height: 43.2px;

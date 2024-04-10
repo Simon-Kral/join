@@ -898,7 +898,12 @@
         margin-right: 30px;
     }
 
+    .help{
+        margin-top: 160px !important;
+    }
+
     .law {
+        margin-top: 160px !important;
         margin-left: 160px !important;
         margin-right: 160px !important;
         margin-bottom: 256px !important;
@@ -1309,6 +1314,14 @@
         span {
             font-size: 14px;
         }
+    }
+
+    .help{
+        margin-top: 100px !important;
+    }
+
+    .law{
+        margin-top: 100px !important;
     }
 
     .summary-board-progressl:hover {
