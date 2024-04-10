@@ -455,3 +455,7 @@ function editSubtaskFactory(subtaskstodo) {
         if (selected.name) addSubtask(0, selected);
     }
 }
+
+function openMoveMenue(i, ele) {
+    console.log(i, ele);
+}
