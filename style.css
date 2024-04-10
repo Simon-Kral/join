@@ -2532,48 +2532,40 @@ div.selected:hover {
             }
         }
     }
-}
-
-.place-categorie-cross {
-    margin-top: 24px;
-    margin-right: 24px;
-    margin-left: 24px;
-    width: 348px;
-}
-
-.place-single-information {
-    margin-top: 24px;
-    margin-right: 24px;
-    margin-left: 24px;
-    width: 348px;
-}
-
-.place-delete-edit {
-    margin-bottom: 24px;
-    margin-right: 24px;
-    margin-left: 24px;
-    width: 348px;
-}
-
-h1.task-head-bord {
-    font-size: 36px;
-    line-height: 43.2px;
-}
-
-.descript {
-    font-size: 16px;
-}
-
-.single-task-design {
-    font-size: 16px;
-}
-
-.due-date-bord {
-    font-size: 16px;
-}
-
-button.move-mobile {
-    display: flex;
+    .place-categorie-cross {
+        margin-top: 24px;
+        margin-right: 24px;
+        margin-left: 24px;
+        width: 348px;
+    }
+    .place-single-information {
+        margin-top: 24px;
+        margin-right: 24px;
+        margin-left: 24px;
+        width: 348px;
+    }
+    .place-delete-edit {
+        margin-bottom: 24px;
+        margin-right: 24px;
+        margin-left: 24px;
+        width: 348px;
+    }
+    h1.task-head-bord {
+        font-size: 36px;
+        line-height: 43.2px;
+    }
+    .descript {
+        font-size: 16px;
+    }
+    .single-task-design {
+        font-size: 16px;
+    }
+    .due-date-bord {
+        font-size: 16px;
+    }
+    button.move-mobile {
+        display: flex;
+    }
 }
 
 @media(max-width: 550px) {
