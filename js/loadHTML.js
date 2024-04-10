@@ -144,7 +144,7 @@ function empty() {
 
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priority, choosensubs) {
     return `
-        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
+        <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ontouchstart="openMoveMenue(${i}, this)" ondragstart="drag(${i}, this)">
             <div class="mobile-move-place">
                 <div class="collect-category">${choosencategory}</div>
                 <button class="move-mobile" onclick="noCloseContent(event)" ontouchstart="openMoveMenue(${i}, this)">move</button>
