@@ -230,7 +230,7 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
                                 <h3>Description</h3>
                                 <div class="textarea-wrapper">
                                     <textarea class="focus-blue" placeholder="Enter a Description" name="add_task_description"
-                                        id="add_task_description_textarea">${descriptiontodo}</textarea>
+                                        id="add_task_description_textarea" spellcheck="false">${descriptiontodo}</textarea>
                                 </div>
                             </div>
                         </section>
@@ -369,7 +369,7 @@ function fillAddTaskSection(array) {
                             <h3>Description</h3>
                             <div class="textarea-wrapper">
                                 <textarea class="focus-blue" placeholder="Enter a Description"
-                                    name="add_task_description" id="add_task_description_textarea"></textarea>
+                                    name="add_task_description" id="add_task_description_textarea" spellcheck="false"></textarea>
                             </div>
                         </div>
                         <div id="add_task_assigned_to">
