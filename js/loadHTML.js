@@ -314,7 +314,7 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
                     </div>
                     <section class="bottom-section">
                         <div class="bottom-buttons">
-                            <button class="create-task-button">
+                            <button class="blue-button create-task-button">
                                 <span>Ok</span>
                                 <img src="./assets/img/check.png" alt="create task">
                             </button>
