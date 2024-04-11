@@ -1,3 +1,6 @@
+/**
+ * show the first letter of the first name and second name in the right corner 
+ */
 function menuLoginName() {
     let menuuser = document.getElementById("menu_user");
     let username = users[loaduser].name
@@ -8,7 +11,9 @@ function menuLoginName() {
         .toUpperCase();
     menuuser.innerHTML = username;
 }
-
+/**
+ * open and close menu
+ */
 function openMenu() {
     let openmenu = document.getElementById("menu_open");
     openmenu.innerHTML = menuInnerHTML();
@@ -31,7 +36,9 @@ function menuInnerHTML() {
 
     return menu;
 }
-
+/**
+ * delete storage if logout
+ */
 function logOut() {
     loaduser = [];
     localStorage.removeItem("userI");

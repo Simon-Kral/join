@@ -1445,7 +1445,7 @@ div.selected:hover {
 
 .contact-detail-box {
     height: 364px;
-    min-width: 452px;
+    min-width: 650px;
     color: black;
 
     .contact-detail-box-head {

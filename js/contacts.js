@@ -4,7 +4,6 @@ window.onresize = switchViewOnSize;
 async function initContacts() {
     await sortContacts();
     renderContacts();
-    setResizeBehaviour();
 }
 
 async function sortContacts() {
@@ -177,12 +176,7 @@ function openContactAdding() {
 }
 
 async function saveNewContact() {
-    let fullname = document.getElementById("add_contact_name").value;
-    let email = document.getElementById("add_contact_email").value;
-    let phone = document.getElementById("add_contact_phone").value;
-    let color = document.getElementById("add_contact_color").value;
-    let name = formatName(fullname);
-    newcontact = buildNewContactArray(name, email, phone, color);
+    let newcontact = buildNewContactArray();
     users[loaduser].contacts.push(newcontact);
     await saveToServer();
     initContacts();
@@ -192,11 +186,12 @@ async function saveNewContact() {
     document.getElementById("contact-added-notification").classList.remove("notification-display");
 }
 
-function buildNewContactArray(name, email, phone, color) {
+function buildNewContactArray() {
+    let name = formatName(document.getElementById("add_contact_name").value);
     let counter = users[loaduser].contacts.find((element) => element.idcounter).idcounter;
     counter++;
     users[loaduser].contacts.find((element) => element.idcounter).idcounter = counter;
-    return { id: counter, firstname: name.firstname, lastname: name.lastname, email: email, phone: phone, color: color };
+    return { id: counter, firstname: name.firstname, lastname: name.lastname, email: document.getElementById("add_contact_email").value, phone: document.getElementById("add_contact_phone").value, color: document.getElementById("add_contact_color").value };
 }
 
 function delay(milliseconds) {

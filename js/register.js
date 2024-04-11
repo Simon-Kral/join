@@ -204,7 +204,9 @@ let contacts = [
         phone: "+49 1111 111 11 1",
         color: "#FFBB2B",
     },]
-
+/**
+ * get user data and remove/reset sessionStorage items 
+ */
 async function loadstorageitems() {
     if (localStorage.getItem("userI") === null) {
     } else {
@@ -221,7 +223,9 @@ async function loadstorageitems() {
 async function loadUsers() {
     users = await getItem("users");
 }
-
+/**
+ * register function
+ */
 async function register() {
     let sameemail = users.find((u) => u.email == register_email.value);
     if (sameemail) {
@@ -234,7 +238,9 @@ async function register() {
         register_email.setCustomValidity("");
     }, 1400);
 }
-
+/**
+ * if password dont match = error, else create user and reset form 
+ */
 async function ifelseRegister() {
     if (register_pw_sign_in.value != register_pw_sign_in_confirm.value) {
         register_pw_sign_in_confirm.setCustomValidity("Passwords Don't Match");
@@ -258,7 +264,9 @@ async function ifelseRegister() {
         register_pw_sign_in_confirm.setCustomValidity("");
     }, 1400);
 }
-
+/**
+ * login function, if checkbox true = load in localstorage, else load in sessionstorage
+ */
 function login() {
     let findusers = users.find((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
 
@@ -268,7 +276,9 @@ function login() {
         Loginsessionstorage(findusers);
     }
 }
-
+/**
+ * if find user = login, else = error
+ */
 function LoginLocalstorage(findusers) {
     if (findusers) {
         let userI = users.findIndex((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
@@ -300,7 +310,9 @@ function Loginsessionstorage(findusers) {
         register_pw_login_value.setCustomValidity("");
     }, 1400);
 }
-
+/**
+ * Guestlogin
+ */
 function registerGuestLogin() {
     loaduser = 0;
     users = [{
@@ -317,7 +329,9 @@ function registerGuestLogin() {
     sessionStorage.setItem("userI", loaduser);
     sessionStorage.setItem("Guest", JSON.stringify(users));
 }
-
+/**
+ * reset register Form, send you back to login, and singedupsucces screen
+ */
 function resetForm() {
     registerValueEmpty();
     backToLogin();
@@ -342,7 +356,9 @@ function singedUpSuccesRemove() {
     let singedupsucces = document.getElementById("singed_Up_Succes");
     singedupsucces.classList.replace("singed-Up-Succes", "d-none");
 }
-
+/**
+ * change password img if onlcick
+ */
 function changeLoginImg() {
     let loginpwimg = document.getElementById("register_pw_login_img");
     if (loginpwimg.src.endsWith("assets/img/register_lock.png")) {
@@ -362,7 +378,9 @@ function changeSigninImg() {
         signinimgconfirm.src = "assets/img/visibility_off.png";
     }
 }
-
+/**
+ * encrypt password if onlcick
+ */
 function encryptPassword1() {
     let loginpw = document.getElementById("register_pw_login_value");
     let loginpwimg = document.getElementById("register_pw_login_img");

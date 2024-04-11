@@ -60,7 +60,7 @@
             </div>
             <div class="register-spacer"></div>
             <div class="login-input">
-                <input type="text" placeholder="Name" required id="register_name">
+                <input minlength="5" type="text" placeholder="Name" required id="register_name">
                 <img src="assets\img\register_people.png">
             </div>
             <div class="login-input">
@@ -72,11 +72,11 @@
                 <img src="assets\img\register_lock.png" onclick="encryptPassword2()" class="password-RL" id="register_pw_sign_in_img">
             </div>
             <div class="login-input">
-                <input type="password" placeholder="Confirm Password" required onfocus="changeSigninImg()" id="register_pw_sign_in_confirm">
+                <input minlength="5" type="password" placeholder="Confirm Password" required onfocus="changeSigninImg()" id="register_pw_sign_in_confirm">
                 <img src="assets\img\register_lock.png" class="password-RL" id="register_pw_sign_in_confirm_img" onclick="encryptPassword2()">
             </div>
             <div class="register-sign-up-checkbox">
-                <input type="checkbox" required id="register_checkbox"> I accept the <a href="">Privacy Policy</a>
+                <input minlength="5" type="checkbox" required id="register_checkbox"> I accept the <a href="">Privacy Policy</a>
             </div>
             <button class="register-login-sign-up-button" id="register_button">Sign in</button>
         </form>
