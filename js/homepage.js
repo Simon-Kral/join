@@ -1,3 +1,6 @@
+/**
+ * shows the signUpBox
+ */
 function signUpBox() {
     let loginpwimg = document.getElementById("register_pw_login_img");
     let registerlogin = document.getElementById("register_login");
@@ -10,13 +13,17 @@ function signUpBox() {
     loginpwimg.src = "assets/img/register_lock.png";
     loginValueEmpty();
 }
-
+/**
+ * reset the loginvalues
+ */
 function loginValueEmpty() {
     register_login_value.value = "";
     register_pw_login_value.value = "";
     login_checkbox.checked = false;
 }
-
+/**
+ * goes back to login if onclick or create user
+ */
 function backToLogin() {
     let registerlogin = document.getElementById("register_login");
     let registersignin = document.getElementById("register_sign_in");

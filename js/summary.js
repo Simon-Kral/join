@@ -1,3 +1,6 @@
+/**
+ * shows the time of the guest
+ */
 async function guestTime() {
     const guesttime = new Date().getHours();
 
@@ -9,7 +12,9 @@ async function guestTime() {
         summary_good_morning.innerHTML = 'Good morning!';
     }
 }
-
+/**
+ * shows the time of the user
+ */
 async function userTime() {
     const usertime = new Date().getHours();
 
@@ -21,7 +26,9 @@ async function userTime() {
         summary_good_morning.innerHTML = 'Good morning,';
     }
 }
-
+/**
+ * load the summary array to the user or the guest
+ */
 async function loadSummaryProject() {
     let todo = document.getElementById('summary_to_do');
     let done = document.getElementById('summary_done');
@@ -44,7 +51,9 @@ async function loadSummaryInnerhtml(inboard, todo, done, urgent, deadline, inpro
     name.innerHTML = users[loaduser].name
     summaryDeadline(deadline)
 }
-
+/**
+ * show the upcoming deadline
+ */
 function summaryDeadline(deadline) {
     if (users[loaduser].todo.length === 0) {
         deadline.innerHTML = ''
@@ -66,7 +75,9 @@ function formatOutputDate(date) {
     let options = { month: 'long', day: 'numeric', year: 'numeric' };
     return date.toLocaleDateString('en-US', options);
 }
-
+/**
+ * show the welcome animation just one time
+ */
 document.addEventListener("DOMContentLoaded", function () {
     let alreadyPlayed = sessionStorage.getItem("handyWelcomePlayed");
     let summaryWelcome = document.querySelector('.summary-welcome');
