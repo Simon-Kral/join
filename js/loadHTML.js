@@ -142,6 +142,18 @@ function empty() {
     return ``;
 }
 
+function moveTaskMenue(i, key) {
+    return `
+        <div class="menu-move-container" onclick="noCloseContent(event)">
+            <h3>move</h3>
+            <div onclick="moveTodo(${i}, '${key}')" class="styled-arrays">To do</div>
+            <div onclick="moveInprogress(${i}, '${key}')" class="styled-arrays">In progress</div>
+            <div onclick="moveAwaitfeedback(${i}, '${key}')" class="styled-arrays">Await feedback</div>
+            <div onclick="moveDone(${i}, '${key}')" class="styled-arrays">Done</div>
+        </div>
+    `;
+}
+
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priority, choosensubs) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">

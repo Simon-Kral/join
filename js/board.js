@@ -140,7 +140,6 @@ function showTaskHtml(task, index, sectionId) {
     const { categorytodo, titletodo, descriptiontodo, subtaskstodo, contactstodo, priotodo } = informationTodo(task);
     const { choosencategory, choosenpriority, selectedCheckboxCount, barupdated, choosensubs, selectcontacts } = informationsFactory(categorytodo, priotodo, subtaskstodo, contactstodo);
     sectionElement.innerHTML += todoTaskHtml(choosencategory, titletodo, descriptiontodo, index, barupdated, selectcontacts, choosenpriority, choosensubs, selectedCheckboxCount, sectionId);
-    console.log(sectionId);
 }
 
 function informationTodo(task) {
@@ -457,23 +456,61 @@ function editSubtaskFactory(subtaskstodo) {
 }
 
 function openMoveMenue(i, ele) {
-    console.log(i, ele);
+    if (ele.parentElement.parentElement.parentElement.id === 'to_do_place') {
+        dragTodo(i), openMoveTaskMenu(i, "todo");
+    } if (ele.parentElement.parentElement.parentElement.id === 'in_progress_place') {
+        dragInProgress(i), openMoveTaskMenu(i, "tasksinprogress");
+    } if (ele.parentElement.parentElement.parentElement.id === 'await_feedback_place') {
+        dragAwaitFeedback(i), openMoveTaskMenu(i, "awaitingfeedback");
+    } if (ele.parentElement.parentElement.parentElement.id === 'done_place') {
+        dragDone(i), openMoveTaskMenu(i, "done");
+    }
 }
 
-// function openMoveMenue(event) {
-//     const parentTodoContainer = event.target.closest('.todo-task-container');
-//     if (parentTodoContainer) {
-//         const parentElementId = parentTodoContainer.id;
-//         if (parentElementId === 'to_do_place') {
-//             // Führe die entsprechenden Aktionen für to_do_place aus
-//             // Beispiel: dragTodoPlace();
-//             console.log('Moving to to_do_place');
-//         } else {
-//             console.log('Not moving to to_do_place');
-//         }
-//     } else {
-//         console.log('Parent todo container not found');
-//     }
-//     // Verhindere, dass das Ereignis weitergeleitet wird
-//     event.stopPropagation();
-// }
+function openMoveTaskMenu(i, movekey) {
+    let getplacecard = document.getElementById("add_bordtask_data");
+    document.getElementById("fullscreen_information").classList.remove("d-none");
+    const selectarray = currentdraggedarray[i];
+    getplacecard.innerHTML = moveTaskMenue(i, movekey);
+    console.log(selectarray);
+}
+
+async function moveTodo(i, movekey) {
+    console.log(i, movekey);
+    let select = users[loaduser];
+    select["todo"].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1);
+    boardinit();
+    await saveToServer();
+    document.getElementById("fullscreen_information").classList.add("d-none");
+}
+
+async function moveInprogress(i, movekey) {
+    console.log(i, movekey);
+    let select = users[loaduser];
+    select["tasksinprogress"].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1);
+    boardinit();
+    await saveToServer();
+    document.getElementById("fullscreen_information").classList.add("d-none");
+}
+
+async function moveAwaitfeedback(i, movekey) {
+    console.log(i, movekey);
+    let select = users[loaduser];
+    select["awaitingfeedback"].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1);
+    boardinit();
+    await saveToServer();
+    document.getElementById("fullscreen_information").classList.add("d-none");
+}
+
+async function moveDone(i, movekey) {
+    console.log(i, movekey);
+    let select = users[loaduser];
+    select["done"].push(currentdraggedarray[currentdragged]);
+    currentdraggedarray.splice(currentdragged, 1);
+    boardinit();
+    await saveToServer();
+    document.getElementById("fullscreen_information").classList.add("d-none");
+}
