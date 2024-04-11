@@ -53,16 +53,12 @@ async function loadAllIfElseLocalOrSession() {
 async function ifLocalStorageExist() {
     if (localStorage.getItem("userI") === null) {
         window.location.assign("index.html");
-    } else {
-        loadAll();
     }
 }
 
 async function ifSessionStorageExist() {
     if (sessionStorage.getItem("userI") === null) {
         window.location.assign("index.html");
-    } else {
-        loadAll();
     }
 }
 /**
