@@ -512,7 +512,7 @@ function generateCategoryHtml(category) {
 function generateContactDropdownHtml(contact, contactdata) {
     html = "";
     html += /*html*/ `
-        <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectTaskContacts(this, ${contact.id})">
+        <div class="contact-list-entry pointer" onmousedown="dontChangeFocus(event); selectTaskContact(this, ${contact.id})">
             <div class="profile-info-box">
                 <span class="profile-badge" style="background-color: ${contact.color};">${contactdata.abbreviation}</span>
                 <span class="profile-fullname">${contactdata.fullname}</span>
@@ -540,6 +540,13 @@ function generateSubtaskHtml(name, id) {
         </a>
     </div>
   `;
+    return html;
+}
+
+function renderSubtask() {
+    let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${currentSubtask.id})">`;
+    html += generateSubtaskHtml(currentSubtask.name, currentSubtask.id);
+    html += `</div>`;
     return html;
 }
 

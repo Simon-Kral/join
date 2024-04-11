@@ -1,12 +1,9 @@
 let tasks = [];
-
 let allcategories = [{ idcounter: 1 }, { id: 0, name: "Technical Task" }, { id: 1, name: "User Story" }];
-
 let allsubtasks = [{ idcounter: 0 }];
-
 let selectedcontacts = [];
-
 let currentTask = {};
+let currentSubtask = {};
 
 async function fillAddTaskSectionload() {
     fillAddTaskSection();
@@ -17,7 +14,7 @@ function initAddTask(i, priotodo) {
     if (i === undefined) renderCategory();
     addAddTaskEventListeners();
     setMinDate();
-    selectPrio("medium");
+    selectPrio(priotodo);
 }
 
 function renderAssignedTo(searchterm) {
@@ -64,16 +61,16 @@ function dontChangeFocus(event) {
     event.preventDefault();
 }
 
-function selectTaskContacts(entry, id, selected) {
+function selectTaskContact(entry, id, selected) {
     entry.classList.toggle("selected");
     entry.children[1].attributes[0].value === "./assets/img/check_button_unchecked.svg" ? (entry.children[1].src = "./assets/img/check_button_checked.svg") : entry.children[1].attributes[0].value === "./assets/img/check_button_checked.svg" ? (entry.children[1].src = "./assets/img/check_button_unchecked.svg") : "";
     if (selected === true) {
         const index = selectedcontacts.findIndex((element) => element.id === id);
         selectedcontacts.splice(index, 1);
-        entry.setAttribute("onmousedown", `dontChangeFocus(event); selectTaskContacts(this, ${id}, ${!selected})`);
+        entry.setAttribute("onmousedown", `dontChangeFocus(event); selectTaskContact(this, ${id}, ${!selected})`);
     } else {
         selectedcontacts.push(users[loaduser].contacts.find((element) => element.id === id));
-        entry.setAttribute("onmousedown", `dontChangeFocus(event); selectTaskContacts(this, ${id}, ${!selected})`);
+        entry.setAttribute("onmousedown", `dontChangeFocus(event); selectTaskContact(this, ${id}, ${!selected})`);
     }
     renderSelectedContacts();
 }
@@ -82,7 +79,7 @@ function handleClickPrio(prio) {
     if (prio) {
         selectPrio(prio);
     } else {
-        clearAllPrioButtons();
+        clearPrioButtons();
     }
 }
 
@@ -93,38 +90,30 @@ function selectContactById(id) {
         const onMouseDownFunction = container.attributes.onmousedown.value;
         let match = /[0-9]+/g.exec(`${onMouseDownFunction}`);
         if (match == `${id}`) {
-            selectTaskContacts(container, id);
+            selectTaskContact(container, id);
         }
     }
 }
 
 function selectPrio(prio) {
-    let input = document.getElementById("prio_" + prio);
+    if (!prio) prio = "medium";
     let label = document.getElementById("prio_" + prio + "_label");
-    let container = label.parentElement;
-    if (container.querySelector("label.highlighted-button")) {
-        let highlightedlabel = container.querySelector("label.highlighted-button");
-        highlightedlabel.classList.remove("highlighted-button");
-    }
+    if (label.parentElement.querySelector("label.highlighted-button")) label.parentElement.querySelector("label.highlighted-button").classList.remove("highlighted-button");
     label.classList.add("highlighted-button");
-    input.checked = true;
+    document.getElementById("prio_" + prio).checked = true;
 }
 
-function clearAllPrioButtons() {
-    let inputs = document.getElementsByName("prio");
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].checked = false;
-    }
-    let labels = document.querySelectorAll(".highlighted-button");
-    [].forEach.call(labels, function (label) {
-        label.classList.remove("highlighted-button");
+function clearPrioButtons() {
+    document.getElementsByName("prio").forEach((element) => {
+        element.checked = false;
     });
+    document.querySelector(".highlighted-button").classList.remove("highlighted-button");
+    selectPrio();
 }
 
 function selectTaskCategory(id) {
     const input = document.getElementById("input_with_button_category");
-    const selectedcategory = allcategories.find((element) => element.id === id);
-    input.value = selectedcategory.name;
+    input.value = allcategories.find((element) => element.id === id).name;
     input.blur();
 }
 
@@ -139,14 +128,12 @@ function renderSelectedContacts() {
 }
 
 function openDropDownMenu(id, focus) {
-    let dropdown = document.getElementById(id);
-    let arrow = document.getElementById(id + "_arrow");
     if (focus === "in") {
-        dropdown.classList.remove("dnone");
-        arrow.style.transform = "rotate(180deg)";
+        document.getElementById(id).classList.remove("dnone");
+        document.getElementById(id + "_arrow").style.transform = "rotate(180deg)";
     } else if (focus === "out") {
-        dropdown.classList.add("dnone");
-        arrow.style.transform = "rotate(0deg)";
+        document.getElementById(id).classList.add("dnone");
+        document.getElementById(id + "_arrow").style.transform = "rotate(0deg)";
     }
 }
 
@@ -166,47 +153,34 @@ function fpreventDefault(event) {
     event.preventDefault();
 }
 
-function changeSubtaskIcons(focus) {
-    let addbutton = document.getElementById("add_subtask_button");
-    let confirmcontainer = document.getElementById("confirm_subtask_container");
-    addbutton.classList.toggle("dnone");
-    confirmcontainer.classList.toggle("dnone");
+function changeSubtaskIcons() {
+    document.getElementById("add_subtask_button").classList.toggle("dnone");
+    document.getElementById("confirm_subtask_container").classList.toggle("dnone");
 }
 
 function clearInput(id) {
-    let input = document.getElementById(id);
-    input.value = "";
+    document.getElementById(id).value = "";
 }
 
 function addSubtask(inputid, subtask) {
-    let input;
-    let subtaskname;
-    let subtaskid;
-    let subtaskIsChecked;
-    if (!subtask) {
-        input = document.getElementById(inputid);
-        subtaskid = allsubtasks[0].idcounter;
-        subtaskname = input.value;
-        subtaskIsChecked = false;
-    } else {
-        input = subtask;
-        subtaskid = input.id;
-        subtaskname = input.name;
-        subtaskIsChecked = input.isChecked;
-    }
-    let content = document.getElementById("selected_subtasks");
-    let arrayelement = { id: subtaskid, name: subtaskname, isChecked: subtaskIsChecked };
-    allsubtasks.push(arrayelement);
+    !subtask ? (input = document.getElementById(inputid)) : (input = subtask);
+    setSubtaskData(input, subtask);
+    allsubtasks.push(currentSubtask);
     allsubtasks[0].idcounter++;
-    content.innerHTML += renderSubtask(subtaskname, subtaskid);
+    document.getElementById("selected_subtasks").innerHTML += renderSubtask();
+    currentSubtask = {};
     input.value = "";
 }
 
-function renderSubtask(name, id) {
-    let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${id})">`;
-    html += generateSubtaskHtml(name, id);
-    html += `</div>`;
-    return html;
+function setSubtaskData(input, subtask) {
+    currentSubtask;
+    if (!subtask) {
+        currentSubtask.id = allsubtasks[0].idcounter;
+        currentSubtask.name = input.value;
+        currentSubtask.isChecked = false;
+    } else {
+        currentSubtask = subtask;
+    }
 }
 
 function fstopPropagation(event) {
@@ -267,37 +241,23 @@ function clearInputs() {
 }
 
 function clearContainers() {
-    let containers = getAllAddTaskContainers();
-    for (let i = 0; i < containers.length; i++) {
-        const container = containers[i];
-        document.getElementById(`${container}`).innerHTML = "";
-    }
+    ["selected_contacts", "selected_subtasks"].forEach((container) => {
+        document.getElementById(container).innerHTML = "";
+    });
 }
 
 function getAllAddTaskFormInputs(withKey) {
-    let title = "add_task_title_input";
-    let description = "add_task_description_textarea";
-    let date = "input_with_button_date";
-    let category = "input_with_button_category";
     if (withKey) {
-        return { title, description, date, category };
+        return { title: "add_task_title_input", description: "add_task_description_textarea", date: "input_with_button_date", category: "input_with_button_category" };
     } else {
-        return [title, description, date, category];
+        return ["add_task_title_input", "add_task_description_textarea", "input_with_button_date", "input_with_button_category"];
     }
 }
 
-function getAllAddTaskContainers() {
-    let assignedtocontainer = "selected_contacts";
-    let subtaskcontainer = "selected_subtasks";
-    return [assignedtocontainer, subtaskcontainer];
-}
-
 function transferDate() {
-    let calendar = document.getElementById("input_calendar");
-    let dateinput = document.getElementById("input_with_button_date");
-    let date = formatDate(calendar.value);
+    let date = formatDate(document.getElementById("input_calendar").value);
     let result = [day, month, year].join("/");
-    dateinput.value = result;
+    document.getElementById("input_with_button_date").value = result;
 }
 
 function setMinDate() {
@@ -307,12 +267,7 @@ function setMinDate() {
 }
 
 function formatDate(date) {
-    let formatteddate;
-    if (date) {
-        formatteddate = new Date(date);
-    } else {
-        formatteddate = new Date();
-    }
+    !date ? (formatteddate = new Date()) : (formatteddate = new Date(date));
     formatteddate, (month = "" + (formatteddate.getMonth() + 1)), (day = "" + formatteddate.getDate()), (year = formatteddate.getFullYear());
     if (month.length < 2) month = "0" + month;
     if (day.length < 2) day = "0" + day;
@@ -359,22 +314,19 @@ function addDataFromInputs(i) {
     Object.entries(inputs).forEach((entry) => {
         let [key, value] = entry;
         if (document.getElementById(`${value}`)) {
-            let inputvalue = document.getElementById(`${value}`).value;
-            currentTask[`${key}`] = inputvalue;
+            currentTask[`${key}`] = document.getElementById(`${value}`).value;
         }
     });
     if (!currentTask.category) currentTask.category = currentdraggedarray[i].category;
 }
 
 function addPrio() {
-    let prios = document.getElementsByName("prio");
-    for (i = 0; i < prios.length; i++) {
-        const prio = prios[i];
+    document.getElementsByName("prio").forEach((prio) => {
         prio.checked ? (currentTask["prio"] = prio.value) : "";
-    }
+    });
 }
 
-function checkIncomingArray(array) {
+function pushTaskToUserArray(array) {
     if (array && array.id === "in_progress_head") {
         users[loaduser].tasksinprogress.push(currentTask);
     } else if (array && array.id === "await_feedback_head") {
@@ -384,7 +336,7 @@ function checkIncomingArray(array) {
     }
 }
 
-function changeIncomingArray(i, key) {
+function changeTaskInUserArray(i, key) {
     if (key === "tasksinprogress") {
         users[loaduser].tasksinprogress[i] = currentTask;
     } else if (key === "awaitingfeedback") {
@@ -397,13 +349,13 @@ function changeIncomingArray(i, key) {
 }
 
 async function saveTask(array) {
-    checkIncomingArray(array);
+    pushTaskToUserArray(array);
     currentTask.prio === "urgent" ? users[loaduser].Urgent.push(currentTask) : "";
     sessionStorage.getItem("Guest") === null ? await setItem("users", JSON.stringify(users)) : sessionStorage.setItem("Guest", JSON.stringify(users));
     tasks.push(currentTask);
 }
 async function saveEditedTask(i, key) {
-    changeIncomingArray(i, key);
+    changeTaskInUserArray(i, key);
     sessionStorage.getItem("Guest") === null ? await setItem("users", JSON.stringify(users)) : sessionStorage.setItem("Guest", JSON.stringify(users));
     tasks.push(currentTask);
     closeCard();
@@ -424,7 +376,7 @@ function addAddTaskEventListeners() {
     });
 }
 
-function delay(milliseconds) {
+async function delay(milliseconds) {
     return new Promise((resolve) => {
         setTimeout(resolve, milliseconds);
     });
