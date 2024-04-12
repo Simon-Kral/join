@@ -440,31 +440,21 @@ function editSubtaskFactory(subtaskstodo) {
 }
 
 function openMoveMenue(i, ele) {
-    if (ele.parentElement.parentElement.parentElement.id === 'to_do_place') {
-        dragTodo(i), openMoveTaskMenu(i, "todo");
-    } if (ele.parentElement.parentElement.parentElement.id === 'in_progress_place') {
-        dragInProgress(i), openMoveTaskMenu(i, "tasksinprogress");
-    } if (ele.parentElement.parentElement.parentElement.id === 'await_feedback_place') {
-        dragAwaitFeedback(i), openMoveTaskMenu(i, "awaitingfeedback");
-    } if (ele.parentElement.parentElement.parentElement.id === 'done_place') {
-        dragDone(i), openMoveTaskMenu(i, "done");
-    }
+    const parentId = ele.parentElement.parentElement.parentElement.id;
+    parentId === 'to_do_place' ? (dragTodo(i), openMoveTaskMenu(i, "todo")) :
+    parentId === 'in_progress_place' ? (dragInProgress(i), openMoveTaskMenu(i, "tasksinprogress")) :
+    parentId === 'await_feedback_place' ? (dragAwaitFeedback(i), openMoveTaskMenu(i, "awaitingfeedback")) :
+    parentId === 'done_place' && (dragDone(i), openMoveTaskMenu(i, "done"));
 }
 
 function openMoveTaskMenu(i, movekey) {
     let getplacecard = document.getElementById("add_bordtask_data");
     document.getElementById("fullscreen_information").classList.remove("d-none");
-    const selectarray = currentdraggedarray[i];
     getplacecard.innerHTML = moveTaskMenue(i, movekey);
-    if (movekey == "todo") {
-        document.getElementById("light_todo").classList.add("highlight-color");
-    } if (movekey == "tasksinprogress") {
-        document.getElementById("light_inprogress").classList.add("highlight-color");
-    } if (movekey == "awaitingfeedback") {
-        document.getElementById("light_awaitfeedback").classList.add("highlight-color");
-    } if (movekey == "done") {
-        document.getElementById("light_done").classList.add("highlight-color");
-    }
+    movekey === "todo" ? document.getElementById("light_todo").classList.add("highlight-color") :
+    movekey === "tasksinprogress" ? document.getElementById("light_inprogress").classList.add("highlight-color") :
+    movekey === "awaitingfeedback" ? document.getElementById("light_awaitfeedback").classList.add("highlight-color") :
+    movekey === "done" && document.getElementById("light_done").classList.add("highlight-color");
 }
 
 async function moveTodo(i, movekey) {
@@ -485,7 +475,7 @@ async function moveInprogress(i, movekey) {
     document.getElementById("fullscreen_information").classList.add("d-none");
 }
 
-async function moveAwaitfeedback(i, movekey) {
+async function moveAwaitfeedback() {
     let select = users[loaduser];
     select["awaitingfeedback"].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
@@ -494,8 +484,7 @@ async function moveAwaitfeedback(i, movekey) {
     document.getElementById("fullscreen_information").classList.add("d-none");
 }
 
-async function moveDone(i, movekey) {
-    console.log(i, movekey);
+async function moveDone() {
     let select = users[loaduser];
     select["done"].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
