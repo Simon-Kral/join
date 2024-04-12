@@ -12,18 +12,22 @@ function menuLoginName() {
     menuuser.innerHTML = username;
 }
 /**
- * open and close menu
+ * open menu
  */
 function openMenu() {
     let openmenu = document.getElementById("menu_open");
     openmenu.innerHTML = menuInnerHTML();
 }
-
+/**
+ * close menu
+ */
 function closeMenu() {
     let openmenu = document.getElementById("menu_open");
     openmenu.innerHTML = "";
 }
-
+/**
+ *  menu
+ */
 function menuInnerHTML() {
     let menu = `        
     <div class="open-menu">

@@ -40,7 +40,9 @@ async function loadSummaryProject() {
     let name = document.getElementById('sommary_name');
     loadSummaryInnerhtml(inboard, todo, done, urgent, deadline, inprogress, awaitfeedback, name)
 }
-
+/**
+ * load the summary array to the user or the guest
+ */
 async function loadSummaryInnerhtml(inboard, todo, done, urgent, deadline, inprogress, awaitfeedback, name) {
     todo.innerHTML = users[loaduser].todo.length
     done.innerHTML = users[loaduser].done.length
@@ -65,12 +67,16 @@ function summaryDeadline(deadline) {
         deadline.innerHTML = formatOutputDate(minDate)
     }
 }
-
+/**
+ * Date edit
+ */
 function formatDate(date) {
     let [day, month, year] = date.split('/');
     return `${month}/${day}/${year}`;
 }
-
+/**
+ * Date edit
+ */
 function formatOutputDate(date) {
     let options = { month: 'long', day: 'numeric', year: 'numeric' };
     return date.toLocaleDateString('en-US', options);
