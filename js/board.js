@@ -46,36 +46,27 @@ function hoverBoxHtmlDone() {
     }
 }
 
-function showEmptyHtmlTodo() {
-    if (users[loaduser]["todo"] == 0) {
-        const empty = emptyTaskFieldTodo();
-        let getplacetodo = document.getElementById("to_do_place");
-        getplacetodo.innerHTML = empty;
+function updateEmptyHtml(elementId, userProperty, emptyTaskFunction) {
+    if (users[loaduser][userProperty] == 0) {
+        const empty = emptyTaskFunction();
+        document.getElementById(elementId).innerHTML = empty;
     }
+}
+
+function showEmptyHtmlTodo() {
+    updateEmptyHtml("to_do_place", "todo", emptyTaskFieldTodo);
 }
 
 function showEmptyHtmlInprogress() {
-    if (users[loaduser]["tasksinprogress"] == 0) {
-        const empty = emptyTaskFieldInprogress();
-        let getplacetodo = document.getElementById("in_progress_place");
-        getplacetodo.innerHTML = empty;
-    }
+    updateEmptyHtml("in_progress_place", "tasksinprogress", emptyTaskFieldInprogress);
 }
 
 function showEmptyHtmlAwaitfeedback() {
-    if (users[loaduser]["awaitingfeedback"] == 0) {
-        const empty = emptyTaskFieldAwaitfeedback();
-        let getplacetodo = document.getElementById("await_feedback_place");
-        getplacetodo.innerHTML = empty;
-    }
+    updateEmptyHtml("await_feedback_place", "awaitingfeedback", emptyTaskFieldAwaitfeedback);
 }
 
 function showEmptyHtmlDone() {
-    if (users[loaduser]["done"] == 0) {
-        const empty = emptyTaskFieldDone();
-        let getemptyplacedone = document.getElementById("done_place");
-        getemptyplacedone.innerHTML = empty;
-    }
+    updateEmptyHtml("done_place", "done", emptyTaskFieldDone);
 }
 
 function closeCard() {
@@ -219,15 +210,7 @@ function drag(id, element) {
     };
     const dragFunction = dragFunctions[parentElementId];
     dragFunction ? dragFunction(id) : null;
-    // emptytaskplacedrop()
 }
-
-// function emptytaskplacedrop(){
-//     if (document.getElementById('empty-task-place-drop0')) {
-//         let emptytaskplacedrop0 = document.getElementById('empty-task-place-drop0')
-//         emptytaskplacedrop0.style.backgroundColor = '#E7E7E7';
-//     }
-// }
 
 function choosenSubtasks(subtasks, selectedCheckboxCount) {
     let subtasklength = subtasks.length;
@@ -274,7 +257,7 @@ async function updateSelectedCheckboxes(index, isChecked) {
 }
 
 function countSelectedCheckboxes(subtaskstodo) {
-    let count = 1; // Start counting from 1
+    let count = 1;
     for (let checkindex = 0; checkindex < subtaskstodo.length; checkindex++) {
         const check = subtaskstodo[checkindex]["isChecked"];
         check == true ? count++ : "";
