@@ -540,6 +540,10 @@ button.move-mobile:hover {
     background-color: rgb(96, 103, 114);
 }
 
+.highlight-color {
+    background-color: rgb(150, 32, 68);
+}
+
 img.single-task-close {
     width: 20px;
     height: 20px;
@@ -2804,6 +2808,10 @@ div.selected:hover {
             width: 16px;
         }
     }
+
+    button.move-mobile {
+        display: flex;
+    }
 }
 
 @media(max-width: 750px) {
@@ -2888,10 +2896,6 @@ div.selected:hover {
 
     .due-date-bord {
         font-size: 16px;
-    }
-
-    button.move-mobile {
-        display: flex;
     }
 }
 

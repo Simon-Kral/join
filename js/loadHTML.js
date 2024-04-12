@@ -145,11 +145,11 @@ function empty() {
 function moveTaskMenue(i, key) {
     return `
         <div class="menu-move-container" onclick="noCloseContent(event)">
-            <h3>move</h3>
-            <div onclick="moveTodo(${i}, '${key}')" class="styled-arrays">To do</div>
-            <div onclick="moveInprogress(${i}, '${key}')" class="styled-arrays">In progress</div>
-            <div onclick="moveAwaitfeedback(${i}, '${key}')" class="styled-arrays">Await feedback</div>
-            <div onclick="moveDone(${i}, '${key}')" class="styled-arrays">Done</div>
+            <h3 class="move-to">move to menu</h3>
+            <div onclick="moveTodo(${i}, '${key}')" id="light_todo" class="styled-arrays">To do</div>
+            <div onclick="moveInprogress(${i}, '${key}')" id="light_inprogress" class="styled-arrays">In progress</div>
+            <div onclick="moveAwaitfeedback(${i}, '${key}')" id="light_awaitfeedback" class="styled-arrays">Await feedback</div>
+            <div onclick="moveDone(${i}, '${key}')" id="light_done" class="styled-arrays">Done</div>
         </div>
     `;
 }
@@ -157,11 +157,11 @@ function moveTaskMenue(i, key) {
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priority, choosensubs) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
-            <div class="mobile-move-place">
+            <div class="mobile-move-place" onclick="noCloseContent(event)">
                 <div class="collect-category">${choosencategory}</div>
-                <button class="move-mobile" ontouchstart="openMoveMenue(${i}, this)" onclick="noCloseContent(event)">move</button>
+                <button class="move-mobile" onclick="openMoveMenue(${i}, this)">move</button>
             </div>
-            <h3 class="bord-title">${title}</h3>
+            <h3 class="bord-title">${title}</h3>    
             <div class="bord-descript-max-height">
                 <span class="bord-descript">${description}</span>
             </div>
