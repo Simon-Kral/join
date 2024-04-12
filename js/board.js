@@ -10,33 +10,15 @@ function boardinit() {
     showEmptyHtmlInprogress();
     showEmptyHtmlAwaitfeedback();
     showEmptyHtmlDone();
-    hoverBoxHtmlTodo();
-    hoverBoxHtmlInprogress();
-    hoverBoxHtmlAwaitfeedback();
-    hoverBoxHtmlDone();
+    emptyBoxHtml();
 }
 
-function emptyBoxHtml(containerId) {
+function emptyBoxHtml() {
     const empty = hoverHtml();
-    let getPlace = document.getElementById(containerId);
-    getPlace.innerHTML += empty;
+    ["to_do_place", "in_progress_place", "await_feedback_place", "done_place"].forEach((container) => {
+        document.getElementById(container).innerHTML += empty;
+    })
 }
-
-function hoverBoxHtmlTodo() {
-        emptyBoxHtml("to_do_place");
-    }
-
-function hoverBoxHtmlInprogress() {
-        emptyBoxHtml("in_progress_place");
-    }
-
-function hoverBoxHtmlAwaitfeedback() {
-        emptyBoxHtml("await_feedback_place");
-    }
-
-function hoverBoxHtmlDone() {
-        emptyBoxHtml("done_place");
-    }
 
 function updateEmptyHtml(elementId, userProperty, emptyTaskFunction) {
     if (users[loaduser][userProperty] == 0) {
@@ -76,8 +58,10 @@ function bordAddNewTask(array) {
 }
 
 function openBordTask(id, element) {
-    element.parentElement && element.parentElement.id === "to_do_place" ? (dragTodo(id), openTask(id, "todo")) : element.parentElement && element.parentElement.id === "in_progress_place" ? (dragInProgress(id), openTask(id, "tasksinprogress")) : 
-    element.parentElement && element.parentElement.id === "await_feedback_place" ? (dragAwaitFeedback(id), openTask(id, "awaitingfeedback")) : element.parentElement && element.parentElement.id === "done_place" && (dragDone(id), openTask(id, "done"));
+    element.parentElement && element.parentElement.id === "to_do_place" ? (dragTodo(id), openTask(id, "todo")) : 
+    element.parentElement && element.parentElement.id === "in_progress_place" ? (dragInProgress(id), openTask(id, "tasksinprogress")) : 
+    element.parentElement && element.parentElement.id === "await_feedback_place" ? (dragAwaitFeedback(id), openTask(id, "awaitingfeedback")) : 
+    element.parentElement && element.parentElement.id === "done_place" && (dragDone(id), openTask(id, "done"));
 }
 
 function openTask(i, key) {
@@ -181,7 +165,8 @@ function selectPriority(priority) {
 }
 
 function selectPriorityOpenTask(priority) {
-    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : mediumPrioHtmlOpenTask();
+    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : 
+    priority === "medium" ? mediumPrioHtmlOpenTask() : mediumPrioHtmlOpenTask();
 }
 
 function showTaskCategoryBig(category) {
