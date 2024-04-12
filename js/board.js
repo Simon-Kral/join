@@ -263,9 +263,7 @@ function selectSubtaskHtml(sublist, selectarray) {
         const subtask = sublist[i];
         const isChecked = selectarray["subtasks"][i]["isChecked"] ? "checked" : "";
         const imgSrc = selectarray["subtasks"][i]["isChecked"] ? "./assets/img/bord_check.png" : "./assets/img/bord_uncheck.png";
-        html += `<li><input class="check-bord" id="toggle_button${i}" type="checkbox" onchange="updateSelectedCheckboxes(${i}, this.checked)" ${isChecked}>`;
-        html += `<label for="toggle_button${i}"><img id="subtask${i}" src="${imgSrc}"></label>`;
-        html += `<label class="single-subtask-element" for="subtask${i}">${subtask}</label></li>`;
+        html += generateSubsHtml(i, isChecked, subtask, imgSrc);
     }
     task = selectarray;
     return html;
@@ -273,77 +271,29 @@ function selectSubtaskHtml(sublist, selectarray) {
 
 function dragTodo(id) {
     currentdragged = id;
-    currentdraggedarray = setTodoArray();
+    currentdraggedarray = users[loaduser]["todo"];
 }
 
 
 function dragInProgress(id) {
     currentdragged = id;
-    currentdraggedarray = setInProgressArray();
+    currentdraggedarray = users[loaduser]["tasksinprogress"];
 }
 
 function dragAwaitFeedback(id) {
     currentdragged = id;
-    currentdraggedarray = setAwaitFeedbackArray();
+    currentdraggedarray = users[loaduser]["awaitingfeedback"];
 }
 
 function dragDone(id) {
     currentdragged = id;
-    currentdraggedarray = setDoneForm();
+    currentdraggedarray = users[loaduser]["done"];
 }
 
-function setTodoArray() {
-    let selecttodo = users[loaduser]["todo"];
-    checkboxtodo = selecttodo;
-    return selecttodo;
-}
-
-function setInProgressArray() {
-    let selectinprogress = users[loaduser]["tasksinprogress"];
-    return selectinprogress;
-}
-
-function setAwaitFeedbackArray() {
-    let selectafeedback = users[loaduser]["awaitingfeedback"];
-    return selectafeedback;
-}
-
-function setDoneForm() {
-    let selectdone = users[loaduser]["done"];
-    return selectdone;
-}
-
-async function dropTodo(ev) {
+async function dropOn(ev, droparray) {
     ev.preventDefault();
     let select = users[loaduser];
-    select["todo"].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1);
-    boardinit();
-    await saveToServer();
-}
-
-async function dropInProgress(ev) {
-    ev.preventDefault();
-    let select = users[loaduser];
-    select["tasksinprogress"].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1);
-    boardinit();
-    await saveToServer();
-}
-
-async function dropAwaitFeedBack(ev) {
-    ev.preventDefault();
-    let select = users[loaduser];
-    select["awaitingfeedback"].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1);
-    boardinit();
-    await saveToServer();
-}
-
-async function dropDone(ev) {
-    ev.preventDefault();
-    let select = users[loaduser];
-    select["done"].push(currentdraggedarray[currentdragged]);
+    select[droparray].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
     await saveToServer();
@@ -355,10 +305,8 @@ function noCloseContent(event) {
 
 function searchTaskPlace() {
     return {
-        todoplace: document.getElementById(`to_do_place`),
-        inprogressplace: document.getElementById(`in_progress_place`),
-        awaitfeedbackplace: document.getElementById(`await_feedback_place`),
-        doneplace: document.getElementById(`done_place`),
+        todoplace: document.getElementById(`to_do_place`), inprogressplace: document.getElementById(`in_progress_place`),
+        awaitfeedbackplace: document.getElementById(`await_feedback_place`), doneplace: document.getElementById(`done_place`),
     };
 }
 
@@ -375,10 +323,8 @@ function searchTitleStart() {
 
 function filterResults(search) {
     return {
-        resultstodo: filterArray(setTodoArray(), search),
-        resultsinprogress: filterArray(setInProgressArray(), search),
-        resultsawaitfeedback: filterArray(setAwaitFeedbackArray(), search),
-        resultsdone: filterArray(setDoneForm(), search),
+        resultstodo: filterArray(users[loaduser]["todo"], search), resultsinprogress: filterArray(users[loaduser]["tasksinprogress"], search),
+        resultsawaitfeedback: filterArray(users[loaduser]["awaitingfeedback"], search), resultsdone: filterArray(users[loaduser]["done"], search),
     };
 }
 
@@ -433,20 +379,16 @@ function editSubtaskFactory(subtaskstodo) {
 
 function openMoveMenue(i, ele) {
     const parentId = ele.parentElement.parentElement.parentElement.id;
-    parentId === 'to_do_place' ? (dragTodo(i), openMoveTaskMenu(i, "todo")) :
-    parentId === 'in_progress_place' ? (dragInProgress(i), openMoveTaskMenu(i, "tasksinprogress")) :
-    parentId === 'await_feedback_place' ? (dragAwaitFeedback(i), openMoveTaskMenu(i, "awaitingfeedback")) :
-    parentId === 'done_place' && (dragDone(i), openMoveTaskMenu(i, "done"));
+    parentId === 'to_do_place' ? (dragTodo(i), openMoveTaskMenu(i, "todo")) : parentId === 'in_progress_place' ? (dragInProgress(i), openMoveTaskMenu(i, "tasksinprogress")) :
+    parentId === 'await_feedback_place' ? (dragAwaitFeedback(i), openMoveTaskMenu(i, "awaitingfeedback")) : parentId === 'done_place' && (dragDone(i), openMoveTaskMenu(i, "done"));
 }
 
 function openMoveTaskMenu(i, movekey) {
     let getplacecard = document.getElementById("add_bordtask_data");
     document.getElementById("fullscreen_information").classList.remove("d-none");
     getplacecard.innerHTML = moveTaskMenue(i, movekey);
-    movekey === "todo" ? document.getElementById("light_todo").classList.add("highlight-color") :
-    movekey === "tasksinprogress" ? document.getElementById("light_inprogress").classList.add("highlight-color") :
-    movekey === "awaitingfeedback" ? document.getElementById("light_awaitfeedback").classList.add("highlight-color") :
-    movekey === "done" && document.getElementById("light_done").classList.add("highlight-color");
+    movekey === "todo" ? document.getElementById("light_todo").classList.add("highlight-color") : movekey === "tasksinprogress" ? document.getElementById("light_inprogress").classList.add("highlight-color") :
+    movekey === "awaitingfeedback" ? document.getElementById("light_awaitfeedback").classList.add("highlight-color") : movekey === "done" && document.getElementById("light_done").classList.add("highlight-color");
 }
 
 async function moveTask(category) {

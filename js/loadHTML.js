@@ -154,6 +154,14 @@ function moveTaskMenue(i, key) {
     `;
 }
 
+function generateSubsHtml(index, isChecked, subtask, imgSrc) {
+    let subHtml = "";
+    subHtml += `<li><input class="check-bord" id="toggle_button${index}" type="checkbox" onchange="updateSelectedCheckboxes(${index}, this.checked)" ${isChecked}>`;
+    subHtml += `<label for="toggle_button${index}"><img id="subtask${index}" src="${imgSrc}"></label>`;
+    subHtml += `<label class="single-subtask-element" for="subtask${index}">${subtask}</label></li>`;
+    return subHtml;
+}
+
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priority, choosensubs) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
