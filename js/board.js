@@ -23,28 +23,20 @@ function emptyBoxHtml(containerId) {
 }
 
 function hoverBoxHtmlTodo() {
-    if (users[loaduser]["todo"].length > 0) {
         emptyBoxHtml("to_do_place");
     }
-}
 
 function hoverBoxHtmlInprogress() {
-    if (users[loaduser]["tasksinprogress"].length > 0) {
         emptyBoxHtml("in_progress_place");
     }
-}
 
 function hoverBoxHtmlAwaitfeedback() {
-    if (users[loaduser]["awaitingfeedback"].length > 0) {
         emptyBoxHtml("await_feedback_place");
     }
-}
 
 function hoverBoxHtmlDone() {
-    if (users[loaduser]["done"].length > 0) {
         emptyBoxHtml("done_place");
     }
-}
 
 function updateEmptyHtml(elementId, userProperty, emptyTaskFunction) {
     if (users[loaduser][userProperty] == 0) {
