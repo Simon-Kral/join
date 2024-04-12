@@ -46,36 +46,27 @@ function hoverBoxHtmlDone() {
     }
 }
 
-function showEmptyHtmlTodo() {
-    if (users[loaduser]["todo"] == 0) {
-        const empty = emptyTaskFieldTodo();
-        let getplacetodo = document.getElementById("to_do_place");
-        getplacetodo.innerHTML = empty;
+function updateEmptyHtml(elementId, userProperty, emptyTaskFunction) {
+    if (users[loaduser][userProperty] == 0) {
+        const empty = emptyTaskFunction();
+        document.getElementById(elementId).innerHTML = empty;
     }
+}
+
+function showEmptyHtmlTodo() {
+    updateEmptyHtml("to_do_place", "todo", emptyTaskFieldTodo);
 }
 
 function showEmptyHtmlInprogress() {
-    if (users[loaduser]["tasksinprogress"] == 0) {
-        const empty = emptyTaskFieldInprogress();
-        let getplacetodo = document.getElementById("in_progress_place");
-        getplacetodo.innerHTML = empty;
-    }
+    updateEmptyHtml("in_progress_place", "tasksinprogress", emptyTaskFieldInprogress);
 }
 
 function showEmptyHtmlAwaitfeedback() {
-    if (users[loaduser]["awaitingfeedback"] == 0) {
-        const empty = emptyTaskFieldAwaitfeedback();
-        let getplacetodo = document.getElementById("await_feedback_place");
-        getplacetodo.innerHTML = empty;
-    }
+    updateEmptyHtml("await_feedback_place", "awaitingfeedback", emptyTaskFieldAwaitfeedback);
 }
 
 function showEmptyHtmlDone() {
-    if (users[loaduser]["done"] == 0) {
-        const empty = emptyTaskFieldDone();
-        let getemptyplacedone = document.getElementById("done_place");
-        getemptyplacedone.innerHTML = empty;
-    }
+    updateEmptyHtml("done_place", "done", emptyTaskFieldDone);
 }
 
 function closeCard() {
