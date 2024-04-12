@@ -284,6 +284,7 @@ function dragTodo(id) {
     currentdraggedarray = setTodoArray();
 }
 
+
 function dragInProgress(id) {
     currentdragged = id;
     currentdraggedarray = setInProgressArray();
