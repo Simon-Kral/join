@@ -23,20 +23,28 @@ function emptyBoxHtml(containerId) {
 }
 
 function hoverBoxHtmlTodo() {
+    if (users[loaduser]["todo"].length > 0) {
         emptyBoxHtml("to_do_place");
     }
+}
 
 function hoverBoxHtmlInprogress() {
+    if (users[loaduser]["tasksinprogress"].length > 0) {
         emptyBoxHtml("in_progress_place");
     }
+}
 
 function hoverBoxHtmlAwaitfeedback() {
+    if (users[loaduser]["awaitingfeedback"].length > 0) {
         emptyBoxHtml("await_feedback_place");
     }
+}
 
 function hoverBoxHtmlDone() {
+    if (users[loaduser]["done"].length > 0) {
         emptyBoxHtml("done_place");
     }
+}
 
 function showEmptyHtmlTodo() {
     if (users[loaduser]["todo"] == 0) {
@@ -211,7 +219,15 @@ function drag(id, element) {
     };
     const dragFunction = dragFunctions[parentElementId];
     dragFunction ? dragFunction(id) : null;
+    // emptytaskplacedrop()
 }
+
+// function emptytaskplacedrop(){
+//     if (document.getElementById('empty-task-place-drop0')) {
+//         let emptytaskplacedrop0 = document.getElementById('empty-task-place-drop0')
+//         emptytaskplacedrop0.style.backgroundColor = '#E7E7E7';
+//     }
+// }
 
 function choosenSubtasks(subtasks, selectedCheckboxCount) {
     let subtasklength = subtasks.length;
@@ -457,38 +473,27 @@ function openMoveTaskMenu(i, movekey) {
     movekey === "done" && document.getElementById("light_done").classList.add("highlight-color");
 }
 
-async function moveTodo(i, movekey) {
+async function moveTask(category) {
     let select = users[loaduser];
-    select["todo"].push(currentdraggedarray[currentdragged]);
+    select[category].push(currentdraggedarray[currentdragged]);
     currentdraggedarray.splice(currentdragged, 1);
     boardinit();
     await saveToServer();
     document.getElementById("fullscreen_information").classList.add("d-none");
 }
 
-async function moveInprogress(i, movekey) {
-    let select = users[loaduser];
-    select["tasksinprogress"].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1);
-    boardinit();
-    await saveToServer();
-    document.getElementById("fullscreen_information").classList.add("d-none");
+async function moveTodo() {
+    moveTask("todo");
+}
+
+async function moveInprogress() {
+    moveTask("tasksinprogress");
 }
 
 async function moveAwaitfeedback() {
-    let select = users[loaduser];
-    select["awaitingfeedback"].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1);
-    boardinit();
-    await saveToServer();
-    document.getElementById("fullscreen_information").classList.add("d-none");
+    moveTask("awaitingfeedback");
 }
 
 async function moveDone() {
-    let select = users[loaduser];
-    select["done"].push(currentdraggedarray[currentdragged]);
-    currentdraggedarray.splice(currentdragged, 1);
-    boardinit();
-    await saveToServer();
-    document.getElementById("fullscreen_information").classList.add("d-none");
+    moveTask("done");
 }
