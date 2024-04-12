@@ -145,7 +145,7 @@ function empty() {
 function moveTaskMenue(i, key) {
     return `
         <div class="menu-move-container" onclick="noCloseContent(event)">
-            <h3 class="move-to">move to</h3>
+            <h3 class="move-to">move to menu</h3>
             <div onclick="moveTodo(${i}, '${key}')" id="light_todo" class="styled-arrays">To do</div>
             <div onclick="moveInprogress(${i}, '${key}')" id="light_inprogress" class="styled-arrays">In progress</div>
             <div onclick="moveAwaitfeedback(${i}, '${key}')" id="light_awaitfeedback" class="styled-arrays">Await feedback</div>
