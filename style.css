@@ -221,6 +221,7 @@ button.add-task-button:hover {
     border-radius: 10px;
     border-color: #A8A8A8;
     gap: 10px;
+    margin-bottom: 16px;
 }
 
 .box-hover {
@@ -1755,6 +1756,18 @@ div.selected:hover {
     .todo-task-container:hover {
         transform: rotate(3deg);
     }
+
+    button.move-mobile {
+        display: flex;
+    }
+
+    .box-hover {
+        display: none;
+    }
+
+    .empty-task-place {
+        margin-bottom: 0px;
+    }
 }
 
 @media(max-width: 1300px) {
@@ -2807,10 +2820,6 @@ div.selected:hover {
             height: 16px;
             width: 16px;
         }
-    }
-
-    button.move-mobile {
-        display: flex;
     }
 }
 
