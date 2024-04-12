@@ -210,15 +210,7 @@ function drag(id, element) {
     };
     const dragFunction = dragFunctions[parentElementId];
     dragFunction ? dragFunction(id) : null;
-    // emptytaskplacedrop()
 }
-
-// function emptytaskplacedrop(){
-//     if (document.getElementById('empty-task-place-drop0')) {
-//         let emptytaskplacedrop0 = document.getElementById('empty-task-place-drop0')
-//         emptytaskplacedrop0.style.backgroundColor = '#E7E7E7';
-//     }
-// }
 
 function choosenSubtasks(subtasks, selectedCheckboxCount) {
     let subtasklength = subtasks.length;
@@ -265,7 +257,7 @@ async function updateSelectedCheckboxes(index, isChecked) {
 }
 
 function countSelectedCheckboxes(subtaskstodo) {
-    let count = 1; // Start counting from 1
+    let count = 1;
     for (let checkindex = 0; checkindex < subtaskstodo.length; checkindex++) {
         const check = subtaskstodo[checkindex]["isChecked"];
         check == true ? count++ : "";
