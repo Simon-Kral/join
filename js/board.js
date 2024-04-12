@@ -76,7 +76,8 @@ function bordAddNewTask(array) {
 }
 
 function openBordTask(id, element) {
-    element.parentElement && element.parentElement.id === "to_do_place" ? (dragTodo(id), openTask(id, "todo")) : element.parentElement && element.parentElement.id === "in_progress_place" ? (dragInProgress(id), openTask(id, "tasksinprogress")) : element.parentElement && element.parentElement.id === "await_feedback_place" ? (dragAwaitFeedback(id), openTask(id, "awaitingfeedback")) : element.parentElement && element.parentElement.id === "done_place" && (dragDone(id), openTask(id, "done"));
+    element.parentElement && element.parentElement.id === "to_do_place" ? (dragTodo(id), openTask(id, "todo")) : element.parentElement && element.parentElement.id === "in_progress_place" ? (dragInProgress(id), openTask(id, "tasksinprogress")) : 
+    element.parentElement && element.parentElement.id === "await_feedback_place" ? (dragAwaitFeedback(id), openTask(id, "awaitingfeedback")) : element.parentElement && element.parentElement.id === "done_place" && (dragDone(id), openTask(id, "done"));
 }
 
 function openTask(i, key) {
@@ -110,8 +111,8 @@ function renderTasks() {
     taskSections.forEach((sectionId) => {
         let sectionElement = document.getElementById(sectionId);
         sectionElement.innerHTML = ``;
-
-        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] : sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] : sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] : sectionId === "done_place" ? users[loaduser]["done"] : [];
+        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] : sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] : 
+        sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] : sectionId === "done_place" ? users[loaduser]["done"] : [];
         tasks.forEach((task, index) => {
             showTaskHtml(task, index, sectionId);
         });
@@ -379,14 +380,14 @@ function editSubtaskFactory(subtaskstodo) {
 
 function openMoveMenue(i, ele) {
     const parentId = ele.parentElement.parentElement.parentElement.id;
-    parentId === 'to_do_place' ? (dragTodo(i), openMoveTaskMenu(i, "todo")) : parentId === 'in_progress_place' ? (dragInProgress(i), openMoveTaskMenu(i, "tasksinprogress")) :
-    parentId === 'await_feedback_place' ? (dragAwaitFeedback(i), openMoveTaskMenu(i, "awaitingfeedback")) : parentId === 'done_place' && (dragDone(i), openMoveTaskMenu(i, "done"));
+    parentId === 'to_do_place' ? (dragTodo(i), openMoveTaskMenu("todo")) : parentId === 'in_progress_place' ? (dragInProgress(i), openMoveTaskMenu("tasksinprogress")) :
+    parentId === 'await_feedback_place' ? (dragAwaitFeedback(i), openMoveTaskMenu("awaitingfeedback")) : parentId === 'done_place' && (dragDone(i), openMoveTaskMenu("done"));
 }
 
-function openMoveTaskMenu(i, movekey) {
+function openMoveTaskMenu(movekey) {
     let getplacecard = document.getElementById("add_bordtask_data");
     document.getElementById("fullscreen_information").classList.remove("d-none");
-    getplacecard.innerHTML = moveTaskMenue(i, movekey);
+    getplacecard.innerHTML = moveTaskMenue(movekey);
     movekey === "todo" ? document.getElementById("light_todo").classList.add("highlight-color") : movekey === "tasksinprogress" ? document.getElementById("light_inprogress").classList.add("highlight-color") :
     movekey === "awaitingfeedback" ? document.getElementById("light_awaitfeedback").classList.add("highlight-color") : movekey === "done" && document.getElementById("light_done").classList.add("highlight-color");
 }
@@ -398,20 +399,4 @@ async function moveTask(category) {
     boardinit();
     await saveToServer();
     document.getElementById("fullscreen_information").classList.add("d-none");
-}
-
-async function moveTodo() {
-    moveTask("todo");
-}
-
-async function moveInprogress() {
-    moveTask("tasksinprogress");
-}
-
-async function moveAwaitfeedback() {
-    moveTask("awaitingfeedback");
-}
-
-async function moveDone() {
-    moveTask("done");
 }
