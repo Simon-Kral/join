@@ -298,12 +298,12 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
                                     </a>
                                     <div id="confirm_subtask_container" class="input-with-double-button dnone">
                                         <a id="clear_subtask_button"
-                                            onmousedown="fpreventDefault(event); clearInput('input_with_button_subtask')">
+                                            onmousedown="dontChangeFocus(event); clearInput('input_with_button_subtask')">
                                             <img src="./assets/img/cross.svg" alt="cross">
                                         </a>
                                         <div class="separator-vertical"></div>
                                         <a id="confirm_subtask_button"
-                                            onmousedown="fpreventDefault(event); addSubtask('input_with_button_subtask')">
+                                            onmousedown="dontChangeFocus(event); addSubtask('input_with_button_subtask')">
                                             <img src="./assets/img/check.svg" alt="check">
                                         </a>
                                     </div>
@@ -383,7 +383,7 @@ function fillAddTaskSection(array) {
                                     onfocusin="openDropDownMenu('drop_down_assigned_to', 'in')"
                                     onfocusout="openDropDownMenu('drop_down_assigned_to', 'out')"
                                     oninput="setFilter(this)">
-                                <a onmousedown="fpreventDefault(event); setFocusOnElement('assigned_to')">
+                                <a onmousedown="dontChangeFocus(event); setFocusOnElement('assigned_to')">
                                     <img id="drop_down_assigned_to_arrow" src="./assets/img/arrow_drop_down.png"
                                         alt="add">
                                 </a>
@@ -440,7 +440,7 @@ function fillAddTaskSection(array) {
                                     onfocusin="openDropDownMenu('drop_down_category', 'in')"
                                     onfocusout="openDropDownMenu('drop_down_category', 'out')"
                                     oninput="setFilter(this)">
-                                <a onmousedown="fpreventDefault(event); setFocusOnElement('category')">
+                                <a onmousedown="dontChangeFocus(event); setFocusOnElement('category')">
                                     <img id="drop_down_category_arrow" src="./assets/img/arrow_drop_down.png" alt="add">
                                 </a>
                             </div>
@@ -458,12 +458,12 @@ function fillAddTaskSection(array) {
                                 </a>
                                 <div id="confirm_subtask_container" class="input-with-double-button dnone">
                                     <a id="clear_subtask_button"
-                                        onmousedown="fpreventDefault(event); clearInput('input_with_button_subtask')">
+                                        onmousedown="dontChangeFocus(event); clearInput('input_with_button_subtask')">
                                         <img src="./assets/img/cross.svg" alt="cross">
                                     </a>
                                     <div class="separator-vertical"></div>
                                     <a id="confirm_subtask_button"
-                                        onmousedown="fpreventDefault(event); addSubtask('input_with_button_subtask')">
+                                        onmousedown="dontChangeFocus(event); addSubtask('input_with_button_subtask')">
                                         <img src="./assets/img/check.svg" alt="check">
                                     </a>
                                 </div>
