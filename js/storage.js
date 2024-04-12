@@ -48,14 +48,16 @@ async function loadAllIfElseLocalOrSession() {
     }
 }
 /**
- * move to start if no local or session storage (no login)
+ * move to start if no local storage (no login)
  */
 async function ifLocalStorageExist() {
     if (localStorage.getItem("userI") === null) {
         window.location.assign("index.html");
     }
 }
-
+/**
+ * move to start if no session storage (no login)
+ */
 async function ifSessionStorageExist() {
     if (sessionStorage.getItem("userI") === null) {
         window.location.assign("index.html");

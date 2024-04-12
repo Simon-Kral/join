@@ -219,7 +219,9 @@ async function loadstorageitems() {
     sessionStorage.removeItem("Guest");
     sessionStorage.removeItem("handyWelcomePlayed");
 }
-
+/**
+ * get user data and remove/reset sessionStorage items 
+ */
 async function loadUsers() {
     users = await getItem("users");
 }
@@ -294,7 +296,9 @@ function LoginLocalstorage(findusers) {
         register_pw_login_value.setCustomValidity("");
     }, 1400);
 }
-
+/**
+ * if find user = login, else = error (sessionstorage)
+ */
 function Loginsessionstorage(findusers) {
     if (findusers) {
         let userI = users.findIndex((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
@@ -337,7 +341,9 @@ function resetForm() {
     backToLogin();
     singedUpSucces();
 }
-
+/**
+ * reset register Form
+ */
 function registerValueEmpty() {
     register_name.value = "";
     register_email.value = "";
@@ -345,13 +351,17 @@ function registerValueEmpty() {
     register_pw_sign_in_confirm.value = "";
     register_checkbox.checked = false;
 }
-
+/**
+ * singedupsucces screen
+ */
 function singedUpSucces() {
     let singedupsucces = document.getElementById("singed_Up_Succes");
     singedupsucces.classList.replace("d-none", "singed-Up-Succes");
     setTimeout(singedUpSuccesRemove, 2000);
 }
-
+/**
+ * singedupsucces screen remove
+ */
 function singedUpSuccesRemove() {
     let singedupsucces = document.getElementById("singed_Up_Succes");
     singedupsucces.classList.replace("singed-Up-Succes", "d-none");
@@ -365,7 +375,9 @@ function changeLoginImg() {
         loginpwimg.src = "assets/img/visibility_off.png";
     }
 }
-
+/**
+ * change password img if onlcick
+ */
 function changeSigninImg() {
     let signinimg = document.getElementById("register_pw_sign_in_img");
     let signinimgconfirm = document.getElementById("register_pw_sign_in_confirm_img");
@@ -392,7 +404,9 @@ function encryptPassword1() {
         loginpwimg.src = "assets/img/visibility_off.png";
     }
 }
-
+/**
+ * encrypt password if onlcick
+ */
 function encryptPassword2() {
     let signinpw = document.getElementById("register_pw_sign_in");
     let signinpimg = document.getElementById("register_pw_sign_in_img");
@@ -400,7 +414,9 @@ function encryptPassword2() {
     let signinpwconfirmimg = document.getElementById("register_pw_sign_in_confirm_img");
     encryptPassword2IfElse(signinpw, signinpimg, signinpwconfirm, signinpwconfirmimg);
 }
-
+/**
+ * encrypt password if onlcick
+ */
 function encryptPassword2IfElse(signinpw, signinpimg, signinpwconfirm, signinpwconfirmimg) {
     if (signinpimg.src.endsWith("assets/img/visibility_off.png")) {
         signinpw.type = "text";
