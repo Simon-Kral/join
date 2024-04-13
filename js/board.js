@@ -4,7 +4,7 @@ let currentdragged;
 let currentdraggedarray;
 let task;
 /**
- * start functions onload, render tasks, empty fields informations and empty Box hover 
+ * start functions onload, render tasks, empty fields informations and empty Box hover
  */
 function boardinit() {
     renderTasks();
@@ -16,20 +16,20 @@ function boardinit() {
 }
 
 /**
- * start function creat hover Box, return to function and set const 
- * iterate through the IDs for the html places 
+ * start function creat hover Box, return to function and set const
+ * iterate through the IDs for the html places
  * get ID and place HTML
  */
 function emptyBoxHtml() {
     const empty = hoverHtml();
     ["to_do_place", "in_progress_place", "await_feedback_place", "done_place"].forEach((container) => {
         document.getElementById(container).innerHTML += empty;
-    })
+    });
 }
 
 /**
  * if no elements of an array are present, the empty task field is created and placed using the ID
- * @param {element} elementId - element ID from html 
+ * @param {element} elementId - element ID from html
  * @param {array} userProperty - one of four arrays
  * @param {element} emptyTaskFunction - one of four html elements
  */
@@ -69,7 +69,7 @@ function showEmptyHtmlDone() {
 }
 
 /**
- * get the ID for close the screen with the class 
+ * get the ID for close the screen with the class
  * clear the seleted contact array
  * start init function, to refresh the page
  */
@@ -93,16 +93,13 @@ function bordAddNewTask(array) {
 
 /**
  * uses if-else statements to determine the parent container's ID and
- * triggers specific actions accordingly, 
+ * triggers specific actions accordingly,
  * such as dragging tasks and opening tasks with specific statuses
  * @param {number} id - identifer for one of four arrays
  * @param {object} element - HTML element triggered that event
  */
 function openBordTask(id, element) {
-    element.parentElement && element.parentElement.id === "to_do_place" ? (dragTodo(id), openTask(id, "todo")) : 
-    element.parentElement && element.parentElement.id === "in_progress_place" ? (dragInProgress(id), openTask(id, "tasksinprogress")) : 
-    element.parentElement && element.parentElement.id === "await_feedback_place" ? (dragAwaitFeedback(id), openTask(id, "awaitingfeedback")) : 
-    element.parentElement && element.parentElement.id === "done_place" && (dragDone(id), openTask(id, "done"));
+    element.parentElement && element.parentElement.id === "to_do_place" ? (dragTodo(id), openTask(id, "todo")) : element.parentElement && element.parentElement.id === "in_progress_place" ? (dragInProgress(id), openTask(id, "tasksinprogress")) : element.parentElement && element.parentElement.id === "await_feedback_place" ? (dragAwaitFeedback(id), openTask(id, "awaitingfeedback")) : element.parentElement && element.parentElement.id === "done_place" && (dragDone(id), openTask(id, "done"));
 }
 
 /**
@@ -126,7 +123,7 @@ function openTask(i, key) {
 
 /**
  * updates a task card with data based on the provided index and task type and
- * fetches task information 
+ * fetches task information
  * updates the HTML of the task card
  * initializes task addition, edits contacts, and subtasks
  * @param {number} i - identifer for one of four arrays
@@ -154,8 +151,7 @@ function renderTasks() {
     taskSections.forEach((sectionId) => {
         let sectionElement = document.getElementById(sectionId);
         sectionElement.innerHTML = ``;
-        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] : sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] : 
-        sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] : sectionId === "done_place" ? users[loaduser]["done"] : [];
+        let tasks = sectionId === "to_do_place" ? users[loaduser]["todo"] : sectionId === "in_progress_place" ? users[loaduser]["tasksinprogress"] : sectionId === "await_feedback_place" ? users[loaduser]["awaitingfeedback"] : sectionId === "done_place" ? users[loaduser]["done"] : [];
         tasks.forEach((task, index) => {
             showTaskHtml(task, index, sectionId);
         });
@@ -163,13 +159,13 @@ function renderTasks() {
 }
 
 /**
- * retrieves the HTML element  
+ * retrieves the HTML element
  * extracts specific details from the object using helper function
  * generates HTML content for the task using the extracted information
  * create the HTML
  * @param {object} task - containing information about the task
  * @param {number} index - identifer for one of four arrays
- * @param {string} sectionId - representing one of four possible IDs for sections 
+ * @param {string} sectionId - representing one of four possible IDs for sections
  */
 function showTaskHtml(task, index, sectionId) {
     let sectionElement = document.getElementById(sectionId);
@@ -182,7 +178,7 @@ function showTaskHtml(task, index, sectionId) {
  * extracts properties from a object
  * returns them in a new object with renamed keys
  * @param {object} task - containing information about the task
- * @returns 
+ * @returns
  */
 function informationTodo(task) {
     let { category, title, description, subtasks, contacts, prio, date } = task;
@@ -196,7 +192,7 @@ function informationTodo(task) {
  * @param {array} priority - representing task priorities
  * @param {array} subtasks - representing subtasks of a task
  * @param {array} contacts - representing contacts related to the task
- * @returns 
+ * @returns
  */
 function informationsFactory(category, priority, subtasks, contacts) {
     const choosencategory = selectCategory(category);
@@ -209,9 +205,9 @@ function informationsFactory(category, priority, subtasks, contacts) {
 }
 
 /**
- * choose the right category 
- * @param {array} category - representing task categories and returns HTML content 
- * @returns 
+ * choose the right category
+ * @param {array} category - representing task categories and returns HTML content
+ * @returns
  */
 function selectCategory(category) {
     return category == "Technical Task" ? technicalTaskHtml() : userTaskHtml();
@@ -221,8 +217,8 @@ function selectCategory(category) {
  * creates HTML for displaying contacts and return styled HTML
  * iterates through the array of contacts, generates a profile badge for each,
  * only contacts with a non-empty first name are processed
- * @param {array} contactstodo - representing task contacts and returns HTML content 
- * @returns 
+ * @param {array} contactstodo - representing task contacts and returns HTML content
+ * @returns
  */
 function selectContacts(contactstodo) {
     let contacthtml = "";
@@ -239,11 +235,11 @@ function selectContacts(contactstodo) {
 }
 
 /**
- * creates HTML for displaying contacts and return styled HTML with names 
+ * creates HTML for displaying contacts and return styled HTML with names
  * iterates through the array of contacts, generates a profile badge for each,
  * only contacts with a non-empty first name are processed
  * @param {array} contactstodo - representing task contacts and returns HTML content
- * @returns 
+ * @returns
  */
 function selectContactsOpenTask(contactstodo) {
     let contacthtml = "";
@@ -265,7 +261,7 @@ function selectContactsOpenTask(contactstodo) {
 /**
  * returns HTML content based on the priority of a task, utilizing different functions for each priority level
  * @param {array} priority - representing task priorities
- * @returns 
+ * @returns
  */
 function selectPriority(priority) {
     return priority === "urgent" ? urugentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : mediumPrioHtml();
@@ -274,11 +270,10 @@ function selectPriority(priority) {
 /**
  * returns HTML content based on the priority of a task, utilizing different functions for each priority level with there names
  * @param {array} priority - representing task priorities
- * @returns 
+ * @returns
  */
 function selectPriorityOpenTask(priority) {
-    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : 
-    priority === "medium" ? mediumPrioHtmlOpenTask() : mediumPrioHtmlOpenTask();
+    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : mediumPrioHtmlOpenTask();
 }
 
 /**
@@ -300,7 +295,7 @@ function allowDrop(ev) {
 }
 
 /**
- * determines the parent element's ID of the dragged item and 
+ * determines the parent element's ID of the dragged item and
  * triggers a corresponding drag function based on that ID
  * if a matching function is found, it calls it with the ID
  * @param {number} id - identifer for one of four arrays
@@ -325,7 +320,7 @@ function drag(id, element) {
  * otherwise, it creates and returns HTML informations for the progress bar
  * @param {array} subtasks - returns either an empty value or HTML informations for a progress bar
  * @param {number} selectedCheckboxCount - number of selected checkbox
- * @returns 
+ * @returns
  */
 function choosenSubtasks(subtasks, selectedCheckboxCount) {
     let subtasklength = subtasks.length;
@@ -342,7 +337,7 @@ function choosenSubtasks(subtasks, selectedCheckboxCount) {
  * returning either an empty value or HTML for the progress bar based on completion percentage
  * @param {array} subtasks - returns either an empty value or the HTML for the progress bar
  * @param {number} selectedCheckboxCount - number of selected checkbox
- * @returns 
+ * @returns
  */
 function updateProgressBar(subtasks, selectedCheckboxCount) {
     let percent = selectedCheckboxCount === 1 ? 0 : Math.round((selectedCheckboxCount / subtasks.length) * 100);
@@ -358,7 +353,7 @@ function updateProgressBar(subtasks, selectedCheckboxCount) {
 /**
  * iterates over the array, extracting the "name" property from each subtask object and storing it in a new array
  * @param {array} subtaskstodo - representing the task subtasks
- * @returns 
+ * @returns
  */
 function selectSubtasks(subtaskstodo) {
     let iteratedList = [];
@@ -371,7 +366,7 @@ function selectSubtasks(subtaskstodo) {
 }
 
 /**
- * asynchronously updates the checkbox status and 
+ * asynchronously updates the checkbox status and
  * create the input style as image
  * @param {number} index - identifer for one of four arrays
  * @param {boolean} isChecked - true or false from the checked input
@@ -391,7 +386,7 @@ async function updateSelectedCheckboxes(index, isChecked) {
 /**
  * iterates through the array, incrementing the count when a checkbox is checked, and returns the total count
  * @param {array} subtaskstodo - representing the task subtasks
- * @returns 
+ * @returns
  */
 function countSelectedCheckboxes(subtaskstodo) {
     let count = 1;
@@ -408,7 +403,7 @@ function countSelectedCheckboxes(subtaskstodo) {
  * updates the task object before returning the HTML
  * @param {array} sublist - representing the task subtasks
  * @param {array} selectarray - representing the task subtasks from the selected array
- * @returns 
+ * @returns
  */
 function selectSubtaskHtml(sublist, selectarray) {
     let html = "";
@@ -464,7 +459,7 @@ function dragDone(id) {
 
 /**
  * ensures proper drop handling by preventing the default drag behavior
- * updates the selected droparray by pushing the item from the currentdraggedarray, 
+ * updates the selected droparray by pushing the item from the currentdraggedarray,
  * then removes the item from currentdraggedarray
  * initializes the board and saves the changes to the server
  * @param {object} ev - ensures proper drop handling by disabling default drag behavior
@@ -489,29 +484,30 @@ function noCloseContent(event) {
 
 /**
  * returns an object with references to HTML elements identified by their IDs
- * @returns 
+ * @returns
  */
 function searchTaskPlace() {
     return {
-        todoplace: document.getElementById(`to_do_place`), inprogressplace: document.getElementById(`in_progress_place`),
-        awaitfeedbackplace: document.getElementById(`await_feedback_place`), doneplace: document.getElementById(`done_place`),
+        todoplace: document.getElementById(`to_do_place`),
+        inprogressplace: document.getElementById(`in_progress_place`),
+        awaitfeedbackplace: document.getElementById(`await_feedback_place`),
+        doneplace: document.getElementById(`done_place`),
     };
 }
 
 /**
- * retrieves the value from the search input element, 
- * trims whitespace, converts it to lowercase, and 
+ * retrieves the value from the search input element,
+ * trims whitespace, converts it to lowercase, and
  * returns an object with the search string and its length
- * @returns 
+ * @returns
  */
 function getSearchInput() {
     const search = document.getElementById("search_input").value.trim().toLowerCase();
     return { search, searchlength: search.length };
 }
 
-
 /**
- * ilters and renders results based on the search query if the query length is at least one character 
+ * ilters and renders results based on the search query if the query length is at least one character
  * otherwise, it initializes the board
  */
 function searchTitleStart() {
@@ -523,12 +519,14 @@ function searchTitleStart() {
 /**
  * sorts tasks based on input, returning filtered results
  * @param {object} search - refers to the keyword
- * @returns 
+ * @returns
  */
 function filterResults(search) {
     return {
-        resultstodo: filterArray(users[loaduser]["todo"], search), resultsinprogress: filterArray(users[loaduser]["tasksinprogress"], search),
-        resultsawaitfeedback: filterArray(users[loaduser]["awaitingfeedback"], search), resultsdone: filterArray(users[loaduser]["done"], search),
+        resultstodo: filterArray(users[loaduser]["todo"], search),
+        resultsinprogress: filterArray(users[loaduser]["tasksinprogress"], search),
+        resultsawaitfeedback: filterArray(users[loaduser]["awaitingfeedback"], search),
+        resultsdone: filterArray(users[loaduser]["done"], search),
     };
 }
 
@@ -536,7 +534,7 @@ function filterResults(search) {
  * filters an array based on a search term found in each item's title
  * @param {arry} array - representing one of four arrays
  * @param {object} search - refers to the keyword
- * @returns 
+ * @returns
  */
 function filterArray(array, search) {
     return array.filter((item) => item.title.toLowerCase().includes(search));
@@ -585,6 +583,7 @@ function showHtml(item, place, index) {
  * @param {number} i - identifer for one of four arrays
  */
 async function deleteSingleTask(i) {
+    if (currentdraggedarray[i].prio === "urgent") users[loaduser].Urgent.splice(0, 1);
     currentdraggedarray.splice(i, 1);
     boardinit();
     closeCard();
@@ -592,7 +591,7 @@ async function deleteSingleTask(i) {
 }
 
 /**
- * stores user data, if the user is not a guest, 
+ * stores user data, if the user is not a guest,
  * otherwise, it stores the data as a session storage item for the user
  */
 async function saveToServer() {
@@ -612,7 +611,7 @@ function editContactsFactory(selectcontacts) {
 }
 
 /**
- * iterates through an array of subtasks 
+ * iterates through an array of subtasks
  * if a subtask has a name, it adds the subtasks
  * @param {array} subtaskstodo - representing the array subtasks
  */
@@ -631,12 +630,11 @@ function editSubtaskFactory(subtaskstodo) {
  */
 function openMoveMenue(i, ele) {
     const parentId = ele.parentElement.parentElement.parentElement.id;
-    parentId === 'to_do_place' ? (dragTodo(i), openMoveTaskMenu("todo")) : parentId === 'in_progress_place' ? (dragInProgress(i), openMoveTaskMenu("tasksinprogress")) :
-    parentId === 'await_feedback_place' ? (dragAwaitFeedback(i), openMoveTaskMenu("awaitingfeedback")) : parentId === 'done_place' && (dragDone(i), openMoveTaskMenu("done"));
+    parentId === "to_do_place" ? (dragTodo(i), openMoveTaskMenu("todo")) : parentId === "in_progress_place" ? (dragInProgress(i), openMoveTaskMenu("tasksinprogress")) : parentId === "await_feedback_place" ? (dragAwaitFeedback(i), openMoveTaskMenu("awaitingfeedback")) : parentId === "done_place" && (dragDone(i), openMoveTaskMenu("done"));
 }
 
 /**
- * function displays the move task menu based on the selected array and 
+ * function displays the move task menu based on the selected array and
  * highlights the corresponding option
  * @param {object} movekey - the selected array
  */
@@ -644,12 +642,11 @@ function openMoveTaskMenu(movekey) {
     let getplacecard = document.getElementById("add_bordtask_data");
     document.getElementById("fullscreen_information").classList.remove("d-none");
     getplacecard.innerHTML = moveTaskMenue(movekey);
-    movekey === "todo" ? document.getElementById("light_todo").classList.add("highlight-color") : movekey === "tasksinprogress" ? document.getElementById("light_inprogress").classList.add("highlight-color") :
-    movekey === "awaitingfeedback" ? document.getElementById("light_awaitfeedback").classList.add("highlight-color") : movekey === "done" && document.getElementById("light_done").classList.add("highlight-color");
+    movekey === "todo" ? document.getElementById("light_todo").classList.add("highlight-color") : movekey === "tasksinprogress" ? document.getElementById("light_inprogress").classList.add("highlight-color") : movekey === "awaitingfeedback" ? document.getElementById("light_awaitfeedback").classList.add("highlight-color") : movekey === "done" && document.getElementById("light_done").classList.add("highlight-color");
 }
 
 /**
- * moves a task from the current dragged array to the specified category array, 
+ * moves a task from the current dragged array to the specified category array,
  * updates the board, saves to the server, and hides the fullscreen information
  * @param {array} category - representing the array category
  */
