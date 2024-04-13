@@ -495,6 +495,17 @@ button.move-mobile:hover {
     }
 }
 
+.edit-task::-webkit-scrollbar {
+    width: 8px;
+}
+.edit-task::-webkit-scrollbar-thumb {
+    background: #A8A8A8;
+    border-radius: 8px;
+}
+.edit-task::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8ad;
+}
+
 .place-categorie-cross {
     display: flex;
     justify-content: space-between;
@@ -750,6 +761,7 @@ main.add-task {
 main.edit-task {
     font-size: 20px;
     overflow-y: auto;
+    margin: 30px 0;
     h1 {
         font-size: 61px;
         color: #000000;
@@ -764,7 +776,7 @@ main.edit-task {
         flex-direction: column;
         .input-wrapper {
             .input-box {
-                margin: 20px 42px;
+                margin: 20px 16px 20px 42px;
                 gap: 20px;
             }
         }
@@ -1684,6 +1696,16 @@ div.selected:hover {
             display: none;
         }
     }
+    main.add-task::-webkit-scrollbar {
+        width: 8px;
+    }
+    main.add-task::-webkit-scrollbar-thumb {
+        background: #A8A8A8;
+        border-radius: 8px;
+    }
+    main.add-task::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8ad;
+    }
     .create-task-button {
         height: 56px !important;
         img {
@@ -1694,14 +1716,15 @@ div.selected:hover {
     }
     .bord-add-tasks-field {
         height: 750px;
-        width: 550px;
+        width: auto;
         justify-content: flex-start;
-        overflow-y: scroll;
         main {
             position: relative;
-            left: auto;
+            left: auto !important;
             top: auto;
-            padding: 30px;
+            overflow-y: auto;
+            margin: 30px 30px;
+            padding-right: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1867,7 +1890,7 @@ div.selected:hover {
 
 @media(max-width: 450px) {
     main.add-task {
-        padding: 24px 0 0 0px;
+        padding: 24px 0 0 0;
         left: calc(50% - 290px / 2) !important;
         h1 {
             font-size: 40px;
@@ -1910,7 +1933,7 @@ div.selected:hover {
         border-radius: 24px;
         main.add-task {
             margin-bottom: 32px;
-            padding: 24px 0 0 0px;
+            padding: 6px;
             left: auto;
             h1 {
                 font-size: 40px;
@@ -1977,7 +2000,6 @@ div.selected:hover {
 @media(max-width: 1300px) {
     main.contacts {
         left: 104px;
-        /* top: 48px; */
     }
 }
 
@@ -2085,6 +2107,31 @@ div.selected:hover {
             }
         }
     }
+    .contact-detail-box {
+        .contact-detail-box-head {
+            .profile-name-with-buttons-box {
+                .profile-buttons {
+                    width: 0px;
+                    padding: 0px;
+                    overflow: hidden;
+                    height: 80px;
+                    position: fixed;
+                    bottom: 108px;
+                    right: 12px;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 20px 20px 0px 20px;
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    background-color: white;
+                    z-index: 1;
+                    a {
+                        width: 96px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media(max-width: 700px) {
@@ -2188,31 +2235,7 @@ div.selected:hover {
             }
         }
     }
-    .contact-detail-box {
-        .contact-detail-box-head {
-            .profile-name-with-buttons-box {
-                .profile-buttons {
-                    width: 0px;
-                    padding: 0px;
-                    overflow: hidden;
-                    height: 80px;
-                    position: fixed;
-                    bottom: 108px;
-                    right: 12px;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    border-radius: 20px 20px 0px 20px;
-                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                    background-color: white;
-                    z-index: 1;
-                    a {
-                        width: 96px;
-                    }
-                }
-            }
-        }
-    }
+
 }
 
 .animation-mobile-sidebar {
@@ -2342,7 +2365,8 @@ div.selected:hover {
                 left: 64px;
                 display: flex;
                 .add-contact-form-buttons {
-                    button {
+                    button.white-button {
+                        width: 100px;
                         height: 37px;
                         span {
                             font-size: 13px;
@@ -2353,15 +2377,8 @@ div.selected:hover {
                             width: 9px;
                         }
                     }
-                    button.white-button {
-                        width: 73px;
-                        height: 37px;
-                        span {
-                            font-size: 13px;
-                        }
-                    }
                     button.blue-button {
-                        width: 74px;
+                        width: 133px;
                         height: 37px;
                         margin-left: 17px;
                         span {
@@ -2689,7 +2706,7 @@ div.selected:hover {
         height: 640px;
         width: 300px;
         .styled-input {
-            width: 248px;
+            width: 238px;
             padding: 1px 10px;
         }
         #add_task_description {
@@ -2723,7 +2740,7 @@ div.selected:hover {
                 .input-wrapper {
                     .input-box {
                         width: 262px;
-                        margin: 24px 16px 0 16px;
+                        margin: 24px 6px 0 16px;
                     }
                 }
             }
@@ -2778,5 +2795,3 @@ div.selected:hover {
         height: 600px;
     }
 }
-
-/* testing
