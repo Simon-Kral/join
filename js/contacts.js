@@ -67,7 +67,7 @@ function openContact(id, card) {
         card.classList.add("selected");
         card.querySelector(".profile-fullname").classList.add("selected");
     }
-    document.documentElement.clientWidth <= 500 ? changeViewMobile() : "";
+    document.documentElement.clientWidth <= 850 ? changeViewMobile() : "";
 }
 
 /**
@@ -83,7 +83,7 @@ function unselectSelected() {
  * This function calls the function to switch back to default-view if the document-width goes above 500px.
  */
 function switchViewOnSize() {
-    if (document.documentElement.clientWidth > 500) {
+    if (document.documentElement.clientWidth > 850) {
         switchToDefault();
     }
 }
