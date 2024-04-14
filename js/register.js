@@ -204,9 +204,11 @@ let contacts = [
         phone: "+49 1111 111 11 1",
         color: "#FFBB2B",
     },]
+
 /**
- * get user data and remove/reset sessionStorage items 
+ * This function checks if user information exists in localStorage. If it doesn't, it redirects to another HTML page. It also handles the initial loading of user data and resets specific sessionStorage items.
  */
+
 async function loadstorageitems() {
     if (localStorage.getItem("userI") === null) {
     } else {
@@ -219,15 +221,19 @@ async function loadstorageitems() {
     sessionStorage.removeItem("Guest");
     sessionStorage.removeItem("handyWelcomePlayed");
 }
+
 /**
- * get user data and remove/reset sessionStorage items 
+ * Asynchronously retrieves user data from storage.
  */
+
 async function loadUsers() {
     users = await getItem("users");
 }
+
 /**
- * register function
+ * Handles user registration by checking if an email already exists and if not, proceeds with registration.
  */
+
 async function register() {
     let sameemail = users.find((u) => u.email == register_email.value);
     if (sameemail) {
@@ -240,9 +246,11 @@ async function register() {
         register_email.setCustomValidity("");
     }, 1400);
 }
+
 /**
- * if password dont match = error, else create user and reset form 
+ * Checks if the entered passwords match during registration. If they do, a new user is created and added to the users array.
  */
+
 async function ifelseRegister() {
     if (register_pw_sign_in.value != register_pw_sign_in_confirm.value) {
         register_pw_sign_in_confirm.setCustomValidity("Passwords Don't Match");
@@ -266,9 +274,11 @@ async function ifelseRegister() {
         register_pw_sign_in_confirm.setCustomValidity("");
     }, 1400);
 }
+
 /**
- * login function, if checkbox true = load in localstorage, else load in sessionstorage
+ * Performs user login by verifying credentials. Depending on a checkbox, it decides whether to save session information in localStorage or sessionStorage.
  */
+
 function login() {
     let findusers = users.find((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
 
@@ -278,9 +288,12 @@ function login() {
         Loginsessionstorage(findusers);
     }
 }
+
 /**
- * if find user = login, else = error
+ * These functions handle user login with localstorage
+ * @param {object} findusers -The user object found that matches the credentials.
  */
+
 function LoginLocalstorage(findusers) {
     if (findusers) {
         let userI = users.findIndex((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
@@ -296,9 +309,12 @@ function LoginLocalstorage(findusers) {
         register_pw_login_value.setCustomValidity("");
     }, 1400);
 }
+
 /**
- * if find user = login, else = error (sessionstorage)
+ * These functions handle user login with sessionstorage
+ * @param {object} findusers -The user object found that matches the credentials.
  */
+
 function Loginsessionstorage(findusers) {
     if (findusers) {
         let userI = users.findIndex((u) => u.email == register_login_value.value && u.password == register_pw_login_value.value);
@@ -314,9 +330,11 @@ function Loginsessionstorage(findusers) {
         register_pw_login_value.setCustomValidity("");
     }, 1400);
 }
+
 /**
- * Guestlogin
+ * Allows a guest user to log in by setting up a predefined user object in sessionStorage.
  */
+
 function registerGuestLogin() {
     loaduser = 0;
     users = [{
@@ -333,17 +351,21 @@ function registerGuestLogin() {
     sessionStorage.setItem("userI", loaduser);
     sessionStorage.setItem("Guest", JSON.stringify(users));
 }
+
 /**
- * reset register Form, send you back to login, and singedupsucces screen
+ * Resets the registration form fields and handles post-registration UI feedback.
  */
+
 function resetForm() {
     registerValueEmpty();
     backToLogin();
     singedUpSucces();
 }
+
 /**
- * reset register Form
+ * Clear register Values
  */
+
 function registerValueEmpty() {
     register_name.value = "";
     register_email.value = "";
@@ -351,33 +373,41 @@ function registerValueEmpty() {
     register_pw_sign_in_confirm.value = "";
     register_checkbox.checked = false;
 }
+
 /**
- * singedupsucces screen
+ * This function displays a success message screen after a user successfully registers.
  */
+
 function singedUpSucces() {
     let singedupsucces = document.getElementById("singed_Up_Succes");
     singedupsucces.classList.replace("d-none", "singed-Up-Succes");
     setTimeout(singedUpSuccesRemove, 2000);
 }
+
 /**
- * singedupsucces screen remove
+ * This function removes the success message screen after a specified delay.
  */
+
 function singedUpSuccesRemove() {
     let singedupsucces = document.getElementById("singed_Up_Succes");
     singedupsucces.classList.replace("singed-Up-Succes", "d-none");
 }
+
 /**
- * change password img if onlcick
+ * This function changes the visibility icon of the login password field when clicked.
  */
+
 function changeLoginImg() {
     let loginpwimg = document.getElementById("register_pw_login_img");
     if (loginpwimg.src.endsWith("assets/img/register_lock.png")) {
         loginpwimg.src = "assets/img/visibility_off.png";
     }
 }
+
 /**
- * change password img if onlcick
+ * This function changes the visibility icons of the registration password fields when clicked.
  */
+
 function changeSigninImg() {
     let signinimg = document.getElementById("register_pw_sign_in_img");
     let signinimgconfirm = document.getElementById("register_pw_sign_in_confirm_img");
@@ -390,9 +420,11 @@ function changeSigninImg() {
         signinimgconfirm.src = "assets/img/visibility_off.png";
     }
 }
+
 /**
- * encrypt password if onlcick
+ * This function toggles the visibility of the login password input field when clicked.
  */
+
 function encryptPassword1() {
     let loginpw = document.getElementById("register_pw_login_value");
     let loginpwimg = document.getElementById("register_pw_login_img");
@@ -404,9 +436,11 @@ function encryptPassword1() {
         loginpwimg.src = "assets/img/visibility_off.png";
     }
 }
+
 /**
- * encrypt password if onlcick
+ * This function toggles the visibility of the registration password input fields when clicked.
  */
+
 function encryptPassword2() {
     let signinpw = document.getElementById("register_pw_sign_in");
     let signinpimg = document.getElementById("register_pw_sign_in_img");
@@ -414,9 +448,15 @@ function encryptPassword2() {
     let signinpwconfirmimg = document.getElementById("register_pw_sign_in_confirm_img");
     encryptPassword2IfElse(signinpw, signinpimg, signinpwconfirm, signinpwconfirmimg);
 }
+
 /**
- * encrypt password if onlcick
+ * This function toggles the visibility of the registration password input fields based on their current state.
+ * @param {string} signinpimg -The visibility icon image for the registration password field.
+ * @param {string} signinpw -The registration password input field.
+ * @param {string} signinpwconfirm -The confirmation password input field.
+ * @param {string} signinpwconfirmimg -The visibility icon image for the confirmation password field.
  */
+
 function encryptPassword2IfElse(signinpw, signinpimg, signinpwconfirm, signinpwconfirmimg) {
     if (signinpimg.src.endsWith("assets/img/visibility_off.png")) {
         signinpw.type = "text";
