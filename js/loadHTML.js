@@ -284,6 +284,19 @@ function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, cont
     `;
 }
 
+/**
+ * markup for a full single task card with dynamic content based on provided parameters
+ * @param {array} choosencategory - representing task category
+ * @param {array} title - representing task title
+ * @param {array} description - representing task descript
+ * @param {number} i - current task
+ * @param {array} priotodo - representing task priority
+ * @param {array} date - representing task date
+ * @param {string} subtaskstodo - representing task subtasks
+ * @param {string} contacts - representing task contacts
+ * @param {array} key - representing current task array
+ * @returns - a formatted string with dynamic content based on the provided parameters
+ */
 function fullTaskHtml(choosencategory, title, description, i, priotodo, date, subtaskstodo, contacts, key) {
     return `
         <div class="single-task-field" onclick="noCloseContent(event)">
@@ -328,6 +341,16 @@ function fullTaskHtml(choosencategory, title, description, i, priotodo, date, su
       `;
 }
 
+/**
+ * markup for a full single task card with dynamic content based on provided parameters, to edit the single choosen task
+ * @param {array} titletodo - representing task title
+ * @param {array} descriptiontodo - representing task description
+ * @param {array} i - current task
+ * @param {array} choosenpriority - representing task description
+ * @param {array} datetodo - representing task date
+ * @param {array} key - representing current task array
+ * @returns 
+ */
 function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, key) {
     return `
         <div class="single-task-field" onclick="noCloseContent(event)">
@@ -440,27 +463,3 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
         </div>    
     `;
 }
-
-// function awaitfeedbackTaskHtml() {
-//     return `
-//         <h1>TestTesTodo</h1>
-//     `;
-// }
-
-// function doneTaskHtml() {
-//     return `
-//         <h1>TestTesTodo</h1>
-//     `;
-// }
-
-// function userTaskHtml() {
-//     return `
-//         <p class="user-story">User Story</p>
-//     `;
-// }
-
-// function technicalTaskHtml() {
-//     return `
-//         <p class="technical-task">Technical Task</p>
-//     `;
-// }
