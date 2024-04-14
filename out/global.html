@@ -94,32 +94,18 @@
     
 
     
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
 
         
             
+<h4 class="name" id="STORAGE_TOKEN"><span class="type-signature">(constant) </span>STORAGE_TOKEN<span class="type-signature"></span></h4>
 
-    
-
-    
-    <h4 class="name" id="LoginLocalstorage"><span class="type-signature"></span>LoginLocalstorage<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
 
 
 
 <div class="description">
-    if find user = login, else = error
+    A predefined token used to authenticate requests to a storage service.
 </div>
-
-
-
-
-
-
 
 
 
@@ -156,7 +142,198 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line284">line 284</a>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="STORAGE_URL"><span class="type-signature">(constant) </span>STORAGE_URL<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    The base URL for the storage API.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="LoginLocalstorage"><span class="type-signature"></span>LoginLocalstorage<span class="signature">(findusers)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    These functions handle user login with localstorage
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>findusers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The user object found that matches the credentials.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line297">line 297</a>
     </li></ul></dd>
     
 
@@ -192,7 +369,7 @@
     
 
     
-    <h4 class="name" id="Loginsessionstorage"><span class="type-signature"></span>Loginsessionstorage<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Loginsessionstorage"><span class="type-signature"></span>Loginsessionstorage<span class="signature">(findusers)</span><span class="type-signature"></span></h4>
     
 
     
@@ -200,7 +377,7 @@
 
 
 <div class="description">
-    if find user = login, else = error (sessionstorage)
+    These functions handle user login with sessionstorage
 </div>
 
 
@@ -209,6 +386,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>findusers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The user object found that matches the credentials.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -244,7 +470,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line302">line 302</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line318">line 318</a>
     </li></ul></dd>
     
 
@@ -1123,7 +1349,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line298">line 298</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line293">line 293</a>
     </li></ul></dd>
     
 
@@ -1327,7 +1553,7 @@
 
 
 <div class="description">
-    goes back to login if onclick or create user
+    Handles the UI transition from the sign-up view back to the login view.
 </div>
 
 
@@ -1371,7 +1597,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="homepage.js.html">homepage.js</a>, <a href="homepage.js.html#line27">line 27</a>
+        <a href="homepage.js.html">homepage.js</a>, <a href="homepage.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -1621,6 +1847,104 @@
 
 
 
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="bordAddTaskFieldHtml"><span class="type-signature"></span>bordAddTaskFieldHtml<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    load white task field
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
 
 
 
@@ -1885,7 +2209,7 @@
 
 
 <div class="description">
-    change password img if onlcick
+    This function changes the visibility icon of the login password field when clicked.
 </div>
 
 
@@ -1929,7 +2253,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line372">line 372</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line400">line 400</a>
     </li></ul></dd>
     
 
@@ -1973,7 +2297,7 @@
 
 
 <div class="description">
-    change password img if onlcick
+    This function changes the visibility icons of the registration password fields when clicked.
 </div>
 
 
@@ -2017,7 +2341,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line381">line 381</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line411">line 411</a>
     </li></ul></dd>
     
 
@@ -2513,7 +2837,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line330">line 330</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -3316,7 +3640,7 @@
 
 
 <div class="description">
-    get the ID for close the screen with the class clear the seleted contact arraystart init function, to refresh the page
+    get the ID for close the screen with the classclear the seleted contact arraystart init function, to refresh the page
 </div>
 
 
@@ -3492,7 +3816,7 @@
 
 
 <div class="description">
-    close menu
+    This function clears the content of the element with the ID menu_open, effectively hiding the menu.
 </div>
 
 
@@ -3536,7 +3860,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line24">line 24</a>
+        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -3828,7 +4152,7 @@
 
 
 <div class="description">
-    if userer = load from backend, else = load form session storage
+    Determines how to load contact information based on the presence of guest data in session storage.
 </div>
 
 
@@ -3872,7 +4196,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line87">line 87</a>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line118">line 118</a>
     </li></ul></dd>
     
 
@@ -4009,7 +4333,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line396">line 396</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line391">line 391</a>
     </li></ul></dd>
     
 
@@ -4037,6 +4361,153 @@
 <h5>Returns:</h5>
 
         
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createProgressBar"><span class="type-signature"></span>createProgressBar<span class="signature">(percent)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    generate progressbar in html code
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>percent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">style the progressbar, by checked subtasks</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line175">line 175</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html for the progressbar
+</div>
+
 
 
     
@@ -4583,7 +5054,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line587">line 587</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line585">line 585</a>
     </li></ul></dd>
     
 
@@ -4924,7 +5395,7 @@
 
 
 <div class="description">
-    determines the parent element's ID of the dragged item and triggers a corresponding drag function based on that IDif a matching function is found, it calls it with the ID
+    determines the parent element's ID of the dragged item andtriggers a corresponding drag function based on that IDif a matching function is found, it calls it with the ID
 </div>
 
 
@@ -5040,7 +5511,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line309">line 309</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line304">line 304</a>
     </li></ul></dd>
     
 
@@ -5177,7 +5648,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line450">line 450</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line445">line 445</a>
     </li></ul></dd>
     
 
@@ -5314,7 +5785,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line460">line 460</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line455">line 455</a>
     </li></ul></dd>
     
 
@@ -5451,7 +5922,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line440">line 440</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line435">line 435</a>
     </li></ul></dd>
     
 
@@ -5588,7 +6059,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line430">line 430</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line425">line 425</a>
     </li></ul></dd>
     
 
@@ -5632,7 +6103,7 @@
 
 
 <div class="description">
-    ensures proper drop handling by preventing the default drag behaviorupdates the selected droparray by pushing the item from the currentdraggedarray, then removes the item from currentdraggedarrayinitializes the board and saves the changes to the server
+    ensures proper drop handling by preventing the default drag behaviorupdates the selected droparray by pushing the item from the currentdraggedarray,then removes the item from currentdraggedarrayinitializes the board and saves the changes to the server
 </div>
 
 
@@ -5748,7 +6219,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line473">line 473</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line468">line 468</a>
     </li></ul></dd>
     
 
@@ -5885,7 +6356,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line606">line 606</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line605">line 605</a>
     </li></ul></dd>
     
 
@@ -5929,7 +6400,7 @@
 
 
 <div class="description">
-    updates a task card with data based on the provided index and task type andfetches task information updates the HTML of the task cardinitializes task addition, edits contacts, and subtasks
+    updates a task card with data based on the provided index and task type andfetches task informationupdates the HTML of the task cardinitializes task addition, edits contacts, and subtasks
 </div>
 
 
@@ -6045,7 +6516,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line135">line 135</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line132">line 132</a>
     </li></ul></dd>
     
 
@@ -6249,7 +6720,7 @@
 
 
 <div class="description">
-    iterates through an array of subtasks if a subtask has a name, it adds the subtasks
+    iterates through an array of subtasksif a subtask has a name, it adds the subtasks
 </div>
 
 
@@ -6342,7 +6813,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line619">line 619</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line618">line 618</a>
     </li></ul></dd>
     
 
@@ -6378,6 +6849,362 @@
     
 
     
+    <h4 class="name" id="editTaskHtml"><span class="type-signature"></span>editTaskHtml<span class="signature">(titletodo, descriptiontodo, i, choosenpriority, datetodo, key)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    markup for a full single task card with dynamic content based on provided parameters, to edit the single choosen task
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>titletodo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task title</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>descriptiontodo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task description</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">current task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>choosenpriority</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task description</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>datetodo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task date</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing current task array</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line354">line 354</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="empty"><span class="type-signature"></span>empty<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    generate an epmty html place field
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line212">line 212</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="emptyBoxHtml"><span class="type-signature"></span>emptyBoxHtml<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -6386,7 +7213,7 @@
 
 
 <div class="description">
-    start function creat hover Box, return to function and set const iterate through the IDs for the html places get ID and place HTML
+    start function creat hover Box, return to function and set constiterate through the IDs for the html placesget ID and place HTML
 </div>
 
 
@@ -6466,7 +7293,7 @@
     
 
     
-    <h4 class="name" id="encryptPassword1"><span class="type-signature"></span>encryptPassword1<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="emptyTaskFieldAwaitfeedback"><span class="type-signature"></span>emptyTaskFieldAwaitfeedback<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -6474,7 +7301,7 @@
 
 
 <div class="description">
-    encrypt password if onlcick
+    placeholder for await feedback, no tasks in array
 </div>
 
 
@@ -6518,7 +7345,399 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line396">line 396</a>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line61">line 61</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="emptyTaskFieldDone"><span class="type-signature"></span>emptyTaskFieldDone<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    placeholder for done, no tasks in array
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="emptyTaskFieldInprogress"><span class="type-signature"></span>emptyTaskFieldInprogress<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    placeholder for in progress, no tasks in array
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="emptyTaskFieldTodo"><span class="type-signature"></span>emptyTaskFieldTodo<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    placeholder for todo, no tasks in array
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="encryptPassword1"><span class="type-signature"></span>encryptPassword1<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function toggles the visibility of the login password input field when clicked.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line428">line 428</a>
     </li></ul></dd>
     
 
@@ -6562,7 +7781,7 @@
 
 
 <div class="description">
-    encrypt password if onlcick
+    This function toggles the visibility of the registration password input fields when clicked.
 </div>
 
 
@@ -6606,7 +7825,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line410">line 410</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line444">line 444</a>
     </li></ul></dd>
     
 
@@ -6642,7 +7861,7 @@
     
 
     
-    <h4 class="name" id="encryptPassword2IfElse"><span class="type-signature"></span>encryptPassword2IfElse<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="encryptPassword2IfElse"><span class="type-signature"></span>encryptPassword2IfElse<span class="signature">(signinpimg, signinpw, signinpwconfirm, signinpwconfirmimg)</span><span class="type-signature"></span></h4>
     
 
     
@@ -6650,7 +7869,7 @@
 
 
 <div class="description">
-    encrypt password if onlcick
+    This function toggles the visibility of the registration password input fields based on their current state.
 </div>
 
 
@@ -6659,6 +7878,124 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>signinpimg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The visibility icon image for the registration password field.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>signinpw</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The registration password input field.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>signinpwconfirm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The confirmation password input field.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>signinpwconfirmimg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The visibility icon image for the confirmation password field.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -6694,7 +8031,144 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line420">line 420</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line460">line 460</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="fillAddTaskSection"><span class="type-signature"></span>fillAddTaskSection<span class="signature">(array)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code for the add-task-section.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This optinal variable is the section of the board-page that the task should be created for.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -6854,7 +8328,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line541">line 541</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line539">line 539</a>
     </li></ul></dd>
     
 
@@ -6997,7 +8471,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line528">line 528</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line524">line 524</a>
     </li></ul></dd>
     
 
@@ -7186,7 +8660,7 @@
     
 
     
-    <h4 class="name" id="formatDate"><span class="type-signature"></span>formatDate<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="formatDate"><span class="type-signature"></span>formatDate<span class="signature">(date)</span><span class="type-signature"></span></h4>
     
 
     
@@ -7194,7 +8668,7 @@
 
 
 <div class="description">
-    Date edit
+    Convert and format date strings for internal use and display.
 </div>
 
 
@@ -7203,6 +8677,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The date parameter here is expected to be a string representing a date in the format DD/MM/YYYY.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -7238,7 +8761,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line73">line 73</a>
+        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line96">line 96</a>
     </li></ul></dd>
     
 
@@ -7421,7 +8944,7 @@
     
 
     
-    <h4 class="name" id="formatOutputDate"><span class="type-signature"></span>formatOutputDate<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="formatOutputDate"><span class="type-signature"></span>formatOutputDate<span class="signature">(date)</span><span class="type-signature"></span></h4>
     
 
     
@@ -7429,7 +8952,7 @@
 
 
 <div class="description">
-    Date edit
+    Manages a welcome animation that only plays once per session.
 </div>
 
 
@@ -7438,6 +8961,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the date parameter is expected to be a JavaScript Date object. This function's role is to format this Date object into a more human-readable string format.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -7473,7 +9045,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line80">line 80</a>
+        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -7635,6 +9207,631 @@
 
 
 
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="fullTaskHtml"><span class="type-signature"></span>fullTaskHtml<span class="signature">(choosencategory, title, description, i, priotodo, date, subtaskstodo, contacts, key)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    markup for a full single task card with dynamic content based on provided parameters
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>choosencategory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task category</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task title</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task descript</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">current task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>priotodo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task priority</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task date</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subtaskstodo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task subtasks</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>contacts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task contacts</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing current task array</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line300">line 300</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - a formatted string with dynamic content based on the provided parameters
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateAddContactHtml"><span class="type-signature"></span>generateAddContactHtml<span class="signature">(color)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code of the add-contact-card of the board-page.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the random-generated color for the contact.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line398">line 398</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The HTML-code for the add-contact-card.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateCategoryHtml"><span class="type-signature"></span>generateCategoryHtml<span class="signature">(category)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code of an entry in the category-dropdown-menu.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>category</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the data of the category that the html-code is needed for.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line161">line 161</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The generated HTML-code of the entry.
+</div>
+
+
+
+    
 
 
 
@@ -7940,6 +10137,1389 @@
     
 
     
+    <h4 class="name" id="generateContactDetailBoxHtml"><span class="type-signature"></span>generateContactDetailBoxHtml<span class="signature">(contact, contactdata)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code for the contact-details-section of a contact.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contact</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the data of the contact that the entry belongs to.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>contactdata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is some additional data of the contact, that is needed to create the entry.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line303">line 303</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The HTML-code of the contact-details-section.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateContactDropdownHtml"><span class="type-signature"></span>generateContactDropdownHtml<span class="signature">(contact, contactdata)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code of an entry in the contact-dropdown-menu.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contact</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the data of the contact that the entry belongs to.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>contactdata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is some additional data of the contact, that is needed to create the entry.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line178">line 178</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The HTML-Code of the entry.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateContactHtml"><span class="type-signature"></span>generateContactHtml<span class="signature">(contact, contactdata)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code of an entry in the contact-list.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contact</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the data of the contact that the entry belongs to.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>contactdata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is some additional data of the contact, that is needed to create the entry.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line278">line 278</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The HTML-code of the entry.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateEditContactHtml"><span class="type-signature"></span>generateEditContactHtml<span class="signature">(contact, abbreviation, fullname)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code of the edit-contact-card of the board-page.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contact</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the array of theselected contact.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>abbreviation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the first letter of the first name plus the first letter of the last name.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fullname</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the full name of the contact.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line345">line 345</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The generated HTML-code of the edit-contact-section.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateEditSubtaskHtml"><span class="type-signature"></span>generateEditSubtaskHtml<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code for the edit-subtask-section.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the unique-id of the selected subtask.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line237">line 237</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The HTML-code of the edit-subtask-section.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateSeparatorHtml"><span class="type-signature"></span>generateSeparatorHtml<span class="signature">(letter)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code of the separators for the contact-list with the first letter of the first name.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>letter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the first letter of the first names of the following contacts.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line262">line 262</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The HTML-code of the separator.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateSubsHtml"><span class="type-signature"></span>generateSubsHtml<span class="signature">(index, isChecked, subtask, imgSrc)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    enerates HTML markup for a single subtask element, including a checkbox, an image label, and a text label. It accepts parameters for the subtasks
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the number of the current subtasks</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isChecked</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">true or false of checked subtask</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subtask</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">named subtasks</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>imgSrc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">image for the checked / and unchecked checkbox</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line240">line 240</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html for subtasks
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateSubtaskHtml"><span class="type-signature"></span>generateSubtaskHtml<span class="signature">(name, id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code for the created subtasks of a task.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the text of the subtask.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the unique-id of the subtask.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line199">line 199</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The generated HTML-code of the subtask.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getAllAddTaskFormInputs"><span class="type-signature"></span>getAllAddTaskFormInputs<span class="signature">(withKey)</span><span class="type-signature"></span></h4>
     
 
@@ -8087,7 +11667,7 @@
     
 
     
-    <h4 class="name" id="getItem"><span class="type-signature">(async) </span>getItem<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getItem"><span class="type-signature">(async) </span>getItem<span class="signature">(key)</span><span class="type-signature"></span></h4>
     
 
     
@@ -8095,7 +11675,7 @@
 
 
 <div class="description">
-    get storage
+    Retrieves data from the remote storage using a GET request.
 </div>
 
 
@@ -8104,6 +11684,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The key of the data to retrieve.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -8139,7 +11768,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line13">line 13</a>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -8164,6 +11793,16 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - A promise that resolves to the parsed value stored under the specified key.
+</div>
+
+
+
+    
 
 
 
@@ -8183,7 +11822,7 @@
 
 
 <div class="description">
-    retrieves the value from the search input element, trims whitespace, converts it to lowercase, and returns an object with the search string and its length
+    retrieves the value from the search input element,trims whitespace, converts it to lowercase, andreturns an object with the search string and its length
 </div>
 
 
@@ -8227,7 +11866,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line507">line 507</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line504">line 504</a>
     </li></ul></dd>
     
 
@@ -8277,7 +11916,7 @@
 
 
 <div class="description">
-    shows the time of the guest
+    These functions update the innerHTML of an element (presumably identified by summary_good_morning) to greet the user appropriately based on the current time.
 </div>
 
 
@@ -8321,7 +11960,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line4">line 4</a>
+        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -8494,7 +12133,7 @@
     
 
     
-    <h4 class="name" id="ifLocalStorageExist"><span class="type-signature">(async) </span>ifLocalStorageExist<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="hoverHtml"><span class="type-signature"></span>hoverHtml<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -8502,7 +12141,7 @@
 
 
 <div class="description">
-    move to start if no local storage (no login)
+    generate a box, and style these box, if hovered by an dragged element
 </div>
 
 
@@ -8546,7 +12185,105 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line53">line 53</a>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line187">line 187</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html for the hoverbox
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="ifLocalStorageExist"><span class="type-signature">(async) </span>ifLocalStorageExist<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Redirects to the start page if no user data is found in local storage.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line78">line 78</a>
     </li></ul></dd>
     
 
@@ -8590,7 +12327,7 @@
 
 
 <div class="description">
-    move to start if no session storage (no login)
+    Redirects to the start page if no user data is found in session storage.
 </div>
 
 
@@ -8634,7 +12371,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line61">line 61</a>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line88">line 88</a>
     </li></ul></dd>
     
 
@@ -8678,7 +12415,7 @@
 
 
 <div class="description">
-    if password dont match = error, else create user and reset form
+    Checks if the entered passwords match during registration. If they do, a new user is created and added to the users array.
 </div>
 
 
@@ -8722,7 +12459,95 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line246">line 246</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line254">line 254</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="includeHTML"><span class="type-signature">(async) </span>includeHTML<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    function fetches HTML content from external files based on elements with a specific attribute,then inserts the content into those elements on a webpage asynchronously
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -8859,7 +12684,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line187">line 187</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line183">line 183</a>
     </li></ul></dd>
     
 
@@ -9071,7 +12896,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line201">line 201</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line197">line 197</a>
     </li></ul></dd>
     
 
@@ -9102,6 +12927,94 @@
 
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="init"><span class="type-signature">(async) </span>init<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    start at onload to load all tepmlates to every site
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9369,7 +13282,7 @@
 
 
 <div class="description">
-    Separate guest storage and customer storage
+    Loads different parts of the application based on available global functions and session state.
 </div>
 
 
@@ -9413,7 +13326,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line69">line 69</a>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line98">line 98</a>
     </li></ul></dd>
     
 
@@ -9457,7 +13370,7 @@
 
 
 <div class="description">
-    Separate guest storage and customer storage
+    Determines whether to load data from local storage or session storage. Checks the session storage for a user indicator and loads user data accordingly. Calls ifLocalStorageExist() or ifSessionStorageExist() based on where the user data was found.
 </div>
 
 
@@ -9501,7 +13414,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line39">line 39</a>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line62">line 62</a>
     </li></ul></dd>
     
 
@@ -9545,7 +13458,7 @@
 
 
 <div class="description">
-    load storage
+    Loads the storage data and initializes the user interface based on session status. Uses session storage to determine if guest data is available. If no guest data, it loads all required data from local or session storage.
 </div>
 
 
@@ -9589,7 +13502,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line23">line 23</a>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line44">line 44</a>
     </li></ul></dd>
     
 
@@ -9625,7 +13538,7 @@
     
 
     
-    <h4 class="name" id="loadSummaryInnerhtml"><span class="type-signature">(async) </span>loadSummaryInnerhtml<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="loadSummaryInnerhtml"><span class="type-signature">(async) </span>loadSummaryInnerhtml<span class="signature">(inboard, todo, done, urgent, deadline, inprogress, awaitfeedback, name)</span><span class="type-signature"></span></h4>
     
 
     
@@ -9633,7 +13546,7 @@
 
 
 <div class="description">
-    load the summary array to the user or the guest
+    Updates the inner HTML of elements related to task summaries using data from a user object.
 </div>
 
 
@@ -9642,6 +13555,216 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inboard</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A DOM element that is likely used to display the total count of all tasks associated with a user.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>todo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A DOM element used to display the number of tasks that are currently marked as 'todo'.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A DOM element intended to show the number of tasks that have been completed by the user.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>urgent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A DOM element that displays the count of tasks labeled as 'urgent'.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>deadline</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This element is used to display information about the nearest upcoming deadline among the tasks.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inprogress</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A DOM element where the number of tasks currently in progress is shown.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>awaitfeedback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This element is used to show how many tasks are awaiting feedback.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A DOM element that displays the name of the user.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -9677,7 +13800,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line46">line 46</a>
+        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -9721,7 +13844,7 @@
 
 
 <div class="description">
-    load the summary array to the user or the guest
+    This function retrieves various DOM elements related to task summaries and passes them to another function to update their contents.
 </div>
 
 
@@ -9765,7 +13888,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line32">line 32</a>
+        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -9809,7 +13932,7 @@
 
 
 <div class="description">
-    get user data and remove/reset sessionStorage items
+    Asynchronously retrieves user data from storage.
 </div>
 
 
@@ -9853,7 +13976,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line225">line 225</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line229">line 229</a>
     </li></ul></dd>
     
 
@@ -9897,7 +14020,7 @@
 
 
 <div class="description">
-    get user data and remove/reset sessionStorage items
+    This function checks if user information exists in localStorage. If it doesn't, it redirects to another HTML page. It also handles the initial loading of user data and resets specific sessionStorage items.
 </div>
 
 
@@ -9941,7 +14064,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line210">line 210</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line212">line 212</a>
     </li></ul></dd>
     
 
@@ -9985,7 +14108,7 @@
 
 
 <div class="description">
-    delete storage if logout
+    This function handles the user logout process. It clears specific user-related data from both local and session storage, and resets the global variable loaduser.
 </div>
 
 
@@ -10029,7 +14152,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line46">line 46</a>
+        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -10073,7 +14196,7 @@
 
 
 <div class="description">
-    login function, if checkbox true = load in localstorage, else load in sessionstorage
+    Performs user login by verifying credentials. Depending on a checkbox, it decides whether to save session information in localStorage or sessionStorage.
 </div>
 
 
@@ -10117,7 +14240,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line272">line 272</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line282">line 282</a>
     </li></ul></dd>
     
 
@@ -10161,7 +14284,7 @@
 
 
 <div class="description">
-    reset the loginvalues
+    Clears the input values in the login form.
 </div>
 
 
@@ -10205,7 +14328,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="homepage.js.html">homepage.js</a>, <a href="homepage.js.html#line19">line 19</a>
+        <a href="homepage.js.html">homepage.js</a>, <a href="homepage.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -10241,7 +14364,7 @@
     
 
     
-    <h4 class="name" id="menuInnerHTML"><span class="type-signature"></span>menuInnerHTML<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="lowPrioHtml"><span class="type-signature"></span>lowPrioHtml<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -10249,7 +14372,7 @@
 
 
 <div class="description">
-    menu
+    create low priority style element, as image
 </div>
 
 
@@ -10293,7 +14416,399 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line31">line 31</a>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line121">line 121</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="lowPrioHtmlOpenTask"><span class="type-signature"></span>lowPrioHtmlOpenTask<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    create low priority style element, as image and name it
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line152">line 152</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="mediumPrioHtml"><span class="type-signature"></span>mediumPrioHtml<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    create medium priority style element, as image
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line131">line 131</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="mediumPrioHtmlOpenTask"><span class="type-signature"></span>mediumPrioHtmlOpenTask<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    create medium priority style element, as image and name it
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line163">line 163</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="menuInnerHTML"><span class="type-signature"></span>menuInnerHTML<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML content for the navigation menu, including links for privacy policy, legal notice, and a logout option.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -10337,7 +14852,7 @@
 
 
 <div class="description">
-    show the first letter of the first name and second name in the right corner
+    This function updates the HTML content of an element with the ID menu_user to show the initials of the currently logged-in user. It processes the user's name to extract the first letter of each of the first two names and converts them to uppercase.
 </div>
 
 
@@ -10381,7 +14896,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line4">line 4</a>
+        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -10425,7 +14940,7 @@
 
 
 <div class="description">
-    moves a task from the current dragged array to the specified category array, updates the board, saves to the server, and hides the fullscreen information
+    moves a task from the current dragged array to the specified category array,updates the board, saves to the server, and hides the fullscreen information
 </div>
 
 
@@ -10518,7 +15033,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line656">line 656</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line653">line 653</a>
     </li></ul></dd>
     
 
@@ -10543,6 +15058,104 @@
 
 
 
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="moveTaskMenue"><span class="type-signature"></span>moveTaskMenue<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    generate an styled html menu, to move single tasks in mobile version
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line220">line 220</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html for the mobile menu
+</div>
+
+
+
+    
 
 
 
@@ -10655,7 +15268,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line486">line 486</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line481">line 481</a>
     </li></ul></dd>
     
 
@@ -10691,6 +15304,104 @@
     
 
     
+    <h4 class="name" id="nothingFound"><span class="type-signature"></span>nothingFound<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    create empty task style element, no task found per search
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line101">line 101</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="openBordTask"><span class="type-signature"></span>openBordTask<span class="signature">(id, element)</span><span class="type-signature"></span></h4>
     
 
@@ -10699,7 +15410,7 @@
 
 
 <div class="description">
-    uses if-else statements to determine the parent container's ID andtriggers specific actions accordingly, such as dragging tasks and opening tasks with specific statuses
+    uses if-else statements to determine the parent container's ID andtriggers specific actions accordingly,such as dragging tasks and opening tasks with specific statuses
 </div>
 
 
@@ -11587,7 +16298,7 @@
 
 
 <div class="description">
-    open menu
+    This function displays a navigation menu by updating the HTML content of an element with the ID menu_open using the HTML structure returned by menuInnerHTML().
 </div>
 
 
@@ -11631,7 +16342,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line17">line 17</a>
+        <a href="menu.js.html">menu.js</a>, <a href="menu.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -11791,7 +16502,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line632">line 632</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line631">line 631</a>
     </li></ul></dd>
     
 
@@ -11835,7 +16546,7 @@
 
 
 <div class="description">
-    function displays the move task menu based on the selected array and highlights the corresponding option
+    function displays the move task menu based on the selected array andhighlights the corresponding option
 </div>
 
 
@@ -11928,7 +16639,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line643">line 643</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line641">line 641</a>
     </li></ul></dd>
     
 
@@ -12088,7 +16799,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line114">line 114</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line111">line 111</a>
     </li></ul></dd>
     
 
@@ -12269,7 +16980,7 @@
 
 
 <div class="description">
-    register function
+    Handles user registration by checking if an email already exists and if not, proceeds with registration.
 </div>
 
 
@@ -12313,7 +17024,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line231">line 231</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line237">line 237</a>
     </li></ul></dd>
     
 
@@ -12357,7 +17068,7 @@
 
 
 <div class="description">
-    Guestlogin
+    Allows a guest user to log in by setting up a predefined user object in sessionStorage.
 </div>
 
 
@@ -12401,7 +17112,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line320">line 320</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -12445,7 +17156,7 @@
 
 
 <div class="description">
-    reset register Form
+    Clear register Values
 </div>
 
 
@@ -12489,7 +17200,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line347">line 347</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line369">line 369</a>
     </li></ul></dd>
     
 
@@ -13080,7 +17791,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line553">line 553</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line551">line 551</a>
     </li></ul></dd>
     
 
@@ -13240,7 +17951,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line565">line 565</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line563">line 563</a>
     </li></ul></dd>
     
 
@@ -13364,6 +18075,104 @@
     
 
     
+    <h4 class="name" id="renderSubtask"><span class="type-signature"></span>renderSubtask<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function generates the HTML-code for the wrapper of the created subtasks and adds the subtask to it.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-AT-C.js.html">html-AT-C.js</a>, <a href="html-AT-C.js.html#line224">line 224</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The generated HTML-code of the subtask with wrapper.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="renderTasks"><span class="type-signature"></span>renderTasks<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -13416,7 +18225,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line152">line 152</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line149">line 149</a>
     </li></ul></dd>
     
 
@@ -13460,7 +18269,7 @@
 
 
 <div class="description">
-    reset register Form, send you back to login, and singedupsucces screen
+    Resets the registration form fields and handles post-registration UI feedback.
 </div>
 
 
@@ -13504,7 +18313,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line339">line 339</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line359">line 359</a>
     </li></ul></dd>
     
 
@@ -14070,7 +18879,7 @@
 
 
 <div class="description">
-    stores user data, if the user is not a guest, otherwise, it stores the data as a session storage item for the user
+    stores user data, if the user is not a guest,otherwise, it stores the data as a session storage item for the user
 </div>
 
 
@@ -14114,7 +18923,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line598">line 598</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line597">line 597</a>
     </li></ul></dd>
     
 
@@ -14290,7 +19099,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line494">line 494</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line489">line 489</a>
     </li></ul></dd>
     
 
@@ -14340,7 +19149,7 @@
 
 
 <div class="description">
-    ilters and renders results based on the search query if the query length is at least one character otherwise, it initializes the board
+    ilters and renders results based on the search query if the query length is at least one characterotherwise, it initializes the board
 </div>
 
 
@@ -14384,7 +19193,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line517">line 517</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line513">line 513</a>
     </li></ul></dd>
     
 
@@ -14521,7 +19330,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line216">line 216</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line212">line 212</a>
     </li></ul></dd>
     
 
@@ -14760,7 +19569,7 @@
 
             
 
-            <td class="description last">representing task contacts and returns HTML content</td>
+            <td class="description last">representing task contacts</td>
         </tr>
 
     
@@ -14801,7 +19610,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line227">line 227</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line223">line 223</a>
     </li></ul></dd>
     
 
@@ -14829,6 +19638,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    - returns HTML content
+</div>
+
 
 
     
@@ -14851,7 +19664,7 @@
 
 
 <div class="description">
-    creates HTML for displaying contacts and return styled HTML with names iterates through the array of contacts, generates a profile badge for each,only contacts with a non-empty first name are processed
+    creates HTML for displaying contacts and return styled HTML with namesiterates through the array of contacts, generates a profile badge for each,only contacts with a non-empty first name are processed
 </div>
 
 
@@ -14944,7 +19757,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line248">line 248</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line244">line 244</a>
     </li></ul></dd>
     
 
@@ -15224,7 +20037,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line270">line 270</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line266">line 266</a>
     </li></ul></dd>
     
 
@@ -15367,7 +20180,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line279">line 279</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line275">line 275</a>
     </li></ul></dd>
     
 
@@ -15533,7 +20346,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line413">line 413</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line408">line 408</a>
     </li></ul></dd>
     
 
@@ -15676,7 +20489,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line363">line 363</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line358">line 358</a>
     </li></ul></dd>
     
 
@@ -16312,7 +21125,7 @@
     
 
     
-    <h4 class="name" id="setItem"><span class="type-signature">(async) </span>setItem<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setItem"><span class="type-signature">(async) </span>setItem<span class="signature">(key, value)</span><span class="type-signature"></span></h4>
     
 
     
@@ -16320,7 +21133,7 @@
 
 
 <div class="description">
-    set storage
+    Stores data in the remote storage using a POST request.
 </div>
 
 
@@ -16329,6 +21142,78 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The key under which the value should be stored.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The data to store.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -16364,7 +21249,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line6">line 6</a>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -16389,6 +21274,16 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - A promise that resolves with the JSON response from the storage API.
+</div>
+
+
+
+    
 
 
 
@@ -17147,7 +22042,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line576">line 576</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line574">line 574</a>
     </li></ul></dd>
     
 
@@ -17284,7 +22179,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line289">line 289</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line284">line 284</a>
     </li></ul></dd>
     
 
@@ -17328,7 +22223,7 @@
 
 
 <div class="description">
-    retrieves the HTML element  extracts specific details from the object using helper functiongenerates HTML content for the task using the extracted informationcreate the HTML
+    retrieves the HTML elementextracts specific details from the object using helper functiongenerates HTML content for the task using the extracted informationcreate the HTML
 </div>
 
 
@@ -17467,7 +22362,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line174">line 174</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line170">line 170</a>
     </li></ul></dd>
     
 
@@ -17599,7 +22494,7 @@
 
 
 <div class="description">
-    shows the signUpBox
+    This function manages the display when switching from a login view to a sign-up view.
 </div>
 
 
@@ -17643,7 +22538,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="homepage.js.html">homepage.js</a>, <a href="homepage.js.html#line4">line 4</a>
+        <a href="homepage.js.html">homepage.js</a>, <a href="homepage.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -17687,7 +22582,7 @@
 
 
 <div class="description">
-    singedupsucces screen
+    This function displays a success message screen after a user successfully registers.
 </div>
 
 
@@ -17731,7 +22626,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line357">line 357</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line381">line 381</a>
     </li></ul></dd>
     
 
@@ -17775,7 +22670,7 @@
 
 
 <div class="description">
-    singedupsucces screen remove
+    This function removes the success message screen after a specified delay.
 </div>
 
 
@@ -17819,7 +22714,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="register.js.html">register.js</a>, <a href="register.js.html#line365">line 365</a>
+        <a href="register.js.html">register.js</a>, <a href="register.js.html#line391">line 391</a>
     </li></ul></dd>
     
 
@@ -17943,6 +22838,176 @@
     
 
     
+    <h4 class="name" id="subtaskProgressbarHtml"><span class="type-signature"></span>subtaskProgressbarHtml<span class="signature">(subtasklenght, selectedCheckboxCount)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    generate html element to check up the subtasks in numbers
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>subtasklenght</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">created number of all subtasks</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>selectedCheckboxCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">created number of all checked subtasks</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line202">line 202</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html for the subtasks in numbers
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="summaryDeadline"><span class="type-signature"></span>summaryDeadline<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -17951,7 +23016,7 @@
 
 
 <div class="description">
-    show the upcoming deadline
+    Displays the nearest deadline from a user's tasks.
 </div>
 
 
@@ -17995,7 +23060,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line59">line 59</a>
+        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -18207,7 +23272,7 @@
     
 
     
-    <h4 class="name" id="timeIfElse"><span class="type-signature">(async) </span>timeIfElse<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="technicalTaskHtml"><span class="type-signature"></span>technicalTaskHtml<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -18215,7 +23280,7 @@
 
 
 <div class="description">
-    if userer = load userTime, else = load guestTime
+    create technical task style element
 </div>
 
 
@@ -18259,7 +23324,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line97">line 97</a>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -18284,6 +23349,412 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="timeIfElse"><span class="type-signature">(async) </span>timeIfElse<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Handles time-related information based on user session.Calls userTime() for logged-in users or guestTime() for guests.Clears the summary name if guest data is present.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line132">line 132</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="todoTaskHtml"><span class="type-signature"></span>todoTaskHtml<span class="signature">(choosencategory, title, description, i, subtaskstodo, contactstodo, priority, choosensubs)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    generates HTML markup for a todo task container with dynamic content based on provided parameters
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>choosencategory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task catgeroy</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task title</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task description</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">current task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subtaskstodo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task subtasks html as progressbar</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>contactstodo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task contacts</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>priority</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task priority</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>choosensubs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">representing task check / unched subtasks and all subtasks as html</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line260">line 260</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - a formatted string with dynamic content based on the provided parameters
+</div>
+
+
+
+    
 
 
 
@@ -18778,7 +24249,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line347">line 347</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line342">line 342</a>
     </li></ul></dd>
     
 
@@ -18828,7 +24299,7 @@
 
 
 <div class="description">
-    asynchronously updates the checkbox status and create the input style as image
+    asynchronously updates the checkbox status andcreate the input style as image
 </div>
 
 
@@ -18944,7 +24415,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="board.js.html">board.js</a>, <a href="board.js.html#line379">line 379</a>
+        <a href="board.js.html">board.js</a>, <a href="board.js.html#line374">line 374</a>
     </li></ul></dd>
     
 
@@ -18980,7 +24451,7 @@
     
 
     
-    <h4 class="name" id="userTime"><span class="type-signature">(async) </span>userTime<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="urgentPrioHtml"><span class="type-signature"></span>urgentPrioHtml<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -18988,7 +24459,7 @@
 
 
 <div class="description">
-    shows the time of the user
+    create urgent priority style element, as image
 </div>
 
 
@@ -19032,7 +24503,301 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line18">line 18</a>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line111">line 111</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="urgentPrioHtmlOpenTask"><span class="type-signature"></span>urgentPrioHtmlOpenTask<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    create urgent priority style element, as image and name it
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line141">line 141</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="userTaskHtml"><span class="type-signature"></span>userTaskHtml<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    create user story style element
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loadHTML.js.html">loadHTML.js</a>, <a href="loadHTML.js.html#line81">line 81</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the code as html
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="userTime"><span class="type-signature">(async) </span>userTime<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    These functions update the innerHTML of an element (presumably identified by summary_good_morning) to greet the user appropriately based on the current time.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="summary.js.html">summary.js</a>, <a href="summary.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -19078,13 +24843,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#LoginLocalstorage">LoginLocalstorage</a></li><li><a href="global.html#Loginsessionstorage">Loginsessionstorage</a></li><li><a href="global.html#addAddTaskEventListeners">addAddTaskEventListeners</a></li><li><a href="global.html#addDataFromInputs">addDataFromInputs</a></li><li><a href="global.html#addDataToCurrentTask">addDataToCurrentTask</a></li><li><a href="global.html#addPrio">addPrio</a></li><li><a href="global.html#addSubtask">addSubtask</a></li><li><a href="global.html#addToTasks">addToTasks</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#applyChangesToTask">applyChangesToTask</a></li><li><a href="global.html#backToLogin">backToLogin</a></li><li><a href="global.html#boardinit">boardinit</a></li><li><a href="global.html#bordAddNewTask">bordAddNewTask</a></li><li><a href="global.html#buildNewContactArray">buildNewContactArray</a></li><li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#changeLoginImg">changeLoginImg</a></li><li><a href="global.html#changeSigninImg">changeSigninImg</a></li><li><a href="global.html#changeSubtaskIcons">changeSubtaskIcons</a></li><li><a href="global.html#changeTaskInUserArray">changeTaskInUserArray</a></li><li><a href="global.html#changeViewMobile">changeViewMobile</a></li><li><a href="global.html#choosenSubtasks">choosenSubtasks</a></li><li><a href="global.html#clearAddTaskArrays">clearAddTaskArrays</a></li><li><a href="global.html#clearAddTaskForm">clearAddTaskForm</a></li><li><a href="global.html#clearContactDetails">clearContactDetails</a></li><li><a href="global.html#clearContainers">clearContainers</a></li><li><a href="global.html#clearErrorStyle">clearErrorStyle</a></li><li><a href="global.html#clearInput">clearInput</a></li><li><a href="global.html#clearInputs">clearInputs</a></li><li><a href="global.html#clearPrioButtons">clearPrioButtons</a></li><li><a href="global.html#closeCard">closeCard</a></li><li><a href="global.html#closeContactsSideMenu">closeContactsSideMenu</a></li><li><a href="global.html#closeMenu">closeMenu</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#confirmChangeSubtask">confirmChangeSubtask</a></li><li><a href="global.html#contactsIfElse">contactsIfElse</a></li><li><a href="global.html#countSelectedCheckboxes">countSelectedCheckboxes</a></li><li><a href="global.html#delay">delay</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteSingleTask">deleteSingleTask</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#dontChangeFocus">dontChangeFocus</a></li><li><a href="global.html#drag">drag</a></li><li><a href="global.html#dragAwaitFeedback">dragAwaitFeedback</a></li><li><a href="global.html#dragDone">dragDone</a></li><li><a href="global.html#dragInProgress">dragInProgress</a></li><li><a href="global.html#dragTodo">dragTodo</a></li><li><a href="global.html#dropOn">dropOn</a></li><li><a href="global.html#editContactsFactory">editContactsFactory</a></li><li><a href="global.html#editSingleTask">editSingleTask</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#editSubtaskFactory">editSubtaskFactory</a></li><li><a href="global.html#emptyBoxHtml">emptyBoxHtml</a></li><li><a href="global.html#encryptPassword1">encryptPassword1</a></li><li><a href="global.html#encryptPassword2">encryptPassword2</a></li><li><a href="global.html#encryptPassword2IfElse">encryptPassword2IfElse</a></li><li><a href="global.html#filterArray">filterArray</a></li><li><a href="global.html#filterResults">filterResults</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#formatName">formatName</a></li><li><a href="global.html#formatOutputDate">formatOutputDate</a></li><li><a href="global.html#fstopPropagation">fstopPropagation</a></li><li><a href="global.html#generateContactData">generateContactData</a></li><li><a href="global.html#getAllAddTaskFormInputs">getAllAddTaskFormInputs</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#getSearchInput">getSearchInput</a></li><li><a href="global.html#guestTime">guestTime</a></li><li><a href="global.html#handleClickPrio">handleClickPrio</a></li><li><a href="global.html#ifLocalStorageExist">ifLocalStorageExist</a></li><li><a href="global.html#ifSessionStorageExist">ifSessionStorageExist</a></li><li><a href="global.html#ifelseRegister">ifelseRegister</a></li><li><a href="global.html#informationTodo">informationTodo</a></li><li><a href="global.html#informationsFactory">informationsFactory</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#initContacts">initContacts</a></li><li><a href="global.html#loadAllIfElse">loadAllIfElse</a></li><li><a href="global.html#loadAllIfElseLocalOrSession">loadAllIfElseLocalOrSession</a></li><li><a href="global.html#loadStorage">loadStorage</a></li><li><a href="global.html#loadSummaryInnerhtml">loadSummaryInnerhtml</a></li><li><a href="global.html#loadSummaryProject">loadSummaryProject</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#loadstorageitems">loadstorageitems</a></li><li><a href="global.html#logOut">logOut</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginValueEmpty">loginValueEmpty</a></li><li><a href="global.html#menuInnerHTML">menuInnerHTML</a></li><li><a href="global.html#menuLoginName">menuLoginName</a></li><li><a href="global.html#moveTask">moveTask</a></li><li><a href="global.html#noCloseContent">noCloseContent</a></li><li><a href="global.html#openBordTask">openBordTask</a></li><li><a href="global.html#openContact">openContact</a></li><li><a href="global.html#openContactAdding">openContactAdding</a></li><li><a href="global.html#openContactEdition">openContactEdition</a></li><li><a href="global.html#openContactsSideMenu">openContactsSideMenu</a></li><li><a href="global.html#openDropDownMenu">openDropDownMenu</a></li><li><a href="global.html#openMenu">openMenu</a></li><li><a href="global.html#openMoveMenue">openMoveMenue</a></li><li><a href="global.html#openMoveTaskMenu">openMoveTaskMenu</a></li><li><a href="global.html#openTask">openTask</a></li><li><a href="global.html#pushTaskToUserArray">pushTaskToUserArray</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#registerGuestLogin">registerGuestLogin</a></li><li><a href="global.html#registerValueEmpty">registerValueEmpty</a></li><li><a href="global.html#renderAssignedTo">renderAssignedTo</a></li><li><a href="global.html#renderCategory">renderCategory</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderResults">renderResults</a></li><li><a href="global.html#renderResultsCategory">renderResultsCategory</a></li><li><a href="global.html#renderSelectedContacts">renderSelectedContacts</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#resetForm">resetForm</a></li><li><a href="global.html#saveEditedContact">saveEditedContact</a></li><li><a href="global.html#saveEditedTask">saveEditedTask</a></li><li><a href="global.html#saveNewContact">saveNewContact</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#saveToServer">saveToServer</a></li><li><a href="global.html#searchTaskPlace">searchTaskPlace</a></li><li><a href="global.html#searchTitleStart">searchTitleStart</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#selectContactById">selectContactById</a></li><li><a href="global.html#selectContacts">selectContacts</a></li><li><a href="global.html#selectContactsOpenTask">selectContactsOpenTask</a></li><li><a href="global.html#selectPrio">selectPrio</a></li><li><a href="global.html#selectPriority">selectPriority</a></li><li><a href="global.html#selectPriorityOpenTask">selectPriorityOpenTask</a></li><li><a href="global.html#selectSubtaskHtml">selectSubtaskHtml</a></li><li><a href="global.html#selectSubtasks">selectSubtasks</a></li><li><a href="global.html#selectTaskCategory">selectTaskCategory</a></li><li><a href="global.html#selectTaskContact">selectTaskContact</a></li><li><a href="global.html#setFilter">setFilter</a></li><li><a href="global.html#setFocusOnElement">setFocusOnElement</a></li><li><a href="global.html#setItem">setItem</a></li><li><a href="global.html#setMinDate">setMinDate</a></li><li><a href="global.html#setSubtaskData">setSubtaskData</a></li><li><a href="global.html#showEmptyHtmlAwaitfeedback">showEmptyHtmlAwaitfeedback</a></li><li><a href="global.html#showEmptyHtmlDone">showEmptyHtmlDone</a></li><li><a href="global.html#showEmptyHtmlInprogress">showEmptyHtmlInprogress</a></li><li><a href="global.html#showEmptyHtmlTodo">showEmptyHtmlTodo</a></li><li><a href="global.html#showHtml">showHtml</a></li><li><a href="global.html#showTaskCategoryBig">showTaskCategoryBig</a></li><li><a href="global.html#showTaskHtml">showTaskHtml</a></li><li><a href="global.html#showTaskNotification">showTaskNotification</a></li><li><a href="global.html#signUpBox">signUpBox</a></li><li><a href="global.html#singedUpSucces">singedUpSucces</a></li><li><a href="global.html#singedUpSuccesRemove">singedUpSuccesRemove</a></li><li><a href="global.html#sortContacts">sortContacts</a></li><li><a href="global.html#summaryDeadline">summaryDeadline</a></li><li><a href="global.html#switchToDefault">switchToDefault</a></li><li><a href="global.html#switchViewOnSize">switchViewOnSize</a></li><li><a href="global.html#timeIfElse">timeIfElse</a></li><li><a href="global.html#transferDate">transferDate</a></li><li><a href="global.html#unselectSelected">unselectSelected</a></li><li><a href="global.html#updateEmptyHtml">updateEmptyHtml</a></li><li><a href="global.html#updateProgressBar">updateProgressBar</a></li><li><a href="global.html#updateSelectedCheckboxes">updateSelectedCheckboxes</a></li><li><a href="global.html#userTime">userTime</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#LoginLocalstorage">LoginLocalstorage</a></li><li><a href="global.html#Loginsessionstorage">Loginsessionstorage</a></li><li><a href="global.html#STORAGE_TOKEN">STORAGE_TOKEN</a></li><li><a href="global.html#STORAGE_URL">STORAGE_URL</a></li><li><a href="global.html#addAddTaskEventListeners">addAddTaskEventListeners</a></li><li><a href="global.html#addDataFromInputs">addDataFromInputs</a></li><li><a href="global.html#addDataToCurrentTask">addDataToCurrentTask</a></li><li><a href="global.html#addPrio">addPrio</a></li><li><a href="global.html#addSubtask">addSubtask</a></li><li><a href="global.html#addToTasks">addToTasks</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#applyChangesToTask">applyChangesToTask</a></li><li><a href="global.html#backToLogin">backToLogin</a></li><li><a href="global.html#boardinit">boardinit</a></li><li><a href="global.html#bordAddNewTask">bordAddNewTask</a></li><li><a href="global.html#bordAddTaskFieldHtml">bordAddTaskFieldHtml</a></li><li><a href="global.html#buildNewContactArray">buildNewContactArray</a></li><li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#changeLoginImg">changeLoginImg</a></li><li><a href="global.html#changeSigninImg">changeSigninImg</a></li><li><a href="global.html#changeSubtaskIcons">changeSubtaskIcons</a></li><li><a href="global.html#changeTaskInUserArray">changeTaskInUserArray</a></li><li><a href="global.html#changeViewMobile">changeViewMobile</a></li><li><a href="global.html#choosenSubtasks">choosenSubtasks</a></li><li><a href="global.html#clearAddTaskArrays">clearAddTaskArrays</a></li><li><a href="global.html#clearAddTaskForm">clearAddTaskForm</a></li><li><a href="global.html#clearContactDetails">clearContactDetails</a></li><li><a href="global.html#clearContainers">clearContainers</a></li><li><a href="global.html#clearErrorStyle">clearErrorStyle</a></li><li><a href="global.html#clearInput">clearInput</a></li><li><a href="global.html#clearInputs">clearInputs</a></li><li><a href="global.html#clearPrioButtons">clearPrioButtons</a></li><li><a href="global.html#closeCard">closeCard</a></li><li><a href="global.html#closeContactsSideMenu">closeContactsSideMenu</a></li><li><a href="global.html#closeMenu">closeMenu</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#confirmChangeSubtask">confirmChangeSubtask</a></li><li><a href="global.html#contactsIfElse">contactsIfElse</a></li><li><a href="global.html#countSelectedCheckboxes">countSelectedCheckboxes</a></li><li><a href="global.html#createProgressBar">createProgressBar</a></li><li><a href="global.html#delay">delay</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteSingleTask">deleteSingleTask</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#dontChangeFocus">dontChangeFocus</a></li><li><a href="global.html#drag">drag</a></li><li><a href="global.html#dragAwaitFeedback">dragAwaitFeedback</a></li><li><a href="global.html#dragDone">dragDone</a></li><li><a href="global.html#dragInProgress">dragInProgress</a></li><li><a href="global.html#dragTodo">dragTodo</a></li><li><a href="global.html#dropOn">dropOn</a></li><li><a href="global.html#editContactsFactory">editContactsFactory</a></li><li><a href="global.html#editSingleTask">editSingleTask</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#editSubtaskFactory">editSubtaskFactory</a></li><li><a href="global.html#editTaskHtml">editTaskHtml</a></li><li><a href="global.html#empty">empty</a></li><li><a href="global.html#emptyBoxHtml">emptyBoxHtml</a></li><li><a href="global.html#emptyTaskFieldAwaitfeedback">emptyTaskFieldAwaitfeedback</a></li><li><a href="global.html#emptyTaskFieldDone">emptyTaskFieldDone</a></li><li><a href="global.html#emptyTaskFieldInprogress">emptyTaskFieldInprogress</a></li><li><a href="global.html#emptyTaskFieldTodo">emptyTaskFieldTodo</a></li><li><a href="global.html#encryptPassword1">encryptPassword1</a></li><li><a href="global.html#encryptPassword2">encryptPassword2</a></li><li><a href="global.html#encryptPassword2IfElse">encryptPassword2IfElse</a></li><li><a href="global.html#fillAddTaskSection">fillAddTaskSection</a></li><li><a href="global.html#filterArray">filterArray</a></li><li><a href="global.html#filterResults">filterResults</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#formatName">formatName</a></li><li><a href="global.html#formatOutputDate">formatOutputDate</a></li><li><a href="global.html#fstopPropagation">fstopPropagation</a></li><li><a href="global.html#fullTaskHtml">fullTaskHtml</a></li><li><a href="global.html#generateAddContactHtml">generateAddContactHtml</a></li><li><a href="global.html#generateCategoryHtml">generateCategoryHtml</a></li><li><a href="global.html#generateContactData">generateContactData</a></li><li><a href="global.html#generateContactDetailBoxHtml">generateContactDetailBoxHtml</a></li><li><a href="global.html#generateContactDropdownHtml">generateContactDropdownHtml</a></li><li><a href="global.html#generateContactHtml">generateContactHtml</a></li><li><a href="global.html#generateEditContactHtml">generateEditContactHtml</a></li><li><a href="global.html#generateEditSubtaskHtml">generateEditSubtaskHtml</a></li><li><a href="global.html#generateSeparatorHtml">generateSeparatorHtml</a></li><li><a href="global.html#generateSubsHtml">generateSubsHtml</a></li><li><a href="global.html#generateSubtaskHtml">generateSubtaskHtml</a></li><li><a href="global.html#getAllAddTaskFormInputs">getAllAddTaskFormInputs</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#getSearchInput">getSearchInput</a></li><li><a href="global.html#guestTime">guestTime</a></li><li><a href="global.html#handleClickPrio">handleClickPrio</a></li><li><a href="global.html#hoverHtml">hoverHtml</a></li><li><a href="global.html#ifLocalStorageExist">ifLocalStorageExist</a></li><li><a href="global.html#ifSessionStorageExist">ifSessionStorageExist</a></li><li><a href="global.html#ifelseRegister">ifelseRegister</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#informationTodo">informationTodo</a></li><li><a href="global.html#informationsFactory">informationsFactory</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#initContacts">initContacts</a></li><li><a href="global.html#loadAllIfElse">loadAllIfElse</a></li><li><a href="global.html#loadAllIfElseLocalOrSession">loadAllIfElseLocalOrSession</a></li><li><a href="global.html#loadStorage">loadStorage</a></li><li><a href="global.html#loadSummaryInnerhtml">loadSummaryInnerhtml</a></li><li><a href="global.html#loadSummaryProject">loadSummaryProject</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#loadstorageitems">loadstorageitems</a></li><li><a href="global.html#logOut">logOut</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginValueEmpty">loginValueEmpty</a></li><li><a href="global.html#lowPrioHtml">lowPrioHtml</a></li><li><a href="global.html#lowPrioHtmlOpenTask">lowPrioHtmlOpenTask</a></li><li><a href="global.html#mediumPrioHtml">mediumPrioHtml</a></li><li><a href="global.html#mediumPrioHtmlOpenTask">mediumPrioHtmlOpenTask</a></li><li><a href="global.html#menuInnerHTML">menuInnerHTML</a></li><li><a href="global.html#menuLoginName">menuLoginName</a></li><li><a href="global.html#moveTask">moveTask</a></li><li><a href="global.html#moveTaskMenue">moveTaskMenue</a></li><li><a href="global.html#noCloseContent">noCloseContent</a></li><li><a href="global.html#nothingFound">nothingFound</a></li><li><a href="global.html#openBordTask">openBordTask</a></li><li><a href="global.html#openContact">openContact</a></li><li><a href="global.html#openContactAdding">openContactAdding</a></li><li><a href="global.html#openContactEdition">openContactEdition</a></li><li><a href="global.html#openContactsSideMenu">openContactsSideMenu</a></li><li><a href="global.html#openDropDownMenu">openDropDownMenu</a></li><li><a href="global.html#openMenu">openMenu</a></li><li><a href="global.html#openMoveMenue">openMoveMenue</a></li><li><a href="global.html#openMoveTaskMenu">openMoveTaskMenu</a></li><li><a href="global.html#openTask">openTask</a></li><li><a href="global.html#pushTaskToUserArray">pushTaskToUserArray</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#registerGuestLogin">registerGuestLogin</a></li><li><a href="global.html#registerValueEmpty">registerValueEmpty</a></li><li><a href="global.html#renderAssignedTo">renderAssignedTo</a></li><li><a href="global.html#renderCategory">renderCategory</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderResults">renderResults</a></li><li><a href="global.html#renderResultsCategory">renderResultsCategory</a></li><li><a href="global.html#renderSelectedContacts">renderSelectedContacts</a></li><li><a href="global.html#renderSubtask">renderSubtask</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#resetForm">resetForm</a></li><li><a href="global.html#saveEditedContact">saveEditedContact</a></li><li><a href="global.html#saveEditedTask">saveEditedTask</a></li><li><a href="global.html#saveNewContact">saveNewContact</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#saveToServer">saveToServer</a></li><li><a href="global.html#searchTaskPlace">searchTaskPlace</a></li><li><a href="global.html#searchTitleStart">searchTitleStart</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#selectContactById">selectContactById</a></li><li><a href="global.html#selectContacts">selectContacts</a></li><li><a href="global.html#selectContactsOpenTask">selectContactsOpenTask</a></li><li><a href="global.html#selectPrio">selectPrio</a></li><li><a href="global.html#selectPriority">selectPriority</a></li><li><a href="global.html#selectPriorityOpenTask">selectPriorityOpenTask</a></li><li><a href="global.html#selectSubtaskHtml">selectSubtaskHtml</a></li><li><a href="global.html#selectSubtasks">selectSubtasks</a></li><li><a href="global.html#selectTaskCategory">selectTaskCategory</a></li><li><a href="global.html#selectTaskContact">selectTaskContact</a></li><li><a href="global.html#setFilter">setFilter</a></li><li><a href="global.html#setFocusOnElement">setFocusOnElement</a></li><li><a href="global.html#setItem">setItem</a></li><li><a href="global.html#setMinDate">setMinDate</a></li><li><a href="global.html#setSubtaskData">setSubtaskData</a></li><li><a href="global.html#showEmptyHtmlAwaitfeedback">showEmptyHtmlAwaitfeedback</a></li><li><a href="global.html#showEmptyHtmlDone">showEmptyHtmlDone</a></li><li><a href="global.html#showEmptyHtmlInprogress">showEmptyHtmlInprogress</a></li><li><a href="global.html#showEmptyHtmlTodo">showEmptyHtmlTodo</a></li><li><a href="global.html#showHtml">showHtml</a></li><li><a href="global.html#showTaskCategoryBig">showTaskCategoryBig</a></li><li><a href="global.html#showTaskHtml">showTaskHtml</a></li><li><a href="global.html#showTaskNotification">showTaskNotification</a></li><li><a href="global.html#signUpBox">signUpBox</a></li><li><a href="global.html#singedUpSucces">singedUpSucces</a></li><li><a href="global.html#singedUpSuccesRemove">singedUpSuccesRemove</a></li><li><a href="global.html#sortContacts">sortContacts</a></li><li><a href="global.html#subtaskProgressbarHtml">subtaskProgressbarHtml</a></li><li><a href="global.html#summaryDeadline">summaryDeadline</a></li><li><a href="global.html#switchToDefault">switchToDefault</a></li><li><a href="global.html#switchViewOnSize">switchViewOnSize</a></li><li><a href="global.html#technicalTaskHtml">technicalTaskHtml</a></li><li><a href="global.html#timeIfElse">timeIfElse</a></li><li><a href="global.html#todoTaskHtml">todoTaskHtml</a></li><li><a href="global.html#transferDate">transferDate</a></li><li><a href="global.html#unselectSelected">unselectSelected</a></li><li><a href="global.html#updateEmptyHtml">updateEmptyHtml</a></li><li><a href="global.html#updateProgressBar">updateProgressBar</a></li><li><a href="global.html#updateSelectedCheckboxes">updateSelectedCheckboxes</a></li><li><a href="global.html#urgentPrioHtml">urgentPrioHtml</a></li><li><a href="global.html#urgentPrioHtmlOpenTask">urgentPrioHtmlOpenTask</a></li><li><a href="global.html#userTaskHtml">userTaskHtml</a></li><li><a href="global.html#userTime">userTime</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Apr 13 2024 16:04:43 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun Apr 14 2024 16:19:53 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>
