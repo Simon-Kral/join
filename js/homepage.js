@@ -1,6 +1,7 @@
 /**
- * shows the signUpBox
+ * This function manages the display when switching from a login view to a sign-up view.
  */
+
 function signUpBox() {
     let loginpwimg = document.getElementById("register_pw_login_img");
     let registerlogin = document.getElementById("register_login");
@@ -13,17 +14,21 @@ function signUpBox() {
     loginpwimg.src = "assets/img/register_lock.png";
     loginValueEmpty();
 }
+
 /**
- * reset the loginvalues
+ * Clears the input values in the login form.
  */
+
 function loginValueEmpty() {
     register_login_value.value = "";
     register_pw_login_value.value = "";
     login_checkbox.checked = false;
 }
+
 /**
- * goes back to login if onclick or create user
+ * Handles the UI transition from the sign-up view back to the login view.
  */
+
 function backToLogin() {
     let registerlogin = document.getElementById("register_login");
     let registersignin = document.getElementById("register_sign_in");
@@ -39,6 +44,10 @@ function backToLogin() {
     registerValueEmpty();
 }
 
+/**
+ * Manages the style of input borders based on focus events.
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".login-input input").forEach(function (input) {
         let loginInput = input.closest(".login-input");
@@ -53,6 +62,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+/**
+ * Handles the styling of input borders on validation failure.
+ */
 
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".login-input input").forEach(function (input) {
