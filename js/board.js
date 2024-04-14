@@ -178,7 +178,7 @@ function showTaskHtml(task, index, sectionId) {
  * extracts properties from a object
  * returns them in a new object with renamed keys
  * @param {object} task - containing information about the task
- * @returns
+ * @returns - as an object
  */
 function informationTodo(task) {
     let { category, title, description, subtasks, contacts, prio, date } = task;
@@ -192,7 +192,7 @@ function informationTodo(task) {
  * @param {array} priority - representing task priorities
  * @param {array} subtasks - representing subtasks of a task
  * @param {array} contacts - representing contacts related to the task
- * @returns
+ * @returns - as an object
  */
 function informationsFactory(category, priority, subtasks, contacts) {
     const choosencategory = selectCategory(category);
@@ -207,7 +207,7 @@ function informationsFactory(category, priority, subtasks, contacts) {
 /**
  * choose the right category
  * @param {array} category - representing task categories and returns HTML content
- * @returns
+ * @returns - that in an paramter
  */
 function selectCategory(category) {
     return category == "Technical Task" ? technicalTaskHtml() : userTaskHtml();
@@ -239,7 +239,7 @@ function selectContacts(contactstodo) {
  * iterates through the array of contacts, generates a profile badge for each,
  * only contacts with a non-empty first name are processed
  * @param {array} contactstodo - representing task contacts and returns HTML content
- * @returns
+ * @returns - that in an html
  */
 function selectContactsOpenTask(contactstodo) {
     let contacthtml = "";
@@ -261,7 +261,7 @@ function selectContactsOpenTask(contactstodo) {
 /**
  * returns HTML content based on the priority of a task, utilizing different functions for each priority level
  * @param {array} priority - representing task priorities
- * @returns
+ * @returns - that in an paramter  
  */
 function selectPriority(priority) {
     return priority === "urgent" ? urgentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : mediumPrioHtml();
@@ -270,7 +270,7 @@ function selectPriority(priority) {
 /**
  * returns HTML content based on the priority of a task, utilizing different functions for each priority level with there names
  * @param {array} priority - representing task priorities
- * @returns
+ * @returns - that in an paramter 
  */
 function selectPriorityOpenTask(priority) {
     return priority === "urgent" ? urgentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : mediumPrioHtmlOpenTask();
@@ -320,7 +320,7 @@ function drag(id, element) {
  * otherwise, it creates and returns HTML informations for the progress bar
  * @param {array} subtasks - returns either an empty value or HTML informations for a progress bar
  * @param {number} selectedCheckboxCount - number of selected checkbox
- * @returns
+ * @returns - that as an emptys field or checked subs
  */
 function choosenSubtasks(subtasks, selectedCheckboxCount) {
     let subtasklength = subtasks.length;
@@ -337,7 +337,7 @@ function choosenSubtasks(subtasks, selectedCheckboxCount) {
  * returning either an empty value or HTML for the progress bar based on completion percentage
  * @param {array} subtasks - returns either an empty value or the HTML for the progress bar
  * @param {number} selectedCheckboxCount - number of selected checkbox
- * @returns
+ * @returns - that as an emptys field or checked subs
  */
 function updateProgressBar(subtasks, selectedCheckboxCount) {
     let percent = selectedCheckboxCount === 1 ? 0 : Math.round((selectedCheckboxCount / subtasks.length) * 100);
@@ -353,7 +353,7 @@ function updateProgressBar(subtasks, selectedCheckboxCount) {
 /**
  * iterates over the array, extracting the "name" property from each subtask object and storing it in a new array
  * @param {array} subtaskstodo - representing the task subtasks
- * @returns
+ * @returns - that as an list 
  */
 function selectSubtasks(subtaskstodo) {
     let iteratedList = [];
@@ -386,7 +386,7 @@ async function updateSelectedCheckboxes(index, isChecked) {
 /**
  * iterates through the array, incrementing the count when a checkbox is checked, and returns the total count
  * @param {array} subtaskstodo - representing the task subtasks
- * @returns
+ * @returns - that at a count
  */
 function countSelectedCheckboxes(subtaskstodo) {
     let count = 1;
@@ -403,7 +403,7 @@ function countSelectedCheckboxes(subtaskstodo) {
  * updates the task object before returning the HTML
  * @param {array} sublist - representing the task subtasks
  * @param {array} selectarray - representing the task subtasks from the selected array
- * @returns
+ * @returns - that as an html 
  */
 function selectSubtaskHtml(sublist, selectarray) {
     let html = "";
@@ -484,7 +484,7 @@ function noCloseContent(event) {
 
 /**
  * returns an object with references to HTML elements identified by their IDs
- * @returns
+ * @returns - that in an object
  */
 function searchTaskPlace() {
     return {
@@ -499,7 +499,7 @@ function searchTaskPlace() {
  * retrieves the value from the search input element,
  * trims whitespace, converts it to lowercase, and
  * returns an object with the search string and its length
- * @returns
+ * @returns - that in an object
  */
 function getSearchInput() {
     const search = document.getElementById("search_input").value.trim().toLowerCase();
@@ -519,7 +519,7 @@ function searchTitleStart() {
 /**
  * sorts tasks based on input, returning filtered results
  * @param {object} search - refers to the keyword
- * @returns
+ * @returns - all as the parameter
  */
 function filterResults(search) {
     return {
@@ -534,7 +534,7 @@ function filterResults(search) {
  * filters an array based on a search term found in each item's title
  * @param {arry} array - representing one of four arrays
  * @param {object} search - refers to the keyword
- * @returns
+ * @returns - statement filters the array by checking if each item's title includes the search term, returning only matching items
  */
 function filterArray(array, search) {
     return array.filter((item) => item.title.toLowerCase().includes(search));
