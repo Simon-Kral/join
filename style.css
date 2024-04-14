@@ -498,10 +498,12 @@ button.move-mobile:hover {
 .edit-task::-webkit-scrollbar {
     width: 8px;
 }
+
 .edit-task::-webkit-scrollbar-thumb {
     background: #A8A8A8;
     border-radius: 8px;
 }
+
 .edit-task::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8ad;
 }
@@ -2030,6 +2032,7 @@ div.selected:hover {
                 }
             }
             .contact-detail-box {
+                min-width: 350px;
                 .contact-detail-box-head {
                     .profile-name-with-buttons-box {
                         margin-left: 8px;
@@ -2235,7 +2238,6 @@ div.selected:hover {
             }
         }
     }
-
 }
 
 .animation-mobile-sidebar {
