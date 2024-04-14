@@ -217,8 +217,8 @@ function selectCategory(category) {
  * creates HTML for displaying contacts and return styled HTML
  * iterates through the array of contacts, generates a profile badge for each,
  * only contacts with a non-empty first name are processed
- * @param {array} contactstodo - representing task contacts and returns HTML content
- * @returns
+ * @param {array} contactstodo - representing task contacts  
+ * @returns - returns HTML content
  */
 function selectContacts(contactstodo) {
     let contacthtml = "";
@@ -264,7 +264,7 @@ function selectContactsOpenTask(contactstodo) {
  * @returns
  */
 function selectPriority(priority) {
-    return priority === "urgent" ? urugentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : mediumPrioHtml();
+    return priority === "urgent" ? urgentPrioHtml() : priority === "low" ? lowPrioHtml() : priority === "medium" ? mediumPrioHtml() : mediumPrioHtml();
 }
 
 /**
@@ -273,7 +273,7 @@ function selectPriority(priority) {
  * @returns
  */
 function selectPriorityOpenTask(priority) {
-    return priority === "urgent" ? urugentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : mediumPrioHtmlOpenTask();
+    return priority === "urgent" ? urgentPrioHtmlOpenTask() : priority === "low" ? lowPrioHtmlOpenTask() : priority === "medium" ? mediumPrioHtmlOpenTask() : mediumPrioHtmlOpenTask();
 }
 
 /**

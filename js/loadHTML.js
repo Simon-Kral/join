@@ -1,7 +1,15 @@
+
+/**
+ * start at onload to load all tepmlates to every site
+ */
 async function init() {
     await includeHTML();
 }
 
+/**
+ * function fetches HTML content from external files based on elements with a specific attribute,
+ * then inserts the content into those elements on a webpage asynchronously
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll("[w3-include-html]");
     for (let i = 0; i < includeElements.length; i++) {
@@ -16,91 +24,131 @@ async function includeHTML() {
     }
 }
 
+/**
+ * load white task field
+ * @returns - the code as html
+ */
 function bordAddTaskFieldHtml() {
     return `
         <div class="bord-add-tasks-field" onclick="noCloseContent(event)" id="add_task_page"></div>
     `;
 }
 
+/**
+ * placeholder for todo, no tasks in array
+ * @returns - the code as html
+ */
 function emptyTaskFieldTodo() {
     return `
         <div class="empty-task-place">No tasks To Do</div>
     `;
 }
 
+/**
+ * placeholder for in progress, no tasks in array
+ * @returns - the code as html
+ */
 function emptyTaskFieldInprogress() {
     return `
         <div class="empty-task-place">No tasks In progress</div>
     `;
 }
 
+/**
+ * placeholder for await feedback, no tasks in array
+ * @returns - the code as html
+ */
 function emptyTaskFieldAwaitfeedback() {
     return `
         <div class="empty-task-place">no tasks await feedback</div>
     `;
 }
 
+/**
+ * placeholder for done, no tasks in array
+ * @returns - the code as html
+ */
 function emptyTaskFieldDone() {
     return `
         <div class="empty-task-place">no tasks done</div>
     `;
 }
 
+/**
+ * create user story style element
+ * @returns - the code as html
+ */
 function userTaskHtml() {
     return `
           <p class="user-story">user story</p>
       `;
 }
 
+/**
+ * create technical task style element
+ * @returns - the code as html
+ */
 function technicalTaskHtml() {
     return `
           <p class="technical-task">technical task</p>
       `;
 }
 
+/**
+ * create empty task style element, no task found per search
+ * @returns - the code as html
+ */
 function nothingFound() {
     return `
         <p class="empty-task-place">nothing found</p>
     `;
 }
 
-function todoTaskHtml() {
-    return `
-        <p class="user-story">User Story</p>
-    `;
-}
-
-function technicalTaskHtml() {
-    return `
-        <p class="technical-task">Technical Task</p>
-    `;
-}
-
-function urugentPrioHtml() {
+/**
+ * create urgent priority style element, as image
+ * @returns - the code as html
+ */
+function urgentPrioHtml() {
     return `
         <img class="low-image" src="./assets/img/urgent.png"></img>
     `;
 }
 
+/**
+ * create low priority style element, as image
+ * @returns - the code as html
+ */
 function lowPrioHtml() {
     return `
         <img class="low-image" src="./assets/img/low.png"></img>
     `;
 }
 
+/**
+ * create medium priority style element, as image
+ * @returns - the code as html
+ */
 function mediumPrioHtml() {
     return `
         <img class="low-image" src="./assets/img/medium_two.png"></img>
     `;
 }
 
-function urugentPrioHtmlOpenTask() {
+/**
+ * create urgent priority style element, as image and name it
+ * @returns - the code as html
+ */
+function urgentPrioHtmlOpenTask() {
     return `
         <span>Urgent</span>
         <img class="low-image" src="./assets/img/urgent.png"></img>
     `;
 }
 
+/**
+ * create low priority style element, as image and name it
+ * @returns - the code as html
+ */
 function lowPrioHtmlOpenTask() {
     return `
         <span>Low</span>
@@ -108,6 +156,10 @@ function lowPrioHtmlOpenTask() {
     `;
 }
 
+/**
+ * create medium priority style element, as image and name it
+ * @returns - the code as html
+ */
 function mediumPrioHtmlOpenTask() {
     return `
         <span>Medium</span>
@@ -115,6 +167,11 @@ function mediumPrioHtmlOpenTask() {
     `;
 }
 
+/**
+ * generate progressbar in html code
+ * @param {number} percent - style the progressbar, by checked subtasks
+ * @returns - the code as html for the progressbar
+ */
 function createProgressBar(percent) {
     return `
         <div class="progress-bar" role="progressbar" aria-label="Example with label" aria-valuenow="25">
@@ -123,6 +180,10 @@ function createProgressBar(percent) {
     `;
 }
 
+/**
+ * generate a box, and style these box, if hovered by an dragged element
+ * @returns - the code as html for the hoverbox
+ */
 function hoverHtml() {
     return `
         <div ondragover="this.style.background = '#F4F4F4'; this.style.borderStyle = 'dashed';" 
@@ -132,16 +193,30 @@ function hoverHtml() {
     `;
 }
 
+/**
+ * generate html element to check up the subtasks in numbers
+ * @param {number} subtasklenght - created number of all subtasks
+ * @param {number} selectedCheckboxCount - created number of all checked subtasks
+ * @returns - the code as html for the subtasks in numbers
+ */
 function subtaskProgressbarHtml(subtasklenght, selectedCheckboxCount) {
     return `
         <p class="subtasktxt">${selectedCheckboxCount - 1}/${subtasklenght}Subtasks</p>
     `;
 }
 
+/**
+ * generate an epmty html place field
+ * @returns - the code as html
+ */
 function empty() {
     return ``;
 }
 
+/**
+ * generate an styled html menu, to move single tasks in mobile version
+ * @returns - the code as html for the mobile menu
+ */
 function moveTaskMenue() {
     return `
         <div class="menu-move-container" onclick="noCloseContent(event)">
@@ -154,6 +229,14 @@ function moveTaskMenue() {
     `;
 }
 
+/**
+ * enerates HTML markup for a single subtask element, including a checkbox, an image label, and a text label. It accepts parameters for the subtasks
+ * @param {number} index - the number of the current subtasks
+ * @param {boolean} isChecked - true or false of checked subtask
+ * @param {string} subtask - named subtasks
+ * @param {string} imgSrc - image for the checked / and unchecked checkbox
+ * @returns - the code as html for subtasks
+ */
 function generateSubsHtml(index, isChecked, subtask, imgSrc) {
     let subHtml = "";
     subHtml += `<li><input class="check-bord" id="toggle_button${index}" type="checkbox" onchange="updateSelectedCheckboxes(${index}, this.checked)" ${isChecked}>`;
@@ -162,6 +245,18 @@ function generateSubsHtml(index, isChecked, subtask, imgSrc) {
     return subHtml;
 }
 
+/**
+ * generates HTML markup for a todo task container with dynamic content based on provided parameters
+ * @param {array} choosencategory - representing task catgeroy  
+ * @param {array} title - representing task title
+ * @param {array} description - representing task description
+ * @param {number} i - current task
+ * @param {string} subtaskstodo - representing task subtasks html as progressbar
+ * @param {array} contactstodo - representing task contacts
+ * @param {array} priority - representing task priority
+ * @param {string} choosensubs - representing task check / unched subtasks and all subtasks as html
+ * @returns - a formatted string with dynamic content based on the provided parameters
+ */
 function todoTaskHtml(choosencategory, title, description, i, subtaskstodo, contactstodo, priority, choosensubs) {
     return `
         <div id="${i}" class="todo-task-container" onclick="openBordTask(${i}, this)" draggable="true" ondragstart="drag(${i}, this)">
@@ -346,26 +441,26 @@ function editTaskHtml(titletodo, descriptiontodo, i, choosenpriority, datetodo, 
     `;
 }
 
-function awaitfeedbackTaskHtml() {
-    return `
-        <h1>TestTesTodo</h1>
-    `;
-}
+// function awaitfeedbackTaskHtml() {
+//     return `
+//         <h1>TestTesTodo</h1>
+//     `;
+// }
 
-function doneTaskHtml() {
-    return `
-        <h1>TestTesTodo</h1>
-    `;
-}
+// function doneTaskHtml() {
+//     return `
+//         <h1>TestTesTodo</h1>
+//     `;
+// }
 
-function userTaskHtml() {
-    return `
-        <p class="user-story">User Story</p>
-    `;
-}
+// function userTaskHtml() {
+//     return `
+//         <p class="user-story">User Story</p>
+//     `;
+// }
 
-function technicalTaskHtml() {
-    return `
-        <p class="technical-task">Technical Task</p>
-    `;
-}
+// function technicalTaskHtml() {
+//     return `
+//         <p class="technical-task">Technical Task</p>
+//     `;
+// }
