@@ -41,6 +41,145 @@ let todo = [
                 color: "#FF7A00",
             },
         ],
+    },
+    {
+        title: "Add-Task Section",
+        description: "Define Add-Task",
+        date: "14/09/2024",
+        category: "Technical Task",
+        prio: "medium",
+        subtasks: [
+            {
+                idcounter: 0,
+            },
+            {
+                id: 1,
+                name: "who does what",
+                isChecked: true
+            },
+            {
+                id: 2,
+                name: "what time",
+                isChecked: false
+            }
+        ],
+        contacts: [
+            { idcounter: 2 },
+            {
+                id: 1,
+                firstname: "Sofia",
+                lastname: "Müller",
+                email: "sofiam@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#00BEE8",
+            },
+            {
+                id: 2,
+                firstname: "Anton",
+                lastname: "Mayer",
+                email: "antom@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#FF7A00",
+            },
+        ],
+    },
+    {
+        title: "Add-Summary",
+        description: "Summary structures",
+        date: "14/09/2024",
+        category: "Technical Task",
+        prio: "urgent",
+        subtasks: [
+            {
+                idcounter: 0,
+            },
+            {
+                id: 1,
+                name: "who does what",
+                isChecked: true
+            },
+            {
+                id: 2,
+                name: "what time",
+                isChecked: false
+            }
+        ],
+        contacts: [
+            { idcounter: 4 },
+            {
+                id: 1,
+                firstname: "Sofia",
+                lastname: "Müller",
+                email: "sofiam@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#00BEE8",
+            },
+            {
+                id: 2,
+                firstname: "Anton",
+                lastname: "Mayer",
+                email: "antom@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#FF7A00",
+            },
+            {
+                id: 3,
+                firstname: "Sebastian",
+                lastname: "Gei",
+                email: "Sebastian@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#FFBB2B",
+            },
+            {
+                id: 4,
+                firstname: "Herbert",
+                lastname: "Schwabelbabbel",
+                email: "Schwabelbabbel@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#00BEE8",
+            },
+        ],
+    },
+    {
+        title: "Add-Storage",
+        description: "Edit stroage structures",
+        date: "14/09/2024",
+        category: "Technical Task",
+        prio: "urgent",
+        subtasks: [
+            {
+                idcounter: 0,
+            },
+            {
+                id: 1,
+                name: "who does what",
+                isChecked: true
+            },
+            {
+                id: 2,
+                name: "what time",
+                isChecked: false
+            }
+        ],
+        contacts: [
+            { idcounter: 2 },
+            {
+                id: 1,
+                firstname: "Sebastian",
+                lastname: "Gei",
+                email: "Sebastian@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#FFBB2B",
+            },
+            {
+                id: 2,
+                firstname: "Herbert",
+                lastname: "Schwabelbabbel",
+                email: "Schwabelbabbel@gmail.com",
+                phone: "+49 1111 111 11 1",
+                color: "#00BEE8",
+            },
+        ],
     },]
 let tasksinprogress = [
     {
@@ -155,7 +294,7 @@ let Urgent = [{
     ],
 },]
 let contacts = [
-    { idcounter: 9 },
+    { idcounter: 8 },
     {
         id: 0,
         firstname: "Sofia",
@@ -203,6 +342,30 @@ let contacts = [
         email: "eva@gmail.com",
         phone: "+49 1111 111 11 1",
         color: "#FFBB2B",
+    },
+    {
+        id: 6,
+        firstname: "Niklas",
+        lastname: "Fififi",
+        email: "Fififi@gmail.com",
+        phone: "+49 1111 111 11 1",
+        color: "#00BEE8",
+    },
+    {
+        id: 7,
+        firstname: "Sebastian",
+        lastname: "Gei",
+        email: "Sebastian@gmail.com",
+        phone: "+49 1111 111 11 1",
+        color: "#FFBB2B",
+    },
+    {
+        id: 8,
+        firstname: "Herbert",
+        lastname: "Schwabelbabbel",
+        email: "Schwabelbabbel@gmail.com",
+        phone: "+49 1111 111 11 1",
+        color: "#00BEE8",
     },]
 
 /**
