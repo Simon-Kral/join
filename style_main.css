@@ -2032,7 +2032,7 @@ div.selected:hover {
                 }
             }
             .contact-detail-box {
-                min-width: 350px;
+                min-width: 380px;
                 .contact-detail-box-head {
                     .profile-name-with-buttons-box {
                         margin-left: 8px;
@@ -2044,7 +2044,7 @@ div.selected:hover {
                     font-size: 27px;
                 }
                 .profile-name {
-                    font-size: 32px;
+                    font-size: 26px;
                 }
             }
         }
