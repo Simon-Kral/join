@@ -1,3 +1,8 @@
+/**
+ * This function generates the HTML-code for the add-task-section.
+ *
+ * @param {array} array - This optinal variable is the section of the board-page that the task should be created for.
+ */
 function fillAddTaskSection(array) {
     let page = document.getElementById("add_task_page");
     html = "";
@@ -147,6 +152,12 @@ function fillAddTaskSection(array) {
     initAddTask();
 }
 
+/**
+ * This function generates the HTML-code of an entry in the category-dropdown-menu.
+ *
+ * @param {array} category - This is the data of the category that the html-code is needed for.
+ * @returns - The generated HTML-code of the entry.
+ */
 function generateCategoryHtml(category) {
     html = "";
     html += /*html*/ `
@@ -157,6 +168,13 @@ function generateCategoryHtml(category) {
     return html;
 }
 
+/**
+ * This function generates the HTML-code of an entry in the contact-dropdown-menu.
+ *
+ * @param {array} contact - This is the data of the contact that the entry belongs to.
+ * @param {array} contactdata - This is some additional data of the contact, that is needed to create the entry.
+ * @returns - The HTML-Code of the entry.
+ */
 function generateContactDropdownHtml(contact, contactdata) {
     html = "";
     html += /*html*/ `
@@ -171,6 +189,13 @@ function generateContactDropdownHtml(contact, contactdata) {
     return html;
 }
 
+/**
+ * This function generates the HTML-code for the created subtasks of a task.
+ *
+ * @param {string} name - This is the text of the subtask.
+ * @param {number} id - This is the unique-id of the subtask.
+ * @returns - The generated HTML-code of the subtask.
+ */
 function generateSubtaskHtml(name, id) {
     let html = "";
     html += /*html*/ `
@@ -191,6 +216,11 @@ function generateSubtaskHtml(name, id) {
     return html;
 }
 
+/**
+ * This function generates the HTML-code for the wrapper of the created subtasks and adds the subtask to it.
+ *
+ * @returns - The generated HTML-code of the subtask with wrapper.
+ */
 function renderSubtask() {
     let html = `<div class="selected-subtask-container pointer" ondblclick="editSubtask(this, ${currentSubtask.id})">`;
     html += generateSubtaskHtml(currentSubtask.name, currentSubtask.id);
@@ -198,6 +228,12 @@ function renderSubtask() {
     return html;
 }
 
+/**
+ * This function generates the HTML-code for the edit-subtask-section.
+ *
+ * @param {number} id - This is the unique-id of the selected subtask.
+ * @returns - The HTML-code of the edit-subtask-section.
+ */
 function generateEditSubtaskHtml(id) {
     let html = "";
     html += /*html*/ `
@@ -217,6 +253,12 @@ function generateEditSubtaskHtml(id) {
     return html;
 }
 
+/**
+ * This function generates the HTML-code of the separators for the contact-list with the first letter of the first name.
+ *
+ * @param {string} letter - This is the first letter of the first names of the following contacts.
+ * @returns - The HTML-code of the separator.
+ */
 function generateSeparatorHtml(letter) {
     return /*html*/ `
         <div class="contact-list-separator-box">
@@ -226,6 +268,13 @@ function generateSeparatorHtml(letter) {
     `;
 }
 
+/**
+ * This function generates the HTML-code of an entry in the contact-list.
+ *
+ * @param {array} contact - This is the data of the contact that the entry belongs to.
+ * @param {array} contactdata - This is some additional data of the contact, that is needed to create the entry.
+ * @returns - The HTML-code of the entry.
+ */
 function generateContactHtml(contact, contactdata) {
     let html = "";
     html += /*html*/ `
@@ -244,6 +293,13 @@ function generateContactHtml(contact, contactdata) {
     return html;
 }
 
+/**
+ * This function generates the HTML-code for the contact-details-section of a contact.
+ *
+ * @param {array} contact - This is the data of the contact that the entry belongs to.
+ * @param {array} contactdata - This is some additional data of the contact, that is needed to create the entry.
+ * @returns - The HTML-code of the contact-details-section.
+ */
 function generateContactDetailBoxHtml(contact, contactdata) {
     let html = "";
     html += /*html*/ `
@@ -278,11 +334,18 @@ function generateContactDetailBoxHtml(contact, contactdata) {
     return html;
 }
 
+/**
+ * This function generates the HTML-code of the edit-contact-card of the board-page.
+ *
+ * @param {array} contact - This is the array of theselected contact.
+ * @param {string} abbreviation - This is the first letter of the first name plus the first letter of the last name.
+ * @param {string} fullname - This is the full name of the contact.
+ * @returns - The generated HTML-code of the edit-contact-section.
+ */
 function generateEditContactHtml(contact, abbreviation, fullname) {
     let html = "";
     html += /*html*/ `
     <div class="overlay-box">
-
       <div class="overlay-box-head">
           <img src="./assets/img/join_logo.svg" alt="logo" />
           <h1>Edit contact</h1>
@@ -326,6 +389,12 @@ function generateEditContactHtml(contact, abbreviation, fullname) {
     return html;
 }
 
+/**
+ * This function generates the HTML-code of the add-contact-card of the board-page.
+ *
+ * @param {string} color - This is the random-generated color for the contact.
+ * @returns - The HTML-code for the add-contact-card.
+ */
 function generateAddContactHtml(color) {
     let html = "";
     html += /*html*/ `
